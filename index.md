@@ -4,30 +4,9 @@ root: .
 permalink: index.html
 ---
 
-# Calculus ABC Study Guide
+Probability theory is the branch of mathematics concerned with probability. Although there are several different probability interpretations, probability theory treats the concept in a rigorous mathematical manner by expressing it through a set of axioms. Typically these axioms formalise probability in terms of a probability space, which assigns a measure taking values between 0 and 1, termed the probability measure, to a set of outcomes called the sample space. Any specified subset of the sample space is called an event. Central subjects in probability theory include discrete and continuous random variables, probability distributions, and stochastic processes (which provide mathematical abstractions of non-deterministic or uncertain processes or measured quantities that may either be single occurrences or evolve over time in a random fashion). Although it is not possible to perfectly predict random events, much can be said about their behavior. Two major results in probability theory describing such behaviour are the law of large numbers and the central limit theorem.
 
-## Calculus A
-Calculus A includes
-- Limits and Continuity
-- Derivatives and Differentiation Techniques
-- Related Rates
-- Optimization Problems
-- Applications of the Above
-
-## Calculus B
-- Integrals and Integration Techniques
-- Differential Equations
-- Areas and Volumes of Bounded Regions
-- Arc Length
-- Surfaces of Revolutions
-- Applications of the Above
-## Calculus C
-Calculus C includes
-- Derivatives and Integrals of Parametric and Polar Equations
-- Integration by Partial Fractions
-- Improper Integrals
-- Taylor and Maclaurin Series Convergence
-- Applications of the Above
+As a mathematical foundation for statistics, probability theory is essential to many human activities that involve quantitative analysis of data.[1] Methods of probability theory also apply to descriptions of complex systems given only partial knowledge of their state, as in statistical mechanics or sequential estimation. A great discovery of twentieth-century physics was the probabilistic nature of physical phenomena at atomic scales, described in quantum mechanics
 
 <table><tr> <td colspan="12" style="border-bottom: 2px solid #8A2BE2;"></td></tr></table>
 
@@ -47,9 +26,9 @@ Calculus C includes
 
 
 
-<b><i>Other Important Materials of Mathematics  Links</i></b>
+<b><i>Other Important Materials of Mathematics  Links</i></b>
 
-- <a href="https://www.desmos.com/calculator" target="_blank" > Tool for drawing Graphs of equations  </a>
+- <a href="https://www.desmos.com/calculator" target="_blank" > Tool for drawing Graphs of equations  </a>
 
 
 
