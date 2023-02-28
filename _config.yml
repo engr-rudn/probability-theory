@@ -1,4 +1,3 @@
-encoding: "utf-8"
 #------------------------------------------------------------
 # Values for this lesson.
 #------------------------------------------------------------
@@ -8,14 +7,16 @@ encoding: "utf-8"
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-carpentry: "dc"
+# incubator: Carpentries Incubator
+carpentry: "swc"
 
 # Overall title for pages.
-title: "Statistics with R"
+title: "College Mathematics"
 
 # Life cycle stage of the lesson
-# possible values: "pre-alpha", "alpha", "beta", "stable"
-life_cycle: "pre-alpha"
+# See this page for more details: https://cdh.carpentries.org/the-lesson-life-cycle.html
+# Possible values: "pre-alpha", "alpha", "beta", "stable"
+life_cycle: "stable"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -30,20 +31,20 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-email: "swc@mq.edu.au"
+email: "team@carpentries.org"
 
 # Sites.
-amy_site: "https://amy.software-carpentry.org/workshops"
+amy_site: "https://amy.carpentries.org/"
 carpentries_github: "https://github.com/carpentries"
 carpentries_pages: "https://carpentries.github.io"
 carpentries_site: "https://carpentries.org/"
-dc_site: "http://datacarpentry.org"
+dc_site: "https://datacarpentry.org"
 example_repo: "https://github.com/carpentries/lesson-example"
 example_site: "https://carpentries.github.io/lesson-example"
 lc_site: "https://librarycarpentry.org/"
 swc_github: "https://github.com/swcarpentry"
 swc_pages: "https://swcarpentry.github.io"
-swc_site: "https://software-carpentry.org"
+swc_site: "https://engr-rudn.github.io/pyee01Notes"
 template_repo: "https://github.com/carpentries/styles"
 training_site: "https://carpentries.github.io/instructor-training"
 workshop_repo: "https://github.com/carpentries/workshop-template"
@@ -51,19 +52,14 @@ workshop_site: "https://carpentries.github.io/workshop-template"
 cc_by_human: "https://creativecommons.org/licenses/by/4.0/"
 
 # Surveys.
-swc_pre_survey: "https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id="
-swc_post_survey: "https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id="
-training_post_survey: "https://www.surveymonkey.com/r/post-instructor-training"
-dc_pre_survey: "https://www.surveymonkey.com/r/dcpreworkshopassessment?workshop_id="
-dc_post_survey: "https://www.surveymonkey.com/r/dcpostworkshopassessment?workshop_id="
-lc_pre_survey: "https://www.surveymonkey.com/r/lcpreworkshopsurvey?workshop_id="
-lc_post_survey: "https://www.surveymonkey.com/r/lcpostworkshopsurvey?workshop_id="
+pre_survey: "https://carpentries.typeform.com/to/wi32rS?slug="
+post_survey: "https://carpentries.typeform.com/to/UgVdRQ?slug="
 instructor_pre_survey: "https://www.surveymonkey.com/r/instructor_training_pre_survey?workshop_id="
 instructor_post_survey: "https://www.surveymonkey.com/r/instructor_training_post_survey?workshop_id="
 
 
 # Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am).
-start_time: 540
+start_time: 0
 
 # Specify that things in the episodes collection should be output.
 collections:
@@ -97,6 +93,9 @@ exclude:
   - Makefile
   - bin/
   - .Rproj.user/
+  - .vendor/
+  - vendor/
+  - .docker-vendor/
 
 # Turn on built-in syntax highlighting.
 highlighter: rouge
