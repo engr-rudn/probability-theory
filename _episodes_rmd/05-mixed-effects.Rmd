@@ -1,0 +1,251 @@
+---
+title: "Mixed Effects Models"
+author: "Dr Tania Prvan and Peter Humburg"
+teaching: 60
+exercises: 30
+questions:
+- "How do you analyse data if observations are not independent of each other?"
+objectives:
+- "Model data with correlated observations."
+keypoints:
+- "Use `lmer()` to fit mixed effects models that account for clustered observations."
+- "Use diagnostic plots (`dotplot()` and `qqmath()`) to assess the model fit for mixed models."
+- "Use the `ranova()` function to assess which random effects should be included in the model."
+source: "Rmd"
+mathjax: true
+---
+
+> ## Prerequisites
+>
+> * Experience with R, including importing, processing, and plotting of data.
+> * Basic familiarity with multiple linear regression.
+>
+> R packages used: dplyr, ggplot2, lattice, lme4, lmerTest, readr
+{: .prereq}
+
+
+```{r setup, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("05-")
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+> ## Discuss
+>
+> One assumption of multiple linear regression is that observations are independent of each other.
+> What are examples where this assumption may be violated?
+{: .challenge}
+
+## Modelling clustered data
+
+> ## Definition
+>
+> A unit of observation is an object about which information is collected independently of other units.
+>
+> Examples include an individual, a family, a neighbourhood.
+{: .callout}
+
+Units of observation may be *related* to each other, forming *groups* or *clusters*.
+
+Individuals could be grouped in families, or schools. Families could be clustered by neighbourhood. Schools could be clustered by state.
+
+Longitudinal data also consist of clusters of observations made at different occasions for the same subject.
+
+Clustered data violate the assumption of independent observations. It is usually helpful, and often critical, to reflect the structure present in the data in the model. Careful modelling of these clusters will help you to separate variations in the response due to experimental conditions (or other effect of interest) from those that are due to the intrinsic structure of the data.
+
+### Modelling the height of siblings
+
+Let's look how this works with some real data. In this section we will analyse the height data collected by [Francis Galton in 1885](https://www.jstor.org/stable/2841583?seq=1#metadata_info_tab_contents). It consists of the heights (measured in inches) of the adult children from 197 families. We start by importing the data.
+
+```{r load_height_data}
+library(readr)
+height <- read_table2("../data/Galton.tab", col_types = cols(Family = col_character()))
+height
+```
+
+As you can see there are 898 individual observations with information on family membership and gender. Before delving into the analysis we should take a closer look at the data.
+
+```{r height_summary}
+length(unique(height$Family))
+table(height$Gender)
+summary(height$Kids)
+```
+
+We would expect that height is influenced by gender. We can confirm this based on numerical and graphical summaries of the data. We'll use `dplyr` for processing the data and `ggplot2` for plotting.
+
+```{r height_gender_summary, message=FALSE, warning=FALSE}
+library(dplyr)
+height %>% group_by(Gender) %>% summarise(mean=mean(Height)) %>% ungroup()
+```
+
+```{r, message=FALSE}
+library(ggplot2)
+
+ggplot(height, aes(x=Gender, y=Height, fill=Gender)) + geom_violin() + theme_bw()
+```
+
+Based on this, a reasonable first model might be to simply estimate the average height of males and females in the population. Using `lm` we can express this as
+
+```{r height_lm}
+fit_lm <- lm(Height ~ Gender, data=height)
+```
+
+We can look at some model diagnostics to confirm that this is an appropriate model.
+
+```{r height_lm_qc}
+qqnorm(rstandard(fit_lm))
+qqline(rstandard(fit_lm), col=2)
+```
+
+> ## Exercise
+>
+> When fitting a linear regression model you should always inspect the residuals and their relationship with the fitted values. Usually a scatter plot is helpful for this purpose. Since this model only produces two different predictions (one for males and one for females), that isn't very helpful here.
+>
+> * What type of plot could you use to examine the residuals instead?
+> * What would you expect that plot to look like?
+> * Create and examine the plot.
+>
+> > ## Solution
+> >
+> > A boxplot or violin plot can help to summarise the distribution of residuals by group. Since the model simply estimates the mean heights of males and females a violin plot of the residuals should look very similar to the violin plot of heights above, but with the means of both groups aligned at 0.
+> > ```{r}
+> > ggplot(height, aes(x=Gender, y=resid(fit_lm), fill=Gender)) +
+> >    geom_violin() +
+> >    theme_bw()
+> > ```
+> {: .solution}
+{: .challenge}
+
+Now let's take a look at the model output:
+
+```{r height_lm_summary}
+summary(fit_lm)
+```
+
+According to this the average height of women is `r round(coef(fit_lm)[1], 2)` inches and
+men are, on average, `r round(coef(fit_lm)[2], 2)` inches taller than women.
+
+This all looks fairly reasonable but clearly there is a lot of variation in height not explained by gender. We would expect siblings to be somewhat similar in height as they share genetic factors through their parents and environmental factors through their shared upbringing.
+
+We can model this structure of the data, children clustering in families, using linear mixed effects models. In addition to estimating population means (*fixed* effects) these models will also allow us to estimate how average family heights vary around these population means (*random* effects).
+
+We will use the `lmer()` function from the `lme4` R package to fit mixed effects models.
+
+```{r height_me}
+library(lme4)
+
+fit_me <- lmer(Height ~ Gender + (1|Family), data=height)
+```
+
+As you can see, `lmer()` uses a formula syntax similar to `lm()`. In addition to the already familiar fixed effect for gender this model includes an additional term, *(1\|Family)*. This specifies the random effect for family, indicating that the mean height of each family may differ from the population mean.
+
+Now, let's take a closer look at the model.
+
+```{r height_me_summary}
+summary(fit_me)
+```
+
+In addition to the gender fixed effect that we have already seen in the simple linear regression model, this model also provides us with an estimate of the variance in average height between families (`r round(summary(fit_me)$varcor$Family,2)`) as well as the remaining (residual) variance within families (`r round(summary(fit_me)$sigma^2,2)`).
+
+A dot plot, also known as a caterpillar plot, can help to visualise random effects. The `lme4` package, in conjunction with the `lattice` package, provides a convenient function to create these plots.
+
+```{r height_dotplot}
+library(lattice)
+
+randoms <- ranef(fit_me)
+dotplot(randoms)
+```
+
+This plot shows the deviation from the mean population height for each family, together with standard errors. Note how some families fall clearly below or above the population mean.
+
+You can create Q-Q plots for random effects in a similar way, using the `qqmath()` function.
+
+```{r height_qqplot}
+qqmath(randoms)
+```
+
+#### Model comparison with `anova()` and `ranova()`
+
+You can compare the mixed effects model to the multiple regression model using `anova()` in the same
+way you would compare two different multiple regression models. For this to work, you have to fit the
+model using maximum likelihood, rather than the default restricted maximum likelihood, and the first
+argument to `anova()` has to be the *lmer* model.
+
+```{r height_anova}
+## Re-fit model using ML, rather than REML
+fit_me <- lmer(Height ~ Gender + (1|Family), data=height, REML=FALSE)
+anova(fit_me, fit_lm)
+```
+
+In this case, the inclusion of the family random effect clearly improves model fit, with all the provided metrics favouring the mixed effects model. It is sometimes desirable to compare models with different random effect structures to decide which random effects should be included. Although `lme4` doesn't provide an easy way to do that, you can augment its abilities with the `lmerTest` package. To do so, you'll have to load the `lmerTest` package after `lme4` but prior to fitting the model.
+
+```{r height_lmerTest, message=FALSE}
+library(lme4)
+library(lmerTest)
+
+fit_me <- lmer(Height ~ Gender + (1|Family), data=height)
+```
+
+Then you can use the `ranova()` function to compare models with different random effects structure.
+
+```{r height_ranova}
+ranova(fit_me)
+```
+
+The comparison between the model with a random intercept for family (the mixed effects model) and the model without any random effects (the simple regression model) again shows that the mixed effects model is clearly preferred.
+
+### Investigating the relationship between pitch and politeness
+
+In this section you will apply what you just learned to explore a dataset from a study (Winter and Grawunder, 2012) designed to investigate the relationship between voice pitch and politeness.
+
+> ## How is voice pitch related to politeness?
+>
+> Subjects are asked to respond to hypothetical scenarios that are from either formal situations that require politeness or more informal situations and voice pitch is measured. Each subject is given a list of all the scenarios, so each subject gives multiple polite or informal responses. Gender is also recorded, since it is known to influence voice pitch.
+>
+{: .callout}
+
+Let's take a look at the structure of the data:
+
+```{r read_politeness, message=FALSE}
+politeness_data <- read_csv(file.path("..", "data", "politeness_data.csv"))
+
+politeness_data
+
+table(politeness_data$subject)
+table(politeness_data$subject, politeness_data$attitude)
+```
+
+There are observations from `r length(unique(politeness_data$subject))` subjects. Each subject has provided speech samples for `r length(unique(politeness_data$scenario))` different scenarios using both a polite and informal voice.
+
+> ## Exercise
+>
+> Download the exercise [starter code](../exercises/politeness.R). Follow the instructions in the R script
+> file to carry out an analysis of the pitch and politeness data.
+>
+> > ## Solution
+> >
+> > You can take a look at a [sample solution](../exercises/solutions/politeness.html) online.
+> {: .solution}
+{: .challenge}
+
+## References
+
+Winter, B. (2013). Linear models and linear mixed effects models in R with linguistic applications. arXiv:1308.5499.
+
+<https://web.stanford.edu/class/psych252/section/Mixed_models_tutorial.html#model-comparison>
+
+<https://www.youtube.com/watch?v=VhMWPkTbXoY>
+
+<https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/oats.html>
+
+<https://www.statmethods.net/management/typeconversion.html>
+
+<https://cran.r-project.org/web/packages/lme4/lme4.pdf>
+
+<https://cran.r-project.org/web/packages/lme4/vignettes/lmer.pdf>
+
+<https://www.r-bloggers.com/linear-mixed-models-in-r/>
+
+<https://bbolker.github.io/morelia_2018/notes/mixedlab.html>
+
+{% include links.md %}
