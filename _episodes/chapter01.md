@@ -83,6 +83,9 @@ $$P=1-.06=.94
 
 ### 
 
+$$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
+\label{answer1.6}$$
+
 The total number of ways $$n+k$$ seats can be occupied by $$n$$ people is
 $$\binom{n+k}{n}=\frac{(n+k)!}{n!k!}$$ but once again the difficult part
 is finding the total number of desirable outcomes. If you were to
@@ -91,17 +94,9 @@ buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$
 
-$$P=1-.06=.94
-\label{answer1.5}$$ **Answer verified**
+<!-- $$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
+\label{answer1.6}$$ -->
 
-$$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
-\label{answer1.6}$$
-
-$$
-P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
-\label{answer1.6}
-$$ 
-**Answer not verified**
 
 ### 
 
