@@ -83,7 +83,8 @@ $$P=1-.06=.94
 
 ### 
 
-
+$$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
+\label{answer1.6}$$
 
 The total number of ways $$n+k$$ seats can be occupied by $$n$$ people is
 $$\binom{n+k}{n}=\frac{(n+k)!}{n!k!}$$ but once again the difficult part
