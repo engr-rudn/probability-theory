@@ -14,6 +14,7 @@ objectives:
 keypoints:
 - "Data should have 1 observation per row."
 ---
+
 ## What is statistics?
 
 > Statistics is the science of collecting, organizing, and
