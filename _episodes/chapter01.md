@@ -98,6 +98,9 @@ $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$
 
 This is for test
 
+$$P=\frac{8 \cdot{} 6 \cdot{} 7!}{10!}=\frac{1}{15}
+\label{answer1.4}$$ **Answer verified**
+
 $$
 P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
 \label{answer1.6}
