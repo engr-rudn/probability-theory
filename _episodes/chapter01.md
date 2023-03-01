@@ -1,16 +1,9 @@
 ---
-title: "Introduction"
-teaching: 30
+title: "Questions and Answers-1"
+teaching: 0
 exercises: 0
 questions:
-- "How do you prepare and investigate your data?"
-- "How do you visualise your data?"
-- "How do you choose what test/model to use?"
-- "How do you check that your model performed correctly?"
-- "How do you interpret the results of your model?"
 objectives:
-- "Identify different data types"
-- "Recognise different types of visualisations"
 keypoints:
 - "Data should have 1 observation per row."
 ---
@@ -98,8 +91,11 @@ buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$
 
-$$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
-\label{answer1.6}$$ **Answer not verified**
+$$
+P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}
+\label{answer1.6}
+$$ 
+**Answer not verified**
 
 ### 
 
@@ -124,8 +120,10 @@ Starting now with 5, you can do (5, 7, 9) but that's the only triangle
 that hasn't already been enumerated. At this point, you realize you're
 done and that the answer is plain to see
 
-$$P=\frac{4}{10}=.4
-\label{answer1.8}$$ **Answer not verified**
+$$
+P=\frac{4}{10}=.4
+\label{answer1.8}
+$$ **Answer not verified**
 
 ### 
 
@@ -148,8 +146,11 @@ all the numbers and realizing that only $$71^3=357911$$ fulfills the
 requirements giving only one desirable outcome per century(71, 171, 271
 etc.)
 
-$$P=\frac{10}{1000}=.01
-\label{answer1.9}$$ **Answer verified**
+$$
+P=\frac{10}{1000}=.01
+\label{answer1.9}
+$$ 
+**Answer verified**
 
 ### 
 
