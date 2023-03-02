@@ -1,3 +1,13 @@
+---
+title: "Questions and Answers-8"
+teaching: 0
+exercises: 0
+questions:
+objectives:
+keypoints:
+
+---
+
 # Continuous Markov Processes
 
 ## Important/Useful Theorems

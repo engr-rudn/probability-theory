@@ -1,20 +1,30 @@
+---
+title: "Questions and Answers-6"
+teaching: 0
+exercises: 0
+questions:
+objectives:
+keypoints:
+
+---
+
 # Some Limit Theorems
 
 ## Important/Useful Theorems
 
 ### Weak Law of Large Numbers
 
-Let $\xi_1, \xi_2, ..., \xi_n$ be $n$ independent indentically
-distributed random variables with mean $a$ and variance $\sigma^2$.
-Then, given any $\delta > 0$ and $\epsilon >0$, however small, there is
-an integer, $n$ such that:
+Let $$\xi_1, \xi_2, ..., \xi_n$$ be $$n$$ independent indentically
+distributed random variables with mean $$a$$ and variance $$\sigma^2$$.
+Then, given any $$\delta > 0$$ and $$\epsilon >0$$, however small, there is
+an integer, $$n$$ such that:
 $$a- \epsilon \leq \frac{1}{n}(\xi_1 +\xi_2 + \cdots + \xi_n) \leq a + \epsilon$$
-with probability greater than $1- \delta$.
+with probability greater than $$1- \delta$$.
 
 ### Generating Functions
 
-For the **discrete** random variable $\xi$ with probability distribution
-$P_{\xi}(k)$, the generating function is defined as
+For the **discrete** random variable $$\xi$$ with probability distribution
+$$P_{\xi}(k)$$, the generating function is defined as
 
 $$F_{\xi}(z) = \sum_{k=0}^{\infty}P_{\xi}(k)z^k$$ which yields some cool
 relations: $$\begin{aligned}
@@ -27,15 +37,15 @@ generating functions.
 
 ### Thm. 6.2
 
-The sequence of probability distributions, $P_n(k)$ with generating
-functions $F_n(z)$ where $n=1, 2, 3, ....$ converges weakly to the
-distribution $P(k)$ with distribution function $F(z)$ iff
+The sequence of probability distributions, $$P_n(k)$$ with generating
+functions $$F_n(z)$$ where $$n=1, 2, 3, ....$$ converges weakly to the
+distribution $$P(k)$$ with distribution function $$F(z)$$ iff
 
 $$\lim_{n\rightarrow \infty} F_n(z) = F(z)$$
 
 ### Characteristic Functions
 
-For a real random variable $\xi$, its generating function is defined as
+For a real random variable $$\xi$$, its generating function is defined as
 
 $$f_{\xi}(t) = \textbf{E}e^{i \xi t} = F_{\xi}(e^{i t}) = \sum_{k=0}^{\infty} P_{\xi}(k)e^{i k t}$$
 Or, if the variable is continuous:
@@ -52,15 +62,15 @@ variables that add together.
 
 ### The Central Limit Theorem
 
-A sequence of random variables $\xi_1, \xi_2, \xi_3, ...$ is said to
+A sequence of random variables $$\xi_1, \xi_2, \xi_3, ...$$ is said to
 satisfy the central limit theorem if
 $$\lim_{n\rightarrow \infty} \textbf{P}\{ x' \leq \frac{S_n - \textbf{E}S_n}{\sqrt{\textbf{D}S_n}} \leq x''\} = \int_{x'}^{x''}e^{\frac{-x^2}{2}}dx$$
 Where $$S_n = \sum_{k=1}^n \xi_k$$
 
 ### Thm. 6.3
 
-If the same series of random variables as above each has mean $a_k$ and
-variance $\sigma^2_k$ and satisfies the Lyapunov condition:
+If the same series of random variables as above each has mean $$a_k$$ and
+variance $$\sigma^2_k$$ and satisfies the Lyapunov condition:
 $$\lim_{n\rightarrow \infty} \frac{1}{B_n^3} \sum_{k=1}^n \textbf{E}|\xi_k - a_k|^3 = 0$$
 Where $$B_n^2 = \textbf{D}S_n = \sum_{k=1}^n \sigma^2_k$$ then the
 sequence will satisfy the central limit theorem.
@@ -99,7 +109,7 @@ clearly we can manipulate it in this manner:
 $$-P \{  | \xi - a | > \epsilon  \} \geq  - \frac{1}{\epsilon^2}\textbf{E}(\xi - a)^2$$
 $$1-P \{  | \xi - a | > \epsilon  \} \geq 1 - \frac{1}{\epsilon^2}\textbf{E}(\xi - a)^2$$
 $$P \{  | \xi - a | < \epsilon  \} \geq 1 - \frac{1}{\epsilon^2}\textbf{E}(\xi - a)^2$$
-let $\epsilon = a = m+1$
+let $$\epsilon = a = m+1$$
 $$P \{ 0 \leq \xi  \leq 2(m+1)  \} \leq 1 - \frac{1}{(m+1)^2}[(m+2)(m+1) - (m+1)^2]$$
 $$P \{ 0 \leq \xi  \leq 2(m+1)  \} \leq \frac{m}{m+1}$$
 
@@ -108,8 +118,8 @@ $$P \{ 0 \leq \xi  \leq 2(m+1)  \} \leq \frac{m}{m+1}$$
 ### 
 
 Under these circumstances, we expect 500 A and the standard deviation is
-$\sqrt{250}= 5 \sqrt{10} \approx 15$ therefore the $\pm 100$ from the
-mean is more than $\pm 6 \sigma$ meaning there is indeed far more that
+$$\sqrt{250}= 5 \sqrt{10} \approx 15$$ therefore the $$\pm 100$$ from the
+mean is more than $$\pm 6 \sigma$$ meaning there is indeed far more that
 .97 probability of seeing the mean between these two values.
 
 **Answer not verified**
@@ -166,16 +176,16 @@ $$\begin{aligned}
 
 These two distributions have generating functions: $$\begin{aligned}
     F_{\xi_1} = e^{a(z-1)} \\
-    F_{\xi_2} = e^{a'(z-1)}\end{aligned}$$ which means that $\eta$ has
+    F_{\xi_2} = e^{a'(z-1)}\end{aligned}$$ which means that $$\eta$$ has
 this generating function: $$\begin{aligned}
     F_{\eta} =F_{\xi_1}F_{\xi_2} = e^{a(z-1)}e^{a'(z-1)} = e^{(a'+ a)(z-1)}  \\\end{aligned}$$
-Which, according to theorem 6.2 means there that $\eta$ is a Poisson
-distribution with mean $a+a'$. **Answer not verified**
+Which, according to theorem 6.2 means there that $$\eta$$ is a Poisson
+distribution with mean $$a+a'$$. **Answer not verified**
 
 ### 
 
 For any given experiment we can define an individual generating
-function: $F_i(z) = q_i + z p_i$ meaning that for the entire function
+function: $$F_i(z) = q_i + z p_i$$ meaning that for the entire function
 $$\begin{aligned}
     F(z) = \prod_{i=1}^n F_i(z) = \prod_{i=1}^n (q_i + z p_i)\end{aligned}$$
 The trick that Feller uses at this point is to take the log
@@ -183,7 +193,7 @@ $$\begin{aligned}
     \log F(z) = \sum_{i=1}^n \log F_i(z) = \sum_{i=1}^n \log (q_i + z p_i) \\
     \log F(z) = \sum_{i=1}^n \log (1 - p_i + z p_i) = \sum_{i=1}^n \log (1 - p_i( z -1))\end{aligned}$$
 We were, however, told that the largest probability goes to zero so we
-take the taylor series of each term, $\log (1-x) \approx - x$
+take the taylor series of each term, $$\log (1-x) \approx - x$$
 $$\begin{aligned}
     \lim_{n \rightarrow \infty} \log F(z) =  \sum_{i=1}^n \log (1 - p_i( z -1)) = \sum_{i=1}^n  p_i( 1 - z ) = - \lambda (z - 1) \\
     \lim_{n \rightarrow \infty} F(z) = e^{- \lambda (z - 1)}\end{aligned}$$
@@ -228,7 +238,7 @@ $$\begin{aligned}
 ### 
 
 Looking at the characteristic, there is clearly going to be a
-discontinuity in the deirvative at $t=0$, meaning that the derivative
+discontinuity in the deirvative at $$t=0$$, meaning that the derivative
 does not exist at that point. This jibes well with what we've done
 before because we proved in problem 43 on page 24 that the probability
 distribution this characteristic produces does not have a mean or a
@@ -238,10 +248,10 @@ standard deviation.
 
 ### 
 
-For the single die, $E\xi = 3.5$ and $D\xi = \frac{35}{12}$. The
-distribution for $n$ dice rolls is binomial but in the limit of large
-$n$, it approximates a normal distribution with $E\xi = 3.5n$ and
-$D\xi = n \frac{35}{12}$ $$\begin{aligned}
+For the single die, $$E\xi = 3.5$$ and $$D\xi = \frac{35}{12}$$. The
+distribution for $$n$$ dice rolls is binomial but in the limit of large
+$$n$$, it approximates a normal distribution with $$E\xi = 3.5n$$ and
+$$D\xi = n \frac{35}{12}$$ $$\begin{aligned}
     P\{ 3450 \leq x \leq 3550  \} = \int_{3450}^{3550} \sqrt{\frac{1}{\frac{70 \pi \cdot 10^3}{12}}}e^{-\frac{(x-3500)^2}{\frac{70 \cdot 10^3}{12}}} dx \\
     = 0.645461  \\\end{aligned}$$ **Answer not verified**
 

@@ -1,3 +1,13 @@
+---
+title: "Questions and Answers-7"
+teaching: 0
+exercises: 0
+questions:
+objectives:
+keypoints:
+
+---
+
 # Markov Chains
 
 ## Important/Useful Theorems
@@ -5,7 +15,7 @@
 ### 
 
 For a Markox transition matrix, the limiting probabilities of being in a
-certain state as $n \rightarrow \infty$ are given by the solution to the
+certain state as $$n \rightarrow \infty$$ are given by the solution to the
 following set of linear equations.
 $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
 
@@ -13,18 +23,18 @@ $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
 
 ### 
 
-Since state $i$ signifies that the highest number chosen so far is $i$,
-what is the probability the next number is lower than $i$ and you stay
-in state $i$? Well, there are $m$ possible numbers that could get picked
-and $i$ of them are less than or equal to $i$ giving:
+Since state $$i$$ signifies that the highest number chosen so far is $$i$$,
+what is the probability the next number is lower than $$i$$ and you stay
+in state $$i$$? Well, there are $$m$$ possible numbers that could get picked
+and $$i$$ of them are less than or equal to $$i$$ giving:
 
 $$p_{ii} = \frac{i}{m}$$
 
-What now if we're in $i$ and we want to know what the probability of
-being in state $j$ is next. Well, if $j<i$ then it's zero because you
-can't go to a lower number in this game. If, however, $j$ is not lower
-then there are $m$ possible numbers that could get called and only one
-of them is $j$, giving: $$p_{ij} = \frac{1}{m}, j>i$$
+What now if we're in $$i$$ and we want to know what the probability of
+being in state $$j$$ is next. Well, if $$j<i$$ then it's zero because you
+can't go to a lower number in this game. If, however, $$j$$ is not lower
+then there are $$m$$ possible numbers that could get called and only one
+of them is $$j$$, giving: $$p_{ij} = \frac{1}{m}, j>i$$
 $$p_{ij} = 0, j<i$$
 
 **Answer verified**
@@ -32,16 +42,16 @@ $$p_{ij} = 0, j<i$$
 ### 
 
 Since the chain has an inevitable endpoint that you cannot get out of,
-there is a persistent state at $i=m$ while all other states are
-transient. Transient, in that you will only see them a few times but $m$
-is bound to show up sooner or later and once you're in $m$ you can't get
+there is a persistent state at $$i=m$$ while all other states are
+transient. Transient, in that you will only see them a few times but $$m$$
+is bound to show up sooner or later and once you're in $$m$$ you can't get
 out no matter what.
 
 **Answer not verified**
 
 ### 
 
-To do this properly we need to first construct the matrix $P$.
+To do this properly we need to first construct the matrix $$P$$.
 $$P = \left(
 \begin{array}{ccccc}
  0 & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\
@@ -63,16 +73,16 @@ $$P = \left(
 
 ### 
 
-So, if we start with $i$ balls in the urn, what is the probability that
-we have $j$ after drawing $m$ and discarding all the white balls. The
+So, if we start with $$i$$ balls in the urn, what is the probability that
+we have $$j$$ after drawing $$m$$ and discarding all the white balls. The
 obvious first simplification we can make is that you can't end up with
-fewer that the $N-m$ white balls after drawing:
+fewer that the $$N-m$$ white balls after drawing:
 $$p_{ij} = 0, j > N - m$$ You also can't gain white balls
 $$p_{ij} = 0, j > i$$ OK! now for the interesting one. There are
-$\binom{N}{m}$ ways to draw $m$ balls from the urn. In any given step,
-you are going to draw $i-j$ white balls from a total of $i$ and
-$m - i +j$ black balls from a total of $N-i$. Thus there are
-$\binom{i}{i-j}\binom{N-i}{m - i +j}$ ways to make that draw.
+$$\binom{N}{m}$$ ways to draw $$m$$ balls from the urn. In any given step,
+you are going to draw $$i-j$$ white balls from a total of $$i$$ and
+$$m - i +j$$ black balls from a total of $$N-i$$. Thus there are
+$$\binom{i}{i-j}\binom{N-i}{m - i +j}$$ ways to make that draw.
 $$p_{ij} = \frac{\binom{i}{i-j}\binom{N-i}{m - i +j}}{\binom{N}{m}}, \text{otherwise}$$
 **Answer verified**
 
@@ -146,19 +156,19 @@ $$\begin{aligned}
     p_m^* = \sum_{i=1}^{m} p_i^* p_{im} = p p_{m-1}^* + p p_{m}^*\end{aligned}$$
 You can easily solve the first equation to get:
 $$p_2^* =\frac{p}{q} p_1^*$$ Then if we look to solve the second
-equation for $p_2^*$, $$\begin{aligned}
+equation for $$p_2^*$$, $$\begin{aligned}
     p_2^*  = p p_1^* + q p_3^* \\
     \frac{p}{q} p_1^* = p p_1^* + q p_3^* \\
     \left( \frac{p}{q^2} - \frac{p}{q} \right) p_1^* = p_3^* \\
     p_3^* = \left( \frac{p}{q} \right)^2 p_1^*\end{aligned}$$ So clearly
 if we were to put that back into the third equation, we'd get another
-factor of $p/q$, ergo: $$\begin{aligned}
+factor of $$p/q$$, ergo: $$\begin{aligned}
     p_j^* = \left( \frac{p}{q} \right)^{j-1}p_1^*\end{aligned}$$ This
 needs to be normalized, however: $$\begin{aligned}
     1 = \sum_{j = 1}^m p_j^* = \sum_{j = 1}^m \left( \frac{p}{q} \right)^{j-1}p_1^* \\
     1 = \frac{q \left(\left(\frac{p}{q}\right)^m-1\right)}{p-q} p_1^* \\
     p_1^* = \frac{p-q}{q \left(\left(\frac{p}{q}\right)^m-1\right)}\end{aligned}$$
-But that's only if $q \neq p$. Clearly, if they are equal, each term of
+But that's only if $$q \neq p$$. Clearly, if they are equal, each term of
 the sum will just be equal to 1. giving: $$\begin{aligned}
     1 = \sum_{j = 1}^m p_j^* = \sum_{j = 1}^m \left( \frac{p}{q} \right)^{j-1}p_1^* \\
     1 = m p_1^* \\
@@ -166,10 +176,10 @@ the sum will just be equal to 1. giving: $$\begin{aligned}
 
 ### 
 
-Let's turn $A$ into 1 and $B$ into 2. So, if 1 is shooting, there is a
-$\alpha$ probability that 1 will go next whereas there is a $1 - \alpha$
+Let's turn $$A$$ into 1 and $$B$$ into 2. So, if 1 is shooting, there is a
+$$\alpha$$ probability that 1 will go next whereas there is a $$1 - \alpha$$
 probability that 2 goes next. Similarly, if 2 is shooting, there is a
-$1 - \beta$ chance he shoots again and a $\beta$ chance that 1 goes
+$$1 - \beta$$ chance he shoots again and a $$\beta$$ chance that 1 goes
 next. That gives us a transfer matrix of: $$P = \left(
 \begin{array}{cc}
  \alpha  & 1-\alpha  \\
@@ -185,7 +195,7 @@ $$\begin{aligned}
     p_2^* = \frac{1 - \alpha }{1 - \alpha +\beta}\end{aligned}$$ Since
 we want to know the probability the target eventually gets hit, the
 first limiting probability is our choice since it represents the limit
-that $A$ is firing as the number of shots goes towards infinity.
+that $$A$$ is firing as the number of shots goes towards infinity.
 
 **Answer not verified** NOTE: this answer is different from the book's
 answer\... I tried like a dozen times and kept getting this so I think
@@ -201,10 +211,10 @@ things a bit: $$\begin{aligned}
     p^*_2 = p_{12}p^*_1 + p_{22}p^*_2 + p_{32}p^*_3 + \cdots    p_{m2}p^*_m \\
     \cdots \\
     p^*_m = p_{1m}p^*_1 + p_{2m}p^*_2 + p_{3m}p^*_3 + \cdots    p_{mm}p^*_m\end{aligned}$$
-You will notice that a clear solution is every $p^*$ being unity and
+You will notice that a clear solution is every $$p^*$$ being unity and
 since it is a solution, that's all we care for. Then, since the solution
 must be normalized, they all turn out to actually be
-$p^*_i = \frac{1}{m}$. **Answer not verified**
+$$p^*_i = \frac{1}{m}$$. **Answer not verified**
 
 ### 
 
@@ -233,7 +243,7 @@ $$\begin{aligned}
 
 If the stakes are doubled, it's like playing the game without doubled
 stakes but half the capital on both sides in which case it is clear that
-$\hat{p_j}$ gets bigger. **Answer verified**
+$$\hat{p_j}$$ gets bigger. **Answer verified**
 
 ### 
 

@@ -1,3 +1,12 @@
+---
+title: "Questions and Answers-4"
+teaching: 0
+exercises: 0
+questions:
+objectives:
+keypoints:
+
+---
 # Random Variables
 
 ## Important/Useful Theorems
@@ -11,13 +20,13 @@ $$P \{ |\xi| > \epsilon \} \leq \frac{1}{\epsilon^2} \textbf{E}\xi^2$$
 ### 
 
 Thinking of this problem as 4 buckets each with 2 possibilities paves a
-clear way to the solution of the problem. There are $2^4 = 16$
+clear way to the solution of the problem. There are $$2^4 = 16$$
 possibilities. There is only one way for them to all be green
-($\xi = 4$), and again only one way for 3 greens followed by one red
-($\xi = 3$). Once you have get to $\xi = 2$, then the last light can be
-either green or red giving two possibilities then at $\xi = 1$ you have
+($$\xi = 4$$), and again only one way for 3 greens followed by one red
+($$\xi = 3$$). Once you have get to $$\xi = 2$$, then the last light can be
+either green or red giving two possibilities then at $$\xi = 1$$ you have
 two lights that can be either red or green giving 4 possibilities.
-Clearly, then, there are 8 for the case of $\xi = 0$.
+Clearly, then, there are 8 for the case of $$\xi = 0$$.
 
 $$P(\xi) = \left\{ \begin{array}{rl}
     \frac{1}{2}, \xi=0  \\
@@ -35,8 +44,8 @@ To summarize what we want here: $$\begin{aligned}
     \Phi_{\xi_1}(x) = \Phi_{\xi_2}(x) \\
     \int_{-\infty}^x p_{\xi_1}(x')dx' = \int_{-\infty}^x p_{\xi_2}(x')dx'\end{aligned}$$
 Since the question does not rule out the possibility that the
-probability distributions are the same, we can just say that $\xi_1$ is
-the outcome of a coin-flip experiment and that $\xi_2$ is the outcome of
+probability distributions are the same, we can just say that $$\xi_1$$ is
+the outcome of a coin-flip experiment and that $$\xi_2$$ is the outcome of
 the first spin measurement of an EPR experiment. **Answer not verified**
 
 ### 
@@ -81,7 +90,7 @@ $$\Phi(\infty) = 1 \Rightarrow 1 = a + \frac{b \pi}{2}$$
 $$\Phi(-\infty) = 0 \Rightarrow 0 = a - \frac{b \pi}{2}$$ Which you can
 solve to get $$\begin{aligned}
     b = \frac{1}{\pi} \\
-    a = \frac{1}{2}\end{aligned}$$ Since $\Phi$ is the integral of $p$,
+    a = \frac{1}{2}\end{aligned}$$ Since $$\Phi$$ is the integral of $$p$$,
 we can take the derivative of it and then make sure it's normalized.
 $$p(x) = \frac{d \Phi}{dx} = \frac{1}{2 \pi \left(1+\frac{x^2}{4}\right)}$$
 And the normalization is indeed still correct!
@@ -90,10 +99,10 @@ And the normalization is indeed still correct!
 
 ### 
 
-The area of the table is simply $\pi R^2$ and the are of each of the
-smaller circles are $\pi r^2$. The ratio of the sum of the area of the
+The area of the table is simply $$\pi R^2$$ and the are of each of the
+smaller circles are $$\pi r^2$$. The ratio of the sum of the area of the
 two circles to the total table area will be the chance that one of the
-circles gets hit: $p = \frac{2r^2}{R^2}$. **Answer verified**
+circles gets hit: $$p = \frac{2r^2}{R^2}$$. **Answer verified**
 
 ### 
 
@@ -108,7 +117,7 @@ Where does this come from? $$\begin{aligned}
 $$\begin{aligned}
     x_1x_2 \leq \frac{2}{9} \\ 
     x_2 \leq \frac{2}{9 x_1}\end{aligned}$$ A little bit of algebra
-shows that these two lines intersect at $\frac{1}{3}$ and $\frac{2}{3}$
+shows that these two lines intersect at $$\frac{1}{3}$$ and $$\frac{2}{3}$$
 so the area underneath the straight line but not above the curved line
 is $$\begin{aligned}
     A =\int_0^{\frac{1}{3}}(1-x)dx + \int_{\frac{1}{3}}^{\frac{2}{3}}\frac{2}{9x}dx + \int_{\frac{2}{3}}^{1}(1-x)dx \\ 
@@ -120,13 +129,13 @@ distributions were unity (the box length is only 1). **Answer verified**
 
 ### 
 
-As we showed in example number 4, $p_{\eta}$ is the convolution of
-$p_{\xi_1}$ and $p_{\xi_2}$. $$\begin{aligned}
+As we showed in example number 4, $$p_{\eta}$$ is the convolution of
+$$p_{\xi_1}$$ and $$p_{\xi_2}$$. $$\begin{aligned}
     p_{\eta}(y) = \int_{-\infty}^{\infty} p_{\xi_1}(y-x)p_{\xi_2}(x)dx\end{aligned}$$
 I think the integration will look more logical if we stick in Heaviside
 step-functions. $$\begin{aligned}
     p_{\eta}(y) = \frac{1}{6} \int_{-\infty}^{\infty}e^{-\frac{y-x}{3}}e^{-\frac{x}{3}}H(y-x)H(x)dx\end{aligned}$$
-Clearly $x$ has to be greater than zero and $y$ must be greater than x,
+Clearly $$x$$ has to be greater than zero and $$y$$ must be greater than x,
 leading to the following limits of integration. $$\begin{aligned}
     p_{\eta}(y) = \frac{1}{6} \int_{0}^{y}e^{-\frac{y-x}{3}}e^{-\frac{x}{3}}dx \\
     = e^{-\frac{y}{3}}\left(1- e^{-\frac{y}{6}}  \right)\end{aligned}$$
@@ -135,8 +144,8 @@ Only when y is greater than zero! **Answer verified**
 ### 
 
 Due to the magic of addition, finding the probability distribution of
-$\xi_1 + \xi_2 + \xi_3$ is no different than the probability
-distribution of $(\xi_1 + \xi_2) + \xi_3$ but we already know what the
+$$\xi_1 + \xi_2 + \xi_3$$ is no different than the probability
+distribution of $$(\xi_1 + \xi_2) + \xi_3$$ but we already know what the
 probability distribtution of the parenthesized quantity is:
 $$p_{\xi_1 + \xi_2}(y) = \int_{-\infty}^{\infty} p_{\xi_1}(y-x)p_{\xi_2}(x)dx$$
 Therefore the total combination is
@@ -158,8 +167,8 @@ $$\textbf{E}\xi = \sum_{n=1}^{\infty}\frac{n}{3^n} =  \frac{3}{4}
 Since finding a ball in one urn versus the other urn has nothing to do
 with each other, the events are clearly independent so we can multiply
 probabilities. The probability of finding a white ball at any given urn
-is $$p_w = \frac{w}{w+b}$$ If you find a white ball on the $n^{th}$ try
-then that means you found $n-1$ black balls before you got to the white
+is $$p_w = \frac{w}{w+b}$$ If you find a white ball on the $$n^{th}$$ try
+then that means you found $$n-1$$ black balls before you got to the white
 ball. $$p_w(n) = \frac{b^{n-1} w}{(w+b)^n}$$
 $$\textbf{E}n = \sum_{i=1}^{\infty}n p_w(n) = \sum_{i=1}^{\infty}n \frac{b^{n-1} w}{(w+b)^n} = \frac{b+w}{w}$$
 Which is the total number of balls drawn, subtract one to get the
@@ -175,7 +184,7 @@ average. **Answer verified**
 ### 
 
 $$\textbf{E}\xi = \int_{-\infty}^{\infty} x\frac{1}{2}e^{-|x|} = 0$$
-because the function is even about $x=0$.
+because the function is even about $$x=0$$.
 $$\textbf{E}\xi^2 = \int_{-\infty}^{\infty} x^2\frac{1}{2}e^{-|x|} = 2$$
 Therefore: $$\textbf{D}\xi = \textbf{E}\xi^2 - (\textbf{E}\xi)^2 = 2$$
 **Answer verified**
@@ -203,7 +212,7 @@ Therefore: $$p_{\xi}(x) = \frac{1}{\pi\sqrt{1-x^2}}$$ $$\begin{aligned}
 
 ### 
 
-Each side of the die has the same probability, $\frac{1}{6}$
+Each side of the die has the same probability, $$\frac{1}{6}$$
 $$\textbf{E}x = \sum_{i=1}^6 \frac{i}{6} = \frac{7}{2}$$
 $$\textbf{E}x^2 = \sum_{i=1}^6 \frac{i^2}{6} = \frac{91}{6}$$ Therefore:
 $$\textbf{D}x = \frac{91}{6} - \left( \frac{7}{2} \right)^2 = \frac{91}{6} - \frac{49}{4} = \frac{35}{12}$$
@@ -212,7 +221,7 @@ $$\textbf{D}x = \frac{91}{6} - \left( \frac{7}{2} \right)^2 = \frac{91}{6} - \fr
 ### 
 
 This problem may seem difficult until you realize that being
-$\pm \frac{5}{2}$ away from the mean means you're at either 1 or 6,
+$$\pm \frac{5}{2}$$ away from the mean means you're at either 1 or 6,
 meaning that there's a unity probability of being that far from the
 mean. Chebyshev's inequality, however, would have us believe that
 $$P \{ |x + \textbf{E}x| > \frac{5}{2}  \} \leq \frac{4}{25} \frac{91}{6} = \frac{182}{75} = 2.42667$$
@@ -221,11 +230,11 @@ to have probabilities greater than 1! **Answer not verified**
 
 ### 
 
-We want to consider the probability distribution of $\xi$ by way of
-$\eta$ $$\eta = e^{\frac{a\xi}{2}}$$ We know from Chebyshev's identity:
+We want to consider the probability distribution of $$\xi$$ by way of
+$$\eta$$ $$\eta = e^{\frac{a\xi}{2}}$$ We know from Chebyshev's identity:
 
 $$P\{ \eta > \epsilon(\eta) \} \leq \frac{\textbf{E}\eta^2}{\epsilon(\eta)^2}$$
-Let $\epsilon$ be the error in $\xi$ we're looking for.
+Let $$\epsilon$$ be the error in $$\xi$$ we're looking for.
 $$P\{ \xi > \epsilon \} \leq \frac{\textbf{E}(e^{\frac{a\xi}{2}})^2}{(e^{\frac{a\epsilon}{2}})^2}$$
 $$P\{ \xi > \epsilon \} \leq \frac{\textbf{E}e^{a\xi}}{e^{a\epsilon}}$$
 **Answer not verified**
@@ -238,14 +247,14 @@ First some initial calculations: $$\begin{aligned}
     \textbf{E}\xi^4 = \frac{1}{4} \left( (-2)^4+(-1)^4+1^4+2^4  \right) = \frac{34}{4} = \frac{17}{2} = \textbf{E}\eta^2\end{aligned}$$
 Now, we know that $$\begin{aligned}
     r = \frac{\textbf{E} \left[ (\xi - \textbf{E}\xi)(\eta - \textbf{E}\eta)  \right]}{(\textbf{E}\xi^2 - (\textbf{E}\xi)^2)(\textbf{E}\eta^2 - (\textbf{E}\eta)^2)}\end{aligned}$$
-The denominator $D$ is the easiest:
+The denominator $$D$$ is the easiest:
 $$D = \left( \frac{5}{2} - 0 \right)\left( \frac{17}{2} - \frac{5^2}{2^2} \right) = \frac{45}{8}$$
 Now for the numerator: $$\begin{aligned}
     \textbf{E} \left[ (\xi - \textbf{E}\xi)(\eta - \textbf{E}\eta)  \right] \\
     = \frac{1}{16} \left[  \sum_{\xi, \eta} (\xi - \textbf{E}\xi)(\eta - \textbf{E}\eta)      \right]\end{aligned}$$
 If we look at the set we'll be summing over, we have
-${\xi - \textbf{E}\xi} = -2, -1, 1, 2$ and
-${\eta - \textbf{E}\eta} = \frac{3}{2}, -\frac{3}{2}, -\frac{3}{2}, \frac{3}{2}$
+$${\xi - \textbf{E}\xi} = -2, -1, 1, 2$$ and
+$${\eta - \textbf{E}\eta} = \frac{3}{2}, -\frac{3}{2}, -\frac{3}{2}, \frac{3}{2}$$
 and clearly, since we have to sum over all possible products, since both
 distributions are symmetric about 0, the sum will go to zero. $$r=0$$
 **Answer not verified**
