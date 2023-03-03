@@ -1,6 +1,14 @@
 ---
-layout: default
+title: "Introduction to Probability"
+teaching: 
+exercises:
+questions:
+
+objectives:
+keypoints:
+
 ---
+
 
 # Probability
 
