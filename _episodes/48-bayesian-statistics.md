@@ -40,21 +40,21 @@ The construction of probabilistic models that are a good approximation to the tr
 
 **DEFN: Likelihood of the model**
 
-Let the response $Y$ follow a probabilistic rule with density or probability function $f(y,\pmb{\theta})$ where  $\pmb{\theta}$ is the parameter vector. Let $y_1, \dots , y_n$ be independent and identically distributed and write the sample as $\pmb{y}=(y_1,\dots, y_n)^T$. The joint distribution
+Let the response $$Y$$ follow a probabilistic rule with density or probability function $$f(y,\pmb{\theta})$$ where  $$\pmb{\theta}$$ is the parameter vector. Let $$y_1, \dots , y_n$$ be independent and identically distributed and write the sample as $$\pmb{y}=(y_1,\dots, y_n)^T$$. The joint distribution
 
 $$ f(\pmb{y}|\pmb{\theta})=\prod_{i=1}^n f(y_i|\pmb{\theta})$$
 
 is called the likelihood of the model and contains the information provided by the observed sample.
 
-**EXAMPLE** When fitting a multiple regression to data the model is $\pmb{y} \sim N(X\pmb{\beta},\sigma^2I)$ where the parameter vector is given by $\pmb{\theta}=[\pmb{\beta}^T,\sigma^2]$.
+**EXAMPLE** When fitting a multiple regression to data the model is $$\pmb{y} \sim N(X\pmb{\beta},\sigma^2I)$$ where the parameter vector is given by $$\pmb{\theta}=[\pmb{\beta}^T,\sigma^2]$$.
 
 ## 1.3 Bayes' Theorem
 
-Consider two possible outcomes $A$ and $B$. Assume that $A=A_1 \cup \dots \cup A_n$ for which $A_i \cap A_j = \emptyset$ for every $i \neq j$ (they are mutually exclusive; that is, no elements in common). Baye's theorem gives the conditional probability of $A_i$ given $B$ which is
+Consider two possible outcomes $$A$$ and $$B$$. Assume that $$A=A_1 \cup \dots \cup A_n$$ for which $$A_i \cap A_j = \emptyset$$ for every $$i \neq j$$ (they are mutually exclusive; that is, no elements in common). Baye's theorem gives the conditional probability of $$A_i$$ given $$B$$ which is
 
 $$P(A_i|B)=\frac{P(B|A_i)P(A_i)}{P(B)}=\frac{P(B|A_i)P(A_i)}{\sum_{i=1}^n P(B|A_i)P(A_i)}.$$
 
-More generally, for any outcome $A$ and $B$ we can write
+More generally, for any outcome $$A$$ and $$B$$ we can write
 
 $$P(A|B)=\frac{P(B|A)P(A)}{P(B)} \propto P(B|A)P(A).$$
 
@@ -62,13 +62,13 @@ This is also called Bayes' Rule.
 
 We can do inverse inference using the above rule. The idea is as follows (verbatim from Ntzoufras (2009))
 
-*Assume that B is the finally observed outcome and that by $A_i$ we denote possible causes that provoke $B$. Then $P(B\|A_i)$ can be interpreted as the probability that $B$ will appear when $A$ cause is present while $P(A_i\|B)$ is the probability that $A_i$ is responsible for the occurrence of $B$ which we have already observed.*
+*Assume that B is the finally observed outcome and that by $$A_i$$ we denote possible causes that provoke $$B$$. Then $$P(B\|A_i)$$ can be interpreted as the probability that $$B$$ will appear when $$A$$ cause is present while $$P(A_i\|B)$$ is the probability that $$A_i$$ is responsible for the occurrence of $$B$$ which we have already observed.*
 
-This is the rationale that Bayesian inference is based on. The above equation, which is deceptively simple, provides a probabilistic mechanism of learning from data. After observing data $(y_1,y_2, \dots, y_n)$ we calculate the **posterior** distribution $f(\pmb{\theta}\|y_1,y_2,\dots,y_n)$, which combines prior and data information. The key element in Bayesian inference is this posterior distribution.
+This is the rationale that Bayesian inference is based on. The above equation, which is deceptively simple, provides a probabilistic mechanism of learning from data. After observing data $$(y_1,y_2, \dots, y_n)$$ we calculate the **posterior** distribution $$f(\pmb{\theta}\|y_1,y_2,\dots,y_n)$$, which combines prior and data information. The key element in Bayesian inference is this posterior distribution.
 
 **EXAMPLE** (Ntzoufras (2009)) In a case-control study, we trace 51 smokers in a group of 83 cases of lung cancer and 23 smokers in the control group of 70 disease-free subjects. The prevalence rate (estimate of the proportion of the disease in the population) of lung cancer is equal to 1%. What is the probability that a smoker will have lung cancer?
 
-**Solution** With the information given we can estimate the following probabilities: $P(smoker\|case)=\frac{51}{83}=0.615$, $P(smoker\|control) =\frac{23}{70}=0.329$ and $P(case)=0.01$. From Bayes' theorem
+**Solution** With the information given we can estimate the following probabilities: $$P(smoker\|case)=\frac{51}{83}=0.615$$, $$P(smoker\|control) =\frac{23}{70}=0.329$$ and $$P(case)=0.01$$. From Bayes' theorem
 
 $$P(case/smoker)=\frac{P(smoker|case)P(case)}{P(smoker|case)P(case)+P(smoker|control)P(control)}$$
 
@@ -84,20 +84,20 @@ The probability that a smoker will develop lung cancer is 87% higher than the co
 
 ## 1.4 Model-based Bayesian Inference
 
-The difference between Bayesian statistics and classical statistical theory is that in Bayesian statistics **all** unknown parameters are considered to be random variables which is why the *prior distribution* must be defined at the start in Bayesian statistics. This prior distribution encapsulates the information available to the researcher before any "data" are involved in the statistical analysis. Interest lies in  calculating the *posterior distribution* $f(\pmb{\theta}\|\pmb{y})$ of the parameter $\pmb{\theta}$ given the observed data $\pmb{y}$. Using Bayes' theorem, the posterior distribution can be written as
+The difference between Bayesian statistics and classical statistical theory is that in Bayesian statistics **all** unknown parameters are considered to be random variables which is why the *prior distribution* must be defined at the start in Bayesian statistics. This prior distribution encapsulates the information available to the researcher before any "data" are involved in the statistical analysis. Interest lies in  calculating the *posterior distribution* $$f(\pmb{\theta}\|\pmb{y})$$ of the parameter $$\pmb{\theta}$$ given the observed data $$\pmb{y}$$. Using Bayes' theorem, the posterior distribution can be written as
 
 $$ f(\pmb{\theta}|\pmb{y})=\frac{f(\pmb{y}|\pmb{\theta})f(\pmb{\theta})}{f(\pmb{y})} \propto f(\pmb{y}|\pmb{\theta})f(\pmb{\theta}).$$
 
-The posterior distribution has  $f(\pmb{y}\|\pmb{\theta})$, containing the observed data information, multiplied by, $f(\pmb{\theta})$, the prior ditribution. The likelihood is
+The posterior distribution has  $$f(\pmb{y}\|\pmb{\theta})$$, containing the observed data information, multiplied by, $$f(\pmb{\theta})$$, the prior ditribution. The likelihood is
 
 $$f(\pmb{y}|\pmb{\theta})=\prod_{i=1}^n f(y_i|\pmb{\theta}).$$
 
-Shorthand notation is to suppress $\pmb{\theta}$. For the marginal probability of density function of random variable $X$ evaluated at $x$ this is written as $f(x)$, while the conditional probability or density function of random variable $X$ estimated at $x$ given that $Y=y$ is written as $f(x|y)$.
-If the random variable $X$ follows a specific distribution $D$ with parameters $\pmb{\theta}$, the notation  $f_D(x;\pmb{\theta})$ is used to denote the corresponding probability or density function evaluated at $X=x$.
+Shorthand notation is to suppress $$\pmb{\theta}$$. For the marginal probability of density function of random variable $$X$$ evaluated at $$x$$ this is written as $$f(x)$$, while the conditional probability or density function of random variable $$X$$ estimated at $$x$$ given that $$Y=y$$ is written as $$f(x|y)$$.
+If the random variable $$X$$ follows a specific distribution $$D$$ with parameters $$\pmb{\theta}$$, the notation  $$f_D(x;\pmb{\theta})$$ is used to denote the corresponding probability or density function evaluated at $$X=x$$.
 
-Specification of the prior distribution is important in Bayesian inference because it influences the posterior inference. Noninformative or vague distributions are used when no prior information is available. A common vague improper distribution is $f(\pmb{\theta}) \propto 1$, the uniform prior over the parameter space. Improper is used for distributions that do not integrate to one. Provided the posterior prior is proper such improper priors can be used.
+Specification of the prior distribution is important in Bayesian inference because it influences the posterior inference. Noninformative or vague distributions are used when no prior information is available. A common vague improper distribution is $$f(\pmb{\theta}) \propto 1$$, the uniform prior over the parameter space. Improper is used for distributions that do not integrate to one. Provided the posterior prior is proper such improper priors can be used.
 
-Moments of the posterior distribution can be used for inference about the uncertainty of the parameter vector $\pmb{\theta}$. Measures of central location such as the posterior mean, media, or mode can be used as point estimates, while the $q/2$ and $1-q/2$ posterior quantiles can be used as $(1-q)100\%$ posterior credible intervals. Not going into the details, Bayesian theory provides an easy-to-use mechanism to update our knowledge about the parameter of interest $\pmb{\theta}$.
+Moments of the posterior distribution can be used for inference about the uncertainty of the parameter vector $$\pmb{\theta}$$. Measures of central location such as the posterior mean, media, or mode can be used as point estimates, while the $$q/2$$ and $$1-q/2$$ posterior quantiles can be used as $$(1-q)100\%$$ posterior credible intervals. Not going into the details, Bayesian theory provides an easy-to-use mechanism to update our knowledge about the parameter of interest $$\pmb{\theta}$$.
 
 Both the prior distribution and the likelihood must be fully specified to define a Bayesian model. Once these are specified we focus on describing the posterior distribution using density plots and descriptive measures.
 
@@ -105,11 +105,11 @@ Model-based Bayesian inference can be divided into four stages: model building, 
 
 **Stage 1:** Consider a model (likelihood/parameters/prior) with reasonable assumptions. To do this
 
-1. Identify the response $Y$ (main variable of the problem) and the corresponding data $\pmb{y}$.
+1. Identify the response $$Y$$ (main variable of the problem) and the corresponding data $$\pmb{y}$$.
 
-2. Find a distribution that adequately describes $Y$.
+2. Find a distribution that adequately describes $$Y$$.
 
-3. Identify other variables that may influence $Y$ (called *covariates* or *explanatory variables*).
+3. Identify other variables that may influence $$Y$$ (called *covariates* or *explanatory variables*).
 
 4. Using deterministic functions build a structure for the parameters of the distribution.
 
@@ -150,15 +150,15 @@ If you are interested in finding out more about conjugate prior distributions th
 The material in this section is from Chapter 17 of Learning Statistics with R
 (<https://learningstatisticswithr.com/book/bayes.htm>).
 
-*From a Bayesian perspective, statistical inference is all about belief revision. I start out with a set of candidate hypotheses  $h$ about the world. I don’t know which of these hypotheses is true, but I do have some beliefs about which hypotheses are plausible and which are not. When I observe the data  d, I have to revise those beliefs. If the data are consistent with a hypothesis, my belief in that hypothesis is strengthened. If the data inconsistent with the hypothesis, my belief in that hypothesis is weakened.*
+*From a Bayesian perspective, statistical inference is all about belief revision. I start out with a set of candidate hypotheses  $$h$$ about the world. I don’t know which of these hypotheses is true, but I do have some beliefs about which hypotheses are plausible and which are not. When I observe the data  d, I have to revise those beliefs. If the data are consistent with a hypothesis, my belief in that hypothesis is strengthened. If the data inconsistent with the hypothesis, my belief in that hypothesis is weakened.*
 
 The simple example starts with: *I am carrying an umbrella. Do you think it will rain?*
 
-In this problem, you have been presented with a single piece of data ($d$ = I am carrying the umbrella), and you are being ask to tell me your beliefs about whether it’s raining. You have two possible hypotheses, $h$: either it rains today or it does not. How should you solve this problem?
+In this problem, you have been presented with a single piece of data ($$d$$ = I am carrying the umbrella), and you are being ask to tell me your beliefs about whether it’s raining. You have two possible hypotheses, $$h$$: either it rains today or it does not. How should you solve this problem?
 
 #### Priors: what you believed before
 
-The first thing you need to do is ignore what I told you about the umbrella, and write down your pre-existing beliefs about rain. This is important: if you want to be honest about how your beliefs have been revised in the light of new evidence, then you must say something about what you believed before those data appeared! So, you might know where the author of this question lives (Adelaide) and you might conclude that the probability of January rain in Adelaide is about 15%, and the probability of a dry day is 85%. If this is really what you believe about Adelaide  then what I have written here is your prior distribution, written $P(h)$:
+The first thing you need to do is ignore what I told you about the umbrella, and write down your pre-existing beliefs about rain. This is important: if you want to be honest about how your beliefs have been revised in the light of new evidence, then you must say something about what you believed before those data appeared! So, you might know where the author of this question lives (Adelaide) and you might conclude that the probability of January rain in Adelaide is about 15%, and the probability of a dry day is 85%. If this is really what you believe about Adelaide  then what I have written here is your prior distribution, written $$P(h)$$:
 
 $$\begin{array}{lc}\hline
 \mbox{Hypothesis} & \mbox{Degree of belief}\\ \hline
@@ -176,14 +176,14 @@ $$\begin{array}{lcc}\hline
 \mbox{Dry day}     &    0.05    &      0.95\\ \hline
 \end{array}$$
 
-It is important to remember that each cell in this table describes your beliefs about what data  $d$ will be observed, given the truth of a particular hypothesis $h$. This “conditional probability” is written $P(d\|h)$, which you can read as “the probability of $d$ given $h$”. In Bayesian statistics, this is referred to as likelihood of data $d$ given hypothesis $h$.
+It is important to remember that each cell in this table describes your beliefs about what data  $$d$$ will be observed, given the truth of a particular hypothesis $$h$$. This “conditional probability” is written $$P(d\|h)$$, which you can read as “the probability of $$d$$ given $$h$$”. In Bayesian statistics, this is referred to as likelihood of data $$d$$ given hypothesis $$h$$.
 
 #### The joint probability of data and hypothesis
 
 At this point, all the elements are in place. Having written down the priors and the likelihood, you have all the information you need to do Bayesian reasoning. The question now becomes, how do we use this information? As it turns out, there is a very simple equation that we can use here, but it is important that you understand why we use it, so I’m going to try to build it up from more basic ideas.
 
-Let’s start out with one of the rules of probability theory. The rule in question is the one that talks about the probability that two things are true. In our example, you might want to calculate the probability that today is rainy (i.e., hypothesis  $h$ is true) and I’m carrying an umbrella (i.e., data  $d$ is observed). The joint probability of the hypothesis and the data is written  $P(d \cap h)$, and you can calculate it by multiplying the prior  $P(h)$ by the likelihood
-$P(d\|h)$. Mathematically, we say that:
+Let’s start out with one of the rules of probability theory. The rule in question is the one that talks about the probability that two things are true. In our example, you might want to calculate the probability that today is rainy (i.e., hypothesis  $$h$$ is true) and I’m carrying an umbrella (i.e., data  $$d$$ is observed). The joint probability of the hypothesis and the data is written  $$P(d \cap h)$$, and you can calculate it by multiplying the prior  $$P(h)$$ by the likelihood
+$$P(d\|h)$$. Mathematically, we say that:
 
 $$P(d\cap h)=P(d|h)\cdot P(h)$$
 
@@ -212,7 +212,7 @@ $$
 
 This is a very useful table, so it’s worth taking a moment to think about what all these numbers are telling us. First, notice that the row sums aren’t telling us anything new at all. For example, the first row tells us that if we ignore all this umbrella business, the chance that today will be a rainy day is 15%. That’s not surprising, of course: that’s our prior. The important thing isn’t the number itself: rather, the important thing is that it gives us some confidence that our calculations are sensible! Now take a look at the column sums, and notice that they tell us something that we haven’t explicitly stated yet. In the same way that the row sums tell us the probability of rain, the column sums tell us the probability of me carrying an umbrella. Specifically, the first column tells us that on average (i.e., ignoring whether it’s a rainy day or not), the probability of me carrying an umbrella is 8.75%. Finally, notice that when we sum across all four logically-possible events, everything adds up to 1. In other words, what we have written down is a proper probability distribution defined over all possible combinations of data and hypothesis.
 
-Finally, let’s use “proper” statistical notation. In the rainy day problem, the data corresponds to the observation that I do or do not have an umbrella. So we’ll let $d_1$ refer to the possibility that you observe me carrying an umbrella, and $d_2$ refers to you observing me not carrying one. Similarly, $h_1$ is your hypothesis that today is rainy, and $h_2$ is the hypothesis that it is not. Using this notation, the table looks like this:
+Finally, let’s use “proper” statistical notation. In the rainy day problem, the data corresponds to the observation that I do or do not have an umbrella. So we’ll let $$d_1$$ refer to the possibility that you observe me carrying an umbrella, and $$d_2$$ refers to you observing me not carrying one. Similarly, $$h_1$$ is your hypothesis that today is rainy, and $$h_2$$ is the hypothesis that it is not. Using this notation, the table looks like this:
 
 $$\begin{array}{lccc}\\\hline
   & d_1 & d_2 & \mbox{Total}\\ \hline
@@ -233,7 +233,7 @@ $$\begin{array}{lcc}\\\hline
 \mbox{Total} & 1 & 0\\ \hline\end{array}
 $$
 
-In other words, the facts have eliminated any possibility of “no umbrella”, so we have to put zeros into any cell in the table that implies that I’m not carrying an umbrella. Also, you know for a fact that I am carrying an umbrella, so the column sum on the left must be 1 to correctly describe the fact that  $P(\mbox{umbrella})=1$.
+In other words, the facts have eliminated any possibility of “no umbrella”, so we have to put zeros into any cell in the table that implies that I’m not carrying an umbrella. Also, you know for a fact that I am carrying an umbrella, so the column sum on the left must be 1 to correctly describe the fact that  $$P(\mbox{umbrella})=1$$.
 
 What two numbers should we put in the empty cells? Again, let’s not worry about the maths, and instead think about our intuitions. When we wrote out our table the first time, it turned out that those two cells had almost identical numbers, right? We worked out that the joint probability of “rain and umbrella” was 4.5%, and the joint probability of “dry and umbrella” was 4.25%. In other words, before I told you that I am in fact carrying an umbrella, you’d have said that these two events were almost identical in probability, yes? But notice that both of these possibilities are consistent with the fact that I actually am carrying an umbrella. From the perspective of these two possibilities, very little has changed. I hope you’d agree that it’s still true that these two possibilities are equally plausible. So what we expect to see in our final table is some numbers that preserve the fact that “rain and umbrella” is slightly more plausible than “dry and umbrella”, while still ensuring that numbers in the table add up. Something like this, perhaps?
 
@@ -244,13 +244,13 @@ $$\begin{array}{lcc}\\\hline
 \mbox{Total} & 1 & 0\\ \hline\end{array}
 $$
 
-What this table is telling you is that, after being told that I’m carrying an umbrella, you believe that there’s a 51.4% chance that today will be a rainy day, and a 48.6% chance that it won’t. That’s the answer to our problem! The posterior probability of rain  given that I am carrying an umbrella, $P(h\|d)$, is 51.4%
+What this table is telling you is that, after being told that I’m carrying an umbrella, you believe that there’s a 51.4% chance that today will be a rainy day, and a 48.6% chance that it won’t. That’s the answer to our problem! The posterior probability of rain  given that I am carrying an umbrella, $$P(h\|d)$$, is 51.4%
 
-How did I calculate these numbers? You can probably guess. To work out that there was a 0.514 probability of “rain”, all I did was take the 0.045 probability of “rain and umbrella” and divide it by the 0.0875 chance of “umbrella”. This produces a table that satisfies our need to have everything sum to 1, and our need not to interfere with the relative plausibility of the two events that are actually consistent with the data. To say the same thing using fancy statistical jargon, what I’ve done here is divide the joint probability of the hypothesis and the data $P(d \cap h)$ by the marginal probability of the data $P(d)$, and this is what gives us the posterior probability of the hypothesis given that we know the data have been observed. To write this as an equation:
+How did I calculate these numbers? You can probably guess. To work out that there was a 0.514 probability of “rain”, all I did was take the 0.045 probability of “rain and umbrella” and divide it by the 0.0875 chance of “umbrella”. This produces a table that satisfies our need to have everything sum to 1, and our need not to interfere with the relative plausibility of the two events that are actually consistent with the data. To say the same thing using fancy statistical jargon, what I’ve done here is divide the joint probability of the hypothesis and the data $$P(d \cap h)$$ by the marginal probability of the data $$P(d)$$, and this is what gives us the posterior probability of the hypothesis given that we know the data have been observed. To write this as an equation:
 
 $$P(h|d)=\frac{P(h \cap d)}{P(d)}$$
 
-However, remember what I said at the start of the last section, namely that the joint probability $P(d \cap h)$ is calculated by multiplying the prior $P(h)$ by the likelihood $P(d\|h)$. In real life, the things we actually know how to write down are the priors and the likelihood, so let’s substitute those back into the equation. This gives us the following formula for the posterior probability:
+However, remember what I said at the start of the last section, namely that the joint probability $$P(d \cap h)$$ is calculated by multiplying the prior $$P(h)$$ by the likelihood $$P(d\|h)$$. In real life, the things we actually know how to write down are the priors and the likelihood, so let’s substitute those back into the equation. This gives us the following formula for the posterior probability:
 
 $$P(h|d)=\frac{P(d|h)\cdot P(h)}{P(d)}$$
 
@@ -258,19 +258,19 @@ This formula is known as Bayes' rule. It describes how a learner starts out with
 
 #### Bayesian hypothesis tests
 
-The Bayesian approach to hypothesis testing is  simple. Using a setting that is closely analogous to the classical approach. There are two hypotheses that we want to compare, a null hypothesis  $h_0$
- and an alternative hypothesis $h_1$. Prior to running the experiment we have some beliefs
-$P(h)$ about which hypotheses are true. We run an experiment and obtain data $d$. Unlike frequentist statistics, Bayesian statistics does allow us to talk about the probability that the null hypothesis is true. Better yet, it allows us to calculate the posterior probability of the null hypothesis, using Bayes' rule:
+The Bayesian approach to hypothesis testing is  simple. Using a setting that is closely analogous to the classical approach. There are two hypotheses that we want to compare, a null hypothesis  $$h_0$$
+ and an alternative hypothesis $$h_1$$. Prior to running the experiment we have some beliefs
+$$P(h)$$ about which hypotheses are true. We run an experiment and obtain data $$d$$. Unlike frequentist statistics, Bayesian statistics does allow us to talk about the probability that the null hypothesis is true. Better yet, it allows us to calculate the posterior probability of the null hypothesis, using Bayes' rule:
 
 $$P(h_0|d)=\frac{P(d|h_0)\cdot P(h_0)}{P(d)}$$
 
-This formula tells us exactly how much belief we should have in the null hypothesis after having observed the data $d$. Similarly, we can work out how much belief to place in the alternative hypothesis using essentially the same equation. All we do is change the subscript:
+This formula tells us exactly how much belief we should have in the null hypothesis after having observed the data $$d$$. Similarly, we can work out how much belief to place in the alternative hypothesis using essentially the same equation. All we do is change the subscript:
 
 $$P(h_1|d)=\frac{P(d|h_1)\cdot P(h_1)}{P(d)}$$
 
 ### 1.6.2 The Bayes factor
 
-In practice, most Bayesian data analysts tend not to talk in terms of the raw posterior probabilities $P(h_0\|d)$ and $P(h_1\|d)$. Instead, we tend to talk in terms of the posterior odds ratio. Think of it like betting. Suppose, for instance, the posterior probability of the null hypothesis is 25%, and the posterior probability of the alternative is 75%. The alternative hypothesis is three times as probable as the null, so we say that the odds are 3:1 in favour of the alternative. Mathematically, all we have to do to calculate the posterior odds is divide one posterior probability by the other:
+In practice, most Bayesian data analysts tend not to talk in terms of the raw posterior probabilities $$P(h_0\|d)$$ and $$P(h_1\|d)$$. Instead, we tend to talk in terms of the posterior odds ratio. Think of it like betting. Suppose, for instance, the posterior probability of the null hypothesis is 25%, and the posterior probability of the alternative is 75%. The alternative hypothesis is three times as probable as the null, so we say that the odds are 3:1 in favour of the alternative. Mathematically, all we have to do to calculate the posterior odds is divide one posterior probability by the other:
 
 $$\frac{P(h_1|d)}{P(h_0|d)}=\frac{0.75}{0.25}=3$$
 
@@ -962,7 +962,7 @@ Classes 'spec_tbl_df', 'tbl_df', 'tbl' and 'data.frame':	20 obs. of  4 variables
 ~~~
 {: .output}
 
-We will use the `ttestBF` function from the `BayesFactor` package to do test if the $H_0:\mu_D=0$ vs $H_1:\mu_D \neq 0$. The easiest way to do it with this data set is to use the x argument to specify one variable and the y argument to specify the other. All we need to do then is specify `paired = TRUE` to tell R that this is a paired samples test. So here’s our command:
+We will use the `ttestBF` function from the `BayesFactor` package to do test if the $$H_0:\mu_D=0$$ vs $$H_1:\mu_D \neq 0$$. The easiest way to do it with this data set is to use the x argument to specify one variable and the y argument to specify the other. All we need to do then is specify `paired = TRUE` to tell R that this is a paired samples test. So here’s our command:
 
 
 ~~~
@@ -1111,7 +1111,7 @@ Bayes factor type: BFlinearModel, JZS
 
 The output, however, is a little different from what you get from `lm`. The format of this is pretty familiar. What’s new is the fact that we seem to have lots of Bayes factors here. What’s all this about?
 
-The trick to understanding this output is to recognise that if we’re interested in working out which of the 3 predictor variables are related to `myGrump`, there are actually 8 possible regression models that could be considered. One possibility is the intercept only model, in which none of the three variables have an effect. At the other end of the spectrum is the full model in which all three variables matter. So what `regressionBF` does is treat the intercept only model as the null hypothesis, and print out the Bayes factors for all other models when compared against that null. For example, if we look at line 4 in the table, we see that the evidence is about $10^{33}$ to 1 in favour of the claim that a model that includes both mySleep and day is better than the intercept only model. Or if we look at line 1, we can see that the odds are about 1.6 × $10^{34}$ that a model containing the `mySleep` variable (but no others) is better than the intercept only model.
+The trick to understanding this output is to recognise that if we’re interested in working out which of the 3 predictor variables are related to `myGrump`, there are actually 8 possible regression models that could be considered. One possibility is the intercept only model, in which none of the three variables have an effect. At the other end of the spectrum is the full model in which all three variables matter. So what `regressionBF` does is treat the intercept only model as the null hypothesis, and print out the Bayes factors for all other models when compared against that null. For example, if we look at line 4 in the table, we see that the evidence is about $$10^{33}$$ to 1 in favour of the claim that a model that includes both mySleep and day is better than the intercept only model. Or if we look at line 1, we can see that the odds are about 1.6 × $$10^{34}$$ that a model containing the `mySleep` variable (but no others) is better than the intercept only model.
 
 #### Finding the best model
 
@@ -1171,7 +1171,7 @@ Bayes factor type: BFlinearModel, JZS
 ~~~
 {: .output}
 
-Notice the bit at the bottom showing that the “denominator” has changed. What that means is that the Bayes factors are now comparing each of those 3 models listed against the `myGrump ~ mySleep` model. Obviously, the Bayes factor in the first line is exactly 1, since that’s just comparing the best model to itself. More to the point, the other two Bayes factors are both less than 1, indicating that they’re all worse than that model. The Bayes factors of 0.06 to 1 imply that the odds for the best model over the second best model are about 16:1. You can work this out by simple arithmetic (i.e., $\frac{1}{0.06} \approx 16$), but the other way to do it is to directly compare the models. To see what I mean, here’s the original output:
+Notice the bit at the bottom showing that the “denominator” has changed. What that means is that the Bayes factors are now comparing each of those 3 models listed against the `myGrump ~ mySleep` model. Obviously, the Bayes factor in the first line is exactly 1, since that’s just comparing the best model to itself. More to the point, the other two Bayes factors are both less than 1, indicating that they’re all worse than that model. The Bayes factors of 0.06 to 1 imply that the odds for the best model over the second best model are about 16:1. You can work this out by simple arithmetic (i.e., $$\frac{1}{0.06} \approx 16$$), but the other way to do it is to directly compare the models. To see what I mean, here’s the original output:
 
 
 ~~~
@@ -1253,7 +1253,7 @@ Bayes factor type: BFlinearModel, JZS
 ~~~
 {: .output}
 
-Okay, so now you can see the results a bit more clearly. The Bayes factor when you try to drop the mySleep predictor is about  $10^{-26}$, which is very strong evidence that you shouldn’t drop it. On the other hand, the Bayes factor actually goes up to 17 if you drop `babySleep`, so you’d usually say that’s pretty strong evidence for dropping that one.
+Okay, so now you can see the results a bit more clearly. The Bayes factor when you try to drop the mySleep predictor is about  $$10^{-26}$$, which is very strong evidence that you shouldn’t drop it. On the other hand, the Bayes factor actually goes up to 17 if you drop `babySleep`, so you’d usually say that’s pretty strong evidence for dropping that one.
 
 ## 1.8 Bayesian ANOVA
 
