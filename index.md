@@ -64,7 +64,7 @@ choose k objects out of n
 
 |               | order matter     | order doesn't      |
 | ------------- | ---------------- | ------------------ |
-| replace       | n^k^             | $$\binom{n+k-1}{k}$$ |
+| replace       | n^k^             | $$ \binom{n+k-1}{k} $$ |
 | don't replace | n(n-1)...(n-k+1) | $$\binom{n}{k}$$     |
 
 ## Lecture 2
@@ -89,7 +89,7 @@ Ex1 $$\binom{n}{k}$$ =  $$\binom{n}{n-k}$$
 
 Ex2  n$$\binom{n-1}{k-1}$$ = k$$\binom{n}{k}$$  pick k people out of n, with one desigenate as president.
 
-Ex3 $$ \binom{m+n}{k} = \sum_{j=0}^k \binom{m}{j} \binom{n}{k-j} $$ ([vandermonde](https://en.wikipedia.org/wiki/Vandermonde_matrix)) (范德蒙)
+Ex3 $$ \binom{m+n}{k} = \sum_{j=0}^k \binom{m}{j} \binom{n}{k-j} $$ ([vandermonde](https://en.wikipedia.org/wiki/Vandermonde_matrix)) 
 
 ### Axioms of Probability
 
@@ -99,8 +99,8 @@ Probability sample consists of S and P, where S is sample space, and P , a funct
 
 such that 
 
-1. $$P(\phi) = 0, P(S) = 1$$ 
-2. $$P(U_{n=1}^{\infty}A_n) =  \sum_{n=1}^{\infty} P(A_n) $$ if $$A1,A2..An$$ are disjoint (not overlap)
+1. $$ P(\phi) = 0, P(S) = 1$$ 
+2. $$ P(U_{n=1}^{\infty}A_n) =  \sum_{n=1}^{\infty} P(A_n) $$ if $$A1,A2..An$$ are disjoint (not overlap)
 
 ## Lecture 3
 
