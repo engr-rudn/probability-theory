@@ -52,7 +52,7 @@ Consider a binomial situation, where there is a yes or no, success or failure, p
 
 ## Exercises
   1. How many ways can 8 runners in a track race finish?
-  2. Subway is running a special on 6" subs for $$3.99 with 6 choices of bread, 3 choices of meat, and 2 choices of cheese. Not including toppings or sause, how many choices are available?
+  2. Subway is running a special on 6" subs for $3.99 with 6 choices of bread, 3 choices of meat, and 2 choices of cheese. Not including toppings or sause, how many choices are available?
   3. How many ways can 2 students of a class of 25 be selected for room reps?
   4. How many distinguishable ways can the letters, TOPPINGS be written?
   5. A license plate has 3 letters followed by 3 digits. How many possible plates are there?
