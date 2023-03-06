@@ -56,9 +56,9 @@ $$P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^
 
 want P(innocence |evidence) 
 
-1. confusing $$P(A) - prior先验$$ with $$P(A|B) - posterior 后验$$
+1. confusing $$P(A) - prior $$ with $$P(A|B) - posterior$$
 
-P(A|A) = 1
+$$P(A|A) = 1$$
 
 1. confusing independent with conditional independent 
 
@@ -74,11 +74,11 @@ Ex. Chess opponent of unknown strength may be that game outcomes are conditional
 
 **Q:**Does independent imply conditional independent given C? No
 
-Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But P(F|A, C^c^) = 1 not conditionally indep given A
+Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But $$ P(F|A, C^c^) = 1 $$ not conditionally independent given A
 
 
 
-### Recommendations 推荐书籍
+### Recommendations
 
 _Statistical science in the courtroom_ 
 
