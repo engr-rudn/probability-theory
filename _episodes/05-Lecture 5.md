@@ -50,7 +50,11 @@ $$P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^
 
 ### Biohazards
 
-1. confusing $$P(A|B)$$, $$P(B|A)$$  ([procecutor's fallacy](https://en.wikipedia.org/wiki/Prosecutor%27s_fallacy)) 
+1. confusing $$
+P(A|B)
+$$, $$
+P(B|A)
+$$  ([procecutor's fallacy](https://en.wikipedia.org/wiki/Prosecutor%27s_fallacy)) 
 
 <u>Ex</u> [Sally Clark](https://en.wikipedia.org/wiki/Sally_Clark) case, SIDS
 
