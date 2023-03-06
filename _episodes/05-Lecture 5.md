@@ -66,7 +66,7 @@ $$P(A|A) = 1$$
 
 **Definition**:
 
- 	Events $$A,B$$ are conditionally independent given $$C$$ if $$P(A\cap B|C)$$ = $$P(A|C)P(B|C)$$
+ 	Events $$A,B$$ are conditionally independent given $$C$$ if $$P(A\cap B\|C)$$ = $$P(A\|C)P(B\|C)$$
 
 **Q:**Does conditional indep given C imply indep. ? No
 
