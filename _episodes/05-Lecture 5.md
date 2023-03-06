@@ -62,7 +62,11 @@ want $$
 P(innocence|evidence)
 $$ 
 
-1. confusing $$P(A) - prior $$ with $$P(A|B)$$ - posterior
+1. confusing $$
+P(A) - prior 
+$$ with $$
+P(A|B)
+$$ - posterior
 
 $$P(A|A) = 1$$
 
