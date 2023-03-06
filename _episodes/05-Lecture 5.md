@@ -54,9 +54,9 @@ $$P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^
 
 <u>Ex</u> [Sally Clark](https://en.wikipedia.org/wiki/Sally_Clark) case, SIDS
 
-want P(innocence |evidence) 
+want $$P(innocence|evidence)$$ 
 
-1. confusing $$P(A) - prior $$ with $$P(A|B) - posterior$$
+1. confusing $$P(A) - prior $$ with $$P(A|B)$$ - posterior
 
 $$P(A|A) = 1$$
 
