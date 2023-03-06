@@ -58,7 +58,9 @@ $$  ([procecutor's fallacy](https://en.wikipedia.org/wiki/Prosecutor%27s_fallacy
 
 <u>Ex</u> [Sally Clark](https://en.wikipedia.org/wiki/Sally_Clark) case, SIDS
 
-want $$P(innocence|evidence)$$ 
+want $$
+P(innocence|evidence)
+$$ 
 
 1. confusing $$P(A) - prior $$ with $$P(A|B)$$ - posterior
 
