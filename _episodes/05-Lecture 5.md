@@ -85,7 +85,9 @@ Ex. Chess opponent of unknown strength may be that game outcomes are conditional
 
 **Q:**Does independent imply conditional independent given C? No
 
-Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But $$ P(F|A, C^c^)$$ = 1  not conditionally independent given A
+Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But $$ 
+P(F|A, C^c^)
+$$ = 1  not conditionally independent given A
 
 
 
