@@ -26,11 +26,19 @@ keypoints:
 
 Suppose we have 2 random cards from standard deck
 
-Find $$P(both\  aces|have\ ace)$$, $$P(both\ aces|have\ ace\ of\ spade)$$
+Find $$
+P(both\  aces|have\ ace)
+$$, $$
+P(both\ aces|have\ ace\ of\ spade)
+$$
 
-$$P(both\ aces|have\ ace) = P(both\ aces,\cancel{have\ ace}) / P(have\ ace) =  \frac{\binom{4}{2}/\binom{52}{2}}{1-\binom{48}{2}/\binom{52}{2}} = 1/33$$
+$$
+P(both\ aces|have\ ace) = P(both\ aces,\cancel{have\ ace}) / P(have\ ace) =  \frac{\binom{4}{2}/\binom{52}{2}}{1-\binom{48}{2}/\binom{52}{2}} = 1/33
+$$
 
-$$P(both\ aces|have\ ace\ of\ spade) = 3/51 = 1/17 $$ 
+$$
+P(both\ aces|have\ ace\ of\ spade) = 3/51 = 1/17 
+$$ 
 
 <u>Example 2</u> 
 
@@ -44,7 +52,9 @@ Trade-off: It's rare that the test is wrong, it's also rare the disease is rare
 
 $$P(T|D) = 0.95 = P(T^c |D^c)$$
 
-$$P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^c}$$  
+$$
+P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^c}
+$$  
 
 
 
