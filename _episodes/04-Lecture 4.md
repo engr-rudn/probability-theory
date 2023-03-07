@@ -42,7 +42,7 @@ $$P(B) = 1 - (5/6)^{12} - 12 *(1/6)(5/6)^{11}  \approx  0.619$$
 
 $$P(C) = 1 - \sum_{k=0}^2 \binom{18}{k} (1/6)^k (5/6)^{(18-k)}  \approx 0.597$$ 
 
-### Conditional Probability 条件概率
+### Conditional Probability
 
 — How should you update probability/beliefs/uncertainty based on new evidence?
 
@@ -50,7 +50,11 @@ $$P(C) = 1 - \sum_{k=0}^2 \binom{18}{k} (1/6)^k (5/6)^{(18-k)}  \approx 0.597$$
 
 #### Definition:
 
-$$P(A|B) = \frac{P(A\cap B)} {P(B)}$$, if $$P(B) > 0$$
+$$
+P(A|B) = \frac{P(A\cap B)} {P(B)}
+$$, if $$
+P(B) > 0
+$$
 
 #### Intuition:
 
@@ -64,6 +68,12 @@ $$P(A|B) = \frac{P(A\cap B)} {P(B)}$$, if $$P(B) > 0$$
 
 ### Theorem
 
-1. $$P(A\cap B) = P(B)P(A|B) = P(A)P(B|A)$$
-2. $$P(A_1…A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1,A_2)…P(A_n|A_1,A_2…A_{n-1})$$
-3. $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$ 
+1. $$
+P(A\cap B) = P(B)P(A|B) = P(A)P(B|A)
+$$
+2. $$
+P(A_1…A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1,A_2)…P(A_n|A_1,A_2…A_{n-1})
+$$
+3. $$
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+$$ 
