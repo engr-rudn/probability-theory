@@ -19,7 +19,7 @@ Dont' confuse r,v with its distribution
 
 r.v -> random house  distribution -> blueprint
 
-### Poisson Distribution - 泊松分布
+### Poisson Distribution 
 
 $$X \sim Pois(\lambda)$$
 

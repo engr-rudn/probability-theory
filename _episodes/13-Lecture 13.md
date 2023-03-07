@@ -47,7 +47,7 @@ $$X_1, X_2 \sim Bern(1/2)$$ i.i.d, $$X_3 = 1$$ if $$X_1 = X_2$$; 0 otherwise
 
 These are pairwise indep, not indep
 
-### Normal Distribution 正态分布
+### Normal Distribution
 
 (Central Limit Therom: sum of a lot of i.i.d r.v.s looks Normal )
 
