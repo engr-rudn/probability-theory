@@ -58,7 +58,9 @@ $$
 
 #### Intuition:
 
-1. Pebble world , there are finite possible outcomes, each one is represented as a pebble. For example, 9 outcomes, that is 9 pebbles , total mass is 1. B: four pebbles, $$P(A|B)$$:get rid of pebbles in $$B^c$$ , renormalize to make total mass again
+1. Pebble world , there are finite possible outcomes, each one is represented as a pebble. For example, 9 outcomes, that is 9 pebbles , total mass is 1. B: four pebbles, $$
+P(A|B)
+$$:get rid of pebbles in $$B^c$$ , renormalize to make total mass again
 
 2. Frequentist world: repeat experiment many times
 
