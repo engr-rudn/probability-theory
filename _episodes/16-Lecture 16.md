@@ -35,12 +35,18 @@ So $$ X=Y/\lambda$$ has $$E(X) = 1/\lambda, Var(X) = 1/\lambda^2$$
 
 ##### Memoryless Property
 
-$$P(X\ge s+t|X\ge s) = P(X\ge t)$$ 
+$$
+P(X\ge s+t|X\ge s) = P(X\ge t)
+$$ 
 
 Here $$P(X\ge s) = 1  -P(X\le s) = e^{-\lambda s}$$
 
-$$P(X\ge s+t|X\ge s) = P(X\ge s+t, X\ge s) / P(X\ge s) =  P(X\ge s+t) / P(X\ge s)  = e^{-\lambda t} = P(X\ge t)$$ 
+$$
+P(X\ge s+t|X\ge s) = P(X\ge s+t, X\ge s) / P(X\ge s) =  P(X\ge s+t) / P(X\ge s)  = e^{-\lambda t} = P(X\ge t)
+$$ 
 
 $$X\sim Expo(\lambda)$$
 
-$$E(X|X>a) = a + E(X-a|X>a) = a + q/\lambda$$  by memoryless
+$$
+E(X|X>a) = a + E(X-a|X>a) = a + q/\lambda
+$$  by memoryless
