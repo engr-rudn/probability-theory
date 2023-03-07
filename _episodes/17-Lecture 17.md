@@ -9,9 +9,13 @@ keypoints:
 
 ---
 
-$$E(T|T>20) > E(T)$$  
+$$
+E(T|T>20) > E(T)
+$$  
 
-If memoryless, we would have $$E(T|T>20) = 20 + E(T)$$
+If memoryless, we would have $$
+E(T|T>20) = 20 + E(T)
+$$
 
 **Therom**: If $$X$$ is a positive continuous r.v.  with memoryless property, then $$X\sim Expo(\lambda)$$  for some $$\lambda$$ 
 
@@ -77,16 +81,28 @@ Bayesian : treat p as a r.v.
 
 Let $$P\sim Unif(0,1)$$  (prior) Let $$S_n = X_1,\dots X_n$$
 
-So$$ S_n|p \sim Bin(n,p)$$ , $$p \sim Unif(0,1)$$
+So$$ 
+S_n|p \sim Bin(n,p)
+$$ , $$p \sim Unif(0,1)$$
 
-Find Posterior $$p|S_n$$ , and $$P(X_{n+1} = 1| S_n = n)$$ 
+Find Posterior $$
+p|S_n
+$$ , and $$
+P(X_{n+1} = 1| S_n = n)
+$$ 
 
-$$f(p|S_n = k) = \frac{P(S_n = k|p)f(p)}{P(S_n =k)}$$  
+$$
+f(p|S_n = k) = \frac{P(S_n = k|p)f(p)}{P(S_n =k)}
+$$  
 
  f(p) - prior, 1;  $$P(S_n =k)$$ does not depend on p
 
 $$P(S_n = k) = \int_{0}^{1}P(S_n = k/p)f(p)dp$$ 
 
-$$ \varpropto \frac{p^k(1-p)^{n-k}}{f(p|S_n = n)=(n+1)p^n}$$
+$$
+ \varpropto \frac{p^k(1-p)^{n-k}}{f(p|S_n = n)=(n+1)p^n}
+ $$
 
-$$p(X_{n+1}=1|S_n = n) = \int_{0}^{1}(n+1)pp^mdp= \frac{n+1}{n+2}$$ 
+$$
+p(X_{n+1}=1|S_n = n) = \int_{0}^{1}(n+1)pp^mdp= \frac{n+1}{n+2}
+$$ 
