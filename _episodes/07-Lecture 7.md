@@ -6,21 +6,29 @@ questions:
 objectives:
 
 keypoints:
+Conditioning : the soul of statistics
+Random variables and their distribution
 
 ---
-> Conditioning : the soul of statistics
->
-> Random variables and their distribution 
+
 
 ### Gambler's Ruin
 
 Two gamblers, A and B, sequence of rounds bet \$$1
 
-$$p=P(A\ wins\ a\ certain\ round), q = 1-p$$, the game goes until one bankrupt
+$$
+p=P(A\ wins\ a\ certain\ round), q = 1-p
+$$, the game goes until one bankrupt
 
 what's the probability that A wins entire gmae(so B is "ruined")?
 
-**Assume:** A start with $$\$$i$$, B starts with $$\$$(N-i)$$ 
+**Assume:** A start with $$
+\$i
+$$
+, B starts with 
+$$
+\$(N-i)
+$$ 
 
 
 
@@ -38,9 +46,13 @@ A either wins the 1st round or lose it
 
 
 
-Let $$P_i = (A\ wins\ game | A\ start\ at\ \$$i)$$
+Let $$
+P_i = (A\ wins\ game | A\ start\ at\ \$i)
+$$
 
-$$P_i = pp_{i+1} + qp_{i-1}, 1 \le i \le N-1$$
+$$
+P_i = pp_{i+1} + qp_{i-1}, 1 \le i \le N-1
+$$
 
 (difference equation)
 
