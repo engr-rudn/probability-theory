@@ -19,7 +19,11 @@ $$M(t) = E(e^{tx}) = \int_{0}^{\infty} e^{-tx}e^{-x}dx = \int_{0}^{\infty} e^{-x
 
 $$M'(0) = E(X), M''(0) = E(X^2) , M'''(0) = E(X^3)\dots$$
 
-$$ |t| <1,  \frac{1}{1-t} = \sum_{n=0}^{\infty}t^n = \sum_{n=0}^{\infty} n!\frac{t^n}{n!} $$    $$E(X^n) = n! $$
+$$ 
+|t| <1,  \frac{1}{1-t} = \sum_{n=0}^{\infty}t^n = \sum_{n=0}^{\infty} n!\frac{t^n}{n!} 
+$$    $$
+E(X^n) = n! 
+$$
 
 $$Y\sim Expo(\lambda)$$, let $$X = \lambda Y \sim Expo(1)$$, so $$Y^n = \frac{X^n}{\lambda^n}$$ 
 
@@ -117,4 +121,6 @@ $$f_Y(y) = \int_{-\infty}^{\infty} f_{X,Y}(x,y)dx$$
 
    X,Y dependent. 
 
-   Given X=x , $$|y| \le \sqrt{1-x^2}$$ 
+   Given X=x , $$
+   |y| \le \sqrt{1-x^2}
+   $$ 
