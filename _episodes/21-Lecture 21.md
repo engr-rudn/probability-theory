@@ -57,7 +57,7 @@ but very dependent: Y is a function of X, (we know X then we know Y)
 
 Y determines magnituide of X
 
-#### Correlation相关系数
+#### Correlation
 
 ##### Definition
 
