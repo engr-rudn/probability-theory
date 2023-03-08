@@ -11,7 +11,9 @@ keypoints:
 
 **Example**
 
- Find $$E|Z_1 - Z_2|$$, with $$Z_1, Z_2$$ i.i.d $$N(0,1)$$
+ Find $$
+ E|Z_1 - Z_2|$$, with $$Z_1, Z_2$$ i.i.d $$N(0,1)
+ $$
 
 **Therom**
 
@@ -27,11 +29,17 @@ Use MGF, MGF of $$X+Y$$ is
 
 Note $$Z_1, Z_2 \sim N(0, 2)$$
 
-$$E|Z_1-Z_2| = E|\sqrt{2} Z|$$  $$Z\sim N(0, 1)$$
+$$
+E|Z_1-Z_2| = E|\sqrt{2} Z|
+$$  $$
+Z\sim N(0, 1)
+$$
 
-$$= \sqrt{2}E|Z| = \sqrt{2/\pi}$$ 
+$$
+= \sqrt{2}E|Z| = \sqrt{2/\pi}
+$$ 
 
-#### Multinomial多项分布
+#### Multinomial
 
 generalization of binomial
 
@@ -75,7 +83,9 @@ $$(X_2,…X_k) \sim Mult_{k-1}(n-n_1, (p'_2,…p'_k))$$
 
 (we know how many people in the first catgory , don't know rest)
 
-with $$p'_2$$ = P(being in category 2| not in category 1) 
+with $$p'_2$$ = $$
+P(being in category 2| not in category 1) 
+$$
 
 = $$\frac{p_2}{1-p_1}$$  
 
@@ -91,16 +101,26 @@ Find PDF of T
 
 **average of million cauchy is still cauchy**
 
-$$P(\frac{X}{Y} \le t) = P(\frac{X}{|Y|} \le t)$$  symmetry of $$N(0,1)$$
+$$
+P(\frac{X}{Y} \le t) = P(\frac{X}{|Y|} \le t)
+$$  symmetry of $$N(0,1)$$
 
-$$= P(X\le t|Y|) = \frac{1}{\sqrt{2\pi}} \int_{\infty}^{\infty} e^{y^2 /2} \int_{-\infty}^{t|y|} \frac{1}{\sqrt{2\pi}} e^{x^2 /2}  dxdy $$ 
+$$
+= P(X\le t|Y|) = \frac{1}{\sqrt{2\pi}} \int_{\infty}^{\infty} e^{y^2 /2} \int_{-\infty}^{t|y|} \frac{1}{\sqrt{2\pi}} e^{x^2 /2}  dxdy 
+$$ 
 
-$$= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{y^2 /2} \Phi(t|y|)dy$$ 
+$$
+= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{y^2 /2} \Phi(t|y|)dy
+$$ 
 
 $$ = {\sqrt{2/\pi}} \int_{0}^{\infty} e^{y^2 /2} \Phi(ty)dy $$ 
 
 PDF: $$F'(t) = 1/\pi(1+t^2)$$ 
 
-$$P(X\le t|Y|) = \int P(X\le t|Y|| Y=y)\varphi(y)dy$$
+$$
+P(X\le t|Y|) = \int P(X\le t|Y|| Y=y)\varphi(y)dy
+$$
 
-$$= \int \Phi(t|y|)\varphi(y)dy$$ 
+$$
+= \int \Phi(t|y|)\varphi(y)dy
+$$ 
