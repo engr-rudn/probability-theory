@@ -87,9 +87,9 @@ conceptualized as an urn containing a ball for each possible way the
 world can be.  On each ball is written the value of every random
 variable.^[Formally, a random variable $$X$$ can be represented as a
 function from the sample space to a real value, i.e., $$X:\Omega
-\rightarrow \mathbb{R}$$. For each possible world $$\omega \in \Omega$$,
+\rightarrow \mathbb$$. For each possible world $$\omega \in \Omega$$,
 the variable $$X$$ takes on a specific value $$X(\omega) \in
-\mathbb{R}$$.]
+\mathbb$$.]
 
 Now consider the event $$Y = 0$$, in which our coin flip lands tails. In
 some worlds, the event occurs (i.e., $$0$$ is the value recorded for
@@ -134,9 +134,12 @@ implementations of the pseudocode generate the results and are
 available in the source code repository for this book.]
 
 ```
-int y = uniform_01_rng()
-print 'y = ' y
+import random
+
+y = random.randint(0, 1)
+print("y =", y)
 ```
+{: .language-python}
 
 The variable `y` is declared to be an integer and assigned to the
 result of calling the `uniform_01_rng()` function.^[The use of a
@@ -149,23 +152,34 @@ The print statement outputs the quoted string `y = ` &nbsp; followed
 by the value of the variable `y`.  Executing the program might produce
 the following output.
 
-```{r}
-printf("y = %d", rbinom(1, 1, 0.5))
 ```
+y = 1
+```
+{: .output}
 
 If we run it a nine more times, it might print
 
-```{r}
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
-printf("y = %d", rbinom(1, 1, 0.5))
 ```
+for i in range(9):
+    y = random.randint(0,1)
+    print("y =", y)
+
+```
+{: .language-python}
+
+```
+y = 0
+y = 1
+y = 0
+y = 1
+y = 1
+y = 0
+y = 1
+y = 1
+y = 0
+```
+{: .output}
+
 When we say it might print these things, we mean the results will
 depend on the state of the pseudorandom number generator.
 
@@ -177,36 +191,44 @@ establishes the deterministic sequence of results that the
 pseudorandom number generator produces.  For instance, contrast the program
 
 ```
-seed_rng(1234)
-for (n in 1:10) print uniform_01_rng()
-for (n in 1:10) print uniform_01_rng()
+random.seed(1234)
+for n in range(10):
+    print(random.randint(0, 1)')
+
+
+for n in range(10):
+    print(random.randint(0, 1))
 ```
+{: .language-python}
 
 which produces the output
 
-```{r}
-set.seed(1234)
-for (n in 1:10) { cat(rbinom(1, 1, 0.5)); cat(' ') }
-for (n in 1:10) { cat(rbinom(1, 1, 0.5)); cat(' ') }
 ```
+1 0 1 1 0 1 0 0 0 0  
+0 0 0 1 0 1 1 1 0 0 
+```
+{: .output}
 
 with the program
 
 ```
-seed_rng(1234)
-for (n in 1:10) print uniform_01_rng()
-seed_rng(1234)
-for (n in 1:10) print uniform_01_rng()
+random.seed(1234)
+for n in range(10):
+    print(random.randint(0, 1)')
+
+random.seed(1234)
+for n in range(10):
+    print(random.randint(0, 1))
 ```
+{: .language-python}
 
 which produces
 
-```{r}
-set.seed(1234)
-for (n in 1:10) { cat(rbinom(1, 1, 0.5)); cat(' ') }
-set.seed(1234)
-for (n in 1:10) { cat(rbinom(1, 1, 0.5)); cat(' ') }
 ```
+1 0 0 0 0 0 0 1 0 0 
+1 0 0 0 0 0 0 1 0 0 
+```
+{: .output}
 
 Resetting the seed in the second case causes exactly the same ten
 pseudorandom numbers to be generated a second time.  Every
@@ -239,13 +261,17 @@ number of time the event occurs in that the simulated value $$y^{(m)}$$
 is equal to 1.
 
 ```
+M = 100  # Set the value of M
 occur = 0
-for (m in 1:M)
-  y[m] = uniform_01_rng()
-  occur = occur + (y[m] == 1)
+
+for m in range(1, M+1):
+    y = random.uniform(0, 1)
+    occur += (y == 1)
+
 estimate = occur / M
-print `estimated Pr[Y = 1] = ' estimate
+print(f"estimated Pr[Y = 1] = {estimate}")
 ```
+{: .python-language}
 
 The equality operator is written as `==`, as in the condition `y[m] ==
 1` to distinguish it from the assignment statement `y[m] = 1`, which
@@ -256,10 +282,13 @@ If we let `uniform_01_rng(M)` be the result of generating `M`
 pseudorandom coin flip results, the program can be shortened to
 
 ```
-y <- uniform_01_rng(M)
-occur = sum(y == 1)
+M = 100  # Set the value of M
+y = [random.uniform(0, 1) for i in range(M)]
+occur = sum([1 for i in y if i == 1])
 estimate = occur / M
+print(f"estimated Pr[Y = 1] = {estimate}")
 ```
+{: .python-language}
 
 A condition such as `y == 1` on a sequence returns a sequence of the
 same length with value 1 in positions where the condition is true. For
@@ -281,54 +310,111 @@ Thus `sum(y == 1)` is the number of positions in the sequence `y`
 which have the value 1.  Running the program provides the following
 estimate based on ten simulation draws.
 
-```{r}
-M <- 10
-y_sim <- rbinom(M, 1, 0.5);
-for (n in 1:M) { cat(y_sim[n]); cat(' '); }
-cat('estimated Pr[Y = 1] = ', sum(y_sim) / M)
 ```
+import numpy as np
+
+M = 10
+y_sim = np.random.binomial(1, 0.5, M)
+for n in range(M):
+    print(y_sim[n], end=' ')
+print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
+```
+{: .python-language}
+
 Let's try that a few more times.
 
-```{r}
-for (k in 1:10) {
-  y_sim <- rbinom(M, 1, 0.5);
-  for (n in 1:M) { cat(y_sim[n]); cat(' '); }
-  cat(' ')
-  cat('estimated Pr[Y = 1] = ', sum(y_sim) / M, '\n')
-}
 ```
+M = 10
+
+for k in range(1, 11):
+    y_sim = np.random.binomial(1, 0.5, M)
+    for n in range(M):
+        print(y_sim[n], end=' ')
+    print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
+```
+{: .python-language}
+
+```
+1 1 0 0 0 1 1 1 0 0 estimated Pr[Y = 1] = 0.5
+0 0 1 1 1 1 0 0 1 0 estimated Pr[Y = 1] = 0.5
+0 0 0 1 1 0 1 0 1 1 estimated Pr[Y = 1] = 0.5
+1 0 0 1 0 0 1 0 1 0 estimated Pr[Y = 1] = 0.4
+1 1 0 0 1 0 0 0 0 1 estimated Pr[Y = 1] = 0.4
+0 0 1 0 1 1 1 1 1 0 estimated Pr[Y = 1] = 0.6
+1 1 0 1 1 1 0 0 0 1 estimated Pr[Y = 1] = 0.6
+0 0 0 1 1 1 0 1 0 1 estimated Pr[Y = 1] = 0.5
+0 0 0 0 1 0 1 0 0 1 estimated Pr[Y = 1] = 0.3
+0 1 0 1 1 1 0 1 1 0 estimated Pr[Y = 1] = 0.6
+```
+{: .output}
 
 The estimates are close, but not very exact.  What if we use 100
 simulations?
 
-```{r}
-M <- 100
-y_sim <- rbinom(M, 1, 0.5);
-for (n in 1:M) { cat(y_sim[n]); cat(' '); }
-cat('estimated Pr[Y = 1] = ', sum(y_sim) / M)
 ```
+M = 100
+y_sim = np.random.binomial(1, 0.5, M)
+for n in range(M):
+    print(y_sim[n], end=' ')
+print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
+```
+{: .python-language}
+
+```
+0 0 0 0 0 1 0 0 0 0 1 0 0 1 1 0 0 0 1 1 0 0 1 1 1 1 0 1 1 1 0 0 0 0 1 0 0 0 1 0 0 0 0 1 1 1 1 0 1 0 1 1 0 1 0 1 0 0 0 1 0 1 1 1 1 1 0 0 0 1 1 0 0 1 0 0 1 1 1 1 1 1 1 1 0 0 1 0 1 1 0 0 1 1 1 1 0 0 0 0 
+estimated Pr[Y = 1] = 0.48
+```
+{: .output}
 
 That's closer than most of the estimates based on ten simulation draws.  Let's
 try that a few more times without bothering to print all 100 simulated
 values,
 
-```{r}
-for (k in 1:10) {
-  M <- 100
-  y_sim <- rbinom(M, 1, 0.5);
-  cat('estimated Pr[Y = 1] = ', sum(y_sim) / M, '\n')
-}
 ```
+for k in range(1, 11):
+    y_sim = np.random.binomial(1, 0.5, M)
+    print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
+```
+{: .python-language}
+
+```
+estimated Pr[Y = 1] = 0.52
+estimated Pr[Y = 1] = 0.58
+estimated Pr[Y = 1] = 0.55
+estimated Pr[Y = 1] = 0.37
+estimated Pr[Y = 1] = 0.52
+estimated Pr[Y = 1] = 0.48
+estimated Pr[Y = 1] = 0.53
+estimated Pr[Y = 1] = 0.53
+estimated Pr[Y = 1] = 0.5
+estimated Pr[Y = 1] = 0.53
+```
+{: .output}
 
 What happens if we let $$M = 10,000$$ simulations?
 
-```{r}
-for (k in 1:10) {
-  M <- 10000
-  y_sim <- rbinom(M, 1, 0.5);
-  cat('estimated Pr[Y = 1] = ', sum(y_sim) / M, '\n')
-}
 ```
+M = 10000
+
+for k in range(1, 11):
+    y_sim = np.random.binomial(1, 0.5, M)
+    print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
+```
+{: .python-language}
+
+```
+estimated Pr[Y = 1] = 0.5074
+estimated Pr[Y = 1] = 0.4991
+estimated Pr[Y = 1] = 0.5088
+estimated Pr[Y = 1] = 0.5015
+estimated Pr[Y = 1] = 0.4926
+estimated Pr[Y = 1] = 0.4987
+estimated Pr[Y = 1] = 0.4959
+estimated Pr[Y = 1] = 0.5004
+estimated Pr[Y = 1] = 0.4928
+estimated Pr[Y = 1] = 0.5032
+```
+{: .output}
 
 Now the estimates are very close to the true probability being
 estimated (i.e., 0.5, because the flip is fair). This raises the
@@ -354,12 +440,122 @@ Edinburgh.]
 To calculate such a running tally of the estimate at each online, we can do this:
 
 ```
+M = 100
+y = np.zeros(M)
+estimate = np.zeros(M)
 occur = 0
-for (m in 1:M)
-  y[m] = uniform_01_rng(M)
-  occur = occur + (y[m] == 1)
-  estimate[m] = occur / m
+
+for m in range(1, M+1):
+    y[m-1] = np.random.randint(0, 2)
+    occur += (y[m-1] == 1)
+    estimate[m-1] = occur / m
+    print(f"estimated Pr[Y = 1] after {m} trials = {estimate[m-1]}")
 ```
+{: .python-language}
+
+```
+estimated Pr[Y = 1] after 1 trials = 0.0
+estimated Pr[Y = 1] after 2 trials = 0.5
+estimated Pr[Y = 1] after 3 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 4 trials = 0.25
+estimated Pr[Y = 1] after 5 trials = 0.2
+estimated Pr[Y = 1] after 6 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 7 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 8 trials = 0.375
+estimated Pr[Y = 1] after 9 trials = 0.4444444444444444
+estimated Pr[Y = 1] after 10 trials = 0.4
+estimated Pr[Y = 1] after 11 trials = 0.36363636363636365
+estimated Pr[Y = 1] after 12 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 13 trials = 0.3076923076923077
+estimated Pr[Y = 1] after 14 trials = 0.2857142857142857
+estimated Pr[Y = 1] after 15 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 16 trials = 0.375
+estimated Pr[Y = 1] after 17 trials = 0.35294117647058826
+estimated Pr[Y = 1] after 18 trials = 0.3888888888888889
+estimated Pr[Y = 1] after 19 trials = 0.42105263157894735
+estimated Pr[Y = 1] after 20 trials = 0.4
+estimated Pr[Y = 1] after 21 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 22 trials = 0.45454545454545453
+estimated Pr[Y = 1] after 23 trials = 0.43478260869565216
+estimated Pr[Y = 1] after 24 trials = 0.4166666666666667
+estimated Pr[Y = 1] after 25 trials = 0.4
+estimated Pr[Y = 1] after 26 trials = 0.4230769230769231
+estimated Pr[Y = 1] after 27 trials = 0.4444444444444444
+estimated Pr[Y = 1] after 28 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 29 trials = 0.41379310344827586
+estimated Pr[Y = 1] after 30 trials = 0.4
+estimated Pr[Y = 1] after 31 trials = 0.3870967741935484
+estimated Pr[Y = 1] after 32 trials = 0.40625
+estimated Pr[Y = 1] after 33 trials = 0.3939393939393939
+estimated Pr[Y = 1] after 34 trials = 0.4117647058823529
+estimated Pr[Y = 1] after 35 trials = 0.4
+estimated Pr[Y = 1] after 36 trials = 0.3888888888888889
+estimated Pr[Y = 1] after 37 trials = 0.3783783783783784
+estimated Pr[Y = 1] after 38 trials = 0.39473684210526316
+estimated Pr[Y = 1] after 39 trials = 0.41025641025641024
+estimated Pr[Y = 1] after 40 trials = 0.425
+estimated Pr[Y = 1] after 41 trials = 0.43902439024390244
+estimated Pr[Y = 1] after 42 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 43 trials = 0.4186046511627907
+estimated Pr[Y = 1] after 44 trials = 0.4090909090909091
+estimated Pr[Y = 1] after 45 trials = 0.4
+estimated Pr[Y = 1] after 46 trials = 0.391304347826087
+estimated Pr[Y = 1] after 47 trials = 0.40425531914893614
+estimated Pr[Y = 1] after 48 trials = 0.4166666666666667
+estimated Pr[Y = 1] after 49 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 50 trials = 0.42
+estimated Pr[Y = 1] after 51 trials = 0.43137254901960786
+estimated Pr[Y = 1] after 52 trials = 0.4423076923076923
+estimated Pr[Y = 1] after 53 trials = 0.4528301886792453
+estimated Pr[Y = 1] after 54 trials = 0.46296296296296297
+estimated Pr[Y = 1] after 55 trials = 0.4727272727272727
+estimated Pr[Y = 1] after 56 trials = 0.48214285714285715
+estimated Pr[Y = 1] after 57 trials = 0.47368421052631576
+estimated Pr[Y = 1] after 58 trials = 0.4827586206896552
+estimated Pr[Y = 1] after 59 trials = 0.4745762711864407
+estimated Pr[Y = 1] after 60 trials = 0.4666666666666667
+estimated Pr[Y = 1] after 61 trials = 0.47540983606557374
+estimated Pr[Y = 1] after 62 trials = 0.46774193548387094
+estimated Pr[Y = 1] after 63 trials = 0.47619047619047616
+estimated Pr[Y = 1] after 64 trials = 0.46875
+estimated Pr[Y = 1] after 65 trials = 0.46153846153846156
+estimated Pr[Y = 1] after 66 trials = 0.4696969696969697
+estimated Pr[Y = 1] after 67 trials = 0.47761194029850745
+estimated Pr[Y = 1] after 68 trials = 0.4852941176470588
+estimated Pr[Y = 1] after 69 trials = 0.4782608695652174
+estimated Pr[Y = 1] after 70 trials = 0.4714285714285714
+estimated Pr[Y = 1] after 71 trials = 0.4788732394366197
+estimated Pr[Y = 1] after 72 trials = 0.4861111111111111
+estimated Pr[Y = 1] after 73 trials = 0.4931506849315068
+estimated Pr[Y = 1] after 74 trials = 0.5
+estimated Pr[Y = 1] after 75 trials = 0.49333333333333335
+estimated Pr[Y = 1] after 76 trials = 0.4868421052631579
+estimated Pr[Y = 1] after 77 trials = 0.4935064935064935
+estimated Pr[Y = 1] after 78 trials = 0.5
+estimated Pr[Y = 1] after 79 trials = 0.5063291139240507
+estimated Pr[Y = 1] after 80 trials = 0.5125
+estimated Pr[Y = 1] after 81 trials = 0.5185185185185185
+estimated Pr[Y = 1] after 82 trials = 0.5121951219512195
+estimated Pr[Y = 1] after 83 trials = 0.5180722891566265
+estimated Pr[Y = 1] after 84 trials = 0.5119047619047619
+estimated Pr[Y = 1] after 85 trials = 0.5176470588235295
+estimated Pr[Y = 1] after 86 trials = 0.5116279069767442
+estimated Pr[Y = 1] after 87 trials = 0.5172413793103449
+estimated Pr[Y = 1] after 88 trials = 0.5227272727272727
+estimated Pr[Y = 1] after 89 trials = 0.5280898876404494
+estimated Pr[Y = 1] after 90 trials = 0.5333333333333333
+estimated Pr[Y = 1] after 91 trials = 0.5384615384615384
+estimated Pr[Y = 1] after 92 trials = 0.5434782608695652
+estimated Pr[Y = 1] after 93 trials = 0.5483870967741935
+estimated Pr[Y = 1] after 94 trials = 0.5425531914893617
+estimated Pr[Y = 1] after 95 trials = 0.5473684210526316
+estimated Pr[Y = 1] after 96 trials = 0.5520833333333334
+estimated Pr[Y = 1] after 97 trials = 0.5463917525773195
+estimated Pr[Y = 1] after 98 trials = 0.5510204081632653
+estimated Pr[Y = 1] after 99 trials = 0.5454545454545454
+estimated Pr[Y = 1] after 100 trials = 0.54
+```
+{: .output}
 
 Recall that the expression `(y[m] == 1)` evaluates to 1 if the
 condition holds and 0 otherwise. The result of running the program is
@@ -367,20 +563,233 @@ that `estimate[m]` will hold the estimate $$\mbox{Pr}[Y = 1]$$ after $$m$$
 simulations.  We can then plot the estimates as a function
 of the number of draws using a line plot to display the trend.
 
-```{r}
-set.seed(0)
-library(ggplot2)
-M <- 1e5
-Ms <- c()
-y_sim <- rbinom(M, 1, 0.5)
-hat_E_Y <- c()
-Ms <- c()
-for (i in 0:50) {
-  Ms[i + 1] <- min(M, (10^(1/10))^i)
-  hat_E_Y[i + 1] <- mean(y_sim[0:Ms[i + 1]])
-}
-df <- data.frame(M = Ms, hat_E_Y)
 ```
+M = 100
+y = np.zeros(M)
+estimate = np.zeros(M)
+occur = 0
+
+for m in range(1, M+1):
+    y[m-1] = np.random.randint(0, 2)
+    occur += (y[m-1] == 1)
+    estimate[m-1] = occur / m
+    print(f"estimated Pr[Y = 1] after {m} trials = {estimate[m-1]}")
+```
+{: .python-language}
+
+```
+estimated Pr[Y = 1] after 1 trials = 0.0
+estimated Pr[Y = 1] after 2 trials = 0.5
+estimated Pr[Y = 1] after 3 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 4 trials = 0.25
+estimated Pr[Y = 1] after 5 trials = 0.2
+estimated Pr[Y = 1] after 6 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 7 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 8 trials = 0.375
+estimated Pr[Y = 1] after 9 trials = 0.4444444444444444
+estimated Pr[Y = 1] after 10 trials = 0.4
+estimated Pr[Y = 1] after 11 trials = 0.36363636363636365
+estimated Pr[Y = 1] after 12 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 13 trials = 0.3076923076923077
+estimated Pr[Y = 1] after 14 trials = 0.2857142857142857
+estimated Pr[Y = 1] after 15 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 16 trials = 0.375
+estimated Pr[Y = 1] after 17 trials = 0.35294117647058826
+estimated Pr[Y = 1] after 18 trials = 0.3888888888888889
+estimated Pr[Y = 1] after 19 trials = 0.42105263157894735
+estimated Pr[Y = 1] after 20 trials = 0.4
+estimated Pr[Y = 1] after 21 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 22 trials = 0.45454545454545453
+estimated Pr[Y = 1] after 23 trials = 0.43478260869565216
+estimated Pr[Y = 1] after 24 trials = 0.4166666666666667
+estimated Pr[Y = 1] after 25 trials = 0.4
+estimated Pr[Y = 1] after 26 trials = 0.4230769230769231
+estimated Pr[Y = 1] after 27 trials = 0.4444444444444444
+estimated Pr[Y = 1] after 28 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 29 trials = 0.41379310344827586
+estimated Pr[Y = 1] after 30 trials = 0.4
+estimated Pr[Y = 1] after 31 trials = 0.3870967741935484
+estimated Pr[Y = 1] after 32 trials = 0.40625
+estimated Pr[Y = 1] after 33 trials = 0.3939393939393939
+estimated Pr[Y = 1] after 34 trials = 0.4117647058823529
+estimated Pr[Y = 1] after 35 trials = 0.4
+estimated Pr[Y = 1] after 36 trials = 0.3888888888888889
+estimated Pr[Y = 1] after 37 trials = 0.3783783783783784
+estimated Pr[Y = 1] after 38 trials = 0.39473684210526316
+estimated Pr[Y = 1] after 39 trials = 0.41025641025641024
+estimated Pr[Y = 1] after 40 trials = 0.425
+estimated Pr[Y = 1] after 41 trials = 0.43902439024390244
+estimated Pr[Y = 1] after 42 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 43 trials = 0.4186046511627907
+estimated Pr[Y = 1] after 44 trials = 0.4090909090909091
+estimated Pr[Y = 1] after 45 trials = 0.4
+estimated Pr[Y = 1] after 46 trials = 0.391304347826087
+estimated Pr[Y = 1] after 47 trials = 0.40425531914893614
+estimated Pr[Y = 1] after 48 trials = 0.4166666666666667
+estimated Pr[Y = 1] after 49 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 50 trials = 0.42
+estimated Pr[Y = 1] after 51 trials = 0.43137254901960786
+estimated Pr[Y = 1] after 52 trials = 0.4423076923076923
+estimated Pr[Y = 1] after 53 trials = 0.4528301886792453
+estimated Pr[Y = 1] after 54 trials = 0.46296296296296297
+estimated Pr[Y = 1] after 55 trials = 0.4727272727272727
+estimated Pr[Y = 1] after 56 trials = 0.48214285714285715
+estimated Pr[Y = 1] after 57 trials = 0.47368421052631576
+estimated Pr[Y = 1] after 58 trials = 0.4827586206896552
+estimated Pr[Y = 1] after 59 trials = 0.4745762711864407
+estimated Pr[Y = 1] after 60 trials = 0.4666666666666667
+estimated Pr[Y = 1] after 61 trials = 0.47540983606557374
+estimated Pr[Y = 1] after 62 trials = 0.46774193548387094
+estimated Pr[Y = 1] after 63 trials = 0.47619047619047616
+estimated Pr[Y = 1] after 64 trials = 0.46875
+estimated Pr[Y = 1] after 65 trials = 0.46153846153846156
+estimated Pr[Y = 1] after 66 trials = 0.4696969696969697
+estimated Pr[Y = 1] after 67 trials = 0.47761194029850745
+estimated Pr[Y = 1] after 68 trials = 0.4852941176470588
+estimated Pr[Y = 1] after 69 trials = 0.4782608695652174
+estimated Pr[Y = 1] after 70 trials = 0.4714285714285714
+estimated Pr[Y = 1] after 71 trials = 0.4788732394366197
+estimated Pr[Y = 1] after 72 trials = 0.4861111111111111
+estimated Pr[Y = 1] after 73 trials = 0.4931506849315068
+estimated Pr[Y = 1] after 74 trials = 0.5
+estimated Pr[Y = 1] after 75 trials = 0.49333333333333335
+estimated Pr[Y = 1] after 76 trials = 0.4868421052631579
+estimated Pr[Y = 1] after 77 trials = 0.4935064935064935
+estimated Pr[Y = 1] after 78 trials = 0.5
+estimated Pr[Y = 1] after 79 trials = 0.5063291139240507
+estimated Pr[Y = 1] after 80 trials = 0.5125
+estimated Pr[Y = 1] after 81 trials = 0.5185185185185185
+estimated Pr[Y = 1] after 82 trials = 0.5121951219512195
+estimated Pr[Y = 1] after 83 trials = 0.5180722891566265
+estimated Pr[Y = 1] after 84 trials = 0.5119047619047619
+estimated Pr[Y = 1] after 85 trials = 0.5176470588235295
+estimated Pr[Y = 1] after 86 trials = 0.5116279069767442
+estimated Pr[Y = 1] after 87 trials = 0.5172413793103449
+estimated Pr[Y = 1] after 88 trials = 0.5227272727272727
+estimated Pr[Y = 1] after 89 trials = 0.5280898876404494
+estimated Pr[Y = 1] after 90 trials = 0.5333333333333333
+estimated Pr[Y = 1] after 91 trials = 0.5384615384615384
+estimated Pr[Y = 1] after 92 trials = 0.5434782608695652
+estimated Pr[Y = 1] after 93 trials = 0.5483870967741935
+estimated Pr[Y = 1] after 94 trials = 0.5425531914893617
+estimated Pr[Y = 1] after 95 trials = 0.5473684210526316
+estimated Pr[Y = 1] after 96 trials = 0.5520833333333334
+estimated Pr[Y = 1] after 97 trials = 0.5463917525773195
+estimated Pr[Y = 1] after 98 trials = 0.5510204081632653
+estimated Pr[Y = 1] after 99 trials = 0.5454545454545454
+estimated Pr[Y = 1] after 100 trials = 0.54
+M = 100
+y = np.zeros(M)
+estimate = np.zeros(M)
+occur = 0
+​
+for m in range(1, M+1):
+    y[m-1] = np.random.randint(0, 2)
+    occur += (y[m-1] == 1)
+    estimate[m-1] = occur / m
+    print(f"estimated Pr[Y = 1] after {m} trials = {estimate[m-1]}")
+estimated Pr[Y = 1] after 1 trials = 0.0
+estimated Pr[Y = 1] after 2 trials = 0.5
+estimated Pr[Y = 1] after 3 trials = 0.3333333333333333
+estimated Pr[Y = 1] after 4 trials = 0.25
+estimated Pr[Y = 1] after 5 trials = 0.4
+estimated Pr[Y = 1] after 6 trials = 0.5
+estimated Pr[Y = 1] after 7 trials = 0.5714285714285714
+estimated Pr[Y = 1] after 8 trials = 0.5
+estimated Pr[Y = 1] after 9 trials = 0.5555555555555556
+estimated Pr[Y = 1] after 10 trials = 0.5
+estimated Pr[Y = 1] after 11 trials = 0.45454545454545453
+estimated Pr[Y = 1] after 12 trials = 0.5
+estimated Pr[Y = 1] after 13 trials = 0.46153846153846156
+estimated Pr[Y = 1] after 14 trials = 0.42857142857142855
+estimated Pr[Y = 1] after 15 trials = 0.4666666666666667
+estimated Pr[Y = 1] after 16 trials = 0.4375
+estimated Pr[Y = 1] after 17 trials = 0.47058823529411764
+estimated Pr[Y = 1] after 18 trials = 0.4444444444444444
+estimated Pr[Y = 1] after 19 trials = 0.47368421052631576
+estimated Pr[Y = 1] after 20 trials = 0.5
+estimated Pr[Y = 1] after 21 trials = 0.47619047619047616
+estimated Pr[Y = 1] after 22 trials = 0.5
+estimated Pr[Y = 1] after 23 trials = 0.4782608695652174
+estimated Pr[Y = 1] after 24 trials = 0.4583333333333333
+estimated Pr[Y = 1] after 25 trials = 0.44
+estimated Pr[Y = 1] after 26 trials = 0.46153846153846156
+estimated Pr[Y = 1] after 27 trials = 0.48148148148148145
+estimated Pr[Y = 1] after 28 trials = 0.5
+estimated Pr[Y = 1] after 29 trials = 0.4827586206896552
+estimated Pr[Y = 1] after 30 trials = 0.4666666666666667
+estimated Pr[Y = 1] after 31 trials = 0.45161290322580644
+estimated Pr[Y = 1] after 32 trials = 0.46875
+estimated Pr[Y = 1] after 33 trials = 0.45454545454545453
+estimated Pr[Y = 1] after 34 trials = 0.47058823529411764
+estimated Pr[Y = 1] after 35 trials = 0.4857142857142857
+estimated Pr[Y = 1] after 36 trials = 0.5
+estimated Pr[Y = 1] after 37 trials = 0.5135135135135135
+estimated Pr[Y = 1] after 38 trials = 0.5263157894736842
+estimated Pr[Y = 1] after 39 trials = 0.5128205128205128
+estimated Pr[Y = 1] after 40 trials = 0.5
+estimated Pr[Y = 1] after 41 trials = 0.4878048780487805
+estimated Pr[Y = 1] after 42 trials = 0.47619047619047616
+estimated Pr[Y = 1] after 43 trials = 0.46511627906976744
+estimated Pr[Y = 1] after 44 trials = 0.4772727272727273
+estimated Pr[Y = 1] after 45 trials = 0.4888888888888889
+estimated Pr[Y = 1] after 46 trials = 0.5
+estimated Pr[Y = 1] after 47 trials = 0.5106382978723404
+estimated Pr[Y = 1] after 48 trials = 0.5
+estimated Pr[Y = 1] after 49 trials = 0.4897959183673469
+estimated Pr[Y = 1] after 50 trials = 0.48
+estimated Pr[Y = 1] after 51 trials = 0.47058823529411764
+estimated Pr[Y = 1] after 52 trials = 0.46153846153846156
+estimated Pr[Y = 1] after 53 trials = 0.4716981132075472
+estimated Pr[Y = 1] after 54 trials = 0.48148148148148145
+estimated Pr[Y = 1] after 55 trials = 0.4909090909090909
+estimated Pr[Y = 1] after 56 trials = 0.48214285714285715
+estimated Pr[Y = 1] after 57 trials = 0.47368421052631576
+estimated Pr[Y = 1] after 58 trials = 0.4827586206896552
+estimated Pr[Y = 1] after 59 trials = 0.4745762711864407
+estimated Pr[Y = 1] after 60 trials = 0.48333333333333334
+estimated Pr[Y = 1] after 61 trials = 0.47540983606557374
+estimated Pr[Y = 1] after 62 trials = 0.4838709677419355
+estimated Pr[Y = 1] after 63 trials = 0.49206349206349204
+estimated Pr[Y = 1] after 64 trials = 0.484375
+estimated Pr[Y = 1] after 65 trials = 0.47692307692307695
+estimated Pr[Y = 1] after 66 trials = 0.4696969696969697
+estimated Pr[Y = 1] after 67 trials = 0.47761194029850745
+estimated Pr[Y = 1] after 68 trials = 0.4852941176470588
+estimated Pr[Y = 1] after 69 trials = 0.4927536231884058
+estimated Pr[Y = 1] after 70 trials = 0.4857142857142857
+estimated Pr[Y = 1] after 71 trials = 0.4788732394366197
+estimated Pr[Y = 1] after 72 trials = 0.4722222222222222
+estimated Pr[Y = 1] after 73 trials = 0.4794520547945205
+estimated Pr[Y = 1] after 74 trials = 0.4864864864864865
+estimated Pr[Y = 1] after 75 trials = 0.48
+estimated Pr[Y = 1] after 76 trials = 0.4868421052631579
+estimated Pr[Y = 1] after 77 trials = 0.4935064935064935
+estimated Pr[Y = 1] after 78 trials = 0.5
+estimated Pr[Y = 1] after 79 trials = 0.5063291139240507
+estimated Pr[Y = 1] after 80 trials = 0.5
+estimated Pr[Y = 1] after 81 trials = 0.5061728395061729
+estimated Pr[Y = 1] after 82 trials = 0.5121951219512195
+estimated Pr[Y = 1] after 83 trials = 0.5180722891566265
+estimated Pr[Y = 1] after 84 trials = 0.5238095238095238
+estimated Pr[Y = 1] after 85 trials = 0.5294117647058824
+estimated Pr[Y = 1] after 86 trials = 0.5232558139534884
+estimated Pr[Y = 1] after 87 trials = 0.5172413793103449
+estimated Pr[Y = 1] after 88 trials = 0.5113636363636364
+estimated Pr[Y = 1] after 89 trials = 0.5168539325842697
+estimated Pr[Y = 1] after 90 trials = 0.5111111111111111
+estimated Pr[Y = 1] after 91 trials = 0.5164835164835165
+estimated Pr[Y = 1] after 92 trials = 0.5217391304347826
+estimated Pr[Y = 1] after 93 trials = 0.5161290322580645
+estimated Pr[Y = 1] after 94 trials = 0.5212765957446809
+estimated Pr[Y = 1] after 95 trials = 0.5157894736842106
+estimated Pr[Y = 1] after 96 trials = 0.5208333333333334
+estimated Pr[Y = 1] after 97 trials = 0.5154639175257731
+estimated Pr[Y = 1] after 98 trials = 0.5102040816326531
+estimated Pr[Y = 1] after 99 trials = 0.5151515151515151
+estimated Pr[Y = 1] after 100 trials = 0.51
+```
+{: .output}
 
 Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value.
 ```
@@ -650,7 +1059,7 @@ abs_err_plot
 
 
 
-```{r}
+```
 set.seed(1234)
 M_max <- 1e6
 J <- 300
@@ -719,7 +1128,7 @@ log_abs_err_plot
 
 We can read two points $$(x_1, y_1)$$ and $$(x_2, y_2)$$ off of the graph for $$x_1 = 10\,000$$ and $$x_2 = 100\,000$$ as
 
-```{r}
+```
 printf("x[1], y[1] = %7.f, %6.5f\nx[2], y[2] = %7.f, %6.5f",
        Ms[3], quant_68[3],
        Ms[5], quant_68[5])
@@ -727,7 +1136,7 @@ printf("x[1], y[1] = %7.f, %6.5f\nx[2], y[2] = %7.f, %6.5f",
 
 which gives us the following values on the log scale
 
-```{r}
+```
 printf("log x[1], log y[1] = %5.2f, %4.2f\nlog x[2], log y[2] = %5.2f, %4.2f",
        log(Ms[3]), log(quant_68[3]),
        log(Ms[5]), log(quant_68[5]))
@@ -735,7 +1144,7 @@ printf("log x[1], log y[1] = %5.2f, %4.2f\nlog x[2], log y[2] = %5.2f, %4.2f",
 
 Using the log scale values, the estimated slope of the reduction in quantile bounds is
 
-```{r}
+```
 printf("estimated slope\n(log y[2] - log y[1])\n / (log x[2] - log x[1])  =  %3.2f",
        (log(quant_68[5]) - log(quant_68[3])) / (log(Ms[5]) - log(Ms[3])) )
 ```
