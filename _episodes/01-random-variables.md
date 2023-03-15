@@ -81,15 +81,21 @@ statistical inference.
 An alternative way the world could be, that is, a *possible world*,
 will determine the value of every random variable. The collection of
 all such possible worlds is called the *sample space*.^[The sample
-space conventionally written as $$\Omega$$, the capitalized form of the
+space conventionally written as 
+$$
+\Omega
+$$, the capitalized form of the
 last letter in the Greek alphabet.]  The sample space may be
 conceptualized as an urn containing a ball for each possible way the
 world can be.  On each ball is written the value of every random
 variable.^[Formally, a random variable $$X$$ can be represented as a
 function from the sample space to a real value, i.e., $$X:\Omega
 \rightarrow \mathbb$$. For each possible world $$\omega \in \Omega$$,
-the variable $$X$$ takes on a specific value $$X(\omega) \in
-\mathbb$$.]
+the variable $$X$$ takes on a specific value 
+$$
+X(\omega) \in
+\mathbb
+$$.]
 
 Now consider the event $$Y = 0$$, in which our coin flip lands tails. In
 some worlds, the event occurs (i.e., $$0$$ is the value recorded for
@@ -194,8 +200,6 @@ pseudorandom number generator produces.  For instance, contrast the program
 random.seed(1234)
 for n in range(10):
     print(random.randint(0, 1)')
-
-
 for n in range(10):
     print(random.randint(0, 1))
 ```
@@ -215,7 +219,6 @@ with the program
 random.seed(1234)
 for n in range(10):
     print(random.randint(0, 1)')
-
 random.seed(1234)
 for n in range(10):
     print(random.randint(0, 1))
@@ -271,7 +274,7 @@ for m in range(1, M+1):
 estimate = occur / M
 print(f"estimated Pr[Y = 1] = {estimate}")
 ```
-{: .python-language}
+{: .language-python}
 
 The equality operator is written as `==`, as in the condition `y[m] ==
 1` to distinguish it from the assignment statement `y[m] = 1`, which
@@ -288,7 +291,7 @@ occur = sum([1 for i in y if i == 1])
 estimate = occur / M
 print(f"estimated Pr[Y = 1] = {estimate}")
 ```
-{: .python-language}
+{: .language-python}
 
 A condition such as `y == 1` on a sequence returns a sequence of the
 same length with value 1 in positions where the condition is true. For
@@ -319,7 +322,7 @@ for n in range(M):
     print(y_sim[n], end=' ')
 print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
 ```
-{: .python-language}
+{: .language-python}
 
 Let's try that a few more times.
 
@@ -332,7 +335,7 @@ for k in range(1, 11):
         print(y_sim[n], end=' ')
     print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
 ```
-{: .python-language}
+{: .language-python}
 
 ```
 1 1 0 0 0 1 1 1 0 0 estimated Pr[Y = 1] = 0.5
@@ -358,7 +361,7 @@ for n in range(M):
     print(y_sim[n], end=' ')
 print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
 ```
-{: .python-language}
+{: .language-python}
 
 ```
 0 0 0 0 0 1 0 0 0 0 1 0 0 1 1 0 0 0 1 1 0 0 1 1 1 1 0 1 1 1 0 0 0 0 1 0 0 0 1 0 0 0 0 1 1 1 1 0 1 0 1 1 0 1 0 1 0 0 0 1 0 1 1 1 1 1 0 0 0 1 1 0 0 1 0 0 1 1 1 1 1 1 1 1 0 0 1 0 1 1 0 0 1 1 1 1 0 0 0 0 
@@ -375,7 +378,7 @@ for k in range(1, 11):
     y_sim = np.random.binomial(1, 0.5, M)
     print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
 ```
-{: .python-language}
+{: .language-python}
 
 ```
 estimated Pr[Y = 1] = 0.52
@@ -400,7 +403,7 @@ for k in range(1, 11):
     y_sim = np.random.binomial(1, 0.5, M)
     print(f"estimated Pr[Y = 1] = {np.sum(y_sim) / M}")
 ```
-{: .python-language}
+{: .language-python}
 
 ```
 estimated Pr[Y = 1] = 0.5074
@@ -451,7 +454,7 @@ for m in range(1, M+1):
     estimate[m-1] = occur / m
     print(f"estimated Pr[Y = 1] after {m} trials = {estimate[m-1]}")
 ```
-{: .python-language}
+{: .language-python}
 
 ```
 estimated Pr[Y = 1] after 1 trials = 0.0
@@ -575,7 +578,7 @@ for m in range(1, M+1):
     estimate[m-1] = occur / m
     print(f"estimated Pr[Y = 1] after {m} trials = {estimate[m-1]}")
 ```
-{: .python-language}
+{: .language-python}
 
 ```
 estimated Pr[Y = 1] after 1 trials = 0.0
