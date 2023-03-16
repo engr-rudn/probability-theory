@@ -614,7 +614,7 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   ggtheme_tufte()
 plot
 ```
-{: language-r}
+{: .language-r}
 
 ![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
 
@@ -635,7 +635,7 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   ggtheme_tufte()
 plot
 ```
-{: language-r}
+{: .language-r}
 
 ![](../images/monte_carlo_estimate_of_probability_that_a_coin_lands.jpg)
 
@@ -684,7 +684,7 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
     ggtheme_tufte()
 pr_Y_eq_1_plot
 ```
-{: language-r}
+{: .language-r}
 
 ![](../images/plot_of_coin_flips.jpg)
 
@@ -722,7 +722,7 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
     ggtheme_tufte()
 pr_Y_eq_1_plot
 ```
-{: language-r}
+{: .language-r}
 
 ![](../images/plot_of_coin_flips-2.jpg)
 
@@ -877,7 +877,7 @@ abs_err_plot <-
   ggtheme_tufte()
 abs_err_plot
 ```
-{: language-r}
+{: .language-r}
 
 ![](../images/plot_of_absolute_error_for_coin_flips.jpg)
 
@@ -923,7 +923,7 @@ draws.
 
 Absolute error versus number of simulation draws for 100 simulated sequences of $$M = 1,000,000$$ draws. The blue line is at the 68 percent quantile and the red line at the 95 percent quantile of these draws.  The relationship between the log number of draws and log error is revealed to be linear.
 
-```{r}
+```
 
 #   commented out bits plot the clt version
 #   geom_line(data = data.frame(x = c(1e4, 1e6),
@@ -956,6 +956,7 @@ log_abs_err_plot <- ggplot(df2, aes(x = M, y = err_hat_E_Y + fudge, group=r)) +
   ggtheme_tufte()
 log_abs_err_plot
 ```
+{: .language-r}
 
 ![](../images/plot_of_absolute_error_for_coin_flips_vs_no_of_simulations.jpg)
 
