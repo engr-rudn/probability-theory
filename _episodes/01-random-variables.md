@@ -923,7 +923,7 @@ draws.
 
 Absolute error versus number of simulation draws for 100 simulated sequences of $$M = 1,000,000$$ draws. The blue line is at the 68 percent quantile and the red line at the 95 percent quantile of these draws.  The relationship between the log number of draws and log error is revealed to be linear.
 
-```
+```{r}
 #   commented out bits plot the clt version
 #   geom_line(data = data.frame(x = c(1e4, 1e6),
 #                               y = 2 * c(.5 / sqrt(1e4), .5 / sqrt(1e6))),
