@@ -597,7 +597,7 @@ plt.show()
 
 ![](../images/monte_carlo_estimate_of_probability.jpg)
 
-<!--  -->![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
+
 
 Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value.
 ```
@@ -614,6 +614,8 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   ggtheme_tufte()
 plot
 ```
+
+![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
 
 The linear scale of the previous plot obscures the behavior of the estimates.  Consider instead a plot with the $$x$$-axis on the logarithmic scale.
 
