@@ -594,7 +594,9 @@ sns.set_theme(style='ticks')
 plt.show()
 ```
 {: .language-python}
+
 ![](../images/monte_carlo_estimate_of_probability.jpg)
+
 <!--  -->![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
 
 Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value.
