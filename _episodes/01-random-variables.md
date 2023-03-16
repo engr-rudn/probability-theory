@@ -594,13 +594,9 @@ sns.set_theme(style='ticks')
 plt.show()
 ```
 {: .language-python}
+![](../images/monte_carlo_estimate_of_probability.jpg)
+<!--  -->![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
 
-```
-![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
-```
-{: .output}
-![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
-![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
 Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value.
 ```
 plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
@@ -634,6 +630,8 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   ggtheme_tufte()
 plot
 ```
+
+![](../images/monte_carlo_estimate_of_probability_that_a_coin_lands.jpg)
 
 With a log-scaled $$x$$-axis, the values between 1 and 10 are plotted
 with the same width as the values between $$10\,000$$ and $$100\,000$$;
@@ -680,6 +678,9 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
     ggtheme_tufte()
 pr_Y_eq_1_plot
 ```
+
+![](../images/plot_of_coin_flips.jpg)
+
 Continuing where the previous plot left off, each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips.  The values on the $$x$$ axis is one hundred times larger than in the previous plot, and the scale of the $$y$$-axis is one tenth as large.  The trend in error reduction appears the same at the larger scale.
 
 ```
@@ -714,6 +715,8 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
     ggtheme_tufte()
 pr_Y_eq_1_plot
 ```
+
+![](../images/plot_of_coin_flips-2.jpg)
 
 The *law of large numbers*^[Which technically comes in a strong and
 weak form.] says roughly that as the number of simulated values grows,
@@ -868,34 +871,43 @@ abs_err_plot
 ```
 
 
+![](../images/plot_of_absolute_error_for_coin_flips.jpg)
 
 ```
-set.seed(1234)
-M_max <- 1e6
-J <- 300
-Ms <- 10^((6:12) / 2)
-N <- length(Ms)
-ys <- matrix(NA, N, J)
-for (j in 1:J) {
-  z <- rbinom(M_max, 1, 0.5)
-  for (n in 1:N) {
-    ys[n, j] <- abs(mean(z[1:Ms[n]]) - 0.5)
-  }
-}
-mean <- rep(NA, N)
-sd <- rep(NA, N)
-quant_68 <- rep(NA, N)
-quant_95 <- rep(NA, N)
-sd <- rep(NA, N)
-sixty_eight_pct = pnorm(1) - pnorm(-1)
-ninety_five_pct = pnorm(2) - pnorm(-2)
-for (n in 1:N) {
-  mean[n] <- mean(ys[n, ])
-  sd[n] <- sd(ys[n, ])
-  quant_68[n] <- quantile(ys[n, ], sixty_eight_pct)
-  quant_95[n] <- quantile(ys[n, ], ninety_five_pct)
-}
+import numpy as np
+from scipy.stats import norm
+
+np.random.seed(1234)
+
+M_max = int(1e6)
+J = 300
+Ms = 10 ** (np.arange(6, 13, 0.5) / 2)
+N = len(Ms)
+ys = np.empty((N, J))
+
+for j in range(J):
+    z = np.random.binomial(1, 0.5, M_max)
+    for n in range(N):
+        ys[n, j] = abs(np.mean(z[:int(Ms[n])]) - 0.5)
+
+mean = np.empty(N)
+sd = np.empty(N)
+quant_68 = np.empty(N)
+quant_95 = np.empty(N)
+
+sixty_eight_pct = norm.cdf(1) - norm.cdf(-1)
+ninety_five_pct = norm.cdf(2) - norm.cdf(-2)
+
+for n in range(N):
+    mean[n] = np.mean(ys[n, :])
+    sd[n] = np.std(ys[n, :])
+    quant_68[n] = np.quantile(ys[n, :], sixty_eight_pct)
+    quant_95[n] = np.quantile(ys[n, :], ninety_five_pct)
+
 ```
+{: .language-python}
+
+
 
 Plotting both the number of simulations and the absolute error on the
 log scale reveals the rate at which the error decreases with more
@@ -936,28 +948,54 @@ log_abs_err_plot <- ggplot(df2, aes(x = M, y = err_hat_E_Y + fudge, group=r)) +
 log_abs_err_plot
 ```
 
+![](../images/plot_of_absolute_error_for_coin_flips_vs_no_of_simulations.jpg)
+
 We can read two points $$(x_1, y_1)$$ and $$(x_2, y_2)$$ off of the graph for $$x_1 = 10\,000$$ and $$x_2 = 100\,000$$ as
 
 ```
-printf("x[1], y[1] = %7.f, %6.5f\nx[2], y[2] = %7.f, %6.5f",
-       Ms[3], quant_68[3],
-       Ms[5], quant_68[5])
+print("x[1], y[1] = %7.f, %6.5f\nx[2], y[2] = %7.f, %6.5f" % (
+        Ms[3], quant_68[3],
+        Ms[5], quant_68[5]))
 ```
+{: .language-python}
+
+~~~
+x[1], y[1] =    5623, 0.00685
+x[2], y[2] =   17783, 0.00411
+~~~  
+{: .output}
 
 which gives us the following values on the log scale
 
 ```
-printf("log x[1], log y[1] = %5.2f, %4.2f\nlog x[2], log y[2] = %5.2f, %4.2f",
-       log(Ms[3]), log(quant_68[3]),
-       log(Ms[5]), log(quant_68[5]))
+import math
+
+print(f"log x[1], log y[1] = {math.log(Ms[3]):5.2f}, {math.log(quant_68[3]):4.2f}\nlog x[2], log y[2] = {math.log(Ms[5]):5.2f}, {math.log(quant_68[5]):4.2f}")
+
+
 ```
+{: .language-python}
+
+~~~
+log x[1], log y[1] =  8.63, -4.98
+log x[2], log y[2] =  9.79, -5.49
+~~~  
+{: .output}
 
 Using the log scale values, the estimated slope of the reduction in quantile bounds is
 
 ```
-printf("estimated slope\n(log y[2] - log y[1])\n / (log x[2] - log x[1])  =  %3.2f",
-       (log(quant_68[5]) - log(quant_68[3])) / (log(Ms[5]) - log(Ms[3])) )
+print(f"estimated slope\n(log y[2] - log y[1])\n / (log x[2] - log x[1])  =  {(math.log(quant_68[5]) - math.log(quant_68[3])) / (math.log(Ms[5]) - math.log(Ms[3])) :3.2f}")
+
 ```
+{: .language-python}
+
+~~~
+estimated slope
+(log y[2] - log y[1])
+ / (log x[2] - log x[1])  =  -0.44
+~~~  
+{: .output}
 
 If we let $$\epsilon_M$$ be the value of one of the quantile lines at
 $$M$$ simulation draws, the linear relationship plotted in the figures
