@@ -614,6 +614,7 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   ggtheme_tufte()
 plot
 ```
+{: language-r}
 
 ![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
 
@@ -634,6 +635,7 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   ggtheme_tufte()
 plot
 ```
+{: language-r}
 
 ![](../images/monte_carlo_estimate_of_probability_that_a_coin_lands.jpg)
 
@@ -682,6 +684,7 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
     ggtheme_tufte()
 pr_Y_eq_1_plot
 ```
+{: language-r}
 
 ![](../images/plot_of_coin_flips.jpg)
 
@@ -719,6 +722,7 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
     ggtheme_tufte()
 pr_Y_eq_1_plot
 ```
+{: language-r}
 
 ![](../images/plot_of_coin_flips-2.jpg)
 
@@ -873,7 +877,7 @@ abs_err_plot <-
   ggtheme_tufte()
 abs_err_plot
 ```
-
+{: language-r}
 
 ![](../images/plot_of_absolute_error_for_coin_flips.jpg)
 
