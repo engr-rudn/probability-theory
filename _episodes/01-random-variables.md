@@ -95,12 +95,17 @@ $$X:
 \rightarrow \mathbb
 $$. 
 
+$$X:
+\Omega
+\rightarrow \mathbb{R}
+$$. 
+
 For each possible world $$\omega \in \Omega$$,
 the variable $$X$$ takes on a specific value 
 
 $$
 X(\omega) \in
-\mathbb
+\mathbb{R}
 $$.]
 
 Now consider the event $$Y = 0$$, in which our coin flip lands tails. In
