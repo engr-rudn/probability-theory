@@ -92,13 +92,9 @@ variable.^[Formally, a random variable $$X$$ can be represented as a
 function from the sample space to a real value, i.e., 
 $$X:
 \Omega
-\rightarrow \mathbb
-$$. 
-
-$$X:
-\Omega
 \rightarrow \mathbb{R}
 $$. 
+
 
 For each possible world $$\omega \in \Omega$$,
 the variable $$X$$ takes on a specific value 
