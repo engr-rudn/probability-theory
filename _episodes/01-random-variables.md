@@ -89,8 +89,11 @@ last letter in the Greek alphabet.]  The sample space may be
 conceptualized as an urn containing a ball for each possible way the
 world can be.  On each ball is written the value of every random
 variable.^[Formally, a random variable $$X$$ can be represented as a
-function from the sample space to a real value, i.e., $$X:\Omega
-\rightarrow \mathbb$$. For each possible world $$\omega \in \Omega$$,
+function from the sample space to a real value, i.e., 
+$$
+X:\Omega
+\rightarrow \mathbb
+$$. For each possible world $$\omega \in \Omega$$,
 the variable $$X$$ takes on a specific value 
 $$
 X(\omega) \in
