@@ -34,35 +34,39 @@ We can simulate values of $$Z$$ by simulating values of $$Y_1, Y_2, Y_3$$ and
 adding them.
 
 ```
-y1 = uniform_01_rng()
-y2 = uniform_01_rng()
-y3 = uniform_01_rng()
+from random import randint
+
+y1 = randint(0, 1)
+y2 = randint(0, 1)
+y3 = randint(0, 1)
 z = y1 + y2 + y3
-print 'z = ' z
+print("z =", z)
 ```
+{: .language-python}
 
 It is easier and less error prone to collapse similar values into
 arrays and operate on the arrays collectively, or with loops if
 necessary.
 
 ```
-for (n in 1:3)
-  y[n] = uniform_01_rng()
+y = []
+for n in range(1, 4):
+    y.append(randint(0, 1))
 z = sum(y)
-print 'z = ' z
+print("z =", z)
 ```
+{: .language-python}
 
 Running this program a few times we get
 
-```{r}
-set.seed(1234)
-sim_z <- function() {
-  y = rbinom(3, 1, 0.5)
-  z = sum(y)
-  printf('z = %d\n', z)
-}
-for (k in 1:5) sim_z()
 ```
+z = 2
+z = 3
+z = 1
+z = 3
+z = 1
+```
+{: .output}
 
 We can use simulation to evaluate the probability of an outcome that
 combines multiple random variables. For example, to evaluate
@@ -73,13 +77,14 @@ which is defined to be
 $$sum(y[m, ]) = y[m, 1] + ... + y[m, N],$$ where `N` is the number of entries in row `m` of the variable `y`.]
 
 ```
-for (m in 1:M)
-  for (n in 1:3)
-    y[m, n] = uniform_01_rng()
-  z[m] = sum(y[m, ])
-Pr_is_two = sum(z == 2) / M
+M = 10000  # Define the value of M
+y = [[randint(0, 1) for n in range(3)] for m in range(M)]  # Generate random integers and store them in a 2D list y
+z = [sum(row) for row in y]  # Calculate the sum of each row in y and store them in a list z
+Pr_is_two = sum(z == 2) / M  # Calculate the proportion of elements in z that are equal to 2
+print("Pr_is_two =", Pr_is_two)
 ```
-
+{: .language-python}
+	
 As in our other probability estimates, we simulate the variable of
 interest $$Z$$ a total of $$M$$ times, yielding $$z^{(1)}, \ldots,
 z^{(m)}$$.  Here, that requires simulating $$y_1^{(m)}, y_2^{(m)},
@@ -87,49 +92,97 @@ y_3^{(m)}$$ and adding them for each $$z^{(m)}$$. We then just count the
 number of times `Z` is simulated to be equal to 2 and divide by the
 number of simulations.
 
-Letting $$M = 100\,000$$, and running five times, we get
+Letting $$M = 100,000$$, and running five times, we get
 
-```{r}
-set.seed(1234)
-for (k in 1:5) {
-  M <- 100000
-  is_two <- 0
-  for (m in 1:M)
-    is_two <- is_two + (rbinom(1, 3, 0.5) == 2)
-  printf("Pr[Z == 2] = %4.3f\n", sum(is_two) / M)
-}
+---
+import random
+M = 10000  # Define the value of M
+random.seed(1234)
+for i in range(5):
+    y = [[randint(0, 1) for n in range(3)] for m in range(M)]  # Generate random integers and store them in a 2D list y
+    z = [sum(row) for row in y]  # Calculate the sum of each row in y and store them in a list z
+    Pr_is_two = sum([1 for i in z if i == 2]) / M  # Calculate the proportion of elements in z that are equal to 2
+    print("Pr_is_two =", Pr_is_two)
+ 
+---
+{: .language-python}
+
 ```
+Pr_is_two = 0.3709
+Pr_is_two = 0.3712
+Pr_is_two = 0.3707
+Pr_is_two = 0.3721
+Pr_is_two = 0.3725
+```
+{: .output}
 
 Nailing down that final digit is going to require one hundred times as
 many iterations (i.e, $$M = 10,000,000$$ iterations).  Let's see what
 that looks like.
 
-```{r}
-M <- 10000000
-for (k in 1:5)
-  printf("Pr[Z == 2] = %4.3f\n", sum(rbinom(M, 3, 0.5) == 2) / M)
 ```
+from numpy.random import binomial
+M = 10000000
+
+for k in range(1, 6):
+    Z = binomial(3, 0.5, M)
+    Pr_Z_is_2 = sum(Z == 2) / M
+    print(f"Pr[Z == 2] = {Pr_Z_is_2:.3f}")
+```
+{: .language-python}
+
+---
+Pr[Z == 2] = 0.375
+Pr[Z == 2] = 0.375
+Pr[Z == 2] = 0.375
+Pr[Z == 2] = 0.375
+Pr[Z == 2] = 0.375
+
+---
+{: .output}
 
 We can do the same for the other numbers, to get a complete picture of
 taking the probability of each number of heads in separate coin flips.
 
-```{r}
-M <- 10000000
-for (z in 0:3)
-  printf("Pr[Z == %d] = %4.3f\n",
-         z,
-         sum(rbinom(M, 3, 0.5) == z) / M)
 ```
+M = 10000000
+
+for z in range(0, 4):
+    Z = binomial(3, 0.5, M)
+    Pr_Z_is_z = s
+```
+{: .language-python}
+
+---
+Pr[Z == 0] = 0.125
+Pr[Z == 1] = 0.375
+Pr[Z == 2] = 0.375
+Pr[Z == 3] = 0.125
+
+---
+{: .output}
 
 What if we flip four coins instead of three?
 
-```{r}
-M <- 10000000
-for (z in 0:4)
-  printf("Pr[Z == %d] = %4.3f\n",
-         z,
-         sum(rbinom(M, 4, 0.5) == z) / M)
 ```
+M = 10000000
+
+for z in range(0, 5):
+    Z = binomial(4, 0.5, M)
+    Pr_Z_is_z = sum(Z == z) / M
+    print(f"Pr[Z == {z}] = {Pr_Z_is_z:.3f}")
+```
+{: .language-python}
+
+---
+Pr[Z == 0] = 0.063
+Pr[Z == 1] = 0.250
+Pr[Z == 2] = 0.375
+Pr[Z == 3] = 0.250
+Pr[Z == 4] = 0.063
+
+---
+{: .output}
 
 ## Discrete random variables
 
@@ -214,24 +267,30 @@ proportional to the frequency of that outcome.
 Plot of $$M = 100,000$$ simulations of the probability mass function of a random variable defined as the number of heads in ten specific coin flips.
 
 ```
+import numpy as np
+import matplotlib.pyplot as plt
 
-set.seed(1234)
-M <- 100000
-u <- rbinom(M, 10, 0.5)
-x <- 0:10
-y <- rep(NA, 11)
-for (n in 0:10)
-  y[n + 1] <- sum(u == n)
-bar_plot <-
-  ggplot(data.frame(Z = x, count = y), aes(x = Z, y = count)) +
-  geom_bar(stat = "identity", colour = "black", fill="#F8F8F0") +
-  scale_y_continuous(breaks = c(0, 10000, 20000, 30000), labels =
-  c(0, 10000, 20000, 30000)) +
-  scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10),
-                     labels = c(0, 2, 4, 6, 8, 10)) +
-  ggtheme_tufte()
-bar_plot
+np.random.seed(1234)
+
+M = 100000
+u = np.random.binomial(10, 0.5, M)
+x = np.arange(0, 11)
+y = np.zeros(11)
+
+for n in range(0, 11):
+    y[n] = np.sum(u == n)
+
+plt.bar(x, y, color='#F8F8F0', edgecolor='black')
+plt.xticks(np.arange(0, 11, 2), labels=['0', '2', '4', '6', '8', '10'])
+plt.yticks(np.arange(0, 35000, 10000), labels=['0', '10000', '20000', '30000'])
+plt.xlabel('Z')
+plt.ylabel('count')
+plt.show()
+
 ```
+{: .language-python}
+
+![](../images/chapter-2/bar_chart_binomial.jpg)
 
 The actual frequencies are not relevant, only the relative sizes.
 A simple probability estimate from simulation provides a probability
@@ -244,28 +303,30 @@ bins grows.
 Plot of $$M = 1,000,000$$ simulations of a variable $$Z$$ representing the number of heads in $$N$$ coin flips.  Each plot represents a different $$N$$.  Because the bars are the same width and the $$x$$ axes are scaled to the same range in all plots, the total length of all bars laid end to end is the same in each plot;  similarly, the total area of the bars in each plot is the same.
 
 ```
-set.seed(1234)
-df <- data.frame()
-for (N in c(5, 10, 15, 20, 25, 30)) {
-  M <- 1000000
-  u <- rbinom(M, N, 0.5)
-  x <- 0:N
-  y <- rep(NA, N + 1)
-  for (n in 0:N)
-    y[n + 1] <- sum(u == n)
-  df <- rbind(df, list(N = rep(N, N + 1), Z = x, count = y))
-}
-bar_plot <-
-  ggplot(df, aes(x = Z, y = count)) +
-  geom_bar(stat = "identity", colour = "black", fill = "#F8F8F0") +
-  facet_wrap("N", labeller = labeller(N = label_both)) +
-  scale_x_continuous(breaks = c(0, 10, 20, 30), labels = c(0, 10, 20, 30)) +
-  scale_y_continuous(breaks = c(), labels = c()) +
-  ggtheme_tufte() +
-  theme(panel.spacing.x = unit(4, "lines")) +
-  theme(panel.spacing.y = unit(2, "lines"))
-bar_plot
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+np.random.seed(1234)
+df = pd.DataFrame()
+for N in [5, 10, 15, 20, 25, 30]:
+    M = 1000000
+    u = np.random.binomial(N, 0.5, size=M)
+    x = np.arange(N+1)
+    y = np.array([np.sum(u==n) for n in x])
+    df = df.append(pd.DataFrame({'N': np.repeat(N, N+1),
+                                  'Z': x,
+                                  'count': y}))
+
+bar_plot = sns.catplot(data=df, x='Z', y='count', kind='bar',
+                       col='N', col_wrap=3, palette='Blues_d')
+bar_plot.set_axis_labels('Z', 'Count')
+bar_plot.set_xticklabels([str(i) if i%10==0 else '' for i in x])
+plt.show()
 ```
+
+![](../images/chapter-2/multiple_bar_chart_binomial.jpg)
 
 ## Dice
 
@@ -283,7 +344,7 @@ p_Y(y) \ = \
 \end{cases}
 $$
 
-Games like *Monopoly* use a pair of six-sided dice and consider the sum of the results. That is, $$Y_1$$ and $$Y_2$$ are fair six-sided die rolls and $$Z = Y_1 + Y_2$$ is the result. Games like *Dungeons \& Dragons* use a trio of six-sided dice and consider the sum of the results. In that scenario, $$Y_1, Y_2, Y_3$$ are the results of fair six-sided die rolls and $$Z = Y_1 + Y_2 + Y_3$$. Dungeons and Dragons also uses four six-sided die of which the best 3 are summed to produce a result. Let's simulate some of these approaches and see what the results look like based on $$M = 100\,000$$ simulations.^[The simulations are identical to before, only using `1:6` in the range of uniform variables.]
+Games like *Monopoly* use a pair of six-sided dice and consider the sum of the results. That is, $$Y_1$$ and $$Y_2$$ are fair six-sided die rolls and $$Z = Y_1 + Y_2$$ is the result. Games like *Dungeons \& Dragons* use a trio of six-sided dice and consider the sum of the results. In that scenario, $$Y_1, Y_2, Y_3$$ are the results of fair six-sided die rolls and $$Z = Y_1 + Y_2 + Y_3$$. Dungeons and Dragons also uses four six-sided die of which the best 3 are summed to produce a result. Let's simulate some of these approaches and see what the results look like based on $$M = 100,0000$$ simulations.^[The simulations are identical to before, only using `1:6` in the range of uniform variables.]
 Estimated $$p_Y(y)$$ for case of $$Y$$ being the sum of three six-sided dice (3d6) or the sum of the highest three of four six-sided dice (3 of 4d6).
 
 ```
@@ -325,7 +386,7 @@ among the five Platonic solids.] The fifth edition of the game
 introduced the notion of *advantage*, where two 20-sided dice are
 rolled and the higher result retained, as well as *disadvantage*,
 which retains the lower result of the two dice. Here's a simulation
-using $$M = 100\,000$$. The counts are converted to estimated
+using $$M = 100,000$$. The counts are converted to estimated
 probabilities on the vertical axis in the usual way by dividing by
 $$M$$.
 
@@ -474,7 +535,7 @@ which the condition holds and dividing by the number of simulations.
 We can plot the cumulative distribution function for the straight
 twenty-sided die roll and the rolls with advantage (best of two rolls)
 or disadvantage (worst of two rolls).  Here's the result using the
-same simulations as in the last plot, with $$M = 100\,000$$.
+same simulations as in the last plot, with $$M = 100,000$$.
 
 Cumulative distribution function for three variables corresponding to rolling a single 20-sided die, or rolling two 20-sided dice and taking the best or worst result.
 ```
@@ -621,7 +682,7 @@ for (m1 in 1:5) {
 It's very hard to discern a pattern here.  There are a lot of zero
 values, but also some large values.  For cases like these, we can use
 a bar plot to plot the values.  This time, we're going to use $$M =
-10\,000$$ to get a better picture of the pattern.
+10,000$$ to get a better picture of the pattern.
 
 Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment.
 
@@ -727,7 +788,7 @@ for (m in 1:M)
 print 'est Pr[U <= 3] = ', sum(leq3) / M
 ```
 
-Let's see what we get with $$M = 100\,000$$,
+Let's see what we get with $$M = 100,000$$,
 
 ```{r}
 set.seed(1234)
@@ -841,7 +902,7 @@ for (m in 1:M)
 print 'Pr[double-six in 24 throws] = ' sum(success) / M
 ```
 
-Let's run that for $$M = 100\,000$$ simulations a few times and see
+Let's run that for $$M = 100,000$$ simulations a few times and see
 what the estimated event probabilities look like.
 
 ```{r}
@@ -860,8 +921,8 @@ for (k in 1:5) {
 
 This shows the result to be around 0.49. The Chevalier de Méré
 should not bet that he'll roll at least one pair of sixes in 24
-throws! To nail down the last digit, we could use $$10\,000\,000$$
-simulations rather than $$100\,000$$. As shown in the previous note,
+throws! To nail down the last digit, we could use $$10,000,000$$
+simulations rather than $$100,000$$. As shown in the previous note,
 calculating the result analytically yields 0.491 to three decimal
 places, which is in agreement with the simulation-based estimates.
 
@@ -924,7 +985,7 @@ for (m in 1:M)
 print 'Pr[draw 2 aces] = ' total / M
 ```
 
-Let's run that with $$M = 10\,000$$, a few
+Let's run that with $$M = 10,000$$, a few
 
 ```{r}
 set.seed(1234)
@@ -938,18 +999,18 @@ for (k in 1:8) {
 ```
 
 Curiously, we are now not getting a single digit of accuracy, even
-with $$10\,000$$ draws.  What happened?
+with $$10,000$$ draws.  What happened?
 
 A fundamental problem with accuracy of simulation-based estimates is
 that rare events are hard to estimate with random draws.  If the event
 of drawing two aces only has a 0.45% chance (roughly 1 in 200) of
 occurring, we need a lot of simulation events to see it often enough
-to get a good estimate of even that first digit.  With $$10\,000$$
+to get a good estimate of even that first digit.  With $$10,000$$
 draws, the number of two-ace draws we expect to see is about 50 if
 they occur at roughly a 1 in 200 hands rate.  We know from prior
 experience that estimating a number with only 50 draws is not going to
 be very accurate.  So what we need to do is increase the number of
-draws.  Let's run that again with $$M = 1\,000\,000$$ draws.
+draws.  Let's run that again with $$M = 1,000,000$$ draws.
 
 ```{r}
 set.seed(1234)
@@ -962,7 +1023,7 @@ for (k in 1:4) {
 }
 ```
 
-Now with an expected $$5\,000$$ occurrences of a two-ace hand, we have a
+Now with an expected $$5,000$$ occurrences of a two-ace hand, we have a
 much better handle on the relative accuracy, having nailed down at
 least the first digit and gotten close with the second digit.
 
