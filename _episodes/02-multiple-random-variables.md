@@ -325,6 +325,7 @@ bar_plot.set_axis_labels('Z', 'Count')
 bar_plot.set_xticklabels([str(i) if i%10==0 else '' for i in x])
 plt.show()
 ```
+{: .language-python}
 
 ![](../images/chapter-2/multiple_bar_chart_binomial.jpg)
 
@@ -348,36 +349,43 @@ Games like *Monopoly* use a pair of six-sided dice and consider the sum of the r
 Estimated $$p_Y(y)$$ for case of $$Y$$ being the sum of three six-sided dice (3d6) or the sum of the highest three of four six-sided dice (3 of 4d6).
 
 ```
-M <- 100000
-three_d6 <- sample(6, size = M, replace=TRUE) +
-            sample(6, size = M, replace=TRUE) +
-            sample(6, size = M, replace=TRUE)
-three_of_4d6 <- rep(NA, M)
-for (m in 1:M)
-  three_of_4d6[m] <- sum(sort(sample(6, size = 4, replace=TRUE))[2:4])
+import numpy as np
+import pandas as pd
+from plotnine import *
 
-tot_3d6 <- rep(NA, 16)
-tot_3_of_4d6 <- rep(NA, 16)
-for (n in 3:18) {
-  tot_3d6[n-2] = sum(three_d6 == n)
-  tot_3_of_4d6[n-2] = sum(three_of_4d6 == n)
-}
+M = 100000
 
-att_dice_df <- data.frame(probability = c(tot_3d6 / M, tot_3_of_4d6 / M),
-                          roll = c(3:18, 3:18),
-                          dice = c(rep("3d6", 16), rep("3 of 4d6", 16)))
-att_dice_plot <-
-  ggplot(att_dice_df, aes(x = roll, y = probability)) +
-  geom_bar(stat = "identity", colour = "black", fill = "#F8F8F0") +
-  facet_wrap("dice", labeller = labeller(dice = label_both)) +
-  scale_x_continuous(name = "y",
-                     breaks = c(3, 6, 9, 12, 15, 18),
-                     labels = c(3, 6, 9, 12, 15, 18)) +
-  scale_y_continuous(name = expression(paste("estimated ", p[Y](y)))) +
-  ggtheme_tufte() +
-  theme(panel.spacing = unit(2, "lines"))
+three_d6 = np.random.randint(1, 7, size=M) + np.random.randint(1, 7, size=M) + np.random.randint(1, 7, size=M)
+
+three_of_4d6 = np.zeros(M)
+for m in range(M):
+    rolls = np.sort(np.random.randint(1, 7, size=4))
+    three_of_4d6[m] = np.sum(rolls[1:])
+
+tot_3d6 = np.zeros(16)
+tot_3_of_4d6 = np.zeros(16)
+for n in range(3, 19):
+    tot_3d6[n - 3] = np.sum(three_d6 == n)
+    tot_3_of_4d6[n - 3] = np.sum(three_of_4d6 == n)
+
+att_dice_df = pd.DataFrame({'probability': np.concatenate([tot_3d6 / M, tot_3_of_4d6 / M]),
+'roll': np.concatenate([np.arange(3, 19), np.arange(3, 19)]),
+'dice': np.concatenate([np.repeat('3d6', 16), np.repeat('3 of 4d6', 16)])})
+
+att_dice_plot = (ggplot(att_dice_df, aes(x='roll', y='probability')) +
+geom_bar(stat='identity', colour='black', fill='#F8F8F0') +
+facet_wrap('dice', labeller=labeller(dice=label_both)) +
+scale_x_continuous(name='y',
+breaks=[3, 6, 9, 12, 15, 18],
+labels=[3, 6, 9, 12, 15, 18]) +
+scale_y_continuous(name="estimated " + "p[Y](y)") +
+ggtitle("Distribution of 3d6 vs. 3 of 4d6 rolls") +
+theme(panel_spacing=2.0))
 att_dice_plot
 ```
+{: .language-python}
+
+![](../images/chapter-2/dice_3d6_vs_3_of_4d6.jpg)
 
 Dungeons and Dragons also uses 20-sided dice.^[In physical games, an
 icosahedral die is used. The icosahedron is a regular polyhedron with
