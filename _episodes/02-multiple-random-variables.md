@@ -1,4 +1,4 @@
-```
+---
 title: "Multiple Random Variables and Probability Functions"
 teaching: 
 exercises:
@@ -7,7 +7,7 @@ objectives:
 
 keypoints:
 
-```
+---
 
 # Multiple Random Variables and Probability Functions
 
