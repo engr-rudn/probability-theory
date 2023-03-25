@@ -1078,22 +1078,37 @@ def is_ace(card):
     return card == 1
 
 M = 10000
-total = 0
 
-for m in range(M):
-    y = draw_cards(2)
-    if is_ace(y[0]) and is_ace(y[1]):
-        total += 1
+import random
 
-	print('Pr[draw 2 aces] =', total / M)
+def draw_cards(n):
+    return [random.randint(1, 13) for i in range(n)]
+
+def is_ace(card):
+    return card == 1
+
+M = 10000
+for i in range(6): # repeat the simulation 6 times
+    total = 0
+    for m in range(M):
+        y = draw_cards(2)
+        if is_ace(y[0]) and is_ace(y[1]):
+            total += 1
+
+    print('Pr[draw 2 aces] =', total / M)
 
 ```
 {: .language-python}
 
-Let's run that with $$M = 10,000$$, a few
+Let's run that with $$M = 10,000$$
 
 ```
-Pr[draw 2 aces] = 0.0058
+Pr[draw 2 aces] = 0.0056
+Pr[draw 2 aces] = 0.0048
+Pr[draw 2 aces] = 0.0051
+Pr[draw 2 aces] = 0.0073
+Pr[draw 2 aces] = 0.0069
+Pr[draw 2 aces] = 0.0059
 ```
 {: .output}
 
@@ -1112,28 +1127,27 @@ be very accurate.  So what we need to do is increase the number of
 draws.  Let's run that again with $$M = 1,000,000$$ draws.
 
 ```
-import numpy as np
+import random
 
-M=1000000
-np.random.seed(1234)
-
+random.seed(1234)
 M = int(1e6)
 
 for k in range(1, 5):
     total = 0
-    for m in range(1, M + 1):
-        total += (np.sum(np.random.randint(1, 53, size=2) >= 49) == 2)
-print(f"Pr[draw 2 aces] = {total/M:.4f}")
+    for m in range(1, M+1):
+        y = random.sample(range(1, 53), k=2)
+        total += sum(card >= 49 for card in y) == 2
+    print(f'Pr[draw 2 aces] = {total/M:.4f}')
 
 ```
 {: .language-python}
 
 ---
 
-Pr[draw 2 aces] = 0.0060
-Pr[draw 2 aces] = 0.0058
-Pr[draw 2 aces] = 0.0059
-Pr[draw 2 aces] = 0.0059
+Pr[draw 2 aces] = 0.0045
+Pr[draw 2 aces] = 0.0046
+Pr[draw 2 aces] = 0.0044
+Pr[draw 2 aces] = 0.0045
 
 ---
 {: .output}
