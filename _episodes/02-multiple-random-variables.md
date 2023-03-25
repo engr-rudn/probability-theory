@@ -659,17 +659,6 @@ ccum_d20_df = pd.DataFrame({
     'dice': np.concatenate((np.repeat("1d20", 20), np.repeat("max 2d20", 20), np.repeat("min 2d20", 20)))
 })
 
-# ccum_d20_plot = (
-#     ggplot(ccum_d20_df, aes(x='roll', y='probability')) +
-#     geom_point() +
-#     facet_wrap('dice', labeller=labeller(dice=label_both)) +
-#     scale_x_continuous(name='y', 
-#                        breaks=[1, 5, 10, 15, 20],
-#                        labels=[1, 5, 10, 15, 20]) +
-#     scale_y_continuous(name='estimated F_Y^C(y)') +
-#     ggtheme_tufte() +
-#     theme(panel_spacing=unit(2, 'lines'))
-# )
 ccum_d20_plot = (
     sns.relplot(data=ccum_d20_df, x='roll', y='probability', kind='line', hue='dice',
                 facet_kws={'margin_titles': True}, col='dice', col_wrap=3)
@@ -701,11 +690,16 @@ intermediate value.  We have also introduced the increment operator
 the left hand side.]
 
 ```
-for (m in 1:M)
-  u[m] = 0
-  while (uniform_01_rng() == 0)
-    u[m] += 1
+import random
+
+M = 10 # replace with the desired value of M
+u = [0] * M
+
+for m in range(M):
+    while random.randint(0, 1) == 0:
+        u[m] += 1
 ```
+{: .language-python}
 
 This looks dangerous!  The body of a while-loop (here `u[m] + 1`) is
 executed iteratively as long as the condition is true.^[If we write
@@ -736,20 +730,33 @@ there's not much chance of running very long at all, much less forever.
 With the concern of non-termination out of the way, let's see what we
 get with $$M = 50$$ simulations of $$U$$.
 
-```{r}
-sim_u <- function() {
-  u <- 0
-  while (rbinom(1, 1, 0.5) == 0)
-    u <- u + 1
-  u
-}
-set.seed(1234)
-for (m1 in 1:5) {
-  for (m2 in 1:10)
-    printf("%4d", sim_u())
-  printf("\n")
-}
 ```
+import random
+
+def sim_u():
+    u = 0
+    while random.randint(0, 1) == 0:
+        u += 1
+    return u
+
+random.seed(1234)
+for m1 in range(1, 6):
+    for m2 in range(1, 11):
+        print(f"{sim_u():4d}", end="")
+    print()
+```
+{. language-python}
+
+---
+
+0   6   4   0   0   5   2   3   1   0
+0   0   2   3   1   0   3   5   2   0
+1   0   2   1   1   1   0   0   0   0
+0   1   1   0   0   0   2   0   2   0
+0   1   2   1   0   2   2   3   0   0
+
+---
+{: .output}
 
 It's very hard to discern a pattern here.  There are a lot of zero
 values, but also some large values.  For cases like these, we can use
@@ -759,24 +766,32 @@ a bar plot to plot the values.  This time, we're going to use $$M =
 Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment.
 
 ```
-set.seed(1234)
-M <- 10000
-u <- rep(NA, M)
-for (m in 1:M)
-  u[m] <- sim_u()
-x <- 0:max(u)
-y <- rep(NA, max(u) + 1)
-for (n in 0:max(u))
-  y[n + 1] <- sum(u == n)
-bar_plot <-
-  ggplot(data.frame(U = x, count = y), aes(x = U, y = count)) +
-  geom_bar(stat = "identity", colour = "black", fill = "#F8F8F0") +
-  scale_x_continuous(breaks = c(0:12), labels = c(0:12)) +
-  scale_y_continuous(breaks = c(1000, 2000, 3000, 4000, 5000),
-                     labels = c(1000, 2000, 3000, 4000, 5000)) +
-  ggtheme_tufte()
-bar_plot
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def sim_u():
+    u = 0
+    while random.randint(0, 1) == 0:
+        u += 1
+    return u
+
+random.seed(1234)
+M = 10000
+u = np.array([sim_u() for m in range(M)])
+x = np.arange(max(u) + 1)
+y = np.array([np.sum(u == n) for n in range(max(u) + 1)])
+
+bar_plot = sns.barplot(x=x, y=y, color="blue")#F8F8F0")
+bar_plot.set(xlabel="U", ylabel="count")
+bar_plot.set(xticks=np.arange(13), xticklabels=np.arange(13))
+bar_plot.set(yticks=[1000, 2000, 3000, 4000, 5000], yticklabels=[1000, 2000, 3000, 4000, 5000])
+plt.show()
 ```
+{: .language-python}
+
+![](../images/chapter-2/frequency_of_outcome.jpg)
 
 The $$x$$-axis represents the value of $$U$$ and the $$y$$-axis the number
 of times that value arose in the simulation.^[Despite $$U$$ having
@@ -794,24 +809,33 @@ Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tai
 
 ```
 
-set.seed(1234)
-M <- 10000
-u <- rep(NA, M)
-for (m in 1:M)
-  u[m] <- sim_u()
-x <- 0:max(u)
-y <- rep(NA, max(u) + 1)
-for (n in 0:max(u))
-  y[n + 1] <- sum(u == n)
-log_bar_plot <-
-  ggplot(data.frame(U = x, count = y), aes(U, count)) +
-  geom_bar(stat = "identity", colour = "black", fill = "#F8F8F0") +
-  scale_x_continuous(breaks = c(0:12), labels = c(0:12)) +
-  scale_y_log10(breaks = c(8, 40, 200, 1000, 5000),
-                labels = c(8, 40, 200, 1000, 5000)) +
-  ggtheme_tufte()
-log_bar_plot
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def sim_u():
+    u = 0
+    while random.randint(0, 1) == 0:
+        u += 1
+    return u
+
+random.seed(1234)
+M = 10000
+u = np.array([sim_u() for m in range(M)])
+x = np.arange(max(u) + 1)
+y = np.array([np.sum(u == n) for n in range(max(u) + 1)])
+
+log_bar_plot = sns.barplot(x=x, y=y, color="blue")#F8F8F0")
+log_bar_plot.set(xlabel="U", ylabel="count")
+log_bar_plot.set(xticks=np.arange(13), xticklabels=np.arange(13))
+log_bar_plot.set(yticks=[8, 40, 200, 1000, 5000], yticklabels=[8, 40, 200, 1000, 5000])
+log_bar_plot.set(yscale="log")
+plt.show()
 ```
+{: .language-python}
+
+![](../images/chapter-2/frequency_of_outcome_in_10000.jpg)
 
 There is a 50% probability that the first toss is heads, yielding a
 sequence of zero tails, and $$U = 0$$.  Each successive number of tails
@@ -853,25 +877,21 @@ random variable $$U$$, simulation may still be used to compute event
 probabilities, such as $$\mbox{Pr}[U \leq 3]$$, by
 
 ```
-for (m in 1:M)
-  u[m] = sim_u()
-  leq3[m] = (u[m] <= 3)
+M = 10000
+u = np.array([sim_u() for m in range(M)])
+leq3 = np.array([u[m] <= 3 for m in range(M)])
 
-print 'est Pr[U <= 3] = ', sum(leq3) / M
+print('est Pr[U <= 3] =', sum(leq3) / M)
+
 ```
+{: .language-python}
 
 Let's see what we get with $$M = 100,000$$,
 
-```{r}
-set.seed(1234)
-M <- 100000
-sum_leq3 <- 0
-for (m in 1:M) {
-  u_m <- sim_u()
-  if (u_m <= 3) sum_leq3 <- sum_leq3 + 1
-}
-printf('est Pr[U <= 3] = %4.3f\n', sum_leq3 / M)
 ```
+est Pr[U <= 3] = 0.9394
+```
+{: .output}
 
 Writing out the analytic answer involves an infinite sum,
 
@@ -965,31 +985,31 @@ consist of a $$2 \times 24$$ collection of values, matching the size of
 $$Y$$.]
 
 ```
-for (m in 1:M)
-  for (k in 1:24)
-    y(m)[1, k] = uniform_rng(1:6)
-    y(m)[2, k] = uniform_rng(1:6)
-    z(m)[k] = y(m)[1, k] + y(m)[2, k]
-  success(m) = (sum(z(m) == 12) > 0)
-print 'Pr[double-six in 24 throws] = ' sum(success) / M
+M = 10000
+success = np.zeros(M, dtype=bool)
+
+for m in range(M):
+    y = np.zeros((2, 24))
+    z = np.zeros(24)
+
+    for k in range(24):
+        y[0, k] = np.random.randint(1, 7)
+        y[1, k] = np.random.randint(1, 7)
+        z[k] = y[0, k] + y[1, k]
+
+    success[m] = np.sum(z == 12) > 0
+
+print('Pr[double-six in 24 throws] =', np.sum(success) / M)
 ```
+{: .language-python}
 
 Let's run that for $$M = 100,000$$ simulations a few times and see
 what the estimated event probabilities look like.
 
-```{r}
-set.seed(1234)
-M <- 1e5
-for (k in 1:5) {
-  successes = 0
-  for (m in 1:M) {
-    z <- sample(6, size = 24, replace = TRUE) +
-         sample(6, size = 24, replace = TRUE)
-    if (sum(z == 12) > 0) successes <- successes + 1
-  }
-  printf('Pr[double-six in 24 throws] = %4.3f\n', successes / M)
-}
 ```
+Pr[double-six in 24 throws] = 0.4932
+```
+{: .output}
 
 This shows the result to be around 0.49. The Chevalier de Méré
 should not bet that he'll roll at least one pair of sixes in 24
@@ -1049,26 +1069,33 @@ $$\frac{3}{51}$$.
 We can verify that with a quick simulation.
 
 ```
+import random
+
+def draw_cards(n):
+    return [random.randint(1, 13) for i in range(n)]
+
+def is_ace(card):
+    return card == 1
+
+M = 10000
 total = 0
-for (m in 1:M)
-  y <- draw_cards(2)
-  if (is_ace(y[1]) && is_ace(y[2]))
-    total += 1
-print 'Pr[draw 2 aces] = ' total / M
+
+for m in range(M):
+    y = draw_cards(2)
+    if is_ace(y[0]) and is_ace(y[1]):
+        total += 1
+
+	print('Pr[draw 2 aces] =', total / M)
+
 ```
+{: .language-python}
 
 Let's run that with $$M = 10,000$$, a few
 
-```{r}
-set.seed(1234)
-M <- 1e4
-for (k in 1:8) {
-  total <- 0
-  for (m in 1:M)
-    total <- total + (sum(sample(52, size = 2) >= 49) == 2)
-  printf('Pr[draw 2 aces] = %5.4f\n',  total / M)
-}
 ```
+Pr[draw 2 aces] = 0.0058
+```
+{: .output}
 
 Curiously, we are now not getting a single digit of accuracy, even
 with $$10,000$$ draws.  What happened?
@@ -1084,16 +1111,32 @@ experience that estimating a number with only 50 draws is not going to
 be very accurate.  So what we need to do is increase the number of
 draws.  Let's run that again with $$M = 1,000,000$$ draws.
 
-```{r}
-set.seed(1234)
-M <- 1e6
-for (k in 1:4) {
-  total <- 0
-  for (m in 1:M)
-    total <- total + (sum(sample(52, size = 2) >= 49) == 2)
-  printf('Pr[draw 2 aces] = %5.4f\n',  total / M)
-}
 ```
+import numpy as np
+
+M=1000000
+np.random.seed(1234)
+
+M = int(1e6)
+
+for k in range(1, 5):
+    total = 0
+    for m in range(1, M + 1):
+        total += (np.sum(np.random.randint(1, 53, size=2) >= 49) == 2)
+print(f"Pr[draw 2 aces] = {total/M:.4f}")
+
+```
+{: .language-python}
+
+---
+
+Pr[draw 2 aces] = 0.0060
+Pr[draw 2 aces] = 0.0058
+Pr[draw 2 aces] = 0.0059
+Pr[draw 2 aces] = 0.0059
+
+---
+{: .output}
 
 Now with an expected $$5,000$$ occurrences of a two-ace hand, we have a
 much better handle on the relative accuracy, having nailed down at
