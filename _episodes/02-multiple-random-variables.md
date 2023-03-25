@@ -684,6 +684,7 @@ ccum_d20_plot
 ```
 {: .language-python}
 
+![](../images/chapter-2/complement_cumulative_distribution.jpg)
 
 ## Infinite discrete random variables
 
