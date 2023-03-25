@@ -679,8 +679,6 @@ ccum_d20_plot = (
     .fig
 )
 
-ccum_d20_plot
-
 ```
 {: .language-python}
 
