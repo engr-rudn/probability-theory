@@ -401,49 +401,55 @@ $$M$$.
 Estimated $$p_Y(y)$$ for case of $$Y$$ being a single twenty-sided die (d20), the higher two twenty-sided die rolls (max 2d20), and the lower of two 20-sided die rolls (min 2d20).
 
 ```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-M <- 100000
-d20 <- sample(20, size = M, replace=TRUE)
-max_2d20 <- rep(NA, M)
-min_2d20 <- rep(NA, M)
-for (m in 1:M) {
-  max_2d20[m] <- max(sample(20, size = 2, replace=TRUE))
-  min_2d20[m] <- min(sample(20, size = 2, replace=TRUE))
-}
+M = 100000
+d20 = np.random.choice(20, size=M, replace=True)
+max_2d20 = np.zeros(M)
+min_2d20 = np.zeros(M)
 
-tot_d20 <- rep(NA, 20)
-tot_max_2d20 <- rep(NA, 20)
-tot_min_2d20 <- rep(NA, 20)
+for m in range(M):
+    max_2d20[m] = max(np.random.choice(20, size=2, replace=True))
+    min_2d20[m] = min(np.random.choice(20, size=2, replace=True))
 
-for (n in 1:20) {
-  tot_d20[n] = sum(d20 == n)
-  tot_max_2d20[n] = sum(max_2d20 == n)
-  tot_min_2d20[n] = sum(min_2d20 == n)
-}
+tot_d20 = np.zeros(20)
+tot_max_2d20 = np.zeros(20)
+tot_min_2d20 = np.zeros(20)
 
-att_d20_df <- data.frame(probability = c(tot_d20 / M,
-                                         tot_max_2d20 / M,
-                                         tot_min_2d20 / M),
-                          roll = c(1:20, 1:20, 1:20),
-                          dice = c(rep("1d20", 20),
-                                   rep("max 2d20", 20),
-                                   rep("min 2d20", 20)))
+for n in range(20):
+    tot_d20[n] = sum(d20 == (n+1))
+    tot_max_2d20[n] = sum(max_2d20 == (n+1))
+    tot_min_2d20[n] = sum(min_2d20 == (n+1))
 
-att_d20_plot <-
-  ggplot(att_d20_df, aes(x = roll, y = probability)) +
-  geom_bar(stat = "identity", colour = "black", fill = "#F8F8F0") +
-  facet_wrap("dice", labeller = labeller(dice = label_both)) +
-  scale_x_continuous(name = "y",
-                     breaks = c(1, 5, 10, 15, 20),
-                     labels = c(1, 5, 10, 15, 20)) +
-  scale_y_continuous(name = expression(paste("estimated ", p[Y](y)))) +
-  ggtheme_tufte() +
-  theme(panel.spacing = unit(2, "lines"))
+att_d20_df = pd.DataFrame({'probability': np.concatenate([tot_d20/M, tot_max_2d20/M, tot_min_2d20/M]),
+                           'roll': np.concatenate([np.arange(1,21), np.arange(1,21), np.arange(1,21)]),
+                           'dice': np.repeat(['1d20', 'max 2d20', 'min 2d20'], 20)})
 
-att_d20_plot
+# create a FacetGrid with 3 columns
+g = sns.FacetGrid(att_d20_df, col='dice', col_wrap=3, height=4, aspect=1)
+
+# plot each histogram using FacetGrid.map()
+g.map(sns.barplot, 'roll', 'probability', color="blue")#F8F8F0")
+
+# set x and y axis labels and titles
+g.set_axis_labels('y', 'estimated $p_Y(y)$')
+g.fig.subplots_adjust(top=0.9)
+g.fig.suptitle('')
+
+# set xticks for each plot
+for ax in g.axes.flat:
+    ax.set_xticks([0, 4, 9, 14, 19])
+    ax.set_xticklabels([1, 5, 10, 15, 20])
+
+plt.show()
+
 ```
+{: .language-python}
 
-
+![](../images/chapter-2/dice--1d20_max-2d20_min-2d20.jpg)
 
 The most likely roll is a 20 when taking the best of two rolls and the
 most likely roll is 1 when taking the worst of two rolls.^[The chance
@@ -547,32 +553,56 @@ same simulations as in the last plot, with $$M = 100,000$$.
 
 Cumulative distribution function for three variables corresponding to rolling a single 20-sided die, or rolling two 20-sided dice and taking the best or worst result.
 ```
-cum_d20 <- cumsum(tot_d20)
-cum_max_2d20 <- cumsum(tot_max_2d20)
-cum_min_2d20 <- cumsum(tot_min_2d20)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-cum_d20_df <- data.frame(probability = c(cum_d20 / M,
-                                         cum_max_2d20 / M,
-                                         cum_min_2d20 / M),
-                          roll = c(1:20, 1:20, 1:20),
-                          dice = c(rep("1d20", 20),
-                                   rep("max 2d20", 20),
-                                   rep("min 2d20", 20)))
+M = 100000
+d20 = np.random.choice(20, size=M, replace=True)
+max_2d20 = np.zeros(M)
+min_2d20 = np.zeros(M)
 
-cum_d20_plot <-
-  ggplot(cum_d20_df, aes(x = roll, y = probability)) +
-  geom_point() +
-  facet_wrap("dice", labeller = labeller(dice = label_both)) +
-  scale_x_continuous(name = "y",
-                     breaks = c(1, 5, 10, 15, 20),
-                     labels = c(1, 5, 10, 15, 20)) +
-  scale_y_continuous(name = expression(paste("estimated ", F[Y](y)))) +
-  ggtheme_tufte() +
-  theme(panel.spacing = unit(2, "lines"))
-cum_d20_plot
+for m in range(M):
+    max_2d20[m] = max(np.random.choice(20, size=2, replace=True))
+    min_2d20[m] = min(np.random.choice(20, size=2, replace=True))
+
+tot_d20 = np.zeros(20)
+tot_max_2d20 = np.zeros(20)
+tot_min_2d20 = np.zeros(20)
+
+for n in range(20):
+    tot_d20[n] = np.sum(d20 == (n+1))
+    tot_max_2d20[n] = np.sum(max_2d20 == (n+1))
+    tot_min_2d20[n] = np.sum(min_2d20 == (n+1))
+
+cum_d20 = np.cumsum(tot_d20)
+cum_max_2d20 = np.cumsum(tot_max_2d20)
+cum_min_2d20 = np.cumsum(tot_min_2d20)
+
+cum_d20_df = pd.DataFrame({
+    'probability': np.concatenate((cum_d20/M, cum_max_2d20/M, cum_min_2d20/M)),
+    'roll': np.concatenate((np.arange(1, 21), np.arange(1, 21), np.arange(1, 21))),
+    'dice': np.concatenate((np.repeat("1d20", 20), np.repeat("max 2d20", 20), np.repeat("min 2d20", 20)))
+})
+
+cum_d20_plot = (
+    sns.relplot(data=cum_d20_df, x='roll', y='probability', kind='line', hue='dice',
+                facet_kws={'margin_titles': True}, col='dice', col_wrap=3)
+    .set(xlabel='y', xticks=[1, 5, 10, 15, 20],
+         xticklabels=[1, 5, 10, 15, 20], ylabel=r'estimated $F_Y(y)$')
+    .set_titles("{col_name}")
+    .fig
+)
+
+plt.show()
+
 ```
+{: .language-python}
 
-** TODO(carpenter): get the right CDF plot and fix aspect ratio. **
+![](../images/chapter-2/cumulative_distribution.jpg)
+
+<!-- ** TODO(carpenter): get the right CDF plot and fix aspect ratio. ** -->
 
 The plot is rendered as a point plot, though this isn't quite sensible
 for discrete distributions---the intermediate values are not real.
