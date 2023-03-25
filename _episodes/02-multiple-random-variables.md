@@ -751,8 +751,8 @@ for m1 in range(1, 6):
 
 0	6	4	0	0	5	2	3	1	0 \\
 0	0	2	3	1	0	3	5	2	0 \\
-1	0	2	1	1	1	0	0	0	0
-0	1	1	0	0	0	2	0	2	0
+1	0	2	1	1	1	0	0	0	0 \\
+0	1	1	0	0	0	2	0	2	0 \\
 0	1	2	1	0	2	2	3	0	0
 
 
@@ -1143,14 +1143,12 @@ for k in range(1, 5):
 ```
 {: .language-python}
 
----
-
+```
 Pr[draw 2 aces] = 0.0045
 Pr[draw 2 aces] = 0.0046
 Pr[draw 2 aces] = 0.0044
 Pr[draw 2 aces] = 0.0045
-
----
+```
 {: .output}
 
 Now with an expected $$5,000$$ occurrences of a two-ace hand, we have a
