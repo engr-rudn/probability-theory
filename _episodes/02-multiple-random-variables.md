@@ -45,6 +45,11 @@ print("z =", z)
 ```
 {: .language-python}
 
+```
+z = 3
+```
+{: .output}
+
 It is easier and less error prone to collapse similar values into
 arrays and operate on the arrays collectively, or with loops if
 necessary.
@@ -86,6 +91,11 @@ print("Pr_is_two =", Pr_is_two)
 ```
 {: .language-python}
 	
+```
+Pr_is_two = 0.3692
+```
+{: .output}
+
 As in our other probability estimates, we simulate the variable of
 interest $$Z$$ a total of $$M$$ times, yielding $$z^{(1)}, \ldots,
 z^{(m)}$$.  Here, that requires simulating $$y_1^{(m)}, y_2^{(m)},
