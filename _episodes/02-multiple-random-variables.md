@@ -626,28 +626,63 @@ distribution function.
 Complementary cumulative distributions for a single 20-sided die, the best of two dice, and the worst of two dice.
 
 ```
-ccum_d20_df <- data.frame(probability = c(1 - cum_d20 / M,
-                                          1 - cum_max_2d20 / M,
-                                          1 - cum_min_2d20 / M),
-                          roll = c(1:20, 1:20, 1:20),
-                          dice = c(rep("1d20", 20),
-                                   rep("max 2d20", 20),
-                                   rep("min 2d20", 20)))
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-ccum_d20_plot <-
-  ggplot(ccum_d20_df, aes(x = roll, y = probability)) +
-  geom_point() +
-  facet_wrap("dice", labeller = labeller(dice = label_both)) +
-  scale_x_continuous(name = "y",
-                     breaks = c(1, 5, 10, 15, 20),
-                     labels = c(1, 5, 10, 15, 20)) +
-  scale_y_continuous(name = expression(paste("estimated ",
-                                             F[Y]^"C", "(y)"))) +
-  ggtheme_tufte() +
-  theme(panel.spacing = unit(2, "lines"))
+M = 100000
+d20 = np.random.choice(20, size=M, replace=True)
+max_2d20 = np.zeros(M)
+min_2d20 = np.zeros(M)
+
+for m in range(M):
+    max_2d20[m] = max(np.random.choice(20, size=2, replace=True))
+    min_2d20[m] = min(np.random.choice(20, size=2, replace=True))
+
+tot_d20 = np.zeros(20)
+tot_max_2d20 = np.zeros(20)
+tot_min_2d20 = np.zeros(20)
+
+for n in range(20):
+    tot_d20[n] = np.sum(d20 == (n+1))
+    tot_max_2d20[n] = np.sum(max_2d20 == (n+1))
+    tot_min_2d20[n] = np.sum(min_2d20 == (n+1))
+
+cum_d20 = np.cumsum(tot_d20)
+cum_max_2d20 = np.cumsum(tot_max_2d20)
+cum_min_2d20 = np.cumsum(tot_min_2d20)
+
+ccum_d20_df = pd.DataFrame({
+    'probability': np.concatenate((1 - cum_d20/M, 1 - cum_max_2d20/M, 1 - cum_min_2d20/M)),
+    'roll': np.concatenate((np.arange(1, 21), np.arange(1, 21), np.arange(1, 21))),
+    'dice': np.concatenate((np.repeat("1d20", 20), np.repeat("max 2d20", 20), np.repeat("min 2d20", 20)))
+})
+
+# ccum_d20_plot = (
+#     ggplot(ccum_d20_df, aes(x='roll', y='probability')) +
+#     geom_point() +
+#     facet_wrap('dice', labeller=labeller(dice=label_both)) +
+#     scale_x_continuous(name='y', 
+#                        breaks=[1, 5, 10, 15, 20],
+#                        labels=[1, 5, 10, 15, 20]) +
+#     scale_y_continuous(name='estimated F_Y^C(y)') +
+#     ggtheme_tufte() +
+#     theme(panel_spacing=unit(2, 'lines'))
+# )
+ccum_d20_plot = (
+    sns.relplot(data=ccum_d20_df, x='roll', y='probability', kind='line', hue='dice',
+                facet_kws={'margin_titles': True}, col='dice', col_wrap=3)
+    .set(xlabel='y', xticks=[1, 5, 10, 15, 20],
+         xticklabels=[1, 5, 10, 15, 20], ylabel=r'estimated $F_Y(y)$')
+    .set_titles("{col_name}")
+    .fig
+)
+
 ccum_d20_plot
-```
 
+```
+{: .language-python}
 
 
 ## Infinite discrete random variables
