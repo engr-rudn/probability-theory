@@ -1,4 +1,4 @@
----
+```
 title: "Multiple Random Variables and Probability Functions"
 teaching: 
 exercises:
@@ -7,7 +7,8 @@ objectives:
 
 keypoints:
 
----
+```
+
 # Multiple Random Variables and Probability Functions
 
 ## Multiple random variables
@@ -94,7 +95,7 @@ number of simulations.
 
 Letting $$M = 100,000$$, and running five times, we get
 
----
+```
 import random
 M = 10000  # Define the value of M
 random.seed(1234)
@@ -104,7 +105,7 @@ for i in range(5):
     Pr_is_two = sum([1 for i in z if i == 2]) / M  # Calculate the proportion of elements in z that are equal to 2
     print("Pr_is_two =", Pr_is_two)
  
----
+```
 {: .language-python}
 
 ```
@@ -131,14 +132,15 @@ for k in range(1, 6):
 ```
 {: .language-python}
 
----
+
+```
 Pr[Z == 2] = 0.375
 Pr[Z == 2] = 0.375
 Pr[Z == 2] = 0.375
 Pr[Z == 2] = 0.375
 Pr[Z == 2] = 0.375
 
----
+```
 {: .output}
 
 We can do the same for the other numbers, to get a complete picture of
@@ -153,13 +155,13 @@ for z in range(0, 4):
 ```
 {: .language-python}
 
----
+```
 Pr[Z == 0] = 0.125
 Pr[Z == 1] = 0.375
 Pr[Z == 2] = 0.375
 Pr[Z == 3] = 0.125
 
----
+```
 {: .output}
 
 What if we flip four coins instead of three?
@@ -174,14 +176,14 @@ for z in range(0, 5):
 ```
 {: .language-python}
 
----
+```
 Pr[Z == 0] = 0.063
 Pr[Z == 1] = 0.250
 Pr[Z == 2] = 0.375
 Pr[Z == 3] = 0.250
 Pr[Z == 4] = 0.063
 
----
+```
 {: .output}
 
 ## Discrete random variables
