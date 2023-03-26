@@ -156,17 +156,16 @@ computer floating-point arithmetic, we wind up dividing zero by zero.
 Pr_A_and_B = 0.0
 Pr_B = 0.0
 Pr_A_given_B = Pr_A_and_B / Pr_B
-print 'Pr[A | B] = ' Pr_A_given_B
+print('Pr[A | B] = ', Pr_A_given_B)
 ```
+{: .language--python}
 
 Running that, we get
 
-```{r}
-Pr_A_and_B <- 0.0
-Pr_B <- 0.0
-Pr_A_given_B <- Pr_A_and_B / Pr_B
-printf('Pr[A | B] = %3.3f\n', Pr_A_given_B)
 ```
+ZeroDivisionError: float division by zero
+```
+{: .output}
 
 The value `NaN` indicates what is known as the *not-a-number*
 value.^[There are technically two types of not-a-number values in the
@@ -179,16 +178,17 @@ include `log(-1)`.
 If we instead divide a positive or negative number by zero,
 
 ```
-print '1.0 / 0.0 = ' 1.0 / 0.0
-print '-3.2 / 0.0 = ' -3.2 / 0.0
+print('1.0 / 0.0 = ', 1.0 / 0.0)
+print('-3.2 / 0.0 = ', -3.2 / 0.0)
 ```
-
+{: .language-r}
 we get
 
-```{r}
-printf("1.0 / 0.0 = %f\n", 1.0 / 0.0)
-printf("-3.2 / 0.0 = %f\n", -3.2 / 0.0)
 ```
+1.0 / 0.0 = Inf
+-3.2 / 0.0 = -Inf
+```
+{: .output}
 
 These values denote positive infinity ($$\infty$$) and negative infinity
 ($$-\infty$$), respectively.  Like not-a-number, these are special
@@ -219,15 +219,30 @@ subject has the disease, then we generate $$Y$$, the result of the test,
 conditional on the disease status $$Z$$.
 
 ```
-for (m in 1:M)
-  z[m] = bernoulli_rng(0.01)
-  if (z[m] == 1)
-    y[m] = bernoulli_rng(0.95)
-  else
-    y[m] = bernoulli_rng(0.05)
-print 'estimated Pr[Y = 1] = ' sum(y) / M
-print 'estimated Pr[Z = 1] = ' sum(z) / M
+import numpy as np
+
+M = 1000000
+z = np.zeros(M)
+y = np.zeros(M)
+
+for m in range(M):
+    z[m] = np.random.binomial(1, 0.01)
+    if z[m] == 1:
+        y[m] = np.random.binomial(1, 0.95)
+    else:
+        y[m] = np.random.binomial(1, 0.05)
+
+print('estimated Pr[Y = 1] = ', np.sum(y) / M)
+print('estimated Pr[Z = 1] = ', np.sum(z) / M)
+
 ```
+{: .language-python}
+
+```
+estimated Pr[Y = 1] =  0.058812
+estimated Pr[Z = 1] =  0.009844
+```
+{: .output}
 
 The program computes the marginals for $$Y$$ and $$Z$$ directly.  This is
 straightforward because both $$Y$$ and $$Z$$ are simulated in every
@@ -235,16 +250,25 @@ iteration (as `y[m]` and `z[m]` in the code).  Marginalization using
 simulation requires no work whatsoever.^[Marginalization can be
 tedious, impractical, or impossible to carry out analytically.]
 
-Let's run that with $$M = 100\,000$$ and see what we get.
+Let's run that with $$M = 100,000$$ and see what we get.
 
-```{r}
-set.seed(1234)
-M <- 100000
-z <- rbinom(M, 1, 0.01)
-y <- rbinom(M, 1, ifelse(z == 1, 0.95, 0.05))
-printf('estimated Pr[Y = 1] = %4.3f\n', sum(y) / M)
-printf('estimated Pr[Z = 1] = %4.3f\n', sum(z) / M)
 ```
+import numpy as np
+
+np.random.seed(1234)
+M = 100000
+z = np.random.binomial(1, 0.01, M)
+y = np.where(z == 1, np.random.binomial(1, 0.95, M), np.random.binomial(1, 0.05, M))
+print('estimated Pr[Y = 1] = ', np.sum(y) / M)
+print('estimated Pr[Z = 1] = ', np.sum(z) / M)
+```
+{: .language-python}
+
+```
+estimated Pr[Y = 1] =  0.05755
+estimated Pr[Z = 1] =  0.01008
+```
+{: .output}
 
 We know that the marginal $$\mbox{Pr}[Z = 1]$$ is 0.01, so the estimate is
 close to the true value for $$Z$$;  we'll see below that it's also close
@@ -265,18 +289,19 @@ Specifically, we count the number of draws in which both A and B
 occur, then divide by the number of draws in which the event B occurs.
 
 ```
-for (m in 1:M)
-  z[m] = bernoulli_rng(0.01)
-  if (z[m] == 1)
-    y[m] = bernoulli_rng(0.95)
-  else
-    y[m] = bernoulli_rng(0.05)
-  y1z1[m] = (y[m] == 1 & z[m] == 1)
-  y1z0[m] = (y[m] == 1 & z[m] == 0)
+import numpy as np
 
-print 'estimated Pr[Y = 1 | Z = 1] = ' sum(y1z1) / sum(z == 1)
-print 'estimated Pr[Y = 1 | Z = 0] = ' sum(y1z0) / sum(z == 0)
+np.random.seed(1234)
+M = 100000
+z = np.random.binomial(1, 0.01, M)
+y = np.where(z == 1, np.random.binomial(1, 0.95, M), np.random.binomial(1, 0.05, M))
+y1z1 = np.logical_and(y == 1, z == 1)
+y1z0 = np.logical_and(y == 1, z == 0)
+
+print('estimated Pr[Y = 1 | Z = 1] = ', np.sum(y1z1) / np.sum(z == 1))
+print('estimated Pr[Y = 1 | Z = 0] = ', np.sum(y1z0) / np.sum(z == 0))
 ```
+{: .language-python}
 
 We set the indicator variable `y1z1[m]` to 1 if $$Y = 1$$ and $$Z = 1$$ in
 the $$m$$-th simulation; `y1z0` behaves similarly.  The operator `&` is
@@ -288,13 +313,14 @@ Recall that `z == 0`
 is an array where entry $$m$$ is 1 if the condition holds, here $$z^{(m)}
 = 0$$.
 
-The resulting estimates with $$M = 100\,000$$ draws are pretty close to
+The resulting estimates with $$M = 100,000$$ draws are pretty close to
 the true values,
 
-```{r}
-printf('estimated Pr[Y = 1 | Z = 1] = %4.3f\n', sum(y * z) / sum(z))
-printf('estimated Pr[Y = 1 | Z = 0] = %4.3f\n', sum(y * (1 - z)) / sum(1 - z))
 ```
+estimated Pr[Y = 1 | Z = 1] =  0.9454365079365079
+estimated Pr[Y = 1 | Z = 0] =  0.048508970421852274
+```
+{: .output}
 
 The true values were stipulated as part of the example to be
 $$\mbox{Pr}[Y = 1 \mid Z = 1] = 0.95$$ and $$\mbox{Pr}[Y = 1 \mid Z = 0]
@@ -307,10 +333,19 @@ probability of having the disease based on the test result, i.e.,
 $$\mbox{Pr}[Z = 1 \mid Y = 1]$$ and $$\mbox{Pr}[Z = 1 \mid Y = 0]$$.^[The
 program is just like the last one.]
 
-```{r}
-printf('estimated Pr[Z = 1 | Y = 1] = %4.3f\n', sum(y * z) / sum(y))
-printf('estimated Pr[Z = 1 | Y = 0] = %4.3f\n', sum(z * (1 - y)) / sum(1 - y))
 ```
+print('estimated Pr[Z = 1 | Y = 1] = {:.3f}'.format(sum(y * z) / sum(y)))
+print('estimated Pr[Z = 1 | Y = 0] = {:.3f}'.format(sum(z * (1 - y)) / sum(1 - y)))
+
+```
+{: .language-python}
+
+
+```
+estimated Pr[Z = 1 | Y = 1] = 0.166
+estimated Pr[Z = 1 | Y = 0] = 0.001
+```
+{: .output}
 
 Did we make a mistake in coding up our simulation?  We estimated
 $$\mbox{Pr}[Z = 1 \mid Y = 1]$$ at around 16%, which says that if the
@@ -605,15 +640,33 @@ In robust code, validation should produce diagnostic error messages
 for invalid inputs.]
 
 ```
-for (m in 1:M)
-  while (pts[1] < 10 & pts[2] < 10)
-    toss = uniform_01_rng()
-    if (toss == 1) pts[1] += 1
-    else pts[2] += 1
-    if (pts[1] == 10) win[m] = 1
-    else if (pts[2] == 10) win[m] = 0
-print 'est. Pr[player 1 wins] = ' sum(win) / M
+import numpy as np
+
+np.random.seed(1234)
+M = 100000
+win = np.zeros(M)
+for m in range(M):
+    pts = [0, 0]
+    while pts[0] < 10 and pts[1] < 10:
+        toss = np.random.uniform()
+        if toss < 0.5:
+            pts[0] += 1
+        else:
+            pts[1] += 1
+    if pts[0] == 10:
+        win[m] = 1
+    else:
+        win[m] = 0
+
+print('est. Pr[player 1 wins] =', np.mean(win))
+
 ```
+{: .language-python}
+
+```
+est. Pr[player 1 wins] = 0.50181
+```
+{: .output}
 
 If the while-loop terminates because one player has ten points, then
 `wins[m]` must have been set in the previous value of the loop.^[In
@@ -621,27 +674,43 @@ general, programs should be double-checked (ideally by a third party)
 to make sure *invariants* like this one (i.e., `win[m]` is always set)
 actually hold.  Test code goes a long way to ensuring robustness.]
 
-Let's run that a few times with $$M = 100\,000$$, starting with the
+Let's run that a few times with $$M = 100,000$$, starting with the
 `pts` set to `(8, 7)`, to simulate Fermat and Pascal's problem.
 
 ```{r}
-set.seed(1234)
-for (k in 1:5) {
-  M <- 100000
-  game_wins <- 0
-  for (m in 1:M) {
-    wins <- c(8, 7)
-    while (wins[1] < 10 && wins[2] < 10) {
-      toss <- rbinom(1, 1, 0.5)
-      winner <- ifelse(toss, 1, 2)
-      wins[winner] <- wins[winner] + 1
-      if (wins[1] == 10)
-        game_wins <- game_wins + 1
-    }
-  }
-  printf('est. Pr[player 1 wins] = %4.3f\n', game_wins / M)
-}
+import numpy as np
+
+np.random.seed(1234)
+
+for k in range(1, 6):
+    M = 100000
+    game_wins = 0
+    
+    for m in range(M):
+        wins = [8, 7]
+        
+        while wins[0] < 10 and wins[1] < 10:
+            toss = np.random.binomial(1, 0.5)
+            winner = 1 if toss == 1 else 2
+            wins[winner - 1] += 1
+            
+            if wins[0] == 10:
+                game_wins += 1
+    
+    print(f'est. Pr[player 1 wins] = {game_wins / M:.3f}')
+
 ```
+{: .language-python}
+
+```
+est. Pr[player 1 wins] = 0.686
+est. Pr[player 1 wins] = 0.687
+est. Pr[player 1 wins] = 0.688
+est. Pr[player 1 wins] = 0.687
+est. Pr[player 1 wins] = 0.686
+```
+{: .output}
+
 
 This is very much in line with the result Fermat derived by brute
 force, namely $$\frac{11}{16} \approx 0.688.$$^[There are at most four
