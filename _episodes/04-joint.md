@@ -158,7 +158,7 @@ Pr_B = 0.0
 Pr_A_given_B = Pr_A_and_B / Pr_B
 print('Pr[A | B] = ', Pr_A_given_B)
 ```
-{: .language--python}
+{: .language-python}
 
 Running that, we get
 
