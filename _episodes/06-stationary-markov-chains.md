@@ -540,7 +540,7 @@ chain goes down in error as $$\sqrt{T}$$
 Now consider a Markov chain which is still symmetric in the states,
 but with a tendency to stay in the same state.
 
-State diagram for correlated draws."
+State diagram for correlated draws.
 
 <!-- \begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {{\bf 0}};
@@ -550,8 +550,8 @@ State diagram for correlated draws."
 \path (A) edge [loop above] node {0.9} (A);
 \path (B) edge [loop above] node {0.9} (B);
 \end{tikzpicture} -->
+![](../images/chapter-6/State_diagram_for_correlated_draws.jpg)
 
-![](../images/chapter-6/Traceplot_of_chain_with_correlated_draws.jpg)
 
 It has the same stationary distribution of 0.5.  Letting $$\theta =
 \begin{bmatrix}0.9 & 0.1 \\ 0.1 & 0.9 \end{bmatrix}$$ be the transition
