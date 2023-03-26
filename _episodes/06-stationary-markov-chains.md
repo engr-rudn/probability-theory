@@ -670,8 +670,9 @@ traceplot_bool(y)
 ```
 {: .language-python}
 
+![](../images/chapter-6/Traceplot_of_chain_with_anticorrelated_draws.jpg)
+<!-- ![](../images/chapter-6/Traceplot_of_chain_with_correlated_draws-2.jpg) -->
 
-![](../images/chapter-6/Traceplot_of_chain_with_correlated_draws-2.jpg)
 
 The draws form a dramatic sawtooth pattern as they alternate
 between zero and one.
