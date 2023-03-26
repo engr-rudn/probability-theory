@@ -677,7 +677,7 @@ actually hold.  Test code goes a long way to ensuring robustness.]
 Let's run that a few times with $$M = 100,000$$, starting with the
 `pts` set to `(8, 7)`, to simulate Fermat and Pascal's problem.
 
-```{r}
+```
 import numpy as np
 
 np.random.seed(1234)
