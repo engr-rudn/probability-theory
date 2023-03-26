@@ -121,19 +121,28 @@ stochastic matrices.]
 Now let's take a really long run of the chain with $$T = 1\,000\,000$$
 fish to get a precise estimate of the long-run proportion of pike.
 
-```{r}
-set.seed(1234)
-T <- 1e6
-y <- rep(NA, M)
-for (k in 0:1) {
-  y[1] <- k
-  for (t in 2:T) {
-    y[t] <- rbinom(1, 1, ifelse(y[t - 1] == 1, 0.2, 0.05))
-  }
-  printf("initial state = %1f; simulated proportion of pike = %4.3f\n",
-         k, sum(y) / T)
-}
 ```
+import numpy as np
+
+np.random.seed(1234)
+
+T = int(1e6)
+y = np.empty(T, dtype=int)
+
+for k in range(2):
+    y[0] = k
+    for t in range(1, T):
+        y[t] = np.random.binomial(1, 0.2 if y[t - 1] == 1 else 0.05)
+    print(f"initial state = {k}; simulated proportion of pike = {y.mean():.3f}")
+
+```
+{: language-python}
+
+```
+initial state = 0; simulated proportion of pike = 0.059
+initial state = 1; simulated proportion of pike = 0.059
+```
+{: .output}
 
 The initial state doesn't seem to matter. That's because the rate of
 5.9% pike is the stationary distribution. More
@@ -393,6 +402,7 @@ First, we will consider a Markov chain producing independent Bernoulli
 draws.
 
 State diagram for finite Markov chain generating independent draws.
+
 ![](../images/Markov_chain_generating_independent_draws.jpg)
 
 <!-- \begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
@@ -439,44 +449,52 @@ We can simulate 100 values and print the first 99 to see what the
 chain looks like.
 
 
-```{r}
-print_3_rows_of_33 <-
-function(y) {
-  n <- 1
-  for (i in 1:3) {
-    for (j in 1:33) {
-      printf("%1d ", y[n])
-      n <- n + 1
-    }
-    printf("\n")
-  }
-}
-
-sample_chain <- function(M, init_state, theta) {
-  y <- c(init_state)
-  for (m in 2:M)
-    y[m] <- sample(x = 0:1, size = 1, prob = theta[y[m - 1] + 1, ])
-  return(y)
-}
-
-traceplot_bool <- function (y) {
-  df <- data.frame(iteration = 1:length(y), draw = y)
-  plot <- ggplot(df, aes(x = iteration, y = draw)) +
-    geom_line(aes(y = y)) +
-    scale_x_continuous("iteration", breaks = c(1, 50, 100), expand = c(0, 0)) +
-    scale_y_continuous("y", breaks = c(0, 1), expand = c(0.2, 0)) +
-    ggtheme_tufte()
-  return(plot)
-}
 ```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-```{r}
-M <- 100
-set.seed(1234)
-y <- sample_chain(M, 1, matrix(c(0.5, 0.5,
-                                   0.5, 0.5), 2, 2))
+def print_3_rows_of_33(y):
+    n = 0
+    for i in range(3):
+        row = [str(j) for j in y[n:n+33]]
+        print(" ".join(row))
+        n += 33
+        
+def sample_chain(M, init_state, theta):
+    y = [init_state]
+    for m in range(1, M):
+        y.append(np.random.choice([0, 1], size=1, p=theta[y[m-1], :])[0])
+    return y
+
+def traceplot_bool(y):
+    df = pd.DataFrame({'iteration': range(1, len(y)+1), 'draw': y})
+    plot = sns.lineplot(data=df, x='iteration', y='draw')
+    plot.set(xlabel='iteration', ylabel='y', xticks=[1, 50, 100])
+    return plot
+
+```
+{: .language-python}
+
+```
+import numpy as np
+
+np.random.seed(1234)
+
+M = 100
+theta = np.array([[0.5, 0.5], [0.5, 0.5]])
+y = sample_chain(M, 1, theta)
 
 print_3_rows_of_33(y)
+
+```
+{: .language-python}
+
+```
+1 0 1 0 1 1 0 0 1 1 1 0 1 1 1 0 1 1 0 1 1 0 1 0 0 1 1 0 1 0 1 1 0
+1 0 1 1 0 1 0 1 0 0 0 1 1 1 0 1 0 1 0 1 1 0 1 1 1 1 1 1 0 1 0 0 0
+0 0 1 0 0 1 1 0 0 0 1 0 1 0 0 0 1 1 1 1 0 1 1 1 0 0 1 1 1 0 1 1 1
 ```
 
 An initial segment of a Markov chain $$Y = Y_1, Y_2, \ldots, Y_T$$ can
@@ -484,22 +502,29 @@ be visualized as a traceplot, a line plot of the value at each
 iteration.
 
 Traceplot of chain producing independent draws, simulated for 100 time steps.  The horizontal axis is time ($$t$$) and the vertical axis the value of e iteration number and the value is the value ($$Y_t$$).
+
 ```
-traceplot_bool <- function (y) {
-  df <- data.frame(iteration = 1:length(y), draw = y)
-  plot <- ggplot(df, aes(x = iteration, y = draw)) +
-    geom_line(aes(y = y)) +
-    scale_x_continuous("iteration", breaks = c(0, 50, 100),
-                       expand = c(0, 0)) +
-    scale_y_continuous("y", breaks = c(0, 1), expand = c(0.2, 0)) +
-    ggtheme_tufte()
-  return(plot)
-}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+def traceplot_bool(y):
+    df = pd.DataFrame({'iteration': range(1, len(y)+1), 'draw': y})
+    plot = sns.lineplot(data=df, x='iteration', y='draw')
+    plot.set(xlabel='iteration', ylabel='y', xticks=[0, 50, 100])
+    return plot
+
 traceplot_bool(y)
+plt.show()
+
 ```
+{: .language-python}
 
-![](../images/Traceplot_of_chain_generating_independent_draws.jpg)
-
+<!-- ![](../images/Traceplot_of_chain_generating_independent_draws.jpg)
+ -->
+ 
+ ![](../images/chapter-6/Traceplot_of_chain_producing.jpg)
+ 
 The flat segments are runs of the same value.  This Markov chain
 occasionally has runs of the same value, but otherwise mixes quite
 well between the values.
@@ -526,6 +551,7 @@ State diagram for correlated draws."
 \path (B) edge [loop above] node {0.9} (B);
 \end{tikzpicture} -->
 
+![](../images/chapter-6/Traceplot_of_chain_with_correlated_draws.jpg)
 
 It has the same stationary distribution of 0.5.  Letting $$\theta =
 \begin{bmatrix}0.9 & 0.1 \\ 0.1 & 0.9 \end{bmatrix}$$ be the transition
@@ -556,17 +582,37 @@ $$
 We can simulate from the chain
 and print the first 99 values, and then print the traceplot.
 
-```{r}
-set.seed(1234)
-y <- sample_chain(M, 1, matrix(c(0.9, 0.1,
-                                 0.1, 0.9), 2, 2))
-print_3_rows_of_33(y)
 ```
+import numpy as np
 
-<!-- {r fig.height=2, out.width = "40%", fig.cap = "Traceplot for chain with correlated draws."}
-traceplot_bool(y) -->
+np.random.seed(1234)
 
-![](../images/Traceplot_of_chain_with_correlated_draws.jpg)
+M = 100
+theta = np.array([[0.9, 0.1], [0.1, 0.9]])
+y = sample_chain(M, 1, theta)
+
+print_3_rows_of_33(y)
+
+```
+{: .language-python}
+
+```
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1
+0 0 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+```
+{: .output}
+
+Traceplot for chain with correlated draws."
+
+```
+traceplot_bool(y)
+```
+{: .language-python}
+
+<!-- ![](../images/Traceplot_of_chain_with_correlated_draws.jpg) -->
+
+![](../images/chapter-6/Traceplot_of_chain_with_correlated_draws.jpg)
 
 As expected, there are now long runs of the same value being produced.
 This leads to much poorer mixing and a longer time for estimates based
@@ -595,15 +641,36 @@ Sampling, printing, and plotting the values produces
 Chain with anticorrelated draws.
 ![](../images/Traceplot_of_chain_with_anticorrelated_draws.jpg)
 
-<!-- set.seed(1234)
-y <- sample_chain(M, 1, matrix(c(0.1, 0.9,
-                                 0.9, 0.1), 2, 2))
-print_3_rows_of_33(y) -->
+```
+import numpy as np
 
+np.random.seed(1234)
+
+M = 100
+theta = np.array([[0.1, 0.9], [0.9, 0.1]])
+y = sample_chain(M, 1, theta)
+
+print_3_rows_of_33(y)
+
+```
+{: .language-python}
+
+```
+1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 0 0 1 1 0 1 0 1 0 1 0
+1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 0 1 1 0 1 1 0 1 0 1 0 1
+0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1
+```
+{: .output}
 
 Traceplot of chain with anticorrelated draws.
-<!--  -->traceplot_bool(y)
 
+```
+traceplot_bool(y)
+```
+{: .language-python}
+
+
+![](../images/chapter-6/Traceplot_of_chain_with_correlated_draws-2.jpg)
 
 The draws form a dramatic sawtooth pattern as they alternate
 between zero and one.
@@ -612,53 +679,96 @@ Now let's see how quickly estimates based on long-run averages from
 the chain converge in a side-by-side comparison.
 A single chain is enough to illustrate the dramatic differences.
 
+<!-- ![](../images/Estimate_of_the_stationary_probability.jpg) -->
+
+```
+import numpy as np
+import pandas as pd
+
+np.random.seed(1234)
+
+def sample_chain(M, start, trans_matrix):
+    chain = np.zeros(M, dtype=int)
+    chain[0] = start
+    for i in range(1, M):
+        chain[i] = np.random.choice([0, 1], p=trans_matrix[chain[i-1], :])
+    return chain
+
+def build_discrete_mcmc_df(trans_matrix, label, J, M):
+    df = pd.DataFrame({'y': [], 'x': [], 'chain': [], 'id': []})
+    for j in range(1, J+1):
+        y = np.cumsum(sample_chain(M, 1, trans_matrix)) / np.arange(1, M+1)
+        df = pd.concat([df, pd.DataFrame({'y': y, 'x': np.arange(1, M+1), 'chain': np.repeat(label, M), 'id': np.repeat(j, M)})])
+    return df
+
+corr_trans = np.array([[0.9, 0.1], [0.1, 0.9]])
+ind_trans = np.array([[0.5, 0.5], [0.5, 0.5]])
+anti_trans = np.array([[0.1, 0.9], [0.9, 0.1]])
+
+J = 25
+M = int(1e4)
+df_compare_discrete_mcmc = pd.concat([build_discrete_mcmc_df(corr_trans, 'correlated', J, M),
+                                      build_discrete_mcmc_df(ind_trans, 'independent', J, M),
+                                      build_discrete_mcmc_df(anti_trans, 'anticorrelated', J, M)])
+
+```
+{: .language-python}
+
+
 Estimate of the stationary probability $$\\pi_1$$ of state 1 as a function of $$t$$ under three conditions, correlated, independent, and anticorrelated transitions.  For each condition, 25 simulations of a chain of size $$T = 10,000$$ are generated and overplotted.
 
-![](../images/Estimate_of_the_stationary_probability.jpg)
+```
+import numpy as np
+import pandas as pd
+from plotnine import *
 
-<!-- set.seed(1234)
-build_discrete_mcmc_df <- function(trans_matrix, label, J, M) {
-  df <- data.frame(y = c(), x = c(), chain = c(), id = c())
-  for (j in 1:J) {
-    y <- cumsum(sample_chain(M, 1, trans_matrix)) /  (1:M)
-    df <- rbind(df, data.frame(y = y, x = 1:M,
-                               chain = rep(label, M), id = rep(j, M)))
-  }
-  df
-}
+np.random.seed(1234)
 
-corr_trans <- matrix(c(0.9, 0.1,
-                       0.1, 0.9), 2, 2)
-ind_trans <- matrix(c(0.5, 0.5,
-                      0.5, 0.5), 2, 2)
-anti_trans <- matrix(c(0.1, 0.9,
-                       0.9, 0.1), 2, 2)
+def sample_chain(M, start_state, trans_matrix):
+    chain = np.zeros(M)
+    chain[0] = start_state
+    for i in range(1, M):
+        chain[i] = np.random.choice([0, 1], p=trans_matrix[int(chain[i-1]), :])
+    return chain
 
-J <- 25
-M <- 1e4
-df_compare_discrete_mcmc <-
-  rbind(build_discrete_mcmc_df(corr_trans, 'correlated', J, M),
-        build_discrete_mcmc_df(ind_trans, 'independent', J, M),
-        build_discrete_mcmc_df(anti_trans, 'anticorrelated', J, M)) -->
+def build_discrete_mcmc_df(trans_matrix, label, J, M):
+    df = pd.DataFrame(columns=['y', 'x', 'chain', 'id'])
+    for j in range(J):
+        y = np.cumsum(sample_chain(M, np.random.choice([0, 1]), trans_matrix)) / (1 + np.arange(M))
+        df = pd.concat([df, pd.DataFrame({'y': y, 'x': 1+np.arange(M), 'chain': [label]*M, 'id': [j]*M})])
+    return df
 
+corr_trans = np.array([[0.9, 0.1], [0.1, 0.9]])
+ind_trans = np.array([[0.5, 0.5], [0.5, 0.5]])
+anti_trans = np.array([[0.1, 0.9], [0.9, 0.1]])
 
+J = 25
+M = int(1e4)
 
+df_compare_discrete_mcmc = pd.concat([
+    build_discrete_mcmc_df(corr_trans, 'correlated', J, M),
+    build_discrete_mcmc_df(ind_trans, 'independent', J, M),
+    build_discrete_mcmc_df(anti_trans, 'anticorrelated', J, M)
+])
 
-<!-- compare_discrete_mcmc_plot <-
-  ggplot(df_compare_discrete_mcmc, aes(x = x, y = y, group = id)) +
-  geom_hline(yintercept = 0.5, linetype = 'dotted', size = 0.5) +
-  facet_wrap(vars(chain), ncol = 1) +
-  geom_line(alpha = 0.4, size = 0.15) +
-  scale_x_log10(lim = c(100, 10000), breaks = c(1e2, 1e3, 1e4),
-                labels = c("100", "1,000", "10,000")) +
-  scale_y_continuous(lim = c(.25, .75), breaks = c(0.25, 0.5, 0.75),
-                     labels = c(".25", ".50", ".75")) +
-  xlab('t') +
-  ylab(expression(paste('estimated ', pi[1]))) +
-  ggtheme_tufte() +
-  theme(panel.spacing.y = unit(1, "lines"))
+compare_discrete_mcmc_plot = (
+    ggplot(df_compare_discrete_mcmc, aes(x='x', y='y', group='id')) +
+    geom_hline(yintercept=0.5, linetype='dotted', size=0.5) +
+    facet_wrap('chain', ncol=1) +
+    geom_line(alpha=0.4, size=0.15) +
+    scale_x_log10(limits=[100, 10000], breaks=[1e2, 1e3, 1e4], labels=['100', '1,000', '10,000']) +
+    scale_y_continuous(limits=[0.25, 0.75], breaks=[0.25, 0.5, 0.75], labels=['.25', '.50', '.75']) +
+    xlab('t') +
+    ylab('estimated ' + r'$\pi_1$') +
+    theme_gray() +
+    theme(panel_spacing_y=1)
+)
 compare_discrete_mcmc_plot
- -->
+
+```
+{: .language-python}
+
+![](../images/chapter-6/Estimate_of_the_stationary_probability_π1_of_state_1_as_a_function.png)
 
 
 ## Reversibility
