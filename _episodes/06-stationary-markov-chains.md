@@ -716,15 +716,7 @@ df_compare_discrete_mcmc = pd.concat([build_discrete_mcmc_df(corr_trans, 'correl
 {: .language-python}
 
 
-Estimate of the stationary probability 
-$$
-\\pi_1
-$$ 
-
-$$
-\pi_i
-$$
-of state 1 as a function of $$t$$ under three conditions, correlated, independent, and anticorrelated transitions.  For each condition, 25 simulations of a chain of size $$T = 10,000$$ are generated and overplotted.
+Estimate of the stationary probability $$\pi_i$$ of state 1 as a function of $$t$$ under three conditions, correlated, independent, and anticorrelated transitions.  For each condition, 25 simulations of a chain of size $$T = 10,000$$ are generated and overplotted.
 
 ```
 import numpy as np
