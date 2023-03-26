@@ -1088,16 +1088,6 @@ def is_ace(card):
     return card == 1
 
 M = 10000
-
-import random
-
-def draw_cards(n):
-    return [random.randint(1, 13) for i in range(n)]
-
-def is_ace(card):
-    return card == 1
-
-M = 10000
 for i in range(6): # repeat the simulation 6 times
     total = 0
     for m in range(M):
