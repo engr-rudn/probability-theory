@@ -61,7 +61,9 @@ $$
 + \cdots
 + 6 \times \frac{1}{6}
 \ = \
+
 \frac{21}{6}
+
 \ = \
 3.5.
 $$
@@ -193,20 +195,35 @@ $$
 We can, of course, use simulation to calculate variances.
 
 ```
+import random
+
 sum_sq_diffs = 0
-for (m in 1:M) {
-  y = uniform_rng(1:6)
-  sum_sq_diffs += (y - 3.5)^2
-print 'estimated var[Y] = ' sum_sq_diffs / M
+M = 1000 # set M to any desired value
+
+for m in range(1, M+1):
+    y = random.randint(1, 6)
+    sum_sq_diffs += (y - 3.5)**2
+
+print('estimated var[Y] =', sum_sq_diffs / M)
 ```
+{: .language-python}
+
+```
+estimated var[Y] = 2.954
+```
+{: .output}
 
 And running that for $$M = 1\,000\,000$$ iterations gives us
 
-```{r}
+```
 M <- 1e6
 printf('estimated var[Y] = %3.2f\n',
        sum((sample(6, size = M, replace = TRUE) - 3.5)^2) / M)
 ```
+```
+estimated var[Y] = 2.92
+```
+{: .output}
 
 We see that the extreme values have an outsized influence on the sum
 of squared errors.  That's because we're dealing with squared error,
@@ -218,18 +235,22 @@ the variance of a 20-sided die.
 Squared differences from the mean of 10.5 for a 20-sided die roll.  The mean is indicated with a dashed vertical line.
 
 ```
-d20_var_df <- data.frame(roll = 1:20, sqe = (1:20 - 10.5)^2)
-d20_var_plot <-
-  ggplot(d20_var_df, aes(x = roll, y = sqe)) +
-  geom_line() +
-  geom_point() +
-  geom_vline(xintercept = 10.5, size = 0.3, linetype = "dashed",
-             color = "#333333") +
-  scale_x_continuous(breaks=c(1, 5, 10, 11, 15, 20)) +
-  ylab("squared difference from mean") +
-  ggtheme_tufte()
-d20_var_plot
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+d20_var_df = pd.DataFrame({'roll': np.arange(1, 21), 'sqe': (np.arange(1, 21) - 10.5)**2})
+
+d20_var_plot = sns.lineplot(x='roll', y='sqe', data=d20_var_df, marker='o')
+d20_var_plot.axvline(x=10.5, color='gray', linestyle='--', linewidth=0.3)
+d20_var_plot.set(xticks=[1, 5, 10, 11, 15, 20], xlabel='Roll', ylabel='Squared difference from mean')
+sns.set_style('ticks')
+
+plt.show()
+
 ```
+{: .language-python}
 
 ## Why squared error?
 
