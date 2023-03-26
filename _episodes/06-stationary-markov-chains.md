@@ -640,7 +640,7 @@ Sampling, printing, and plotting the values produces
 ![](../images/sampling_figure-28.jpg)
 
 Chain with anticorrelated draws.
-![](../images/Traceplot_of_chain_with_anticorrelated_draws.jpg)
+<!-- ![](../images/Traceplot_of_chain_with_anticorrelated_draws.jpg) -->
 
 ```
 import numpy as np
