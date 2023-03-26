@@ -496,6 +496,7 @@ print_3_rows_of_33(y)
 1 0 1 1 0 1 0 1 0 0 0 1 1 1 0 1 0 1 0 1 1 0 1 1 1 1 1 1 0 1 0 0 0
 0 0 1 0 0 1 1 0 0 0 1 0 1 0 0 0 1 1 1 1 0 1 1 1 0 0 1 1 1 0 1 1 1
 ```
+{: .output}
 
 An initial segment of a Markov chain $$Y = Y_1, Y_2, \ldots, Y_T$$ can
 be visualized as a traceplot, a line plot of the value at each
