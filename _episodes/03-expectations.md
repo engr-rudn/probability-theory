@@ -220,6 +220,8 @@ M <- 1e6
 printf('estimated var[Y] = %3.2f\n',
        sum((sample(6, size = M, replace = TRUE) - 3.5)^2) / M)
 ```
+{: .language-python}
+
 ```
 estimated var[Y] = 2.92
 ```
@@ -251,6 +253,8 @@ plt.show()
 
 ```
 {: .language-python}
+
+![](../images/chapter-3/squared_difference_mean.jpg)
 
 ## Why squared error?
 
