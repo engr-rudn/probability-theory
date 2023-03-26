@@ -136,7 +136,7 @@ for k in range(2):
     print(f"initial state = {k}; simulated proportion of pike = {y.mean():.3f}")
 
 ```
-{: language-python}
+{: .language-python}
 
 ```
 initial state = 0; simulated proportion of pike = 0.059
