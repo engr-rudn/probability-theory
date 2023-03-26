@@ -129,27 +129,55 @@ perch as having value 0 rather than 2.] We will start with a random
 fish drawn according to $$\mbox{bernoulli(1/2)}$$.
 
 ```
-y[1] = bernoulli_rng(0.5)
-for (t in 2:T)
-  y[t] = bernoulli_rng(y[t - 1] = 1 ? 0.2 : 0.05)
-print 'simulated proportion of pike = ' sum(y) / M
+import numpy as np
+
+T = 100 # number of time points
+y = np.zeros(T, dtype=int) # initialize array of outcomes
+y[0] = np.random.binomial(1, 0.5) # generate first outcome
+
+for t in range(1, T):
+    p = 0.2 if y[t-1] == 1 else 0.05 # determine success probability
+    y[t] = np.random.binomial(1, p) # generate outcome
+
+prop = np.mean(y) # calculate proportion of 1's
+print(f"Simulated proportion of 1's: {prop:.2f}")
+
 ```
+{: .language-python}
+
+```
+Simulated proportion of 1's: 0.08
+```
+{: .output}
 
 Now let's assume the fish are really running, and run a few simulated
-chains until $$T = 10\,000$$.
+chains until $$T = 10,000$$.
 
-```{r}
-set.seed(1234)
-T <- 10000
-y <- rep(NA, M)
-for (k in 1:5) {
-  y[1] <- rbinom(1, 1, 0.5)
-  for (t in 2:T) {
-    y[t] <- rbinom(1, 1, ifelse(y[t - 1] == 1, 0.2, 0.05))
-  }
-  printf("simulated proportion of pike = %4.3f\n", sum(y) / T)
-}
 ```
+import numpy as np
+
+np.random.seed(1234)
+T = 10000
+M = 5
+for k in range(M):
+    y = np.zeros(T, dtype=int)
+    y[0] = np.random.binomial(1, 0.5)
+    for t in range(1, T):
+        p = 0.2 if y[t-1] == 1 else 0.05
+        y[t] = np.random.binomial(1, p)
+    prop = np.mean(y)
+    print(f"Simulated proportion of 1's: {prop:.3f}")
+```
+{: .language-python}
+
+```
+Simulated proportion of 1's: 0.058
+Simulated proportion of 1's: 0.063
+Simulated proportion of 1's: 0.060
+Simulated proportion of 1's: 0.058
+Simulated proportion of 1's: 0.060
+```
+{: .output}
 
 The proportion of pike is roughly 0.06.
 
@@ -199,14 +227,24 @@ B)[n] = \sum_{t=1}^T \mbox{I}[y_t = n]$$ for $$n \in A:B$$. For example, if $$y 
 no 4s among the values of $$y$$.]
 
 ```
-y[1] = floor(N / 2)
-for (t in 2:T)
-  z[t] = bernoulli_rng(y[t - 1] / N)
-  y[t] = y[t - 1] + (z[t] ? -1 : +1)
-p_Y_t_hat = table(y, 0, N) / T
-```
+import numpy as np
 
-Let's run that with $$N = 10$$ and $$T = 100\,000$$ and display the
+N = 100 # population size
+T = 1000 # number of time points
+y = np.zeros(T, dtype=int) # initialize array of counts
+z = np.zeros(T, dtype=int) # initialize array of outcomes
+y[0] = N // 2 # set initial count to N/2
+
+for t in range(1, T):
+    z[t] = np.random.binomial(1, y[t-1]/N) # generate outcome
+    y[t] = y[t-1] - 1 if z[t] else y[t-1] + 1 # update count
+
+p_Y_t_hat = np.bincount(y, minlength=N+1) / T # calculate proportion of counts
+
+```
+{: .language-python}
+
+Let's run that with $$N = 10$$ and $$T = 100,000$$ and display the
 results as a bar plot.
 
 Long-term distribution of number of balls in the first urn of the Ehrenfest model in which $$N$$ balls are distributed between two urns, then at each time step, a ball is chosen uniformly at random move to the other urn.  The simulation is based on total of $$T = 100,000$$ steps with $$N = 10$$ balls, starting with 5 balls in the first urn. The points on the top of the bars are positioned at the mass defined by the binomial distribution, $$
@@ -214,32 +252,41 @@ Long-term distribution of number of balls in the first urn of the Ehrenfest mode
 $$.
 
 ```
-set.seed(1234)
-N <- 10
-T <- 1e5
-y <- rep(NA, T)
-y[1] <- 5
-for (t in 2:T) {
-  z_t = rbinom(1, 1, y[t - 1] / N)
-  y[t] <- y[t - 1] + ifelse(z_t, -1, 1)
-}
-# p_Y_t_hat = table(y) / T
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import binom
+from plotnine import *
 
-ehrenfest_df <- data.frame(x = 1:T, y = y)
+np.random.seed(1234)
+N = 10
+T = 100000
+y = np.zeros(T)
+y[0] = 5
 
-ehrenfest_plot <-
-  ggplot(ehrenfest_df, aes(y)) +
-  geom_bar(color = 'black', fill = '#ffffe8', size = 0.2) +
-  geom_point(data = data.frame(x = 0:10, y = T * dbinom(0:10, 10, 0.5)),
-             aes(x = x, y = y),
-	     size = 3, alpha = 0.5) +
-  scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10)) +
-  scale_y_continuous(breaks = (0:5) * 5000, labels = (0:5) * 0.05) +
-  xlab(expression(Y[t])) +
-  ylab("proportion") +
-  ggtheme_tufte()
-ehrenfest_plot
+for t in range(1, T):
+    z_t = np.random.binomial(1, y[t-1]/N)
+    y[t] = y[t-1] - z_t + (1 - z_t)
+
+ehrenfest_df = pd.DataFrame({'x': np.arange(1, T+1), 'y': y})
+
+ehrenfest_plot = (
+    ggplot(data=ehrenfest_df, mapping=aes(x='y')) +
+    geom_bar(color='black', fill='#ffffe8', size=0.2) +
+    geom_point(data=pd.DataFrame({'x': np.arange(11), 'y': T * binom.pmf(np.arange(11), 10, 0.5)}),
+               mapping=aes(x='x', y='y'), size=3, alpha=0.5) +
+    scale_x_continuous(breaks=[0, 2, 4, 6, 8, 10]) +
+    scale_y_continuous(breaks=np.arange(0, 300000, 50000), labels=[str(x) for x in np.arange(0, 0.6, 0.1)]) +
+    xlab('Y[t]') +
+    ylab('proportion')
+)
+
+print(ehrenfest_plot)
+
 ```
+{: .language-python}
+
+![](../images/chapter-4/Long-term_distribution_of_balls.jpg)
 
 The distribution of $$Y_t$$ values is the binomial distribution, as
 shown by the agreement between the points (the binomial probability
@@ -305,13 +352,37 @@ random among all the pages.  Then we just simulate subsequent pages
 according to the process described above.
 
 ```
-y[1] <- uniform_rng(1:N)
-for (t in 2:T)
-  last_page = y[t - 1]
-  out_links = L[last_page]
-  z[t] <- empty(out_links) ? 0 : bernoulli_rng(lambda)
-  y[t] <- uniform(z[t] ? out_links : (1:N))
+import numpy as np
+
+# Define L and lambda
+L = {1: [2, 3, 4], 2: [4], 3: [4], 4: []}
+lam = 0.85
+
+# Set initial values
+N = 4
+T = 10
+y = np.zeros(T, dtype=int)
+z = np.zeros(T, dtype=int)
+
+# Set initial value for y
+y[0] = np.random.randint(1, N+1)
+
+# Simulate y and z
+for t in range(1, T):
+    last_page = y[t - 1]
+    out_links = L[last_page]
+    z[t] = 0 if not out_links else np.random.binomial(1, lam)
+    y[t] = np.random.choice(out_links) if z[t] else np.random.randint(1, N+1)
+    
+print(y)
+
 ```
+{: .language-python}
+
+```
+[4 1 4 2 4 1 4 1 2 4]
+```
+{: .output}
 
 Suppose we have the following graph.
 A simplified web.  Each node represents a web page and each edge is a directed link from one page to another web page.
@@ -353,57 +424,62 @@ above and display the proportion of time spent on each page.
 Proportion of time spent on each page by a random surfer taking $$T = 100,000$$ page views starting from a random page with a web structured as in the previous diagram.
 
 
-<!-- ```
-L = matrix(0, 12, 12)
-L[1, c(2, 4)] = 1
-L[2, c(1)] = 1
-L[3, c(1)] = 1
-L[4, c(1, 11, 12)] = 1
-L[5, c()] = 1
-L[6, c(3)] = 1
-L[7, c(3, 9)] = 1
-L[8, c(3)] = 1
-L[9, c()] = 1
-L[10, c(8)] = 1
-L[11, c()] = 1
-L[12, c()] = 1
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import bernoulli
 
-lambda <- 0.90
-theta <- matrix(NA, 12, 12)
-for (i in 1:12) {
-  if (sum(L[i, ]) == 0) {
-    theta[i, ] <- rep(1/12, 12)
-  } else {
-    theta[i, ] <- lambda * L[i, ] / sum(L[i, ]) +
-                  (1 - lambda) * rep(1 / 12, 12)
-  }
-}
+L = np.zeros((12, 12))
+L[[0, 2], [1, 3]] = 1
+L[1, 0] = 1
+L[2, 0] = 1
+L[[3, 10, 11], [0, 9, 10]] = 1
+L[4, :] = 1
+L[5, 2] = 1
+L[[6, 8], [2, 8]] = 1
+L[7, 2] = 1
+L[8, :] = 1
+L[9, 7] = 1
+L[10, :] = 1
+L[11, :] = 1
 
-set.seed(1234)
-T <- 1e5
-y <- rep(NA, T)
-y[1] <- sample(1:12, 1)
-for (t in 2:T) {
-  y[t] <- sample(1:12, 1, prob = theta[y[t - 1], ])
-}
+lmbda = 0.90
+theta = np.zeros((12, 12))
+for i in range(12):
+    if np.sum(L[i, :]) == 0:
+        theta[i, :] = np.repeat(1/12, 12)
+    else:
+        theta[i, :] = lmbda * L[i, :] / np.sum(L[i, :]) + \
+                      (1 - lmbda) * np.repeat(1/12, 12)
 
-visited = table(y)
+np.random.seed(1234)
+T = int(1e5)
+y = np.zeros(T, dtype=int)
+y[0] = np.random.choice(12, 1)[0]
+for t in range(1, T):
+    y[t] = np.random.choice(12, 1, p=theta[y[t-1], :])[0]
 
-pagerank_df <- data.frame(x = 1:T, y = y)
+visited = np.bincount(y)
 
-pagerank_plot <-
-  ggplot(pagerank_df, aes(y)) +
-  geom_bar(color = 'black', fill = '#ffffe8', size = 0.2) +
-  scale_x_continuous(breaks = 1:12) +
-  scale_y_continuous(breaks = c(0, 0.1, 0.2, 0.3) * T,
-                     labels = c(0, 0.1, 0.2, 0.3)) +
-  xlab("page") +
-  ylab("rank (proportion of time on page)") +
-  ggtheme_tufte()
-pagerank_plot
-``` -->
+pagerank_df = pd.DataFrame({'x': range(1, T+1), 'y': y})
 
-![](../images/page_rank.jpg)
+pagerank_plot = (sns
+                 .catplot(x='y', data=pagerank_df, kind='count', color='#ffffe8', edgecolor='black', linewidth=0.2)
+                 .set(xlabel='page', ylabel='rank (proportion of time on page)', 
+                      xticks=np.arange(12), yticks=[0, 0.1*T, 0.2*T, 0.3*T], yticklabels=[0, 0.1, 0.2, 0.3])
+                 .fig
+                )
+sns.despine()
+
+```
+{: .language-python}
+
+<!-- ![](../images/page_rank.jpg) -->
+![](../images/chapter-4/Proportion_of_time_spent_on_each_page.jpg)
+
+
 Page 1 is the most central hub. Pages 5, 6, 7, and 10 have no links
 coming into them and can only be visited by random chance, so all
 should have the same chance of being visited by the random surfer.
