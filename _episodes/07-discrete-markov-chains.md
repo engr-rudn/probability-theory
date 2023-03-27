@@ -55,19 +55,29 @@ can simulate drunkard's walks for $$\theta = 0.5$$ and $$\theta = 0.6$$
 and see the trend over time.
 
 ```
-y[1] = 0
-for (m in 2:M)
-  z[m] = bernoulli_rng(theta)
-  y[m] = y[m - 1] + (z[m] ? 1 : -1)
+import numpy as np
+
+M = 10  # Set M to any value you need
+theta = 0.5  # Set theta to any value you need
+y = np.zeros(M)  # Initialize y with zeros
+z = np.zeros(M)  # Initialize z with zeros
+y[0] = 0  # Set the first value of y to 0
+
+# Generate z and y values using the Bernoulli distribution
+for m in range(1, M):
+    z[m] = np.random.binomial(1, theta)
+    y[m] = y[m - 1] + (1 if z[m] == 1 else -1)
+
 ```
+{: .language-python}
 
 We'll simulate from both processes for $$M = 1000$$ steps and plot.
 
 Drunkard's walks of 10,000 steps with equal chance of going left or right (blue) versus a sixty percent chance of going left (red).  The dotted line is drawn at the starting point. As time progresses, the biased random walk drifts further and further from its starting point.
 
-![](../images/Drunkards_walk.jpg)
-
-<!-- set.seed(1234)
+<!-- ![](../images/Drunkards_walk.jpg) -->
+```
+set.seed(1234)
 M <- 10000
 z1 <- rbinom(M, 1, 0.5)
 z2 <- rbinom(M, 1, 0.6)
@@ -91,8 +101,11 @@ drunkards_plot <-
   ylab("position") +
   ggtheme_tufte() +
   theme(panel.spacing.x = unit(4, "lines"))
-drunkards_plot -->
+drunkards_plot 
+```
+{: .language-python}
 
+![](../images/chapter-7/drunkards_walk.jpg)
 
 For the balanced drunkard, the expected drift per step is zero as
 there is equal chance of going in either direction. After 10,000
