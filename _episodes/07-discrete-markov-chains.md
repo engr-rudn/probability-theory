@@ -226,7 +226,7 @@ for t in range(1, T):
 print(y)
 
 ```
-.{: .language-python}
+{: .language-python}
 
 ```
 [10. 11. 10.  9. 10.  9. 10.  9. 10. 11. 12. 13. 12. 13. 14. 13. 14. 15.
