@@ -42,9 +42,9 @@ labeled as such in the plot.]
 
 A spinner resting at 36 degrees, or ten percent of the way around the circle.  A fair spin might land anywhere between 0 and 360 degrees.
 
-![](../images/spinners_and_continous_variables.jpg)
 
-<!-- df_spinner <- data.frame(value = c("0-360 degrees"), prob = c(0.3))
+```
+df_spinner <- data.frame(value = c("0-360 degrees"), prob = c(0.3))
 plot_spinner <-
   ggplot(data = df_spinner,
          aes(x = factor(1), y = prob, fill = value)) +
@@ -63,7 +63,10 @@ plot_spinner <-
   ggtheme_tufte() +
   theme(legend.position = "none")
 plot_spinner
- -->
+```
+{. language-r}
+
+![](../images/spinners_and_continous_variables.jpg)
 
 What does fair mean for continuous probabilities?  At the least, we
 should be able to say that the probality of landing in any band is the
@@ -138,41 +141,68 @@ interval.
 
 
 ```
-for (m in 1:M)
-  y[m] = uniform_rng(0, 1)
-print 'y = ' y
+import numpy as np
+
+M = 5  # Number of elements
+y = np.zeros(M)  # Initialize the output array with zeros
+
+for m in range(M):
+    y[m] = np.random.uniform(0, 1)
+
+print('y =', y)
 ```
+{: .language-python}
+
+```
+y = [0.38758361 0.45822924 0.24143984 0.44435819 0.25484211]
+```
+{: .output}
+
 Let's simulate $$M = 10$$ draws and look at the result,
 
-![](../images/simulated_values_10.jpg)
+<!-- ![](../images/simulated_values_10.jpg) -->
 
-<!-- set.seed(1234)
-M <- 10
-y = runif(M)
-for (m in 1:M)
-  printf('%5.4f ', y[m])
- -->
+```
+ import numpy as np
+
+np.random.seed(1234)  # Set the random seed
+M = 10  # Number of elements
+y = np.random.uniform(size=M)  # Generate the random array
+
+for m in range(M):
+    print(f'{y[m]:5.4f}', end=' ')  # Print each element with format '5.4f'
+```
+{: .language-python}
+
+```
+0.1915 0.6221 0.4377 0.7854 0.7800 0.2726 0.2765 0.8019 0.9581 0.8759
+```
+{: .output}
 
 These are only printed to a few decimal places.  As usual, it's hard
 to get a sense for the sequence of values as raw numbers.  The most popular way to summarize one-dimensional data is with a *histogram*, as shown in the following plot.
 
 Histogram of 10 draws from a $$\\mbox{uniform}(0, 1)$$ distribution.
 
-![](../images/histogram_of_uniform_distribution.jpg)
+<!-- ![](../images/histogram_of_uniform_distribution.jpg) -->
 
-<!-- df_unif_10 <- data.frame(y = y)
-unif_10_plot <-
-  ggplot(df_unif_10, aes(y)) +
-  geom_histogram(binwidth = 0.1, center = 0.05,
-                 color = "black", fill="#ffffe6", size = 0.25) +
-  scale_x_continuous("y", breaks = seq(0, 1, 0.1),
-                    limits = c(0, 1), expand = c(0, 0.02)) +
-  scale_y_continuous("count", breaks = c(1, 2, 3, 4, 5),
-                     expand = c(0.02, 0)) +
-  ggtheme_tufte()
-unif_10_plot -->
+```
+from plotnine import *
+import pandas as pd
+
+df_unif_10 = pd.DataFrame({'y': y})
+unif_10_plot = ggplot(df_unif_10, aes(x='y')) + \
+  geom_histogram(binwidth=0.1, center=0.05, color="black", fill="#ffffe6", size=0.25) + \
+  scale_x_continuous(breaks=[i/10 for i in range(0, 11)], limits=[0, 1], expand=[0, 0.02], name="y") + \
+  scale_y_continuous(breaks=[1, 2, 3, 4, 5], expand=[0.02, 0], name="count") + \
+  theme_tufte()
+
+print(unif_10_plot)
+```
+{: .language-python}
 
 
+![](../images/chapter-8/Histogram_of_10_draws_from_a_uniform_distribution..jpg)
 
 The range of values from 0 to 1 is broken up into ten equally spaced
 bins, 0 to 0.1, 0.1 to 0.2, up to 0.9 to 1.0. Each bin is then drawn
@@ -195,28 +225,34 @@ repetition and sizing to see what's going on.
 
 Histograms for uniform(0, 1) samples of increasing sizes.  The proportion of draws falling into each bin becomes more uniform as the sample size increases.  With each sample plotted to the same height, the vertical count axis varies in scale among the plots.
 
-![](../images/List_of_1.jpg)
-<!-- set.seed(1234)
-df_unif <- data.frame()
-for (N in 2^c(2, 4, 6, 8, 10, 12)) {
-  df_unif <- rbind(df_unif,
-             data.frame(y = runif(N),
-                        size = rep(paste("N=", N), N)))
-}
 
-plot <- ggplot(df_unif, aes(y)) +
-  facet_wrap(size ~ ., scales = "free") +
-  geom_histogram(binwidth = 0.1, center = 0.05, color = "black", fill="#ffffe6") +
-  scale_x_continuous("y", breaks = c(0, 0.5, 1), labels = c("0.0", "0.5", "1.0"), limits = c(0, 1), expand = c(0, 0.02)) +
-  scale_y_continuous("proportion of draws", breaks = c(), expand = c(0.02, 0)) +
-#  coord_fixed() +
-  theme(panel.spacing.y = unit(24, "pt")) +
-  theme(panel.spacing.x = unit(24, "pt")) +
-  ggtheme_tufte()
-  theme(aspect.ratio = 0.5)
+
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotnine as p9
+
+np.random.seed(1234)
+df_unif = pd.DataFrame()
+for N in [2**n for n in range(2, 13, 2)]:
+    y = np.random.uniform(size=N)
+    df_unif = pd.concat([df_unif, pd.DataFrame({'y': y, 'size': ['N={}'.format(N)] * N})])
+
+plot = (
+    p9.ggplot(df_unif, p9.aes(x='y')) +
+    p9.facet_wrap('size', scales='free') +
+    p9.geom_histogram(binwidth=0.1, center=0.05, color='black', fill='#ffffe6') +
+    p9.scale_x_continuous(breaks=[0, 0.5, 1], labels=['0.0', '0.5', '1.0'], limits=[0, 1], expand=[0, 0.02]) +
+    p9.scale_y_continuous(name='proportion of draws', breaks=[], expand=(0.02, 0)) +
+    p9.theme(panel_spacing={'y': 24, 'x': 24}, aspect_ratio=0.5, subplots_adjust={'wspace': 0.25}) +
+    p9.theme_tufte()+ theme(subplots_adjust={'hspace': 0.25}))
 plot
- -->
+```
+{: .language-python}
 
+![](../images/chapter-8/Histograms_for_uniform_samples_of_increasing_sizes..jpg)
 
 ## Calculating $$\pi$$ via simulation
 
@@ -247,19 +283,37 @@ two dimensions whereas a circle has but one.]
 
 A unit circle (dotted line) centered at the origin is inscribed in a square (dashed lines) with axes running from -1 to 1.
 
-<!-- radians <- seq(0, 2 * pi, length.out=100)
-bullseye_target_plot <-
-  ggplot(data.frame(x = c(), y = c()), aes(X, Y), xlim = c(-1, 1), ylim = c(-1, 1)) +
-  annotate("path", x = cos(radians), y = sin(radians),
-           size = 0.8, color = '#333333', linetype="dotted") +
-  annotate("path", x = c(-1, -1, 1, 1, -1), y = c(-1, 1, 1, -1, -1),
-           size = 0.4, color = '#333333', linetype="dashed") +
-  scale_x_continuous(limits = c(-1, 1), breaks = c(-1, 0, 1)) +
-  scale_y_continuous(limits = c(-1, 1), breaks = c(-1, 0, 1)) +
-  coord_fixed(ratio = 1) +
-  ggtheme_tufte()
-bullseye_target_plot -->
+```
+import numpy as np
+import plotnine as p9
+from plotnine.themes import theme_tufte
+from numpy import cos
+from numpy import sin
 
+
+radians = np.linspace(0, 2*np.pi, 100)
+
+bullseye_target_plot = (
+  p9.ggplot(p9.aes(x='X', y='Y')) +
+  p9.geom_path(
+    data=p9.aes(x=cos(radians), y='sin(radians)'), 
+    size=0.8, color='#333333', linetype="dotted"
+  ) +
+  p9.geom_path(
+    data=p9.aes(x=[-1, -1, 1, 1, -1], y=[-1, 1, 1, -1, -1]), 
+    size=0.4, color='#333333', linetype="dashed"
+  ) +
+  p9.scale_x_continuous(limits=[-1, 1], breaks=[-1, 0, 1]) +
+  p9.scale_y_continuous(limits=[-1, 1], breaks=[-1, 0, 1]) +
+  p9.coord_fixed(ratio=1) +
+  theme_tufte()
+)
+bullseye_target_plot
+
+```
+{: .language-python}
+
+![](../images/chapter-8/unit_circle.jpg)
 
 A point $$(x, y)$$ will fall within the unit circle if^[A point falls on
 a circle of radius $$r$$ if $$x^2 + y^2 = r^2$$.]
@@ -274,33 +328,46 @@ coordinates, resulting in them being "scattered."
 
 $$M = 250$$ simulated draws of $$(x^{(m)}, y^{(m)})$$ from a $$\\mbox{uniform}(-1, 1)$$ distribution.  Points within the circle are plotted using $$+$$ and those outside it with $$\\circ$$.
 
-![](../images/simulated_draws_of_uniform_distribution.jpg)
+<!-- ![](../images/simulated_draws_of_uniform_distribution.jpg) -->
 
-<!-- set.seed(1234)
-M <- 250
-X <- runif(M, -1, 1)
-Y <- runif(M, -1, 1)
-df <- data.frame(X = X, Y = Y, within = (X^2 + Y^2 < 1))
-radians <- seq(0, 2 * pi, length.out=200)
-df <- data.frame(X = X, Y = Y, within = (X^2 + Y^2 < 1))
-bullseye_plot <-
-  ggplot(df, aes(X, Y), xlim = c(-1, 1), ylim = c(-1, 1)) +
-#  geom_vline(xintercept = 0, size = 0.3, color = "#333333") +
-#  geom_hline(yintercept = 0, size = 0.3, color = "#333333") +
-  annotate("path", x = cos(radians), y = sin(radians),
-           size = 0.8, color = '#333333', linetype="dotted") +
-  annotate("path", x = c(-1, -1, 1, 1, -1), y = c(-1, 1, 1, -1, -1),
-           size = 0.4, color = '#333333', linetype="dashed") +
-  geom_point(aes(shape = within, color = within), size = 1.25) +
-  scale_shape_manual(values = c(1, 3)) +
-  scale_color_manual(values = c("#333333", "#111111")) +
-  scale_x_continuous(limits = c(-1, 1), breaks = c(-1, 0, 1)) +
-  scale_y_continuous(limits = c(-1, 1), breaks = c(-1, 0, 1)) +
-  coord_fixed(ratio = 1) +
-  ggtheme_tufte() +
-  theme(legend.position = "none")
-bullseye_plot -->
+```
+import numpy as np
+import pandas as pd
+import plotnine as p9
+from plotnine.themes import theme_tufte
 
+np.random.seed(1234)
+
+M = 250
+X = np.random.uniform(-1, 1, size=M)
+Y = np.random.uniform(-1, 1, size=M)
+df = pd.DataFrame({'X': X, 'Y': Y, 'within': (X**2 + Y**2 < 1)})
+
+radians = np.linspace(0, 2*np.pi, 200)
+
+bullseye_plot = (
+    p9.ggplot(df, p9.aes(x='X', y='Y')) +
+    p9.annotate("path", x=np.cos(radians), y=np.sin(radians),
+                 size=0.8, color='#333333', linetype="dashed") +
+    p9.annotate("path", x=[-1, -1, 1, 1, -1], y=[-1, 1, 1, -1, -1],
+                 size=0.4, color='#333333', linetype="dotted") +
+    p9.geom_point(p9.aes(shape='within', color='within'), size=2.25) +
+    p9.scale_shape_manual(values=[1, 3]) +
+    p9.scale_color_manual(values=["blue","red"]) + #"#333333", "#111111"
+    p9.scale_x_continuous(limits=[-1, 1], breaks=[-1, 0, 1]) +
+    p9.scale_y_continuous(limits=[-1, 1], breaks=[-1, 0, 1]) +
+    p9.coord_fixed(ratio=1) +
+    theme_tufte() +
+    p9.theme(legend_position="none")
+)
+
+bullseye_plot
+
+```
+{: .language-python}
+
+
+![](../images/chapter-8/250_simulated_draws_of_x_m-y_m-from_a_uniform.jpg)
 
 For random variables $$X, Y \sim \mbox{uniform}(-1, 1)$$, the event of
 their falling within the unit circle is $$X^2 + Y^2 \leq 1$$. Because
@@ -318,30 +385,58 @@ We know how to estimate event probabilities using simulation.  The
 code here is straightforward.
 
 ```
-for (m in 1:M)
-  x[m] = uniform_rng(-1, 1)
-  y[m] = uniform_rng(-1, 1)
-  inside[m] = (x[m]^2 + y[m]^2 <= 1)
-print 'Pr[in circle] = ' sum(inside) / M
-print 'estimated pi = ' 4 * sum(inside) / M
+import random
+
+M = 1000000  # set the number of samples
+inside = 0  # initialize the counter for points inside the circle
+
+# generate M random points and count how many are inside the circle
+for m in range(M):
+    x = random.uniform(-1, 1)
+    y = random.uniform(-1, 1)
+    if x**2 + y**2 <= 1:
+        inside += 1
+
+# estimate pi using the number of points inside the circle
+pi_estimate = 4 * inside / M
+
+# print the results
+print('Pr[in circle] =', inside / M)
+print('estimated pi =', pi_estimate)
+
 ```
+{: .language-python}
+
+```
+Pr[in circle] = 0.78507
+estimated pi = 3.14028
+```
+{: .output}
 
 We recover the simulation-based estimate of $$\pi$$ by multiplying the
 event probability of $$X^2 + Y^2 \leq 1$$ by four.
 
-Let's run this with $$M = 1\,000\,000$$ and see what we get,
-
-<!-- set.seed(1234)
-M <- 1e6
-X <- runif(M, -1, 1)
-Y <- runif(M, -1, 1)
-Pr_target <- (1 / M) * sum(X^2 + Y^2 < 1)
-printf('Pr[in circle] = %4.3f', Pr_target)
-printf('estimated pi = %4.3f', 4 * Pr_target) -->
+Let's run this with $$M = 1,000,000$$ and see what we get,
 
 ```
-Pr[in circle] = 0.784
-estimated pi = 3.138
+import numpy as np
+
+np.random.seed(1234)  # set the random seed
+M = 1000000  # set the number of samples
+X = np.random.uniform(-1, 1, M)
+Y = np.random.uniform(-1, 1, M)
+inside = np.sum(X**2 + Y**2 < 1)  # count the number of points inside the circle
+Pr_target = inside / M  # compute the target probability
+
+# print the results
+print(f"Pr[in circle] = {Pr_target:.3f}")
+print(f"estimated pi = {4 * Pr_target:.3f}")
+ 
+```
+{: .language-python}
+```
+Pr[in circle] = 0.786
+estimated pi = 3.143
 ```
 
 We actually knew the answer ahead of time here, $$\pi \approx 3.14159$$.
@@ -437,18 +532,30 @@ high dimensions lies in the corners.  Let's see just how much by
 simulation.
 
 ```
-euclidean_length = x.sqrt(sum(x^2))
+import numpy as np
 
-for (log2_N in 1:max_log2_N)
-  N <- 2^log2_N
-  for (m in 1:M)
-    for (n in 1:N)
-      x(m)[n] = uniform_rng(-0.5, 0.5)
-    d(m) = euclidean_length(x(m))
-  mean_d[log2N] = mean(d)
-  min_d[log2N] = min(d)
-  max_d[log2N] = max(d)
+def euclidean_length(x):
+    return np.sqrt(np.sum(np.square(x)))
+
+max_log2_N = 10
+M = 5
+
+mean_d = np.zeros(max_log2_N)
+min_d = np.zeros(max_log2_N)
+max_d = np.zeros(max_log2_N)
+
+for log2_N in range(1, max_log2_N+1):
+    N = 2**log2_N
+    d = np.zeros(M)
+    for m in range(M):
+        x = np.random.uniform(-0.5, 0.5, size=N)
+        d[m] = euclidean_length(x)
+    mean_d[log2_N-1] = np.mean(d)
+    min_d[log2_N-1] = np.min(d)
+    max_d[log2_N-1] = np.max(d)
+
 ```
+{: .language-python}
 
 We take `x^2` to operate elementwise on the members of `x`, e.g.,
 $$(1, 2, 3)^2 = (1, 4, 9)$$.  The square root, sum, and other operations
@@ -457,50 +564,59 @@ defined with *lambda abstraction*, where the `x.` indicates that the
 argument to the function is `x` and the result is the result of
 plugging the value for `x` into the body, `sqrt(sum(x^2))`.
 
-Let's plot what we get out to $$1\,000$$ dimensions or so.
+Let's plot what we get out to $$1,000$$ dimensions or so.
 
 Plot of the average distance (solid line) of a uniform draw from a hypercube to the center of the hypercube as a function of the number of dimensions.  The minimum and maximum distance (dotted lines) are shown based on $$M = 10,000$$ simulations.
 
-![](../images/hypercube.jpg)
+<!-- ![](../images/hypercube.jpg) -->
 
-<!-- euclidean_length = function(x) sqrt(sum(x^2))
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
-set.seed(1234)
-M <- 10000
-log2maxN <- 10
-min_d <- rep(NA, log2maxN)
-max_d <- rep(NA, log2maxN)
-mean_d <- rep(NA, log2maxN)
-d <- rep(NA, M)
-for (log2n in 1:log2maxN) {
-  n <- 2^log2n
-  for (m in 1:M) {
-    x <- runif(n, -0.5, 0.5)
-    d[m] <- euclidean_length(x)
-  }
-  min_d[log2n] <- min(d)
-  max_d[log2n] <- max(d)
-  mean_d[log2n] <- mean(d)
-}
+def euclidean_length(x):
+    return np.sqrt(np.sum(x**2))
 
-df_curse <-
-  data.frame(dimensions = rep(2^(1:log2maxN), 3),
-             distance = c(min_d, max_d, mean_d),
-	     type = c(rep("min", log2maxN),
-                      rep("max", log2maxN),
-                      rep("mean", log2maxN)));
-curse_plot <-
-  ggplot(df_curse, aes(x = dimensions, y = distance)) +
-  geom_line(aes(linetype = type), size = 0.5) +
-  scale_x_log10(breaks = c(1, 10, 100, 1000, 10000)) +
-  scale_y_continuous(breaks = c(0, 2, 4, 6, 8, 10)) +
-  scale_linetype_manual(values = c("dotted", "solid", "dotted")) +
-  ylab("Distance of draw to center") +
-  xlab("Dimensions of unit hypercube") +
-  ggtheme_tufte() +
-  theme(legend.position = "none")
-curse_plot -->
+np.random.seed(1234)
+M = 10000
+log2maxN = 10
+min_d = np.empty(log2maxN)
+max_d = np.empty(log2maxN)
+mean_d = np.empty(log2maxN)
+d = np.empty(M)
+for log2n in range(1, log2maxN+1):
+    n = 2**log2n
+    for m in range(M):
+        x = np.random.uniform(-0.5, 0.5, size=n)
+        d[m] = euclidean_length(x)
+    min_d[log2n-1] = np.min(d)
+    max_d[log2n-1] = np.max(d)
+    mean_d[log2n-1] = np.mean(d)
+# print(f'min_d[log2n-1]={min_d},max_d[log2n-1] ={max_d },mean_d[log2n-1]={mean_d}')
+df_curse = pd.DataFrame({
+    'dimensions': np.repeat(2**np.arange(1, log2maxN+1), 3),
+    'distance': np.concatenate((min_d, mean_d, max_d)),
+    'type': np.repeat(['min', 'mean', 'max'], log2maxN)
+})
+# print(df_curse )
+curse_plot = (
+    ggplot(df_curse, aes(x='dimensions', y='distance')) +
+    geom_line(aes(linetype='type'), size=0.5) +
+    scale_x_log10(breaks=[1, 10, 100, 1000, 10000]) +
+    scale_y_continuous(breaks=[0, 2, 4, 6, 8, 10]) +
+    scale_linetype_manual(values=['dotted', 'solid', 'dotted']) +
+    ylab('Distance of draw to center') +
+    xlab('Dimensions of unit hypercube') +
+    theme_tufte() +
+    theme(legend_position='none')
+)
+curse_plot
+ 
+```
+{: .language-python}
 
+![](../images/chapter-8/Plot_of_the_average_distance__to_the_center_of_the_hypercube.jpg)
 
 While it may seem intuitively from thinking in two dimensions that
 draws should be uniformly dispersed and thus appear near the origin,
@@ -532,28 +648,49 @@ other.  They are further from each other, on average, than they are
 from the origin.  For example, let's simulate just for 100 dimensions,
 
 ```
-for (m in 1:M)
-  for (n in 1:N)
-    x[n] = uniform_rng(-0.5, 0.5)
-    y[n] = uniform_rng(-0.5, 0.5)
-  d(m) = euclidean_length(x - y)
-print 'min = ' min(d) ';  mean = ' mean(d) '; max = ' max(d)
-```
+import numpy as np
 
-Let's run that for $$M = 10\,000$$ and $$N = 100$$ and see what we get.
+M = 10000
+N = 10
+d = np.empty(M)
+for m in range(M):
+    x = np.random.uniform(-0.5, 0.5, size=N)
+    y = np.random.uniform(-0.5, 0.5, size=N)
+    d[m] = np.sqrt(np.sum((x - y)**2))
+print('min =', np.min(d), '; mean =', np.mean(d), '; max =', np.max(d))
 
-```{r}
-N <- 100
-M <- 10000
-d <- rep(NA, M)
-for (m in 1:M) {
-  x <- runif(N)
-  y <- runif(N)
-  d[m] <- euclidean_length(x - y)
-}
-printf('min = %2.1f;  mean = %2.1f;  max = %2.1f\n',
-       min(d), mean(d), max(d))
 ```
+{: .language-python}
+
+
+```
+min = 0.38514151598863117 ; 
+mean = 1.2702829208415631 ; 
+max = 2.1206861405752284
+```
+{: .output}
+
+Let's run that for $$M = 10,000$$ and $$N = 100$$ and see what we get.
+
+```
+import numpy as np
+
+N = 100
+M = 10000
+d = np.empty(M)
+for m in range(M):
+    x = np.random.uniform(size=N)
+    y = np.random.uniform(size=N)
+    d[m] = np.sqrt(np.sum((x - y)**2))
+print(f"min = {np.min(d):.1f}; mean = {np.mean(d):.1f}; max = {np.max(d):.1f}")
+
+```
+{: .language-python}
+
+```
+min = 3.1; mean = 4.1; max = 5.0
+```
+{: .output}
 
 We see that the average distances between randomly generated points is
 even greater than the average distance to the origin.
