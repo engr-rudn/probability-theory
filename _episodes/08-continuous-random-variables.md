@@ -64,7 +64,7 @@ plot_spinner <-
   theme(legend.position = "none")
 plot_spinner
 ```
-{. language-r}
+{: .language-r}
 
 ![](../images/spinners_and_continous_variables.jpg)
 
