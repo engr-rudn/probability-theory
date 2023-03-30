@@ -37,40 +37,67 @@ This is a linear function of $$\theta$$, i.e., $$\frac{1}{360} \times
 
 Cumulative distribution function for the angle $$\theta$$ (in degrees) resulting from a fair spin of a spinner.  The dotted line shows the value at 180 degrees, which is a probability of one half and the dashed line at 270 degrees, which is a probability of three quarters.
 
-![](../images/cumulative_distribution_function.png)
+<!-- ![](../images/cumulative_distribution_function.png -->
 
-<!-- library(ggplot2)
-df_cdf_spinner <- data.frame(x = c(-90, 0, 360, 450), y = c(0, 0, 1, 1))
-cdf_spinner_plot <-
-  ggplot(df_cdf_spinner, aes(x = x, y = y)) +
-  geom_line(size = 0.5, color = "#333333") +
-  scale_x_continuous(breaks =c(0, 90, 180, 270, 360)) +
-  scale_y_continuous(breaks= c(0, 0.25, 0.5, 0.75, 1),
-                     labels = c("0", "1/4", "1/2", "3/4", "1")) +
-  xlab(expression(theta)) +
-  ylab(expression('F'[Theta](theta))) +
-  geom_segment(aes(x = 180, y = 0, xend = 180, yend = 0.5),
-               color="#333333", linetype="dotted", size = 1) +
-  geom_segment(aes(x = 180, y = 0.5, xend = -90, yend = 0.5),
-               color="#333333", linetype="dotted", size = 1) +
-  geom_segment(aes(x = 270, y = 0, xend = 270, yend = 0.75),
-               color="#333333", linetype="dashed", size = 0.5) +
-  geom_segment(aes(x = 270, y = 0.75, xend = -90, yend = 0.75),
-               color="#333333", linetype="dashed", size = 0.5) +
-  ggtheme_tufte()
-cdf_spinner_plot
- -->
+```
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define x and y values
+x = np.array([-90, 0, 360, 450])
+y = np.array([0, 0, 1, 1])
+
+# Create the figure and axis
+fig, ax = plt.subplots()
+
+# Plot the line
+ax.plot(x, y, color="#333333", linewidth=0.5)
+
+# Set the x and y axis labels
+ax.set_xlabel(r'$\theta$')
+ax.set_ylabel(r'$F_\Theta(\theta)$')
+
+# Set the x and y axis limits and ticks
+ax.set_xlim([-90, 360])
+ax.set_xticks([0, 90, 180, 270, 360])
+ax.set_ylim([0, 1])
+ax.set_yticks([0, 0.25, 0.5, 0.75, 1])
+ax.set_yticklabels(["0", r"$\frac{1}{4}$", r"$\frac{1}{2}$", r"$\frac{3}{4}$", "1"])
+
+# Add the dotted and dashed lines
+ax.plot([180, 180], [0, 0.5], color="#333333", linestyle="dotted", linewidth=1)
+ax.plot([180, -90], [0.5, 0.5], color="#333333", linestyle="dotted", linewidth=1)
+ax.plot([270, 270], [0, 0.75], color="#333333", linestyle="dashed", linewidth=0.5)
+ax.plot([270, -90], [0.75, 0.75], color="#333333", linestyle="dashed", linewidth=0.5)
+
+# Show the plot
+plt.show()
+
+```
+{: .language-python}
+
+![](../images/chapter-9/Cumulative_distribution_funciton.jpg)
 
 We can verify this result using simulation.  To estimate cumulative
 distribution functions, we take $$M$$ simulated values $$\theta^{(m)}$$ and
 then sort them in ascending order.
 
 ```
-for (m in 1:M)
-  theta[m] <- uniform_rng(0, 360)
-theta_ascending <- sort(theta)
-prob <- (1:M) / M
+import numpy as np
+
+M = 100  # Set the value of M
+
+theta = np.zeros(M)  # Create an empty numpy array for theta
+
+# Generate M uniform random numbers between 0 and 360 and store them in theta
+theta = np.random.uniform(low=0, high=360, size=M)
+
+theta_ascending = np.sort(theta)  # Sort theta in ascending order
+
+prob = np.arange(1, M+1) / M  # Calculate the probabilities
+
 ```
+{: .language-python}
 
 The expression `(1:M)` denotes the sequence $$1, 2, \ldots, M$$, so that
 `(1:M) / M` denotes $$\frac{1}{M}, \frac{2}{M}, \ldots, \frac{M}{M}$$.
@@ -82,23 +109,32 @@ Plot of the cumulative distribution function of a random variable $$\theta$$ rep
 
 
 
-<!-- M <- 1000
-theta <- runif(M, 0, 360)
-theta_asc <- sort(theta)
-prob <- (1:M)/M
+```
+import numpy as np
+import pandas as pd
+from plotnine import ggplot, aes, geom_line, scale_x_continuous, scale_y_continuous, xlab, ylab
 
-unif_cdf_df <- data.frame(theta = theta_asc, prob = prob)
-unif_cdf_plot <-
-  ggplot(unif_cdf_df, aes(x = theta, y = prob)) +
-  geom_line() +
-  scale_x_continuous(breaks = c(0, 90, 180, 270, 360)) +
-  scale_y_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
-  xlab(expression(theta)) +
-  ylab(expression(F[Theta](theta))) +
-  ggtheme_tufte()
-unif_cdf_plot -->
+M = 1000
+theta = np.random.uniform(0, 360, size=M)
+theta_asc = np.sort(theta)
+prob = np.arange(1, M+1) / M
 
-![](../images/plot_of_cumulative_distribution_function.jpg)
+unif_cdf_df = pd.DataFrame({'theta': theta_asc, 'prob': prob})
+unif_cdf_plot = (
+    ggplot(unif_cdf_df, aes(x='theta', y='prob')) +
+    geom_line() +
+    scale_x_continuous(breaks=[0, 90, 180, 270, 360]) +
+    scale_y_continuous(breaks=[0, 0.25, 0.5, 0.75, 1.0]) +
+    xlab('$\\theta$') +
+    ylab('$F_\\Theta(\\theta)$')
+)
+unif_cdf_plot
+
+```
+{: .language-python}
+
+<!-- ![](../images/plot_of_cumulative_distribution_function.jpg) -->
+![](../images/chapter-9/Cumulative_distribution_function.jpg)
 
 Even with $$M = 1,000$$, this is pretty much indistinguishable from the
 one plotted analytically.
@@ -153,58 +189,139 @@ value of $$\Theta$$.
 Simulating transformed variables is straightforward.
 
 ```
-for (m in 1:M)
-  theta[m] = uniform_rng(0, 1)
-  alpha[m] = logit(theta[m])
-print 'alpha = ' alpha[1:10] ' ... '
+import numpy as np
+
+M = 1000
+theta = np.random.uniform(0, 1, size=M)
+alpha = np.log(theta / (1 - theta))
+
+print(f'alpha = {alpha[:10]} ...')
+
+
 ```
+{: .language-python}
+
+```
+alpha = [ 1.99678538 -1.77469355 -0.77809048  0.70232242  0.52317288 -2.15661683
+ -1.72339989 -0.29737391 -3.47165039  0.2311787 ] ...
+```
+{: .output}
 
 We can run this and see the first ten values,
 
-![](../images/first_ten_values.jpg)
+<!-- ![](../images/first_ten_values.jpg) -->
 
-<!-- set.seed(1234)
-M <- 10000
-logit <- function(x) log(x / (1 - x))
-theta <- runif(M)
-alpha <- logit(theta)
-for (m in 1:10)
-  printf('%3.2f ', alpha[m])
-printf(' ... \n') -->
+```
+import numpy as np
 
+np.random.seed(1234)
+
+M = 10000
+
+def logit(x):
+    return np.log(x / (1 - x))
+
+theta = np.random.uniform(size=M)
+alpha = logit(theta)
+
+for m in range(10):
+    print(f'{alpha[m]:.2f}', end=' ')
+    
+print('...') 
+
+
+```
+{: .language-python}
+
+```
+-1.44 0.50 -0.25 1.30 1.27 -0.98 -0.96 1.40 3.13 1.95 ...
+```
+{: .output}
 
 To understand the distribution of values of $$\Phi$$, let's look at histograms.  First, we have the uniform draws of $$\Theta$$, and then the transform to log odds $$\Phi = \mathrm{logit}(\Theta)$$,
 Histogram of 10,000 simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$.
 
-![](../images/histogram_of_10000_simulated_draw_.jpg)
+<!-- ![](../images/histogram_of_10000_simulated_draw_.jpg) -->
 
-<!-- df_prob_unif <- data.frame(theta = theta)
-unif_prob_plot <-
-  ggplot(df_prob_unif, aes(theta)) +
-  geom_histogram(binwidth = 1/34, center = 1/68, color = "black",
-                 fill="#ffffe6", size = 0.25) +
-  scale_x_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1)) +
-  scale_y_continuous(lim = c(0, 1300), breaks = c(500, 1000)) +
-  xlab(expression(paste(Theta, " ~ uniform(0, 1)"))) +
-  ggtheme_tufte()
-unif_prob_plot -->
+```
+import pandas as pd
+from plotnine import ggplot, aes, geom_histogram, scale_x_continuous, scale_y_continuous, xlab
+from plotnine.themes import theme_minimal
+
+df_prob_unif = pd.DataFrame({'theta': theta})
+unif_prob_plot = (
+    ggplot(df_prob_unif, aes(x='theta')) +
+    geom_histogram(binwidth=1/34, center=1/68, color='black',
+                   fill='#ffffe6', size=0.25) +
+    scale_x_continuous(breaks=[0, 0.25, 0.5, 0.75, 1]) +
+    scale_y_continuous(limits=[0, 1300], breaks=[500, 1000]) +
+    xlab('$\\theta$ ~ uniform(0, 1)') +
+    theme_minimal()
+)
+unif_prob_plot
+
+```
+{: .language-python}
 
 
 Histogram of 10,000 simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\Phi = \mbox{logit}(\theta).$$
 
-![](../images/histogram_of_10000_simulated_draw_of_thetha.jpg)
+<!-- ![](../images/histogram_of_10000_simulated_draw_of_thetha.jpg) -->
 
-<!-- df_log_odds <- data.frame(alpha = alpha)
-log_odds_plot <-
-  ggplot(df_log_odds, aes(alpha)) +
-  geom_histogram(binwidth = 0.5, color = "black", fill="#ffffe6",
-                 size = 0.25) +
-  scale_x_continuous(breaks = c(-6, -4, -2, 0, 2, 4, 6)) +
-  scale_y_continuous(lim = c(0, 1300), breaks = c(500, 1000)) +
-  xlab(expression(paste(Phi, " = ", logit(Theta)))) +
-  ggtheme_tufte()
-log_odds_plot -->
+![](../images/chapter-9/Histogram_of_10000_simulated_draws.jpg)
 
+```
+import pandas as pd
+from plotnine import *
+import numpy as np
+
+np.random.seed(1234)
+
+M = 10000
+logit = lambda x: np.log(x / (1 - x))
+
+theta = np.random.uniform(size=M)
+alpha = logit(theta)
+
+for m in range(10):
+    print(f'{alpha[m]:.2f}', end=' ')
+print('...')
+
+df_prob_unif = pd.DataFrame({'theta': theta})
+unif_prob_plot = (
+    ggplot(df_prob_unif, aes(x='theta')) +
+    geom_histogram(binwidth=1/34, center=1/68, color='black',
+                   fill='#ffffe6', size=0.25) +
+    scale_x_continuous(breaks=[0, 0.25, 0.5, 0.75, 1]) +
+    scale_y_continuous(limits=[0, 1300], breaks=[500, 1000]) +
+    xlab(r'$\Theta \sim \mathrm{uniform}(0, 1)$') +
+    ggtitle('Probability density of uniform distribution') +
+    theme_tufte()
+)
+unif_prob_plot
+
+df_log_odds = pd.DataFrame({'alpha': alpha})
+log_odds_plot = (
+    ggplot(df_log_odds, aes(x='alpha')) +
+    geom_histogram(binwidth=0.5, color='black', fill='#ffffe6',
+                   size=0.25) +
+    scale_x_continuous(breaks=[-6, -4, -2, 0, 2, 4, 6]) +
+    scale_y_continuous(limits=[0, 1300], breaks=[500, 1000]) +
+    xlab(r'$\varphi = \mathrm{logit}(\Theta)$') +
+    ggtitle('Probability density of log-odds') +
+    theme_tufte()
+)
+log_odds_plot
+```
+{: .language-python}
+
+```
+-1.44 0.50 -0.25 1.30 1.27 -0.98 -0.96 1.40 3.13 1.95 ...
+
+```
+{: .output}
+
+![](../images/chapter-9/Histogram_of_10000_simulated_draws_of_theta_uniform.jpg)
 
 Even though the probability variable $$\Theta \sim \mbox{uniform}(0,
 1)$$ is uniform by construction, the log odds variable $$\Phi =
@@ -253,46 +370,55 @@ cumulative distribution based on simulation; we need merely insert the
 log-odds transform.
 
 ```
-for (m in 1:M)
-  theta[m] <- logit(uniform_rng(0, 360))
-theta_ascending <- sort(theta)
-prob <- (1:M) / M
+import numpy as np
+
+M = 1000# define the value for M
+
+theta = np.zeros(M)
+for m in range(M):
+    theta[m] = np.random.uniform(0, 360)
+
+theta_ascending = np.sort(the
 ```
+{: .language-python}
 
 We again plot with $$M = 1,000$$ simulated values.
 
 Plot of the cumulative distribution function of a random variable $$\Phi = \mbox{logit}(\theta)$$ representing the log odds transform of a uniformly distributed random variable $$\theta \sim \mbox{uniform}(0, 1)$$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $$x$$-axis and 0.5 on the $$y$$-axis are picked out with dotted lines.
 
 
-![](../images/plot_of_cumulative_distribution_function_of_random_variable_thetha.jpg)
+<!-- ![](../images/plot_of_cumulative_distribution_function_of_random_variable_thetha.jpg) -->
 
-<!-- logit <- function(u) log(u / (1 - u))
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-M <- 1000
-phi <- logit(runif(M))
-phi_asc <- sort(phi)
-prob <- (1:M)/M
+def logit(u):
+    return np.log(u / (1 - u))
 
-logistic_cdf_df <- data.frame(phi = phi_asc, prob = prob)
-logistic_cdf_plot <-
-  ggplot(logistic_cdf_df, aes(x = phi, y = prob)) +
-  geom_line() +
-  geom_hline(yintercept = 1, size = 0.3, linetype = "dashed",
-             color = "#333333") +
-  geom_hline(yintercept = 0, size = 0.3, linetype = "dashed",
-             color = "#333333") +
-  geom_vline(xintercept = 0, size = 0.3, linetype = "dotted",
-             color = "#333333") +
-  geom_hline(yintercept = 0.5, size = 0.3, linetype = "dotted",
-             color = "#333333") +
-  scale_x_continuous(lim = c(-7, 7),
-                     breaks = c(-6, -4, -2, 0, 2, 4, 6)) +
-  scale_y_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
-  xlab(expression(phi)) +
-  ylab(expression(F[Phi](phi))) +
-  ggtheme_tufte()
-logistic_cdf_plot -->
+M = 1000
+phi = logit(np.random.uniform(size=M))
+phi_asc = np.sort(phi)
+prob = np.arange(1, M+1) / M
 
+logistic_cdf_df = pd.DataFrame({'phi': phi_asc, 'prob': prob})
+logistic_cdf_plot = sns.lineplot(data=logistic_cdf_df, x='phi', y='prob', axes=plt.gca())
+logistic_cdf_plot.axhline(y=1, linestyle='--', linewidth=0.3, color='#333333')
+logistic_cdf_plot.axhline(y=0, linestyle='--', linewidth=0.3, color='#333333')
+logistic_cdf_plot.axvline(x=0, linestyle=':', linewidth=0.3, color='#333333')
+logistic_cdf_plot.axhline(y=0.5, linestyle=':', linewidth=0.3, color='#333333')
+logistic_cdf_plot.set(xlim=(-7, 7), xticks=[-6, -4, -2, 0, 2, 4, 6], yticks=[0, 0.25, 0.5, 0.75, 1.0])
+logistic_cdf_plot.set(xlabel=r'$\phi$', ylabel=r'$F_{\Phi}(\phi)$')
+sns.set_style('ticks')
+plt.show()
+
+
+```
+{: .language-python}
+
+![](../images/chapter-9/cumulative_distribution_function_of_a_random_variable_phi.png)
 
 The result is an S-shaped function whose values lie between 0 and 1,
 with asymptotes at one as $$\theta$$ approaches $$\infty$$ and at zero as
@@ -353,27 +479,54 @@ $$\Phi = \mbox{logit}(\Theta)$$, where $$\Theta \sim \mbox{uniform}(0,
 simulating and calculating means and variances of the simulated values,
 
 ```
-set.seed(1234)
-phi <- rep(NA, M)
-for (m in 1:M)
-  phi[m] = logit(uniform_rng(0, 1))
-E_Phi = sum(phi) / M
-var_Phi = sum((phi - E_Phi)^2) / M
-print 'Estimated E[Phi] = ' E_Phi
-      '; var[Phi] = ' var_Phi
-      '; sd[Phi] = ' sqrt(var_Phi)
+import numpy as np
+
+np.random.seed(1234)
+
+M = 1000
+phi = np.zeros(M)
+
+for m in range(M):
+    phi[m] = logit(np.random.uniform())
+
+E_Phi = np.sum(phi) / M
+var_Phi = np.sum((phi - E_Phi)**2) / M
+
+print(f"Estimated E[Phi] = {E_Phi}; var[Phi] = {var_Phi}; sd[Phi] = {np.sqrt(var_Phi)}")
+
+      
 ```
+{: .language-python}
+
+
+```
+Estimated E[Phi] = 0.05805343885611037; var[Phi] = 3.609094985913; sd[Phi] = 1.8997618234697211
+```
+{: .output}
 
 Let's run that for $$M = 1,000,000$$ and see what we get.
 
-![](../images/estimated_e_phi.jpg)
-<!-- M <- 1e6
-phi <- rlogis(M)
-E_Phi <- sum(phi) / M
-var_Phi <- sum((phi - E_Phi)^2) / M
-printf('Estimated  E[Phi] = %3.2f;  var[Phi] = %3.2f;  sd[Phi] = %3.2f',
-       E_Phi, var_Phi, sqrt(var_Phi)) -->
+<!-- ![](../images/estimated_e_phi.jpg) -->
 
+```
+import numpy as np
+
+M = int(1e6)
+phi = np.random.logistic(size=M)
+
+E_Phi = np.sum(phi) / M
+var_Phi = np.sum((phi - E_Phi)**2) / M
+
+print(f"Estimated E[Phi] = {E_Phi:.2f}; var[Phi] = {var_Phi:.2f}; sd[Phi] = {np.sqrt(var_Phi):.2f}")
+
+
+```
+{: .language-python}
+
+```
+Estimated E[Phi] = -0.00; var[Phi] = 3.30; sd[Phi] = 1.82
+```
+{: .output}
 
 The true value of the expectation $$\mathbb{E}[Y]$$ is zero, and the
 true value of the variance is $$\frac{\pi^2}{3} \approx 3.29$$.^[The
@@ -394,32 +547,52 @@ $$1,000,000$$, we see the limiting behavior of the histograms.
 
 Histograms of $$M$$ simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\Phi = \mbox{logit}(\theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1,000,000$$ draws.
 
-![](../images/histogram_of_M_simulated_draw_of_thetha.jpg)
+<!-- ![](../images/histogram_of_M_simulated_draw_of_thetha.jpg) -->
 
-<!-- set.seed(1234)
-df_log_odds_growth <- data.frame()
-for (log10M in 1:6) {
-  M <- 10^log10M
-  alpha <- logit(runif(M))
-  df_log_odds_growth = rbind(df_log_odds_growth,
-                             data.frame(alpha = alpha,
-			                M =  rep(sprintf("M = %d", M), M)))
-}
-log_odds_growth_plot <-
-  ggplot(df_log_odds_growth, aes(alpha)) +
-  geom_histogram(color = "black", fill="#ffffe6",
-                 bins=75) +
-  facet_wrap(~ M, scales = "free") +
-  scale_x_continuous(lim = c(-8.5, 8.5), breaks = c(-5, 0, 5)) +
-  xlab(expression(paste(Phi, " = ", logit(Theta)))) +
-  ylab("proportion of draws") +
-  ggtheme_tufte() +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.spacing.x = unit(2, "lines"),
-        panel.spacing.y = unit(2, "lines"))
-log_odds_growth_plot -->
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
+np.random.seed(1234)
+
+df_log_odds_growth = pd.DataFrame()
+for log10M in range(1, 7):
+    M = 10**log10M
+    alpha = np.random.logistic(size=M)
+    df = pd.DataFrame({'alpha': alpha, 'M': [f'M = {M}']*M})
+    df_log_odds_growth = pd.concat([df_log_odds_growth, df], ignore_index=True)
+
+# Define the grid
+grid = sns.FacetGrid(df_log_odds_growth, col='M', col_wrap=3)
+
+# Plot the histogram for each group
+grid.map(
+    sns.histplot,
+    'alpha',
+    element='step',
+    stat='density',
+    common_norm=False,
+    bins=75,
+    palette='colorblind'
+)
+
+# Set the axis labels and limits
+grid.set(
+    xlim=(-8.5, 8.5),
+    xticks=[-5, 0, 5],
+    xlabel=r'$\Phi = \mathrm{logit}(\Theta)$',
+    ylabel='proportion of draws'
+)
+
+# Show the plot
+plt.show()
+
+```
+{: .language-python}
+
+![](../images/chapter-9/Histograms_of_M_simulated_draws_of_theta.jpg)
 
 In a histogram, a bin's height is proportional to the number of
 simulations that landed in that bin. Because each bin is the same
@@ -455,30 +628,50 @@ variable.  Let's see what that limiting function looks like with $$M =
 
 Histogram of $$M = 1,000,000$$ simulations of $$\theta \sim \mbox{uniform}(0,1)$$ transformed to $$\Phi = \mbox{logit}(\theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.
 
-![](../images/histogram_of_M_1_000_000_simulated_draw_of_thetha.jpg)
+<!-- ![](../images/histogram_of_M_1_000_000_simulated_draw_of_thetha.jpg) -->
 
-<!-- set.seed(1234)
-M <- 1e6
-alpha <- logit(runif(M))
-density_limit_df = data.frame(alpha = alpha)
-density_limit_plot <-
-  ggplot(density_limit_df, aes(alpha)) +
-  geom_histogram(stat = "density", n = 75, color = "black", fill="#ffffe6",
-                 size = 0.15) +
-  stat_function(fun = dlogis,
-                args = list(location = 0, scale = 1),
-                col = 'black',
-                size = 0.3) +
-  scale_x_continuous(lim = c(-9, 9),
-                     breaks = c(-6, -4, -2, 0, 2, 4,  6)) +
-  xlab(expression(paste(Phi, " = ", logit(Theta)))) +
-  ylab("proportion of draws") +
-  ggtheme_tufte() +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank())
-density_limit_plot -->
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import logistic
+
+np.random.seed(1234)
+
+M = int(1e6)
+alpha = logistic.rvs(size=M)
+density_limit_df = pd.DataFrame({'alpha': alpha})
+
+density_limit_plot = sns.histplot(
+    data=density_limit_df,
+    x='alpha',
+    stat='density',
+    bins=75,
+    color='blue',
+    alpha=0.5
+)
+density_limit_plot.set(
+    xlim=(-9, 9),
+    xticks=[-6, -4, -2, 0, 2, 4, 6],
+    xlabel=r'$\Phi = \mathrm{logit}(\Theta)$',
+    ylabel='proportion of draws'
+)
+density_limit_plot.plot(
+    np.linspace(-9, 9, num=1000),
+    logistic.pdf(np.linspace(-9, 9, num=1000), loc=0, scale=1),
+    color='red',
+    linewidth=0.5
+)
+sns.set_style("ticks", {"xtick.major.size": 2, "ytick.major.size": 2})
+sns.despine(offset=5)
+plt.show()
 
 
+```
+{: .language-python}
+
+![](../images/chapter-9/Histogram_of_1000000_simulated_draws_of_theta_uniform.jpg)
 
 ## A detour through calculus
 
@@ -574,27 +767,29 @@ constant, so the density for a uniform distribution must be constant.]
 looks like so the solution for $$c$$ becomes evident.
 
 
-![](../images/plot_of_area_from_a_to_b_under_c.jpg)
-<!-- uniform_pdf_df <- data.frame(y = c(0, 1), p_y = c(1, 1))
-uniform_pdf_plot <-
-  ggplot(uniform_pdf_df, aes(x = y, y = p_y)) +
-  geom_line(size = 0.5, color = '#333333') +
-  geom_point(size = 1.5, color = '#333333') +
-  scale_x_continuous(breaks = c(0, 1), labels = c("a", "b")) +
-  scale_y_continuous(lim = c(0, 1), breaks = c(0, 1),
-                     labels = c("0", "c")) +
-  xlab(expression(theta)) +
-  ylab(expression(paste(p[Theta], "(", theta, "|a,b)"))) +
-  geom_segment(aes(x = 0, y = 0, xend = 0, yend = 1), linetype = 'dotted') +
-  geom_segment(aes(x = 1, y = 0, xend = 1, yend = 1), linetype = 'dotted') +
-  geom_segment(aes(x = 0, y = 0, xend = 1, yend = 0), linetype = 'dotted') +
-  geom_segment(aes(x = -0.25, y = 0, xend = 0, yend = 0)) +
-  geom_segment(aes(x = 1, y = 0, xend = 1.25, yend = 0)) +
-  geom_point(aes(x = 0, y = 0), size = 1.5, shape = 21, fill = '#ffffe6') +
-  geom_point(aes(x = 1, y = 0), size = 1.5, shape = 21, fill = '#ffffe6') +
-  ggtheme_tufte()
-uniform_pdf_plot -->
+<!-- ![](../images/plot_of_area_from_a_to_b_under_c.jpg) -->
 
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+uniform_pdf_df = pd.DataFrame({'y': [0, 1], 'p_y': [1, 1]})
+sns.set(rc={'figure.figsize':(4,4)})
+uniform_pdf_plot = sns.lineplot(data=uniform_pdf_df, x='y', y='p_y', marker='o', color='#333333')
+uniform_pdf_plot.set(xticks=[0, 1], xticklabels=['a', 'b'], yticks=[0, 1], yticklabels=['0', 'c'], xlim=(-0.1, 1.1), ylim=(-0.1, 1.1), xlabel=r'$\theta$', ylabel=r'$p_{\Theta}(\theta|a,b)$')
+uniform_pdf_plot.axhline(y=1, xmin=-0.1, xmax=0, linestyle='dotted')
+uniform_pdf_plot.axhline(y=1, xmin=1, xmax=1.1, linestyle='dotted')
+uniform_pdf_plot.axvline(x=0, ymin=0, ymax=1, linestyle='dotted')
+uniform_pdf_plot.axvline(x=1, ymin=0, ymax=1, linestyle='dotted')
+uniform_pdf_plot.text(-0.2, -0.1, '0')
+uniform_pdf_plot.text(1.05, -0.1, '1')
+plt.show()
+
+```
+{: .language-python}
+
+![](../images/chapter-9/The_uniform_density_function.jpg)
 
 The plot shows the area from $$a$$ to $$b$$ under $$c$$ to be $$(b - a)
 \times c$$. Given that we require the area to be one, that is, $$(b - a)
@@ -636,25 +831,52 @@ namely the probability that a log odds variable will land between -2
 and 2.
 
 ```
+import numpy as np
+
 success = 0
-for (m in 1:M)
-  Phi[m] = logit(uniform_rng(0, 1))
-  if (-2 < Phi[m] & Phi[m] < 2)
-    success += 1
-print 'Pr[-2 < Phi < 2] = ' success / M
+M = 1000 # replace with desired number of iterations
+for m in range(1, M+1):
+    Phi = np.random.uniform(0, 1)
+    Phi = np.log(Phi / (1 - Phi))
+    if -2 < Phi < 2:
+        success += 1
+
+print('Pr[-2 < Phi < 2] =', success / M)
+
 ```
+{: .language-python}
+
+```
+Pr[-2 < Phi < 2] = 0.759
+```
+{: .output}
 
 Let's run that for $$M = 100,000$$ simulation draws and see what we get,
 
-![](../images/simulated_draws_for_M_100_000.jpg)
-<!-- set.seed(1234)
-M <- 1e5
-Phi = logit(runif(M, 0, 1))
-success <- 0
-for (m in 1:M)
-  if (-2 < Phi[m] && Phi[m] < 2) success <- success + 1
-printf('Pr[-2 < Phi < 2] = %3.2f\n', success / M) -->
+<!-- ![](../images/simulated_draws_for_M_100_000.jpg)
+ -->
+ 
+```
+import numpy as np
 
+np.random.seed(1234)
+M = 100000
+Phi = np.log(np.random.uniform(0, 1, M) / (1 - np.random.uniform(0, 1, M)))
+success = 0
+for m in range(M):
+    if -2 < Phi[m] < 2:
+        success += 1
+
+print('Pr[-2 < Phi < 2] =', '{:.2f}'.format(success / M))
+
+```
+{: .language-python}
+
+
+```
+Pr[-2 < Phi < 2] = 0.87
+```
+{: .output}
 
 What is perhaps more remarkable than not requiring calculus is that we
 don't even require the formula for the density function $$p_{\Phi}$$---we
@@ -943,39 +1165,61 @@ $$
 Let's plot a histogram of simulated values of $$Y$$ to see what its
 density looks like.  The simulation is trivial.
 ```
-u = uniform_rng(0, 1)
-y = -log(u)
+import numpy as np
+
+u = np.random.uniform(0, 1)
+y = -np.log(u)
+
 ```
+{: .language-python}
 
 We'll generate $$M = 10^6$$ draws and calculate some summary statistics.
 
-```{r}
-printf("mean(y) = %3.2f\n", mean(y))
-printf("sd(y) = %3.2f\n", sd(y))
-printf("central 95 pct interval = (%3.2f, %3.2f)\n",
-       quantile(y, 0.025), quantile(y, 0.975))
-printf("min = %3.2f;  max = %3.2f", min(y), max(y))
 ```
+import numpy as np
+
+y = -np.log(np.random.uniform(0, 1, 1000))
+print("mean(y) = {:.2f}".format(np.mean(y)))
+print("sd(y) = {:.2f}".format(np.std(y)))
+print("central 95 pct interval = ({:.2f}, {:.2f})".format(np.quantile(y, 0.025), np.quantile(y, 0.975)))
+print("min = {:.2f};  max = {:.2f}".format(np.min(y), np.max(y)))
+
+```
+{: .language-python}
+
+```
+mean(y) = 1.04
+sd(y) = 0.98
+central 95 pct interval = (0.03, 3.65)
+min = 0.00;  max = 5.97
+```
+{: .output}
 
 It's clear that the variable has a mean and standard deviation of one,
 but is highly right skewed.
 
 Histogram of $$M = 10^6$$ draws from $$U \sim \textrm{uniform}(0, 1)$$ transformed to $$Y = -\log U.$$  The mean and standard deviation are 1, but the distribution is highly right skewed.
-![](../images/histogram_of_M_1_000_000_draws_from_uniform.jpg)
 
-<!-- y = -log(runif(1e6))
-exp_df <- data.frame(y = y)
-exp_hist_plot <-
-  ggplot(exp_df, aes(x = y)) +
-  geom_histogram(color = "black", fill = "#ffffe6",
-                 size = 0.25, bins = 100) +
-  xlab("y") +
-  ylab("count") +
-  ggtheme_tufte() +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank())
-exp_hist_plot -->
+<!-- ![](../images/histogram_of_M_1_000_000_draws_from_uniform.jpg)
+ -->
 
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+y = -np.log(np.random.uniform(0, 1, 1000000))
+exp_df = pd.DataFrame({'y': y})
+exp_hist_plot = sns.histplot(exp_df, x='y', color='#ffffe6', edgecolor='black',
+                             bins=100, stat='density')
+exp_hist_plot.set(xlabel='y', ylabel='density')
+plt.show()
+
+```
+{: .language-python}
+
+![](../images/chapter-9/Histogram_of_M_1000000_draws_from_U_uniform.jpg)
 
 While the histogram plot lets us visualize the density, we can also
 derive the density $$p_Y$$ from the uniform density $$p_U$$ given the
