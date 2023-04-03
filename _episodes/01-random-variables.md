@@ -577,13 +577,13 @@ of the number of draws using a line plot to display the trend.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import random
 
 np.random.seed(0)
 
 M = 100000
 Ms = []
-y_sim = np.random.binomial(1, 0.5, size=M)
+y_sim = [random.randint(0,1) for i in range(M)]
 hat_E_Y = []
 Ms = []
 
@@ -592,59 +592,53 @@ for i in range(51):
     hat_E_Y.append(np.mean(y_sim[:int(Ms[i])]))
 
 df = pd.DataFrame({'M': Ms, 'hat_E_Y': hat_E_Y})
-
-plot = sns.lineplot(data=df, x='M', y='hat_E_Y')
-plot.axhline(y=0.5, color='red')
-plot.set(xscale='log', xlabel='simulation draws', ylabel='estimated Pr[Y = 1]', xlim=(1, 100000), ylim=(0, 1), xticks=[1, 50000, 100000], xticklabels=["1", "50,000", "100,000"])
-sns.set_theme(style='ticks')
-
+plot = plt.scatter(df['M'], df['hat_E_Y'])
+plt.axhline(y=0.5, color='red')
+plt.xscale('log')
+plt.xlabel('simulation draws')
+plt.ylabel('estimated Pr[Y = 1]')
+plt.xlim((1, 100000))
+plt.ylim((0, 1))
+plt.xticks([1, 50000], ["1", "50,000"])#, "100,000"])
 plt.show()
+
 ```
 {: .language-python}
 
-![](../images/monte_carlo_estimate_of_probability.jpg)
+<!-- ![](../images/monte_carlo_estimate_of_probability.jpg) -->
 
+![](../images/chapter-1/monte-carlo-estimation.jpg)
 
-
-Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value.
-```
-plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
-  geom_hline(yintercept = 0.5, color = "red") +
-  geom_line() +
-  geom_point() +
-  scale_x_continuous(breaks=c(1, 50000, 100000), limits=c(1, 100000),
-                     labels=c("1", "50,000", "100,000")) +
-  scale_y_continuous(limits = c(0, 1),
-                     breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
-  xlab("simulation draws") +
-  ylab("estimated Pr[Y = 1]") +
-  ggtheme_tufte()
-plot
-```
-{: .language-r}
-
-![](../images/python_code_generated/line_plot_of_the_estimates.jpg)
 
 The linear scale of the previous plot obscures the behavior of the estimates.  Consider instead a plot with the $$x$$-axis on the logarithmic scale.
 
-Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  The log-scaled $$x$$-axis makes the early rate of convergence more evident.
-```
-plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
-  geom_hline(yintercept = 0.5, color = "red") +
-  geom_line() +
-  geom_point() +
-  scale_x_log10(breaks=10^(0:5), limits=c(1, 100000),
-                labels=c("1", "10", "100", "1,000", "10,000", "100,000")) +
-  scale_y_continuous(limits = c(0, 1),
-                     breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
-  xlab("simulation draws") +
-  ylab("estimated Pr[Y = 1]") +
-  ggtheme_tufte()
-plot
-```
-{: .language-r}
+Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  The log-scaled $$x$$-axis makes the early rate of convergence more evident. Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value.
 
-![](../images/monte_carlo_estimate_of_probability_that_a_coin_lands.jpg)
+```
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.DataFrame({'M': Ms, 'hat_E_Y': hat_E_Y})
+
+plt.plot(df['M'], df['hat_E_Y'], linestyle='-', marker='o')
+plt.axhline(y=0.5, color='red')
+plt.xscale('log')
+plt.xlabel('simulation draws')
+plt.ylabel('estimated Pr[Y = 1]')
+plt.xlim((1, 50000))
+plt.ylim((0, 1))
+plt.xticks([1, 50000], ["1", "50,000"])#, "100,000"])
+plt.yticks([0, 0.25, 0.5, 0.75, 1.0])
+plt.show()
+
+
+```
+{: .language-python}
+
+<!-- ![](../images/python_code_generated/line_plot_of_the_estimates.jpg) -->
+![](../images/chapter-1/monte-carlo-estimation_of_a_coin_as_a_function.jpg)
+
+<!-- ![](../images/monte_carlo_estimate_of_probability_that_a_coin_lands.jpg) -->
 
 With a log-scaled $$x$$-axis, the values between 1 and 10 are plotted
 with the same width as the values between $$10\,000$$ and $$100\,000$$;
@@ -660,78 +654,83 @@ Each of the one hundred grey lines represents the ratio of heads observed in a s
 
 ```
  
-library(ggplot2)
-set.seed(0)
-M_max <- 1e4
-J <- 100
-I <- 47
-N <- I * J
-df2 <- data.frame(r = rep(NA, N), M = rep(NA, N), hat_E_Y = rep(NA, N))
-pos <- 1
-for (j in 1:J) {
-  y_sim <- rbinom(M_max, 1, 0.5)
-  for (i in 4:50) {
-    M <- max(100, min(M_max, (10^(1/10))^i))
-    hat_E_Y = mean(y_sim[1:M])
-    df2[pos, ] <- list(r = j, M = M, hat_E_Y = hat_E_Y);
-    pos <- pos + 1;
-  }
-}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
-    geom_hline(yintercept = 0.5, color = "red") +
-    geom_line(alpha=0.15) +
-    scale_x_log10(breaks=10^(2:4), limits=c(100, 10000),
-                  labels=c("100", "1,000", "10,000")) +
-    scale_y_continuous(limits = c(0.375, 0.625),
-                       breaks = c(0.4, 0.5, 0.6),
-                       labels = c(0.4, 0.5, 0.6)) +
-    xlab("simulation draws") +
-    ylab("estimated Pr[Y = 1]") +
-    ggtheme_tufte()
-pr_Y_eq_1_plot
+np.random.seed(0)
+
+M_max = 10000
+J = 100
+I = 47
+N = I * J
+df2 = pd.DataFrame({'r': [np.nan]*N, 'M': [np.nan]*N, 'hat_E_Y': [np.nan]*N})
+pos = 0
+
+for j in range(1, J+1):
+    y_sim = np.random.binomial(1, 0.5, size=M_max)
+    for i in range(4, 51):
+        M = max(100, min(M_max, int((10**(1/10))**i)))
+        hat_E_Y = np.mean(y_sim[:M])
+        df2.loc[pos, :] = [j, M, hat_E_Y]
+        pos += 1
+
+pr_Y_eq_1_plot = sns.lineplot(data=df2, x='M', y='hat_E_Y', hue='r', alpha=0.15, linewidth=2)
+pr_Y_eq_1_plot.axhline(y=0.5, color='red', linewidth=2)
+pr_Y_eq_1_plot.set(xscale='log', xlabel='simulation draws', ylabel='estimated Pr[Y = 1]',
+                    xlim=(100, 10000), ylim=(0.375, 0.625), xticks=[1000, 10000],
+                    xticklabels=["1,000", "10,000"])
+sns.set_theme(style='ticks')
+
+plt.show()
+
 ```
-{: .language-r}
+{: .language-python}
 
-![](../images/plot_of_coin_flips.jpg)
+<!-- ![](../images/plot_of_coin_flips.jpg) -->
+
+![](../images/chapter-1/ratio_of_head_observed.jpg)
 
 Continuing where the previous plot left off, each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips.  The values on the $$x$$ axis is one hundred times larger than in the previous plot, and the scale of the $$y$$-axis is one tenth as large.  The trend in error reduction appears the same at the larger scale.
 
 ```
-library(ggplot2)
-set.seed(0)
-M_max <- 1e6
-J <- 100
-I <- 47
-N <- I * J
-df2 <- data.frame(r = rep(NA, N), M = rep(NA, N), hat_E_Y = rep(NA, N))
-pos <- 1
-for (j in 1:J) {
-  y_sim <- rbinom(M_max, 1, 0.5)
-  for (i in 4:60) {
-    M <- max(100, min(M_max, (10^(1/10))^i))
-    hat_E_Y = mean(y_sim[1:M])
-    df2[pos, ] <- list(r = j, M = M, hat_E_Y = hat_E_Y);
-    pos <- pos + 1;
-  }
-}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
-    geom_hline(yintercept = 0.5, color = "red") +
-    geom_line(alpha=0.15) +
-    scale_x_log10(breaks=10^(4:6), limits=c(1e4, 1e6),
-                  labels=c("10,000", "100,000", "1,000,000")) +
-    scale_y_continuous(limits = c(0.485, 0.515),
-                       breaks = c(0.49, 0.5, 0.51),
-                       labels = c(0.49, 0.5, 0.51)) +
-    xlab("simulation draws") +
-    ylab("estimated Pr[Y = 1]") +
-    ggtheme_tufte()
-pr_Y_eq_1_plot
+np.random.seed(0)
+
+M_max = 1000000
+J = 100
+I = 47
+N = I * J
+df2 = pd.DataFrame({'r': [np.nan]*N, 'M': [np.nan]*N, 'hat_E_Y': [np.nan]*N})
+pos = 0
+
+for j in range(1, J+1):
+    y_sim = np.random.binomial(1, 0.5, size=M_max)
+    for i in range(4, 61):
+        M = max(100, min(M_max, int((10**(1/10))**i)))
+        hat_E_Y = np.mean(y_sim[:M])
+        df2.loc[pos, :] = [j, M, hat_E_Y]
+        pos += 1
+
+pr_Y_eq_1_plot = sns.lineplot(data=df2, x='M', y='hat_E_Y', hue='r', alpha=0.15)
+pr_Y_eq_1_plot.axhline(y=0.5, color='red')
+pr_Y_eq_1_plot.set(xscale='log', xlabel='simulation draws', ylabel='estimated Pr[Y = 1]',
+                    xlim=(1e4, 1e6), ylim=(0.485, 0.515), xticks=[1e4, 1e5, 1e6],
+                    xticklabels=["10,000", "100,000", "1,000,000"])
+sns.set_theme(style='ticks')
+
+plt.show()
+
 ```
-{: .language-r}
+{: .language-python}
 
-![](../images/plot_of_coin_flips-2.jpg)
+<!-- ![](../images/plot_of_coin_flips-2.jpg) -->
+![](../images/chapter-1/ratio_of_head_observed_continued.jpg)
 
 The *law of large numbers*^[Which technically comes in a strong and
 weak form.] says roughly that as the number of simulated values grows,
@@ -853,40 +852,44 @@ $$
 The absolute error of the simulation-based probability estimate as a function of the number of simulation draws.  One hundred sequences of one million flips are shown.
 
 ```
-set.seed(1234)
-M_max <- 1e6
-J <- 100
-I <- 47
-N <- I * J
-df2 <- data.frame(r = rep(NA, N), M = rep(NA, N), err_hat_E_Y = rep(NA, N))
-pos <- 1
-for (j in 1:J) {
-  y_sim <- rbinom(M_max, 1, 0.5)
-  for (i in 4:60) {
-    M <- max(100, min(M_max, (10^(1/10))^i))
-    err_hat_E_Y = abs(mean(y_sim[1:M]) - 0.5)
-    df2[pos, ] <- list(r = j, M = M, err_hat_E_Y = err_hat_E_Y);
-    pos <- pos + 1;
-  }
-}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import binom
 
-abs_err_plot <-
-  ggplot(df2, aes(x = M, y = err_hat_E_Y, group = r)) +
-  geom_hline(yintercept = 0.5, color = "red") +
-  geom_line(alpha=0.15) +
-  scale_x_log10(breaks=10^(4:6), limits=c(1e4, 1e6),
-                labels=c("10,000", "100,000", "1,000,000")) +
-  scale_y_continuous(limits = c(0, 0.015),
-                     breaks = c(0, 0.05, 0.01),
-                     labels = c("0.00", "0.05", "0.01")) +
-  xlab("simulation draws") +
-  ylab("absolute error") +
-  ggtheme_tufte()
-abs_err_plot
+np.random.seed(1234)
+
+M_max = 1000000
+J = 100
+I = 47
+N = I * J
+
+df2 = pd.DataFrame({'r': [np.nan]*N, 'M': [np.nan]*N, 'err_hat_E_Y': [np.nan]*N})
+pos = 0
+
+for j in range(1, J+1):
+    y_sim = binom.rvs(1, 0.5, size=M_max)
+    for i in range(4, 61):
+        M = max(100, min(M_max, int((10**(1/10))**i)))
+        err_hat_E_Y = abs(np.mean(y_sim[:M]) - 0.5)
+        df2.loc[pos, :] = [j, M, err_hat_E_Y]
+        pos += 1
+
+abs_err_plot = sns.lineplot(data=df2, x='M', y='err_hat_E_Y', hue='r', alpha=0.15)
+abs_err_plot.axhline(y=0.5, color='red')
+abs_err_plot.set(xscale='log', xlabel='simulation draws', ylabel='absolute error',
+                  xlim=(10000, 1000000), ylim=(0, 0.015),
+                  xticks=[10000, 100000, 1000000], xticklabels=["10,000", "100,000", "1,000,000"])
+sns.set_theme(style='ticks')
+
+plt.show()
+
 ```
-{: .language-r}
+{: .language-python}
 
-![](../images/plot_of_absolute_error_for_coin_flips.jpg)
+<!-- ![](../images/plot_of_absolute_error_for_coin_flips.jpg) -->
+![](../images/chapter-1/the_absolute_error_of_the_simulation_based_probability.jpg)
 
 ```
 import numpy as np

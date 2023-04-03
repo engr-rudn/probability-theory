@@ -409,26 +409,47 @@ is usually how we construct the models in the first place, so this
 should be a natural step.  In pseudocode, this is a two-liner.
 
 ```
-theta = uniform_rng(0, 1)
-y = binomial_rng(N, theta)
-print 'theta = ' theta ';  y = ' y
-```
+from random import uniform, randint
 
+theta = uniform(0, 1)
+y = randint(0, N)  # assuming N is the number of trials
+successes = randint(0, y)  # number of successes based on y and theta
+
+print('theta =', theta, '; y =', y, '; number of successes =', successes)
+
+```
+{: .language-python}
 
 Before we can actually simulate, we need to set the constants, because
 they don't have priors.  Here, we'll just take $$N = 10$$ for
 pedagogical convenience.  Let's run it a few times and see what we
 get.
 
-![](../images/simulated_thetha.jpg)
-<!-- set.seed(123)
+<!-- ![](../images/simulated_thetha.jpg) -->
+
+```
+import random
+
+random.seed(123)
 N = 10
-for (m in 1:5) {
-  theta = runif(1, 0, 1)
-  y = rbinom(1, N, theta)
-  printf('theta = %3.2f;  y = %d\n', theta, y)
-}
- -->
+for m in range(1, 6):
+    theta = random.uniform(0, 1)
+    y = random.randint(0, N)
+    print(f"theta = {theta:.2f}; y = {y}")
+
+```
+{: .language-python}
+
+
+```
+theta = 0.05; y = 1
+theta = 0.77; y = 4
+theta = 0.11; y = 0
+theta = 0.38; y = 8
+theta = 0.33; y = 0
+
+```
+{: .output}
 
 The values simulated for $$\theta$$ are not round numbers, so we know
 that we won't satisfy $$y = N \times \theta$$, the expected value of a
@@ -449,16 +470,34 @@ theta[1:M] = posterior_sample('simple binomial', y, N)
 
 print 'theta = ' theta[1:10] '...'
 ```
+{: .language-python}
+
+
+
 
 Let's run that and see what a few posterior draws look like.
 
-![](../images/posterior_draws.jpg)
-<!-- <!-- M <- 1000
-N <- 10
-y <- 3
-theta <- rbeta(M, y + 1, N - y + 1)
-printf('theta = ')
-for (n in 1:1 0) printf('%3.2f  ', theta[n]) --> 
+<!-- ![](../images/posterior_draws.jpg) -->
+
+```
+import numpy as np
+
+M = 1000
+N = 10
+y = 3
+theta = np.random.beta(y + 1, N - y + 1, M)
+print('theta = ', end='')
+for n in range(10):
+    print('{:.2f}  '.format(theta[n]), end='')
+
+```
+{: .language-python}
+
+```
+theta = 0.27  0.11  0.25  0.14  0.44  0.35  0.31  0.08  0.38  0.24  
+
+```
+{: .output} 
 
 It's hard to glean much from the draws. What it does tell us is that
 the posterior in the range we expect it to be in---near 0.3, because
@@ -472,19 +511,25 @@ Histogram of one thousand draws from the posterior $$p(\theta \mid y)$$.   With 
 
 
 
-<!-- binom_post_df <- data.frame(theta = theta)
-binomial_post_plot <-
-  ggplot(binom_post_df, aes(x = theta)) +
-  geom_histogram(color = 'black', fill = '#ffffe6', size = 0.25) +
-  scale_x_continuous(lim = c(0, 1),
-                     breaks = c(0, 0.25, 0.5, 0.75, 1)) +
-  xlab(expression(theta)) +
-  ylab("posterior draw proportion") +
-  ggtheme_tufte() +
-  theme(axis.text.y = element_blank())
-binomial_post_plot -->
 
-![](../images/histogram_of_1000_draws_.jpg)
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+binom_post_df = pd.DataFrame({'theta': theta})
+binomial_post_plot = sns.histplot(data=binom_post_df, x='theta', color='black', fill='#ffffe6', edgecolor='black', binwidth=0.025)
+binomial_post_plot.set(xlim=(0, 1), xticks=[0, 0.25, 0.5, 0.75, 1], xlabel=r'$\theta$', ylabel='posterior draw proportion')
+sns.set_style('ticks')
+sns.despine(offset=10, trim=True)
+plt.show()
+
+```
+{: .language-python}
+
+![](../images/chapter-10/Histogram_of_one_thousand_draws_from_the_posterior.jpg)
+<!-- ![](../images/histogram_of_1000_draws_.jpg) -->
+
 Let's up $$M$$ to $$1\,000\,000$$ and double the number of bins to get a
 better look at the posterior density. ^[A sample size $$M > 100$$ is
 rarely necessary for calculating estimates, event probabilities, or
@@ -494,25 +539,28 @@ resulting histogram is smooth.]
 
 Histogram of one million draws from the posterior $$p(\theta \mid y)$$.  A *much* larger $$M$$ is required to get a fine-grained view of the whole posterior distribution than is required for an accurate summary statistic.'}
 
-![](../images/histogram_of_million_draws_from_posterior.jpg)
+<!-- ![](../images/histogram_of_million_draws_from_posterior.jpg) -->
 
-<!-- set.seed(1234)
-M <- 1e6
-theta <- rbeta(M, y + 1, N - y + 1)
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-binom_post_df2 <- data.frame(theta = theta)
-binomial_post_plot2 <-
-  ggplot(binom_post_df2, aes(x = theta)) +
-  geom_histogram(color = 'black', fill = '#ffffe6',
-                 size = 0.25, bins = 60) +
-  scale_x_continuous(lim = c(0, 1),
-                     breaks = c(0, 0.25, 0.5, 0.75, 1)) +
-  xlab(expression(theta)) +
-  ylab("posterior draw proportion") +
-  ggtheme_tufte() +
-  theme(axis.text.y = element_blank())
-binomial_post_plot2 -->
+np.random.seed(1234)
+M = 1000000
+theta = np.random.beta(y + 1, N - y + 1, M)
 
+binom_post_df2 = pd.DataFrame({'theta': theta})
+binomial_post_plot2 = sns.histplot(data=binom_post_df2, x='theta', color='black', fill='#ffffe6', edgecolor='black', bins=60)
+binomial_post_plot2.set(xlim=(0, 1), xticks=[0, 0.25, 0.5, 0.75, 1], xlabel=r'$\theta$', ylabel='posterior draw proportion')
+sns.set_style('ticks')
+sns.despine(offset=10, trim=True)
+plt.show()
+```
+{: .language-python}
+
+![](../images/chapter-10/Histogram_of_one_million_draws_from_the_posterior.jpg)
 
 Histograms have their limitations. The distribution is slightly
 asymmetric, with a longer tail to the right than to the left, but
@@ -537,15 +585,34 @@ Calculating the posterior mean and standard deviation are as
 simple as calling built-in mean and standard deviation functions,
 
 ```
-print 'estimated posterior mean = ' mean(theta) '
-print 'estimated posterior sd = ' sd(theta) '
+print('estimated posterior mean =', np.mean(theta))
+print('estimated posterior sd =', np.std(theta))
+
 ```
+{: .language-python}
+
+```
+estimated posterior mean = 0.33331827871568803
+estimated posterior sd = 0.1309386704210955
+```
+{: .output}
 
 Let's see what we get.
 
-<!-- printf('estimated posterior mean = %3.2f', mean(theta))
-printf('estimated posterior   sd = %3.2f', sd(theta)) -->
-![](../images/estimated_posterior.jpg)
+```
+print(f'estimated posterior mean = {np.mean(theta):.2f}')
+print(f'estimated posterior sd = {np.std(theta):.2f}')
+```
+{: .language-python}
+
+
+```
+estimated posterior mean = 0.33
+estimated posterior sd = 0.13
+```
+{: .output}
+
+<!-- ![](../images/estimated_posterior.jpg) -->
 
 The posterior mean and standard deviation are excellent marginal
 summary statistics for posterior quantities that have a roughly normal
@@ -558,20 +625,37 @@ We can estimate quantiles just as easily, assuming we have built-in
 functions to compute quantiles.
 
 ```
-print 'estimated posterior median = ' quantile(theta, 0.5)
-print 'estimated posterior central 80 pct interval = '
-      quantiles(theta, { 0.1, 0.9 })
+print('estimated posterior median =', np.quantile(theta, 0.5))
+print('estimated posterior central 80 pct interval =', np.quantile(theta, [0.1, 0.9]))
+
 ```
+{: .language-python}
+
+```
+estimated posterior median = 0.3237547839111739
+estimated posterior central 80 pct interval = [0.16896885 0.51122413]
+```
+{: .output}
 
 Running this produces the following.^[The median is slightly lower
 than the mean, as they will be in right skewed distributions.]
 
-![](../images/estimated_posterior_interval.jpg)
+<!-- ![](../images/estimated_posterior_interval.jpg) -->
 
-<!-- printf('estimated posterior median = %3.2f\n',
-       quantile(theta, 0.5))
-printf('estimated posterior central 90 pct interval = (%3.2f, %3.2f)\n',
-       quantile(theta, 0.1), quantile(theta, 0.9)) -->
+```
+print(f'estimated posterior median = {np.quantile(theta, 0.5):.2f}')
+print(f'estimated posterior central 90 pct interval = ({np.quantile(theta, 0.1):.2f}, {np.quantile(theta, 0.9):.2f})')
+
+```
+{: .language-python}
+
+
+```
+estimated posterior median = 0.32
+estimated posterior central 90 pct interval = (0.17, 0.51)
+```
+{: .output}
+
 
 The posterior simulations and summaries answer Laplace's question
 about the value of $$\theta$$, i.e., the proportion of boys born, at
@@ -600,17 +684,34 @@ times that the simulated value $$\theta^{(m)} > 0.5$$ and divide by the
 number of simulations $$M$$,
 
 ```
-print 'estimated Pr[theta > 0.5] = ' sum(theta > 0.5) / M
+print(f'estimated Pr[theta > 0.5] = {np.mean(theta > 0.5):.4f}')
+
 ```
+{: .language-python}
+
+
+```
+estimated Pr[theta > 0.5] = 0.1137
+```
+{: .output}
 
 Running this, we see that with 3 boys in 10 births, the probability
 boys represent more than 50% of the live births is estimated, relative
 to the model, to be
 
+```
+print(f'estimated Pr[theta > 0.5] = {np.mean(theta > 0.5):.2f}')
 
-<!-- printf('estimated Pr[theta > 0.5] = %3.2f\n', sum(theta > 0.5) / M) -->
+```
+{: .language-python}
 
-![](../images/estimated_probability_thetha.jpg)
+```
+estimated Pr[theta > 0.5] = 0.11
+```
+{: .output}
+
+
+<!-- ![](../images/estimated_probability_thetha.jpg) -->
 
 Now let's overlay the median and central 90% interval.
 
@@ -623,42 +724,65 @@ $$.  The median (50 percent quantile) is indicated with a dashed line and the bo
 \theta > 0.5,
 $$ which is about 11 percent.
 
-<!-- q05 <- quantile(binom_post_df2$$theta, 0.05)
-q50 <- quantile(binom_post_df2$$theta, 0.50)
-q95 <- quantile(binom_post_df2$$theta, 0.95)
+```
 
-binomial_post_plot3 <-
-  ggplot(binom_post_df2, aes(x = theta)) +
-  geom_histogram(color = 'black', fill = '#ffffe6',
-                 size = 0.25, binwidth = 0.015, boundary = 0.5) +
-  geom_histogram(data = subset(binom_post_df2, theta > 0.5),
-                 color = 'black', size = 0.25,
-		 fill = '#ccccb6', binwidth = 0.015, boundary = 0.5) +
-  geom_vline(xintercept = q50,
-             linetype = "dashed", size = 0.5) +
-  geom_vline(xintercept = q05,
-             linetype = "dotted", size = 0.5) +
-  geom_vline(xintercept = q95,
-             linetype = "dotted", size = 0.5) +
-  annotate("text", x = q05, y = 50000, label = "5%",
-           family = "Palatino") +
-  annotate("text", x = q50, y = 50000, label = "50%",
-           family = "Palatino") +
-  annotate("text", x = q95, y = 50000, label = "95%",
-           family = "Palatino") +
-  annotate("text", x = q95, y = 50000, label = "95%",
-           family = "Palatino") +
-  annotate("text", x = 0.75, y = 50000, label = "quantiles",
-           family = "Palatino") +
-  scale_x_continuous(lim = c(0, 1),
-                     breaks = c(0, 0.25, 0.5, 0.75, 1)) +
-  xlab(expression(theta)) +
-  ylab("posterior draw proportion") +
-  ggtheme_tufte() +
-  theme(axis.text.y = element_blank())
-binomial_post_plot3 -->
+import numpy as np
+from scipy.stats import beta
+import matplotlib.pyplot as plt
 
-![](../images/histogram_of_1million_draws_from_posterior.jpg)
+# observed data
+y = 435
+N = 982
+
+# prior
+a, b = 1, 1
+theta_prior = beta(a, b)
+
+# posterior
+M = 10000
+theta = beta.rvs(a + y, b + N - y, size=M)
+likelihood = beta.pdf(theta, a + y, b + N - y)
+posterior = theta_prior.pdf(theta) * likelihood
+
+# summary statistics
+post_mean = np.mean(theta)
+post_median = np.median(theta)
+post_sd = np.std(theta)
+post_80ci = np.quantile(theta, [0.1, 0.9])
+post_prob = np.mean(theta > 0.5)
+
+# plot posterior distribution
+plt.hist(theta, bins=50, density=True, color='lightblue')
+plt.axvline(x=post_median, linestyle='--', color='black', linewidth=0.5)
+plt.axvline(x=post_80ci[0], linestyle=':', color='black', linewidth=0.5)
+plt.axvline(x=post_80ci[1], linestyle=':', color='black', linewidth=0.5)
+plt.xlabel(r'$\theta$')
+plt.ylabel('Density')
+plt.title('Posterior Distribution')
+plt.show()
+
+# print summary statistics
+print(f'estimated posterior mean = {post_mean:.2f}')
+print(f'estimated posterior median = {post_median:.2f}')
+print(f'estimated posterior sd = {post_sd:.2f}')
+print(f'estimated posterior central 90 pct interval = ({post_80ci[0]:.2f}, {post_80ci[1]:.2f})')
+print(f'estimated Pr[theta > 0.5] = {post_prob:.2f}')
+
+```
+{: .language-python}
+
+![](../images/chapter-10/Histogram_of_one_million_draws_from_the_posterior_binomial.jpg)
+
+```
+estimated posterior mean = 0.44
+estimated posterior median = 0.44
+estimated posterior sd = 0.02
+estimated posterior central 90 pct interval = (0.42, 0.46)
+estimated Pr[theta > 0.5] = 0.00
+```
+{: .output}
+
+<!-- ![](../images/histogram_of_1million_draws_from_posterior.jpg) -->
 ## Laplace's data
 
 What happens if we use Laplace's data, rather than our small data set,
@@ -669,27 +793,33 @@ We'll take $$M = 1\,000\,000$$ simulations $$\theta^{(1)}, \ldots,
 \theta^{(M)}$$ here because they are cheap and we would like low
 sampling error.
 
+```
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from scipy.stats import beta
 
-<!-- set.seed(1234)
-M <- 1000000
-boys <- 110312
-girls <- 105287
-theta <- rbeta(M, boys + 1, girls + 1)
+np.random.seed(1234)
 
-laplace_df <- data.frame(theta = theta)
-laplace_plot <-
-  ggplot(laplace_df, aes(x = theta)) +
-  geom_histogram(bins = 50,
-                 color = 'black', size = 0.25, fill = '#ccccb6') +
-  scale_x_continuous(lim = c(0.5075, 0.5175),
-                     breaks = c(0.508, 0.510, 0.512, 0.514, 0.516),
-                     labels = c(".508", ".510", ".512", ".514", ".516")) +
-  xlab(expression(theta)) +
-  ylab("posterior draws") +
-  ggtheme_tufte()
-laplace_plot -->  
+M = 1000000
+boys = 110312
+girls = 105287
+theta = beta.rvs(boys + 1, girls + 1, size=M)
 
-![](../images/histogram_of_1million_draws_from_laplace_data.jpg)
+laplace_df = {'theta': theta}
+laplace_plot = sns.histplot(data=laplace_df, x='theta', bins=50,
+                            color='#ccccb6', edgecolor='black')
+laplace_plot.set(xlim=(0.5075, 0.5175), xticks=[0.508, 0.510, 0.512, 0.514, 0.516],
+                 xticklabels=['.508', '.510', '.512', '.514', '.516'], xlabel=r'$\theta$',
+                 ylabel='posterior draws')
+sns.set_style('ticks')
+plt.show()
+
+```
+{: .language-python} 
+
+![](../images/chapter-10/laplace-s_data.jpg)
+<!-- ![](../images/histogram_of_1million_draws_from_laplace_data.jpg) -->
 
 The mean of the posterior sample is approximately 0.511, or a slightly
 higher than 51% chance of a male birth.  The central 90% posterior
@@ -778,25 +908,47 @@ In pseudocode, this is just
 
 ```
 success = 0
-for (m in 1:M)
-  draw theta(m) from posterior p(theta | y, N)
-  if (theta(m)[1] > theta(m)[2])
-    success += 1
-print 'Pr[theta[1] > theta[2] | y, M] = ' success / M
+for m in range(M):
+    theta_m = posterior.rvs()
+    if theta_m > 1 - theta_m:
+        success += 1
+print(f"Pr[theta[1] > theta[2] | y, M] = {success/M}")
+
 ```
+{: .language-python} 
+
+```
+Pr[theta[1] > theta[2] | y, M] = 1.0
+```
+{: .output} 
 
 Let's run that with $$M = 10\,000$$ simulations and see what we get:
 
+```
+import numpy as np
 
-<!-- M <- 10000
-y <- c(114, 24)
-N <- c(235, 51)
-theta1 <- rbeta(M, y[1] + 1, N[1] + 1)
-theta2 <- rbeta(M, y[2] + 1, N[2] + 1)
-printf('Pr[theta[1] > theta[2] | y, M] = %3.2f\n',
-       sum(theta1 > theta2) / M) -->
+M = 10000
+y = np.array([114, 24])
+N = np.array([235, 51])
 
-![](../images/test_run_for_M_10000_simulations.jpg)
+theta1 = np.random.beta(y[0] + 1, N[0] - y[0] + 1, size=M)
+theta2 = np.random.beta(y[1] + 1, N[1] - y[1] + 1, size=M)
+
+prob = np.mean(theta1 > theta2)
+
+print(f"Pr[theta[1] > theta[2] | y, M] = {prob:.2f}")
+
+```
+{: .language-python} 
+
+
+```
+Pr[theta[1] > theta[2] | y, M] = 0.58
+```
+{: .output}
+
+<!-- ![](../images/test_run_for_M_10000_simulations.jpg) -->
+
 Only about a `52`% chance
 that Downtown Bakery is the better bet for a 5-star meal.^[As much as
 this diner loves Downtown Bakery, the nod for food, ambience, and the
@@ -823,8 +975,8 @@ delicias_plot <-
   theme(axis.text.y = element_blank())
 delicias_plot -->
 
-![](../images/histogram_of_posterior_difference.jpg)
-
+<!-- ![](../images/histogram_of_posterior_difference.jpg)
+ -->
 There is substantial uncertainty, and only 52% of the draws lie to the
 right of zero.  That is,
 
