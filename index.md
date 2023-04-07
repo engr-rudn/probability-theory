@@ -10,7 +10,7 @@ As a mathematical foundation for statistics, probability theory is essential to 
 
 > ## Prerequisites
 >
-> Basic understanding of high-school mathematics is all that is required for this course
+> Basic understanding of mathematics and computation is all that is required for this course
 >
 > 
 {: .prereq}
