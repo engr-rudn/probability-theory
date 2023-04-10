@@ -335,33 +335,29 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import beta
 import seaborn as sns
+np.random.seed(1234)
 
-M = 500
-alpha = 6.8
-beta_value = 1.2
-mean = alpha / (alpha + beta_value)
-mode = (alpha - 1) / (alpha + beta_value - 2)
-y = np.arange(0, 1.01, 0.01)
-u = np.random.uniform(0, 5, size=M)
-theta = np.random.uniform(0, 1, size=M)
-accept = (u < beta.pdf(theta, alpha, beta_value))
+M = 100000
+accept = 0
+total = 0
+m = 1
+theta = np.empty(M)
+while m <= M:
+    u = np.random.uniform(0, 5)
+    theta_star = np.random.uniform(0, 1)
+    total += 1
+    if u < beta.pdf(theta_star, 6.8, 1.2):
+        accept += 1
+        theta[m-1] = theta_star
+        m += 1
+beta_draws_df = pd.DataFrame({'theta': theta})
+beta_draws_plot = sns.histplot(data=beta_draws_df, x='theta', stat='density', bins=80, color='black', fill='#ffffe8', kde=True, alpha=0.8)
+beta_draws_plot.set(xlabel=r'$\theta$', ylabel=r'$p(\theta)$')
+beta_draws_plot.axvline(x=0, linestyle='--', color='k')
+beta_draws_plot.axvline(x=1, linestyle='--', color='k')
+beta_draws_plot.plot(np.linspace(0, 1, 100), beta.pdf(np.linspace(0, 1, 100), 6.8, 1.2), color='black', linewidth=0.35)
+print(f"acceptance percentage = {accept/total:.2%}")
 
-reject_beta_df = pd.DataFrame({'y': y, 'p_y': beta.pdf(y, alpha, beta_value)})
-accept_beta_df = pd.DataFrame({'theta': theta, 'u': u, 'accept': accept})
-
-reject_beta_plot = sns.lineplot(x='y', y='p_y', data=reject_beta_df)
-reject_beta_plot.set(xlabel=r'$\theta$', ylabel=r'$p(\theta)$')
-reject_beta_plot.axhline(y=0, linestyle='--', color='k')
-reject_beta_plot.axhline(y=5, linestyle='--', color='k')
-reject_beta_plot.axvline(x=0, linestyle='--', color='k')
-reject_beta_plot.axvline(x=1, linestyle='--', color='k')
-
-accept_plot = sns.scatterplot(x='theta', y='u', hue='accept', data=accept_beta_df, s=20, alpha=0.8)
-accept_plot.set(xlabel=r'$\theta$', ylabel='u')
-accept_plot.axhline(y=0, linestyle='--', color='k')
-accept_plot.axhline(y=5, linestyle='--', color='k')
-accept_plot.axvline(x=0, linestyle='--', color='k')
-accept_plot.axvline(x=1, linestyle='--', color='k')
 
 ```
 {: .language-python}
@@ -369,7 +365,7 @@ accept_plot.axvline(x=1, linestyle='--', color='k')
 
 Histogram of $$M = 100,000$$ Draws from $$\\mbox{beta}(6.8, 1.2)$$ made via rejection sampling.  The true density is plotted over the histogram as a line.  The acceptance rate for draws was roughly 20 percent.
 
-
+![](../images/chapter-11/histogram_of_M-100000_draws_from_beta(6.8,1.2).jpg)
 
 This looks like it's making the appropriately distributed draws from
 the beta distribution.^[After we introduce the normal distribution, we
@@ -422,11 +418,14 @@ proposal density $$q(y)$$ with constant $$c$$ such that $$c \times q(y) >
 p(y)$$ for all $$y$$, is as follows:
 
 ```
-while (true)
-  y = q_rng(y)
-  u = uniform(0, c * q(y))
-  if (u < p(y)) return y
+while True:
+    y = q_rng(y)
+    u = np.random.uniform(0, c*q(y))
+    if u < p(y):
+        return y
 ```
+{: .language-python}
+
 
 Our simplified algorithm in the previous section was just a special
 case where $$q(y)$$ is uniform over a bounded interval. The argument for
