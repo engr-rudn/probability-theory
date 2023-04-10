@@ -15,10 +15,6 @@ As a mathematical foundation for statistics, probability theory is essential to 
 > 
 {: .prereq}
 
-
-<table><tr> <td colspan="12" style="border-bottom: 2px solid #8A2BE2;"></td></tr></table>
-
-
 ### Getting Started
 
 {% include links.md %}
