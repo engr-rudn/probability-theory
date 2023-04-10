@@ -280,10 +280,8 @@ accept_plot.axvline(x=1, linestyle='--', color='k')
 {: .language-python}
 
 
-<!-- ![](../images/chapter-11/simple_instance_of_rejection_sampling.jpg) -->
-
 A simple instance of rejection sampling from a bounded $$\\mbox{beta}(6.8, 1.2)$$ distribution, whose density is shown as a solid line.  Points $$(\\theta, u)$$ are drawn uniformly from the rectangle, then accepted as a draw of $$\\theta$$ if $$u$$ falls below the density at $$\\theta$$.  The accepted draws are rendered as plus signs and the rejected ones as circles.  The acceptance rate here is roughly 20 percent.
-
+![](../images/chapter-11/simple_instance_of_rejection_sampling.jpg)
 More specifically, we keep the values $$\theta^{(m)}$$ where
 
 $$
