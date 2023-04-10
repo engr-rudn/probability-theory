@@ -120,7 +120,6 @@ example, here is a plot of a few beta distributions organized by total
 count and mean.
 
 ```
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
