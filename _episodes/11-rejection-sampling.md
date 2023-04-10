@@ -119,40 +119,55 @@ conflated.] The higher the total count, lower the variance. For
 example, here is a plot of a few beta distributions organized by total
 count and mean.
 
-```{r, out.width = "100%", fig.width=9, fig.asp = 0.8, fig.cap="Plots of the densities"}
-
-beta_density_df <-
-  data.frame(theta = c(), p_theta = c(), count = c(), mean = c())
-mean_df <- data.frame(expectation = c(), count = c(), mean = c())
-thetas = (0:100)/100
-for (kappa in c(0.5, 2, 8, 32)) {
-  for (mu in c(0.5, 0.675, 0.85)) {
-    df_temp <-
-          data.frame(theta = thetas,
-                     p_theta = dbeta(thetas, kappa * mu, kappa * (1 - mu)),
-                     count = rep(paste("count ", kappa), length(thetas)),
-		     mean = rep(paste("mean ", mu), length(thetas)),
-		     mu = rep(mu, length(thetas)))
-    beta_density_df <- rbind(beta_density_df, df_temp)
-  }
-}
-beta_density_plot <-
-  ggplot(beta_density_df, aes(x = theta, y = p_theta)) +
-  facet_grid(mean ~ count) +
-  geom_line() +
-  geom_hline(yintercept = 0, linetype = "dashed", size = 0.25) +
-  geom_vline(aes(xintercept = mu), linetype = "dotted") +
-  scale_x_continuous(lim = c(0, 1), breaks = c(0, 0.5, 1),
-                     labels = c("0", "0.5", "1")) +
-  scale_y_continuous(lim = c(0, 7), breaks = c(0, 3, 6)) +
-  ggtheme_tufte() +
-  xlab(expression(theta)) +
-  ylab(expression(
-    paste("beta(", theta, " | ", alpha, ", ", beta, ")"))) +
-  theme(panel.spacing.x = unit(3, "lines"),
-        panel.spacing.y = unit(2, "lines"))
-beta_density_plot
 ```
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import beta
+import seaborn as sns
+
+# Create empty dataframes to store results
+beta_density_df = pd.DataFrame(columns=['theta', 'p_theta', 'count', 'mean'])
+mean_df = pd.DataFrame(columns=['expectation', 'count', 'mean'])
+
+# Define thetas and iterate over combinations of kappa and mu
+thetas = np.arange(0, 1.01, 0.01)
+for kappa in [0.5, 2, 8, 32]:
+    for mu in [0.5, 0.675, 0.85]:
+        p_theta = beta.pdf(thetas, kappa * mu, kappa * (1 - mu))
+        df_temp = pd.DataFrame({'theta': thetas,
+                                'p_theta': p_theta,
+                                'count': ['count ' + str(kappa)] * len(thetas),
+                                'mean': ['mean ' + str(mu)] * len(thetas),
+                                'mu': [mu] * len(thetas)})
+        beta_density_df = pd.concat([beta_density_df, df_temp])
+
+# Create the beta density plot
+beta_density_plot = sns.relplot(x='theta', y='p_theta', kind='line', col='count', row='mean', 
+                                data=beta_density_df, facet_kws={'sharex': True, 'sharey': True},
+                                height=2.5, aspect=1.5)
+
+# Add vertical lines at mu
+for ax in beta_density_plot.axes.flat:
+    ax.axvline(mu, ls=':', lw=0.5)
+
+# Format plot
+beta_density_plot.set(xlim=(0, 1), ylim=(0, 7))
+beta_density_plot.set(xticks=[0, 0.5, 1], xticklabels=['0', '0.5', '1'])
+beta_density_plot.set(yticks=[0, 3, 6])
+beta_density_plot.set_axis_labels(r'$\theta$', r'$\beta(\theta|\alpha,\beta)$')
+beta_density_plot.fig.subplots_adjust(wspace=0.3, hspace=0.3)
+sns.set_theme(style='ticks')
+
+plt.show()
+
+```
+{: .language-python}
+
+Plots of the densities
+
+![](../images/chapter-11/plots_of_the_densities.jpg)
 
 For example, a total count of $$\alpha + \beta = 8$$ and mean of $$\alpha
 / (\alpha + \beta) = 0.85$$ corresponds to beta distribution parameters
@@ -225,39 +240,49 @@ vertical position $$u^{(m)} \sim \mbox{uniform}(0, 5)$$. The points
 whose value for $$u$$ falls below the density at the value for $$\theta$$
 are retained.
 
-```{r fig.cap = 'A simple instance of rejection sampling from a bounded $$\\mbox{beta}(6.8, 1.2)$$ distribution, whose density is shown as a solid line.  Points $$(\\theta, u)$$ are drawn uniformly from the rectangle, then accepted as a draw of $$\\theta$$ if $$u$$ falls below the density at $$\\theta$$.  The accepted draws are rendered as plus signs and the rejected ones as circles.  The acceptance rate here is roughly 20 percent.'}
 
-M <- 500
-alpha <- 6.8
-beta <- 1.2
-mean = alpha / (alpha + beta)
-mode = (alpha - 1) / (alpha + beta - 2)
-y <- (0:100) / 100
-u <- runif(M, 0, 5)
-theta <- runif(M, 0, 1)
-accept <- (u < dbeta(theta, alpha, beta))
-
-reject_beta_df <-
-  data.frame(y = y,
-             p_y = dbeta(y, alpha, beta))
-accept_beta_df <-
-  data.frame(theta = theta, u = u, accept = accept)
-
-reject_beta_plot <-
-  ggplot(accept_beta_df) +
-  geom_line(aes(x = y, y = p_y), data = reject_beta_df) +
-  geom_point(aes(x = theta, y = u, shape = accept),
-             color = "#333333", size = 1.5) +
-  scale_shape_manual(values = c(1, 3)) +
-  geom_vline(xintercept = c(0, 1), linetype="dotted") +
-  geom_hline(yintercept = 5, linetype = "dotted") +
-  geom_hline(yintercept = 0, linetype = "dotted") +
-  xlab(expression(theta)) +
-  ylab(expression(u)) +
-  ggtheme_tufte() +
-  theme(legend.position = "none")
-reject_beta_plot
 ```
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import beta
+import seaborn as sns
+
+M = 500
+alpha = 6.8
+beta_value = 1.2
+mean = alpha / (alpha + beta_value)
+mode = (alpha - 1) / (alpha + beta_value - 2)
+y = np.arange(0, 1.01, 0.01)
+u = np.random.uniform(0, 5, size=M)
+theta = np.random.uniform(0, 1, size=M)
+accept = (u < beta.pdf(theta, alpha, beta_value))
+
+reject_beta_df = pd.DataFrame({'y': y, 'p_y': beta.pdf(y, alpha, beta_value)})
+accept_beta_df = pd.DataFrame({'theta': theta, 'u': u, 'accept': accept})
+
+reject_beta_plot = sns.lineplot(x='y', y='p_y', data=reject_beta_df)
+reject_beta_plot.set(xlabel=r'$\theta$', ylabel=r'$p(\theta)$')
+reject_beta_plot.axhline(y=0, linestyle='--', color='k')
+reject_beta_plot.axhline(y=5, linestyle='--', color='k')
+reject_beta_plot.axvline(x=0, linestyle='--', color='k')
+reject_beta_plot.axvline(x=1, linestyle='--', color='k')
+
+accept_plot = sns.scatterplot(x='theta', y='u', hue='accept', data=accept_beta_df, s=20, alpha=0.8)
+accept_plot.set(xlabel=r'$\theta$', ylabel='u')
+accept_plot.axhline(y=0, linestyle='--', color='k')
+accept_plot.axhline(y=5, linestyle='--', color='k')
+accept_plot.axvline(x=0, linestyle='--', color='k')
+accept_plot.axvline(x=1, linestyle='--', color='k')
+
+```
+{: .language-python}
+
+
+<!-- ![](../images/chapter-11/simple_instance_of_rejection_sampling.jpg) -->
+
+A simple instance of rejection sampling from a bounded $$\\mbox{beta}(6.8, 1.2)$$ distribution, whose density is shown as a solid line.  Points $$(\\theta, u)$$ are drawn uniformly from the rectangle, then accepted as a draw of $$\\theta$$ if $$u$$ falls below the density at $$\\theta$$.  The accepted draws are rendered as plus signs and the rejected ones as circles.  The acceptance rate here is roughly 20 percent.
 
 More specifically, we keep the values $$\theta^{(m)}$$ where
 
@@ -290,47 +315,63 @@ variables. The rejection sampling algorithm written out for our
 particular case is as follows.
 
 ```
-while (true)
-  u = uniform_rng(0, 5)
-  theta = uniform_rng(0, 1)
-  if (u < beta(theta | 6.8, 1.2))
-    return theta
+import numpy as np
+from scipy.stats import beta
+
+while True:
+    u = np.random.uniform(0, 5)
+    theta = np.random.uniform(0, 1)
+    if u < beta.pdf(theta, 6.8, 1.2):
+        break
+
 ```
+{: .language-python}
 
 Let's run this algorithm for $$M = 100\,000$$ iterations and see what the
 histogram looks like.
 
-```{r, fig.cap="Histogram of $$M = 100\\,000$$ Draws from $$\\mbox{beta}(6.8, 1.2)$$ made via rejection sampling.  The true density is plotted over the histogram as a line.  The acceptance rate for draws was roughly 20 percent."}
-
-set.seed(1234)
-M <- 100000
-accept <- 0
-total <- 0
-m <- 1
-theta <- rep(NA, M)
-while (m <= M) {
-  u <- runif(1, 0, 5)
-  theta_star <- runif(1, 0, 1)
-  total <- total + 1
-  if (u < dbeta(theta_star, 6.8, 1.2)) {
-    accept <- accept + 1
-    theta[m] <- theta_star
-    m <- m + 1
-  }
-}
-beta_draws_df <- data.frame(theta = theta)
-beta_draws_plot <-
-  ggplot(beta_draws_df, aes(x = theta)) +
-  geom_histogram(stat = "density", n = 80, color = "black", fill = "#ffffe8",
-                 size = 0.15) +
-  stat_function(fun = dbeta, args = list(shape1 = 6.8, shape2 = 1.2),
-               size = 0.35, color = "black") +
-  xlab(expression(theta)) +
-  ylab(expression(p[Theta](theta))) +
-  ggtheme_tufte()
-beta_draws_plot
-# printf("acceptance percentage = %3.2f\n", accept/total)
 ```
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import beta
+import seaborn as sns
+
+M = 500
+alpha = 6.8
+beta_value = 1.2
+mean = alpha / (alpha + beta_value)
+mode = (alpha - 1) / (alpha + beta_value - 2)
+y = np.arange(0, 1.01, 0.01)
+u = np.random.uniform(0, 5, size=M)
+theta = np.random.uniform(0, 1, size=M)
+accept = (u < beta.pdf(theta, alpha, beta_value))
+
+reject_beta_df = pd.DataFrame({'y': y, 'p_y': beta.pdf(y, alpha, beta_value)})
+accept_beta_df = pd.DataFrame({'theta': theta, 'u': u, 'accept': accept})
+
+reject_beta_plot = sns.lineplot(x='y', y='p_y', data=reject_beta_df)
+reject_beta_plot.set(xlabel=r'$\theta$', ylabel=r'$p(\theta)$')
+reject_beta_plot.axhline(y=0, linestyle='--', color='k')
+reject_beta_plot.axhline(y=5, linestyle='--', color='k')
+reject_beta_plot.axvline(x=0, linestyle='--', color='k')
+reject_beta_plot.axvline(x=1, linestyle='--', color='k')
+
+accept_plot = sns.scatterplot(x='theta', y='u', hue='accept', data=accept_beta_df, s=20, alpha=0.8)
+accept_plot.set(xlabel=r'$\theta$', ylabel='u')
+accept_plot.axhline(y=0, linestyle='--', color='k')
+accept_plot.axhline(y=5, linestyle='--', color='k')
+accept_plot.axvline(x=0, linestyle='--', color='k')
+accept_plot.axvline(x=1, linestyle='--', color='k')
+
+```
+{: .language-python}
+
+
+Histogram of $$M = 100,000$$ Draws from $$\\mbox{beta}(6.8, 1.2)$$ made via rejection sampling.  The true density is plotted over the histogram as a line.  The acceptance rate for draws was roughly 20 percent.
+
+
 
 This looks like it's making the appropriately distributed draws from
 the beta distribution.^[After we introduce the normal distribution, we
