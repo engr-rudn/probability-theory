@@ -365,6 +365,11 @@ print(f"acceptance percentage = {accept/total:.2%}")
 
 Histogram of $$M = 100,000$$ Draws from $$\mbox{beta}(6.8, 1.2)$$ made via rejection sampling.  The true density is plotted over the histogram as a line.  The acceptance rate for draws was roughly 20 percent.
 
+```
+acceptance percentage = 20.06%
+```
+{: .output}
+
 ![](../images/chapter-11/histogram_of_M-100000_draws_from_beta(6.8,1.2).jpg)
 
 This looks like it's making the appropriately distributed draws from
