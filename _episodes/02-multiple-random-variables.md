@@ -830,7 +830,7 @@ def sim_u():
         u += 1
     return u
 
-random.seed(1234)
+random.seed('1234')
 M = 10000
 u = np.array([sim_u() for m in range(M)])
 x = np.arange(max(u) + 1)
