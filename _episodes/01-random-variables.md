@@ -935,38 +935,55 @@ Absolute error versus number of simulation draws for 100 simulated sequences of 
 
 ```
 
-#   commented out bits plot the clt version
-#   geom_line(data = data.frame(x = c(1e4, 1e6),
-#                               y = 2 * c(.5 / sqrt(1e4), .5 / sqrt(1e6))),
-#             aes(x = x, y = y, group = NA),
-#             color = "red") +
-#   geom_line(data = data.frame(x = c(1e4, 1e6),
-#                               y = c(.5 / sqrt(1e4), .5 / sqrt(1e6))),
-#             aes(x = x, y = y, group = NA),
-#             color = "blue") +
+import numpy as np
+from scipy.stats import binom, norm
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
 
-fudge <- 1e-6
-x <- 0.5 * (1:100)
-log_abs_err_plot <- ggplot(df2, aes(x = M, y = err_hat_E_Y + fudge, group=r)) +
-  geom_line(alpha=0.15) +
-  geom_line(data = data.frame(Ms = Ms, quantile = quant_68),
-            aes(x = Ms, y = quantile, group = NA),
-            color = "blue", size = 0.5) +
-  geom_line(data = data.frame(Ms = Ms, quantile = quant_95),
-            aes(x = Ms, y = quantile, group = NA),
-            color = "red", size = 0.5) +
-  scale_x_log10(limits=c(.9 * 1e3, 1e6 * 1.1),
-                breaks=10^(3:6),
-                labels=c("1,000", "10,000", "100,000", "1,000,000")) +
-  scale_y_log10(limits = c(0.8e-4, 2e-1),
-                breaks = c(0.0001, 0.001, 0.01, 0.1),
-                labels = c("0.0001", "0.001", "0.01", "0.1" )) +
-  xlab("simulation draws") +
-       ylab("log absolute error + 1e-5") +
-  ggtheme_tufte()
-log_abs_err_plot
+np.random.seed(1234)
+
+M_max = int(1e6)
+J = 300
+Ms = np.power(10, np.arange(6, 13, 0.5) / 2)
+N = len(Ms)
+ys = np.empty((N, J))
+for j in range(J):
+    z = np.random.binomial(1, 0.5, size=M_max)
+    for n in range(N):
+        ys[n, j] = np.abs(np.mean(z[:int(Ms[n])]) - 0.5)
+
+mean = np.empty(N)
+sd = np.empty(N)
+quant_68 = np.empty(N)
+quant_95 = np.empty(N)
+sixty_eight_pct = norm.cdf(1) - norm.cdf(-1)
+ninety_five_pct = norm.cdf(2) - norm.cdf(-2)
+for n in range(N):
+    mean[n] = np.mean(ys[n, :])
+    sd[n] = np.std(ys[n, :], ddof=1)
+    quant_68[n] = np.quantile(ys[n, :], q=sixty_eight_pct)
+    quant_95[n] = np.quantile(ys[n, :], q=ninety_five_pct)
+
+fudge = 1e-6
+x = 0.5 * np.arange(1, 101)
+log_abs_err_plot = plt.plot()
+df2 = pd.DataFrame({'M': Ms, 'err_hat_E_Y': mean - 0.5})
+for r in range(J):
+    plt.plot(Ms, ys[:, r], alpha=0.15, color='gray')
+plt.plot(Ms, quant_68, color='blue', linewidth=0.5)
+plt.plot(Ms, quant_95, color='red', linewidth=0.5)
+plt.xscale('log')
+plt.xlim(0.9 * 1e3, 1.1 * 1e6)
+plt.xticks([10**3, 10**4, 10**5, 10**6], ['1,000', '10,000', '100,000', '1,000,000'])
+plt.ylim(0.8e-6, 2e-5)
+plt.yticks([0.00005, 0.0005, 0.005, 0.05], ['0.00001', '0.0001', '0.001', '0.01'])
+plt.xlabel('simulation draws')
+plt.ylabel('log absolute error + 1e-5')
+plt.show()
+
 ```
-{: .language-r}
+{: .language-python}
 
 ![](../images/plot_of_absolute_error_for_coin_flips_vs_no_of_simulations.jpg)
 
