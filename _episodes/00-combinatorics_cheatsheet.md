@@ -690,7 +690,7 @@ internal manipulations within a sum.
                     &= 2^{n-\sqrt n}\exp\left(-{\sqrt n\over 2} + {7\over 8}-{2\over 3\sqrt n}+O(n^{-1})\right),
                 
         \end{aligned}$$ thus
-        $$P_n \ge 2^n \cdot 0.75^{\sqrt n}\cdot e^{{-\sqrt n\over 2}+{7\over 8}-{2\over 3\sqrt n}} (1+O(n^{-1})) = \Omega\left(2^n c^{\sqrt n}\right)$$
+        $$P_n \ge 2^n \cdot 0.75^{\sqrt n}\cdot e^{frac{-\sqrt n}{2}}+{7\over 8}-{2\over 3\sqrt n}} (1+O(n^{-1})) = \Omega\left(2^n c^{\sqrt n}\right)$$
         for $$c\in (0, 1)$$.
 
     -   TODO compare with previous estimate from $$k=\ln n$$; which is
