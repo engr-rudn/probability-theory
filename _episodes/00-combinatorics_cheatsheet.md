@@ -351,7 +351,24 @@ objectives:
     $${1\over 2}(A(x)+A(-x))\overset{{\rm ogf}}{\longleftrightarrow}a_0, 0, a_2, 0, a_4, \dots$$
     works: $${1\over 2}(1^n + (-1)^n) = [2\mid n]$$
 
+-   in general, for $$\omega$$ being $$r$$-th root of unity,
+    $${1\over r}\sum_{j=0}^{r-1} (\omega^j)^n = {1\over r}\sum_{j=0}^{r-1} e^{2\pi ijn/r} = [r\mid n]$$\
+    --- just a geometric progression, or a consequence of
+    $$t^r-1=(t-1)(t^{r-1}+\dots+t+1)$$
 
+-   problem: find $$S_n = \sum_k (-1)^k{n\choose 3k}$$
+
+-   if we knew $$f(x) = \sum_k {n\choose 3k}x^{3k}$$, we would have
+    $$S_n = f(-1)$$
+
+-   for $$A(x) = (1+x)^n$$, we have
+    $$f(x) = {1\over 3}\big(A(x) + A(x\omega^1) + A(x\omega^2)\big)$$ for
+    $$\omega=e^{2\pi i/3}$$
+
+-   and so $$S_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] =$$
+    $$
+    = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{{n\over 2}-1}\cos\left({\pi n\over 6}\right)
+    $$
 
 ```{=html}
 <!-- -->
