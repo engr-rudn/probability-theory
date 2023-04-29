@@ -78,7 +78,7 @@ objectives:
     -   6\. calculate coefficients of gf power series expansion
 
     -   useful notation: $$[x^n]f(x)$$; e.g.
-        $$$$[x^n]e^x=1/n!\qquad [t^r]{1\over 1-3t}=3^r\qquad [v^m](1+v)^s={s\choose m}$$$$
+        $$[x^n]e^x=1/n!\qquad [t^r]{1\over 1-3t}=3^r\qquad [v^m](1+v)^s={s\choose m}$$
 
 -   Solve $$a_n=5a_{n-1}-6a_{n-2}$$ for $$n\ge 2$$, $$a_0 = 0$$, $$a_1=1$$.
 
@@ -88,7 +88,7 @@ objectives:
         $$F_0=0$$, $$F_1=1$$.
 
     -   apply the method ($$r_\pm = (1\pm \sqrt 5)/2$$):
-        $$$$\displaystyle F(x) = {x\over 1-x-x^2} = {x\over (1-xr_{+})(1-xr_{-})}={1\over r_{+}-r_{-}}\left({1\over 1-xr_{+}}-{1\over 1-xr_{-}}\right)$$$$
+        $$\displaystyle F(x) = {x\over 1-x-x^2} = {x\over (1-xr_{+})(1-xr_{-})}={1\over r_{+}-r_{-}}\left({1\over 1-xr_{+}}-{1\over 1-xr_{-}}\right)$$
 
     -   $$F_n={1\over \sqrt 5}(r_{+}^n-r_{-}^n)$$
 
@@ -160,7 +160,7 @@ objectives:
     $$a_0=a_{10}=0$$.\
     Applying the standard method, while keeping $$a_1$$ as a parameter, we
     get
-    $$$$A(x)={a_1x-a_1x^2-2x^2\over (1-x)^3}={a_1x\over (1-x)^2}+{x(1-x)\over (1-x)^3}-{x^2+x\over (1-x)^3},$$$$
+    $$A(x)={a_1x-a_1x^2-2x^2\over (1-x)^3}={a_1x\over (1-x)^2}+{x(1-x)\over (1-x)^3}-{x^2+x\over (1-x)^3},$$
     so $$a_n=(a_1+1)n-n^2$$. From $$a_{10}=0$$ we get $$a_1=9$$, thus
     $$a_n=n(10-n)$$.
 
@@ -203,7 +203,7 @@ objectives:
     -   $$v_n = v_{n-2} + u_{n-1}$$; $$v_0 = 0$$; $$v_1 = 1$$
 
     -   derive
-        $$$$U(x) = {1-x^2\over 1-4x^2+x^4},\qquad V(x) = {x\over 1-4x^2+x^4}$$$$
+        $$U(x) = {1-x^2\over 1-4x^2+x^4},\qquad V(x) = {x\over 1-4x^2+x^4}$$
 
     -   consider $$W(z) = 1/(1-4z+z^2)$$; $$U(x) = (1-x^2)W(x^2)$$, so
         $$u_{2n} = w_n - w_{n-1}$$
@@ -231,18 +231,18 @@ objectives:
 <!-- -->
 ```
 -   introducing a new variable and changing the order of summation can
-    help $$$$\begin{aligned}
+    help $$\begin{aligned}
             \sum_{n\ge 0} {n\choose k}x^n &=& [y^k]\sum_{m\ge 0} \left(\sum_{n\ge 0} {n\choose m}x^n\right)y^m = [y^k]\sum_{n\ge 0} (1+y)^nx^n\nonumber\\
             &=& [y^k] {1\over 1-x(1+y)} = {1\over 1-x}[y^k] {1\over 1-{x\over 1-x}y} = {x^k\over (1-x)^{k+1}} \label{binomial}
         
-    \end{aligned}$$$$
+    \end{aligned}$$
 
 -   alternatively, one can use binomial theorem (Knuth 199/5.56 and
-    5.57): $$$$\begin{aligned}
+    5.57): $$\begin{aligned}
             {1\over (1-z)^{n+1}} &=& (1-z)^{-n-1} =\sum_{k\ge 0} {-n-1\choose k}(-z)^k\\
                                  &=& \sum_{k\ge 0} {(-n-1)(-n-2)\dots(-n-k)\over k!}(-z)^k = \sum_{k\ge 0} {n+k\choose n}z^k
         
-    \end{aligned}$$$$
+    \end{aligned}$$
 
 ```{=html}
 <!-- -->
@@ -284,7 +284,7 @@ objectives:
 -   **Rule 3**: if $$g\overset{{\rm ogf}}{\longleftrightarrow}(b_n)$$,
     then
     $$fg\overset{{\rm ogf}}{\longleftrightarrow}(\sum_{k=0}^n a_kb_{n-k})_{n\ge 0}$$
-    $$$$\sum_{k=0}^n (-1)^kk = (-1)^n\sum_{k=0}^n k\cdot (-1)^{n-k} = (-1)^n[x^n]{x\over (1-x)^2}\cdot{1\over 1+x} = {(-1)^n\over 4}\left(2n+1-(-1)^n\right)$$$$
+    $$\sum_{k=0}^n (-1)^kk = (-1)^n\sum_{k=0}^n k\cdot (-1)^{n-k} = (-1)^n[x^n]{x\over (1-x)^2}\cdot{1\over 1+x} = {(-1)^n\over 4}\left(2n+1-(-1)^n\right)$$
 
 -   **Rule 4**: for a positive integer $$k$$, we have
     $$\displaystyle f^k\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{n_1+n_2+\dots+n_k=n} a_{n_1}a_{n_2}\dots a_{n_k}\right)_{n\ge 0}$$
@@ -342,7 +342,7 @@ objectives:
     Vandermonde
 
 -   by considering $$(1-x)^r(1+x)^r = (1-x^2)^r$$, we obtain
-    $$$$\sum_{k=0}^n {r\choose k}{r\choose n-k}(-1)^k = (-1)^{n/2}{r\choose n/2}[2\mid n]$$$$
+    $$\sum_{k=0}^n {r\choose k}{r\choose n-k}(-1)^k = (-1)^{n/2}{r\choose n/2}[2\mid n]$$
 
 ```{=html}
 <!-- -->
@@ -366,7 +366,7 @@ objectives:
     $$\omega=e^{2\pi i/3}$$
 
 -   and so $$S_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] =$$
-    $$$$= {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{{n\over 2}-1}\cos\left({\pi n\over 6}\right)$$$$
+    $$= {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{{n\over 2}-1}\cos\left({\pi n\over 6}\right)$$
 
 ```{=html}
 <!-- -->
@@ -390,8 +390,8 @@ objectives:
         $$x\cdot C(x)^2$$
 
     -   rewriting through sums and changing the order of summation:
-        $$$$\sum_{n\ge 1}x^n\sum_{k=0}^{n-1}c_kc_{n-1-k}=\sum_{k=0}^\infty x^kc_k\sum_{n\ge k+1} c_{n-1-k}x^{n-k}=
-                                \sum_{k=0}^\infty x^kc_k xC(x)=xC(x)\cdot C(x)$$$$
+        $$\sum_{n\ge 1}x^n\sum_{k=0}^{n-1}c_kc_{n-1-k}=\sum_{k=0}^\infty x^kc_k\sum_{n\ge k+1} c_{n-1-k}x^{n-k}=
+                                \sum_{k=0}^\infty x^kc_k xC(x)=xC(x)\cdot C(x)$$
 
 -   consequently, $$C(x) - 1 = xC(x)^2$$ and thus
     $$C(x) = {1\pm \sqrt{1-4x}\over 2x}=\displaystyle {1\over 2x}\left(1 - \sqrt{1-4x}\right)$$
@@ -401,18 +401,18 @@ objectives:
     $${2n\choose n}/(n+1) < 2^{2n}$$; it would be analytical also if we
     chose the plus sign)
 
--   binomial theorem yields $$$$\begin{aligned}
+-   binomial theorem yields $$\begin{aligned}
             \sqrt{1-4x} = (1-4x)^{1/2} = \sum_{k\ge 0} {1/2\choose k}(-4x)^k &=& 1+\sum_{k\ge 1}{1\over 2k\cdot (-4)^{k-1}}{2k-2\choose k-1}(-4)^kx^k\\
             &=& 1 - \sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k 
         
-    \end{aligned}$$$$
+    \end{aligned}$$
 
 -   we used
     $${1/2\choose k}={1/2\over k}{-1/2\choose k-1} = {1\over 2k(-4)^{k-1}}{2k-2\choose k-1}$$
     because $${-1/2\choose m}={1\over (-4)^m}{2m\choose m}$$
 
 -   therefore,
-    $$$$C(x)={1\over 2x}\sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k = \sum_{n\ge 0}{1\over n+1}{2n\choose n}x^n$$$$
+    $$C(x)={1\over 2x}\sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k = \sum_{n\ge 0}{1\over n+1}{2n\choose n}x^n$$
 
 1.  Assume that $$A(x)\overset{{\rm ogf}}{\longleftrightarrow}(a_n)$$.
     Express the generating function for $$\sum_{n\ge 0} a_{3n}x^n$$ in
@@ -466,14 +466,14 @@ internal manipulations within a sum.
 
     -   let's evaluate
         $$f(n) = \sum_{k} {n+k\choose m+2k}{2k\choose k}{(-1)^k\over k+1}$$,
-        where $$m$$, $$n$$ are nonnegative integers $$$$\begin{aligned}
+        where $$m$$, $$n$$ are nonnegative integers $$\begin{aligned}
                 F(x) &=& \sum_{n\ge 0} x^n \sum_{k} {n+k\choose m+2k}{2k\choose k}{(-1)^k\over k+1} \\
                      &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}\sum_{n\ge 0}{n+k\choose m+2k}x^{n+k}\\
                      &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}{x^{m+2k}\over (1-x)^{m+2k+1}}\\
                      &=& {x^m\over (1-x)^{m+1}}\sum_k {2k\choose k}{1\over k+1}\left({-x\over (1-x)^2}\right)^k \\
                      &=& {-x^{m-1}\over 2(1-x)^{m-1}}\left(1-\sqrt{1+{4x\over (1-x)^2}}\right) = {x^m\over (1-x)^m}
                 
-        \end{aligned}$$$$
+        \end{aligned}$$
 
     -   so $$f(n) = {n-1\choose m-1}$$
 
@@ -484,7 +484,7 @@ internal manipulations within a sum.
         where $$m$$, $$n$$ are nonnegative integers
 
     -   the ogf of the left-hand side is
-        $$$$L(x) = \sum_{k} {m\choose k} x^{-k}\sum_{n\ge 0}{n+k\choose m}x^{n+k} ={(1+x)^m\over (1-x)^{m+1}}$$$$
+        $$L(x) = \sum_{k} {m\choose k} x^{-k}\sum_{n\ge 0}{n+k\choose m}x^{n+k} ={(1+x)^m\over (1-x)^{m+1}}$$
 
     -   we get the same for the right-hand side
 
@@ -509,7 +509,7 @@ internal manipulations within a sum.
 
 7.  Try to prove that $$\sum_k {n\choose k}{2n\choose n+k}={3n\choose n}$$
     via the snake oil method in three different ways: consider the sum
-    $$$$\sum_k {n\choose k}{m\choose r-k}$$$$ and the free variable being
+    $$\sum_k {n\choose k}{m\choose r-k}$$ and the free variable being
     one of $$n$$, $$m$$, $$r$$.
 
 # Asymptotic estimates
@@ -606,14 +606,14 @@ internal manipulations within a sum.
         $$e^{H_n}=ne^\gamma e^{O(1/n)}=ne^\gamma (1+O(1/n))=ne^\gamma + O(1)$$
 
     -   rational function powered to $$n$$, e.g.
-        $$$$\left(1-{1\over n}\right)^n=e^{n\ln \left(1-{1\over n}\right)}= \exp\left(n\left({-1\over n}+O\left(n^{-2}\right)\right)\right) = e^{-1 + O(n^{-1}))} = {1\over e} + O(n^{-1})$$$$
+        $$\left(1-{1\over n}\right)^n=e^{n\ln \left(1-{1\over n}\right)}= \exp\left(n\left({-1\over n}+O\left(n^{-2}\right)\right)\right) = e^{-1 + O(n^{-1}))} = {1\over e} + O(n^{-1})$$
 
     -   binomial coefficient, e.g. $$2n\choose n$$: factorials and
-        Stirling formula $$$$\begin{aligned}
+        Stirling formula $$\begin{aligned}
                         {2n\choose n}={\sqrt{4\pi n}\left({2n\over e}\right)^{2n}(1+O(n^{-1}))\over 2\pi n\left({n\over e}\right)^{2n}(1+O(n^{-1}))^2}=
                                 {{2^{2n}}\over \sqrt{\pi n}}(1+O(n^{-1}))
                     
-        \end{aligned}$$$$
+        \end{aligned}$$
 
 -   Exercises
 
@@ -672,23 +672,23 @@ internal manipulations within a sum.
         we estimate $$Q_n$$
 
     -   if we try $$k = \alpha n$$, then
-        $$$$Q_n = 2^{n-\alpha n} \exp \left((n-\alpha n)\ln \left(1-{1\over 2(\alpha n + 1)}\right)\right)=2^{n(1-\alpha)}e^{{\alpha-1\over 2\alpha}}(1+O(n^{-1})),$$$$
+        $$Q_n = 2^{n-\alpha n} \exp \left((n-\alpha n)\ln \left(1-{1\over 2(\alpha n + 1)}\right)\right)=2^{n(1-\alpha)}e^{{\alpha-1\over 2\alpha}}(1+O(n^{-1})),$$
         so $$P_n \ge (2^{1-\alpha}\cdot 1.5^\alpha)^n \Theta(1)$$
 
     -   if we try $$k = \ln n$$, then
-        $$$$Q_n = \exp\left((n-\ln n)\left[\ln 2 + \ln \left(1-{1\over 2(1+\ln n)}\right)\right]\right);$$$$
+        $$Q_n = \exp\left((n-\ln n)\left[\ln 2 + \ln \left(1-{1\over 2(1+\ln n)}\right)\right]\right);$$
         if we expand $$\ln$$ into Taylor series, the error will be
         $$1/\ln^k n = \omega(n^{-1})$$, so we can get relative error
         $$O(1)$$ at best;\
         anyway, if we carry it through, we get
         $$P_n = \Omega(2^n n^{-c} e^{-0.5n/\ln n})$$
 
-    -   if we try $$k = \sqrt n$$, then $$$$\begin{aligned}
+    -   if we try $$k = \sqrt n$$, then $$\begin{aligned}
                 Q_n &= \exp\left((n-\sqrt n)\left[\ln 2 + \ln \left(1-{1\over 2(1+\sqrt n)}\right)\right]\right)\\
                     &= 2^{n-\sqrt n}\exp\left((n-\sqrt n)\left[{-1\over 2\sqrt n} + {3\over 8n}-{7\over 24n^{3/2}}+O(n^{-2})\right]\right)\\
                     &= 2^{n-\sqrt n}\exp\left(-{\sqrt n\over 2} + {7\over 8}-{2\over 3\sqrt n}+O(n^{-1})\right),
                 
-        \end{aligned}$$$$ thus
+        \end{aligned}$$ thus
         $$P_n \ge 2^n \cdot 0.75^{\sqrt n}\cdot e^{{-\sqrt n\over 2}+{7\over 8}-{2\over 3\sqrt n}} (1+O(n^{-1})) = \Omega\left(2^n c^{\sqrt n}\right)$$
         for $$c\in (0, 1)$$.
 
@@ -708,14 +708,14 @@ internal manipulations within a sum.
     all the terms except the first two are at most $$1/n(n+1)$$, so
     $$S_n = n!(1+{1\over n}+n{1\over n(n-1)}) = n!(1+O(n^{-1}))$$
 
--   Sums --- make the tail infinite: $$$$\begin{aligned}
+-   Sums --- make the tail infinite: $$\begin{aligned}
     n!\sum_{k=0}^n{(-1)^k\over k!} &= n!\left(\sum_{k=0}^\infty{(-1)^k\over k!}-\sum_{k\ge n+1}{(-1)^k\over k!}\right)\\
                                    &= n!\left(e^{-1}-O\left({1\over (n+1)!}\right)\right)= {n!\over e}+O(n^{-1})
-    \end{aligned}$$$$
+    \end{aligned}$$
 
 -   Estimate $$S_n=\sum_{k=0}^n {3n\choose k}$$ with relative error
     $$O(n^{-2})$$. We split the sum into a "small" and a "large" part at
-    $$b$$ (which is yet to be determined). $$$$\begin{aligned}
+    $$b$$ (which is yet to be determined). $$\begin{aligned}
     \sum_{k=0}^{n} \binom {3n}k&=&\sum_{k=0}^{n} \binom {3n}{n-k}=\sum_{0\leq k<b} \binom {3n}{n-k}+\sum_{b\le k\le n} \binom {3n}{n-k}.\\
     \binom{3n}{n-k} &=& \binom{3n}{n} {n(n-1)\cdot\ldots \cdot 1\over (2n+1)(2n+2)\ldots(2n+k)} =\\
                     &=& \binom{3n}{n}\cdot\frac{n^k}{(2n)^k}\frac{\prod_{j=0}^{k-1}\left(1-\frac jn\right)}{\prod_{j=1}^k \left(1+\frac j{2n}\right)}=\binom{3n}{n}\cdot\frac{1}{2^k}\cdot\left[1-\frac{3k^2-k}{4n}+O\left(\frac{k^4}{n^2}\right)\right].\\
@@ -724,22 +724,22 @@ internal manipulations within a sum.
     -\frac{3}{4n}\sum_{0\leq k<3\lg n}\frac{k^2}{2^k}&=&\frac{-9}{2n}+O(n^{-3}).\\
     +\frac{1}{4n}\sum_{0\leq k<3\lg n}\frac{k}{2^k}&=&\frac{1}{2n}+O(n^{-3}).\\
     O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k}&=&O(n^{-2})\\
-    \end{aligned}$$$$
-    $$$$\sum_{k=0}^{n} \binom {3n}k=\binom{3n}{n}\cdot\left[2-\frac{4}{n}+ O(n^{-2})\right]$$$$
+    \end{aligned}$$
+    $$\sum_{k=0}^{n} \binom {3n}k=\binom{3n}{n}\cdot\left[2-\frac{4}{n}+ O(n^{-2})\right]$$
 
 -   Estimate $$S_n=\sum_{k=0}^n \binom{4n+1}{k+1}$$ with relative error
-    $$O(n^{-2})$$. $$$$\binom{4n+1}{k+1}=\binom{4n}{k+1}+\binom{4n}{k};$$$$
-    $$$$S_n=\sum_{k=0}^n \binom{4n+1}{k+1}=\sum_{k=0}^n\binom{4n}{k}+ \sum_{k=0}^n\binom{4n}{k+1}=\sum_{k=0}^n\binom{4n}{k}+\sum_{k=1}^{n+1}\binom{4n}{k};$$$$
-    $$$$S_n=2\sum_{k=0}^n\binom{4n}{k}+\binom{4n}{n+1}-\binom{4n}{0}.$$$$
-    $$$$Q_n=\sum_{k=0}^n\binom{4n}{k}=\sum_{k=0}^n\binom{4n}{n-k};$$$$
-    $$$$\binom{4n}{n-k}=\binom{4n}{n}\cdot\frac{\prod_{j=0}^{k-1}(n-j)}{\prod_{j=1}^{k}(3n+j)}=\binom{4n}{n}\cdot\left(\frac 13\right)^3\cdot\frac{\prod_{j=0}^{k-1}(1-j/n)}{\prod_{j=1}^{k}(1+j/3n)}$$$$
-    $$$$Q_n=\sum_{0\leq k\leq 2\log_3 n}\binom{4n}{n-k}+\sum_{2\log_3 n\leq k<n}\binom{4n}{n-k}$$$$
-    $$$$\sum_{2\log_3 n\leq k<n}\binom{4n}{n-k}=O\left(n\cdot\binom{4n}{n-\lceil 2\log_3 n\rceil} \right)=O\left(\binom{4n}{n}\cdot\frac 1n \right).$$$$
-    $$$$\frac{\prod_{j=0}^{k-1}(1-j/n)}{\prod_{j=1}^{k}(1+j/3n)}=\frac{1-\frac 1n\cdot\sum_{0\leq j<k}j+O\left(\frac{k^4}{n^2}\right)}{1+\frac{1}{3n}\cdot\sum_{1< j\leq k}j+O\left(\frac{k^4}{n^2}\right)} = 1+\frac{2k^2+k}{3n}+O\left(\frac{\log^n}{n^2}\right),$$$$
-    $$$$\sum_{0\leq k\leq 2\log_3 n}\binom{4n}{n-k}=\binom{4n}{n}\cdot\sum_{0\leq k\leq 2\log_3 n}\left( \frac 13\right)^k\cdot[1+\frac{2k^2+k}{3n}+O\left(\frac{\log^n}{n^2}\right)]=$$$$
-    $$$$=\frac 32\cdot \binom{4n}{n} (1+O(n^{-1})).$$$$
-    $$$$\binom{4n}{n+1}= \binom{4n}{n}\cdot\frac{3n}{n+1}=3\cdot\binom{4n}{n}(1+O(n^{-1}));$$$$
-    $$$$S_n=6\cdot\binom{4n}{n}(1+O(n^{-1})).$$$$
+    $$O(n^{-2})$$. $$\binom{4n+1}{k+1}=\binom{4n}{k+1}+\binom{4n}{k};$$
+    $$S_n=\sum_{k=0}^n \binom{4n+1}{k+1}=\sum_{k=0}^n\binom{4n}{k}+ \sum_{k=0}^n\binom{4n}{k+1}=\sum_{k=0}^n\binom{4n}{k}+\sum_{k=1}^{n+1}\binom{4n}{k};$$
+    $$S_n=2\sum_{k=0}^n\binom{4n}{k}+\binom{4n}{n+1}-\binom{4n}{0}.$$
+    $$Q_n=\sum_{k=0}^n\binom{4n}{k}=\sum_{k=0}^n\binom{4n}{n-k};$$
+    $$\binom{4n}{n-k}=\binom{4n}{n}\cdot\frac{\prod_{j=0}^{k-1}(n-j)}{\prod_{j=1}^{k}(3n+j)}=\binom{4n}{n}\cdot\left(\frac 13\right)^3\cdot\frac{\prod_{j=0}^{k-1}(1-j/n)}{\prod_{j=1}^{k}(1+j/3n)}$$
+    $$Q_n=\sum_{0\leq k\leq 2\log_3 n}\binom{4n}{n-k}+\sum_{2\log_3 n\leq k<n}\binom{4n}{n-k}$$
+    $$\sum_{2\log_3 n\leq k<n}\binom{4n}{n-k}=O\left(n\cdot\binom{4n}{n-\lceil 2\log_3 n\rceil} \right)=O\left(\binom{4n}{n}\cdot\frac 1n \right).$$
+    $$\frac{\prod_{j=0}^{k-1}(1-j/n)}{\prod_{j=1}^{k}(1+j/3n)}=\frac{1-\frac 1n\cdot\sum_{0\leq j<k}j+O\left(\frac{k^4}{n^2}\right)}{1+\frac{1}{3n}\cdot\sum_{1< j\leq k}j+O\left(\frac{k^4}{n^2}\right)} = 1+\frac{2k^2+k}{3n}+O\left(\frac{\log^n}{n^2}\right),$$
+    $$\sum_{0\leq k\leq 2\log_3 n}\binom{4n}{n-k}=\binom{4n}{n}\cdot\sum_{0\leq k\leq 2\log_3 n}\left( \frac 13\right)^k\cdot[1+\frac{2k^2+k}{3n}+O\left(\frac{\log^n}{n^2}\right)]=$$
+    $$=\frac 32\cdot \binom{4n}{n} (1+O(n^{-1})).$$
+    $$\binom{4n}{n+1}= \binom{4n}{n}\cdot\frac{3n}{n+1}=3\cdot\binom{4n}{n}(1+O(n^{-1}));$$
+    $$S_n=6\cdot\binom{4n}{n}(1+O(n^{-1})).$$
 
 -   How many bits are needed to represent a binary tree with $$n$$
     internal nodes?
