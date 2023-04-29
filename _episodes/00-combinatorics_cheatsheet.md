@@ -368,3 +368,392 @@ objectives:
    $$
     = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{\frac{n}{2}-1}\cos\left({\pi n\over 6}\right)
     $$
+ 
+```{=html}
+<!-- -->
+```
+-   consider the number of possibilities $$c_n$$ of how to specify the
+    multiplication order of $$A_0A_1\dots A_n$$ by parentheses; let
+    $$C(x)=\sum_{n\ge 0} c_nx^n$$
+
+-   divide possibilities by the place of last multiplication;
+    $$c_n = \sum\limits_{k=0}^{n-1} c_kc_{n-1-k}$$ for $$n > 0$$; $$c_0=1$$
+
+-   many ways to deal with the recurrence:
+
+    -   shift the recurrence to $$c_{n+1} = \sum_{k=0}^n c_kc_{n-k}$$ and
+        use Rules 1 and 3; $${C(x)-1\over x} = C(x)^2$$
+
+    -   RHS as a convolution of $$c_n$$ with $$c_{n-1}$$, i.e.
+        $$C(x)\cdot xC(x)$$
+
+    -   RHS as a convolution of $$c_n$$ with $$c_n$$ shifted by Rule 1, i.e.
+        $$x\cdot C(x)^2$$
+
+    -   rewriting through sums and changing the order of summation:
+        $$\sum_{n\ge 1}x^n\sum_{k=0}^{n-1}c_kc_{n-1-k}=\sum_{k=0}^\infty x^kc_k\sum_{n\ge k+1} c_{n-1-k}x^{n-k}=
+                                \sum_{k=0}^\infty x^kc_k xC(x)=xC(x)\cdot C(x)$$
+
+-   consequently, $$C(x) - 1 = xC(x)^2$$ and thus
+    $$C(x) = {1\pm \sqrt{1-4x}\over 2x}=\displaystyle {1\over 2x}\left(1 - \sqrt{1-4x}\right)$$
+
+-   we want $$C$$ continuous and $$C(0) = 1$$, so we choose the minus sign
+    (note that the resulting function below is analytical since
+    $${2n\choose n}/(n+1) < 2^{2n}$$; it would be analytical also if we
+    chose the plus sign)
+
+-   binomial theorem yields $$\begin{aligned}
+            \sqrt{1-4x} = (1-4x)^{1/2} = \sum_{k\ge 0} {1/2\choose k}(-4x)^k &=& 1+\sum_{k\ge 1}{1\over 2k\cdot (-4)^{k-1}}{2k-2\choose k-1}(-4)^kx^k\\
+            &=& 1 - \sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k 
+        
+    \end{aligned}$$
+
+-   we used
+    $${1/2\choose k}={1/2\over k}{-1/2\choose k-1} = {1\over 2k(-4)^{k-1}}{2k-2\choose k-1}$$
+    because $${-1/2\choose m}={1\over (-4)^m}{2m\choose m}$$
+
+-   therefore,
+    $$C(x)={1\over 2x}\sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k = \sum_{n\ge 0}{1\over n+1}{2n\choose n}x^n$$
+
+1.  Assume that $$A(x)\overset{{\rm ogf}}{\longleftrightarrow}(a_n)$$.
+    Express the generating function for $$\sum_{n\ge 0} a_{3n}x^n$$ in
+    terms of $$A(x)$$.\
+
+2.  Compute $$S_n=\sum_{n\ge 0} F_{3n}\cdot 10^{-n}$$ (by plugging a
+    suitable value into the generating function for $$F_{3n}$$).\
+
+3.  Compute $$\sum_k {n\choose 4k}$$.
+
+4.  Compute $$\sum_k {6m\choose 3k+1}$$.
+
+5.  Evaluate $$S_n = \sum_{k=0}^n (-1)^k k^2$$.
+
+6.  Find ogf for $$H_n = 1 + 1/2 + 1/3 + \dots$$.
+
+7.  Find the number of ways of cutting a convex $$n$$-gon with labelled
+    vertices into triangles.\
+
+# Snake Oil
+
+The Snake Oil method \[Wilf 118, chapter 4.3\] -- external method vs.
+internal manipulations within a sum.
+
+1.  identify the free variable and give the name to the sum, e.g. $$f(n)$$
+
+2.  let $$F(x) = \sum f(n)x^n$$
+
+3.  interchange the order of summation; solve the inner sum in closed
+    form
+
+4.  find coefficients of $$F(x)$$
+
+-   Example 0
+
+    -   let's evaluate $$f(n) = \sum_k {n\choose k}$$; after Step 2,
+        $$F(x) = \sum_{n\ge 0} x^n \sum_k {n\choose k}$$
+
+    -   $$\displaystyle F(x) = \sum_k \sum_n {n\choose k}x^n = \sum_{k\ge 0} {x^k\over (1-x)^{k+1}}={1\over 1-x}\cdot {1\over 1-{x\over 1-x}}={1\over 1-2x}$$
+
+-   Example 1 \[Wilf 121\]
+
+    -   let's evaluate $$f(n) = \sum_{k\ge 0} {k\choose n-k}$$; after Step
+        2, $$F(x) = \sum_n x^n \sum_{k\ge 0} {k\choose n-k}$$
+
+    -   $$\displaystyle F(x) = \sum_{k\ge 0} \sum_n {k\choose n-k}x^n = \sum_{k\ge 0}x^k\sum_n {k\choose n-k}x^{n-k} = \sum_{k\ge 0}x^k (1+x)^k = {1\over 1-x-x^2}$$
+
+    -   so $$f(n) = F_{n+1}$$
+
+-   Example 2 \[Wilf 122\]
+
+    -   let's evaluate
+        $$f(n) = \sum_{k} {n+k\choose m+2k}{2k\choose k}{(-1)^k\over k+1}$$,
+        where $$m$$, $$n$$ are nonnegative integers $$\begin{aligned}
+                F(x) &=& \sum_{n\ge 0} x^n \sum_{k} {n+k\choose m+2k}{2k\choose k}{(-1)^k\over k+1} \\
+                     &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}\sum_{n\ge 0}{n+k\choose m+2k}x^{n+k}\\
+                     &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}{x^{m+2k}\over (1-x)^{m+2k+1}}\\
+                     &=& {x^m\over (1-x)^{m+1}}\sum_k {2k\choose k}{1\over k+1}\left({-x\over (1-x)^2}\right)^k \\
+                     &=& {-x^{m-1}\over 2(1-x)^{m-1}}\left(1-\sqrt{1+{4x\over (1-x)^2}}\right) = {x^m\over (1-x)^m}
+                
+        \end{aligned}$$
+
+    -   so $$f(n) = {n-1\choose m-1}$$
+
+-   Example 6 \[Wilf 127\]
+
+    -   prove that
+        $$\sum_{k} {m\choose k}{n+k\choose m} = \sum_k {m\choose k}{n\choose k}2^k$$,
+        where $$m$$, $$n$$ are nonnegative integers
+
+    -   the ogf of the left-hand side is
+        $$L(x) = \sum_{k} {m\choose k} x^{-k}\sum_{n\ge 0}{n+k\choose m}x^{n+k} ={(1+x)^m\over (1-x)^{m+1}}$$
+
+    -   we get the same for the right-hand side
+
+1.  Prove that $$\sum_k k{n\choose k} = n2^{n-1}$$ via the snake oil
+    method.
+
+2.  Evaluate $$\displaystyle f(n)=\sum_k k^2{n\choose k}3^k$$.\
+
+3.  Find a closed form for
+    $$\displaystyle \sum_{k\ge 0} {k\choose n-k}t^k$$. \[W4.11(a)\]\
+
+4.  Evaluate $$\displaystyle f(n)=\sum_k {n+k\choose 2k}2^{n-k}$$,
+    $$n\ge 0$$. \[Wilf 125, Example 4\]\
+
+5.  Evaluate
+    $$\displaystyle f(n)=\sum_{k\le n/2} (-1)^k{n-k\choose k}y^{n-2k}$$.
+    \[Wilf 122, Example 3\]\
+
+6.  Evaluate
+    $$\displaystyle f(n)=\sum_{k} {2n+1\choose 2p+2k+1}{p+k\choose k}$$.
+    \[W4.11(c)\]\
+
+7.  Try to prove that $$\sum_k {n\choose k}{2n\choose n+k}={3n\choose n}$$
+    via the snake oil method in three different ways: consider the sum
+    $$\sum_k {n\choose k}{m\choose r-k}$$ and the free variable being
+    one of $$n$$, $$m$$, $$r$$.
+
+# Asymptotic estimates
+
+-   Purpose of asymptotics \[Knuth 439\]
+
+    -   sometimes we do not have a closed form or it is hard to compare
+        it to other quantities
+
+    -   $$\displaystyle S_n = \sum_{k=0}^n {3n\choose k}\sim 2{3n\choose n}$$;
+        $$\displaystyle S_n = {3n\choose n}\left(2-{4\over n} + O\left({1\over n^2}\right)\right)$$
+
+    -   how to compare it with $$F_{4n}$$? we need to approximate the
+        binomial coefficient
+
+    -   purpose is to find *accurate* and *concise* estimates:\
+        $$H_n$$ is
+        $$\sum_{k\ge 1}^n 1/k$$vs.$$O(\log n)$$vs.$$\ln n + \gamma + O(n^{-1})$$
+
+-   Hierarchy of log-exp functions \[Hardy, see Knuth 442\]
+
+    -   the class $$\cal L$$ of logarithmico-exponential functions: the
+        smallest class that contains constants, identity function
+        $$f(n) = n$$, difference of any two functions from $$\cal L$$, $$e^f$$
+        for every $$f\in {\cal L}$$, $$\ln f$$ for every $$f\in {\cal L}$$
+        that is "eventually positive"
+
+    -   every such function is identically zero, eventually positive or
+        eventually negative
+
+    -   functions in $$\cal L$$ form a hierarchy (every two of them are
+        comparable by $$\prec$$ or $$\asymp$$)
+
+-   Notations
+
+    -   $$f(n) = O(g(n))$$ iff $$\exists c: |f(n)|\le c|g(n)|$$
+        (alternatively, for $$n\ge n_0$$ for some $$n_0$$)
+
+    -   $$f(n) = o(g(n))$$ iff $$\lim_{n\to\infty} f(n)/g(n) = 0$$
+
+    -   $$f(n) = \Omega(g(n))$$ iff $$\exists c: |f(n)|\ge c|g(n)|$$
+        (alternatively, ...)
+
+    -   $$f(n) = \Theta(g(n))$$ iff $$f(n) = O(g(n))$$ and
+        $$f(n) = \Omega(g(n))$$
+
+    -   basic manipulation: $$O(f)+O(g) = O(|f|+|g|)$$,
+        $$O(f)O(g)=O(fg)=fO(g)$$ etc.
+
+    -   meaning of $$O$$ in sums
+
+    -   *relative* vs. *absolute* error
+
+-   Warm-ups
+
+    1.  Prove or disprove: $$O(f+g)=f + O(g)$$ if $$f$$ and $$g$$ are
+        positive. \[K9.5\]
+
+    2.  Multiply $$\ln n + \gamma + O(1/n)$$ by $$n + O(\sqrt n)$$. \[K9.6\]
+
+    3.  Compare $$n^{\ln n}$$ with $$(\ln n)^n$$.
+
+    4.  Compare $$n^{\ln\ln\ln n}$$ with $$(\ln n)!$$.
+
+    5.  Prove or disprove: $$O(x+y)^2 = O(x^2) + O(y^2)$$. \[K9.11\]
+
+-   Common tricks
+
+    -   cut off series expansion (works for convergent series, Knuth
+        451)
+
+    -   substitution, e.g. $$\ln(1+2/n^2)$$ with precision of $$O(n^{-5})$$
+
+    -   factoring (pulling the large part out), e.g.
+        $${1\over n^2+n} = {1\over n^2}{1\over 1+{1\over n}}={1\over n^2}-{1\over n^3}+O(n^{-4})$$
+
+    -   division, e.g.
+        $$\displaystyle {H_n\over \ln (n + 1)}= {\ln n + \gamma + O(n^{-1})\over (\ln n)(1+O(n^{-1}))}=1 + {\gamma\over \ln n} + O(n^{-1})$$
+
+    -   exp-log, i.e. $$f(x) = e^{\ln f(x)}$$
+
+-   Typical situations for approximation
+
+    -   Stirling formula:
+        $$\displaystyle n! = \sqrt{2\pi n}\left({n\over e}\right)^n\left(1+{1\over 12n}+{1\over 288n^2}+O(n^{-3})\right)$$
+
+    -   harmonic numbers:
+        $$H_n = \ln n + \gamma + {1\over 2n} - {1\over 12n^2} + O(n^{-4})$$
+
+    -   rational functions, e.g.
+        $${n\over n+2} = {1\over 1+{2\over n}} = 1-{2\over n}+{4\over n^2}+O(n^{-3})$$
+
+    -   exponentials:
+        $$e^{H_n}=ne^\gamma e^{O(1/n)}=ne^\gamma (1+O(1/n))=ne^\gamma + O(1)$$
+
+    -   rational function powered to $$n$$, e.g.
+        $$\left(1-{1\over n}\right)^n=e^{n\ln \left(1-{1\over n}\right)}= \exp\left(n\left({-1\over n}+O\left(n^{-2}\right)\right)\right) = e^{-1 + O(n^{-1}))} = {1\over e} + O(n^{-1})$$
+
+    -   binomial coefficient, e.g. $$2n\choose n$$: factorials and
+        Stirling formula $$\begin{aligned}
+                        {2n\choose n}={\sqrt{4\pi n}\left({2n\over e}\right)^{2n}(1+O(n^{-1}))\over 2\pi n\left({n\over e}\right)^{2n}(1+O(n^{-1}))^2}=
+                                {{2^{2n}}\over \sqrt{\pi n}}(1+O(n^{-1}))
+                    
+        \end{aligned}$$
+
+-   Exercises
+
+    1.  Estimate $$\ln(1+1/n)+ \ln(1-1/n)$$ with abs. error $$O(n^{-3})$$
+
+    2.  Estimate $$\ln(2+1/n)- \ln(3-1/n)$$ with abs. error $$O(n^{-2})$$
+
+    3.  Estimate $$\lg (n-2)$$, abs. error $$O(n^{-2})$$
+
+    4.  Evaluate $$H_n^2$$ with abs. error $$O(n^{-1})$$.
+
+    5.  Estimate $$n^3/(2+n+n^2)$$ with abs. error $$O(n^{-3})$$
+
+    6.  Prove or disprove: \[K9.20\] (b) $$e^{(1+O(1/n))^2} = e + O(1/n)$$
+        cm (c) $$n! = O\left(((1-1/n)^nn)^n\right)$$
+
+    7.  Evaluate $$(n+2+O(n^{-1}))^n$$ with rel. error $$O(n^{-1})$$.
+        \[K9.13\]
+
+    8.  Compare $$H_{F_n}$$ with $$F_{\lceil H_n\rceil}^2$$ \[K9.2\]
+
+    9.  Estimate $$\sum_{k\ge 0} e^{-k/n}$$ with abs. error $$O(n^{-1})$$.
+        \[K9.7\]
+
+    10. Estimate $$H_n^5/\ln (n + 5)$$ with abs. error $$O(n^{-2})$$.
+
+    11. Estimate $$2n\choose n$$ with relative error $$O(n^{-2})$$. \[A1\]
+
+    12. Estimate $$2n+1\choose n$$ with relative error $$O(n^{-2})$$. \[A2\]
+
+    13. Compare $$(n!)!$$ with $$((n-1)!)!\cdot (n-1)!^{n!}$$. \[K9.2c\]
+        (Homework if not enough time is left.)
+
+# Estimates of sums and products
+
+-   Warm-ups
+
+    1.  Let $$f(n) = \sum_{k=1}^n \sqrt k$$. Show that
+        $$f(n) = \Theta(n^{3/2})$$. Find $$g(n)$$ such that
+        $$f(n) = g(n) + O(\sqrt n)$$.
+
+    2.  Estimate $$(n-2)!/(n-1)$$ with abs. error $$O(n^{-2})$$.
+
+    3.  For a constant integer $$k$$, estimate $$n^{\underline{k}}/n^k$$
+        with abs. error $$O(n^{-3})$$. \[A5\]\
+
+-   Find a good estimate of $$P_n = {(2n-1)!!\over n!}$$.
+
+    -   obviously
+        $$\displaystyle 1.5^{n-1}\le {1\over 1}\cdot {3\over 2}\cdot {5\over 3}\cdot \dots \cdot {(2n-1)\over n}\le 2^{n-1}$$
+
+    -   we split the product into a "small" part (first $$k$$ terms, each
+        at least $$3/2$$ except the first one) and a "large" part
+        (remaining $$n-k$$ terms); then\
+        $$P_n\ge \left({2k+1\over k+1}\right)^{n-k}\cdot 1.5^{k-1} = Q_n\cdot 1.5^{k-1}$$;
+        we estimate $$Q_n$$
+
+    -   if we try $$k = \alpha n$$, then
+        $$Q_n = 2^{n-\alpha n} \exp \left((n-\alpha n)\ln \left(1-{1\over 2(\alpha n + 1)}\right)\right)=2^{n(1-\alpha)}e^{{\alpha-1\over 2\alpha}}(1+O(n^{-1})),$$
+        so $$P_n \ge (2^{1-\alpha}\cdot 1.5^\alpha)^n \Theta(1)$$
+
+    -   if we try $$k = \ln n$$, then
+        $$Q_n = \exp\left((n-\ln n)\left[\ln 2 + \ln \left(1-{1\over 2(1+\ln n)}\right)\right]\right);$$
+        if we expand $$\ln$$ into Taylor series, the error will be
+        $$1/\ln^k n = \omega(n^{-1})$$, so we can get relative error
+        $$O(1)$$ at best;\
+        anyway, if we carry it through, we get
+        $$P_n = \Omega(2^n n^{-c} e^{-0.5n/\ln n})$$
+
+    -   if we try $$k = \sqrt n$$, then $$\begin{aligned}
+                Q_n &= \exp\left((n-\sqrt n)\left[\ln 2 + \ln \left(1-{1\over 2(1+\sqrt n)}\right)\right]\right)\\
+                    &= 2^{n-\sqrt n}\exp\left((n-\sqrt n)\left[{-1\over 2\sqrt n} + {3\over 8n}-{7\over 24n^{3/2}}+O(n^{-2})\right]\right)\\
+                    &= 2^{n-\sqrt n}\exp\left(-{\sqrt n\over 2} + {7\over 8}-{2\over 3\sqrt n}+O(n^{-1})\right),
+                
+        \end{aligned}$$ thus
+        $$P_n \ge 2^n \cdot 0.75^{\sqrt n}\cdot e^{{-\sqrt n\over 2}+{7\over 8}-{2\over 3\sqrt n}} (1+O(n^{-1})) = \Omega\left(2^n c^{\sqrt n}\right)$$
+        for $$c\in (0, 1)$$.
+
+    -   TODO compare with previous estimate from $$k=\ln n$$; which is
+        better?
+
+    -   another approach:
+        $$P_n = {(2n)!\over n! 2^n n!} = {2n\choose n}/2^n = {2^n\over \sqrt{\pi n}}(1+O(n^{-1}))$$
+
+-   Estimate $$S_n = \sum_{k=1}^n {1\over n^2+k}$$ with absolute error (a)
+    $$O(n^{-3})$$, (b) $$O(n^{-7})$$. \[Knuth 458/Problem 4\] First
+    approach: $${1\over n^2+k}={1\over n^2(1+k/n^2)}$$ etc.; second
+    approach: $$S_n = H_{n^2+n}-H_n$$. (DU)
+
+-   Sums --- gross bound on the tail:
+    $$S_n = \sum_{0\le k\le n} k! = n!\left(1+{1\over n}+{1\over n(n-1)}+ \dots\right)$$,
+    all the terms except the first two are at most $$1/n(n+1)$$, so
+    $$S_n = n!(1+{1\over n}+n{1\over n(n-1)}) = n!(1+O(n^{-1}))$$
+
+-   Sums --- make the tail infinite: $$\begin{aligned}
+    n!\sum_{k=0}^n{(-1)^k\over k!} &= n!\left(\sum_{k=0}^\infty{(-1)^k\over k!}-\sum_{k\ge n+1}{(-1)^k\over k!}\right)\\
+                                   &= n!\left(e^{-1}-O\left({1\over (n+1)!}\right)\right)= {n!\over e}+O(n^{-1})
+    \end{aligned}$$
+
+-   Estimate $$S_n=\sum_{k=0}^n {3n\choose k}$$ with relative error
+    $$O(n^{-2})$$. We split the sum into a "small" and a "large" part at
+    $$b$$ (which is yet to be determined). $$\begin{aligned}
+    \sum_{k=0}^{n} \binom {3n}k&=&\sum_{k=0}^{n} \binom {3n}{n-k}=\sum_{0\leq k<b} \binom {3n}{n-k}+\sum_{b\le k\le n} \binom {3n}{n-k}.\\
+    \binom{3n}{n-k} &=& \binom{3n}{n} {n(n-1)\cdot\ldots \cdot 1\over (2n+1)(2n+2)\ldots(2n+k)} =\\
+                    &=& \binom{3n}{n}\cdot\frac{n^k}{(2n)^k}\frac{\prod_{j=0}^{k-1}\left(1-\frac jn\right)}{\prod_{j=1}^k \left(1+\frac j{2n}\right)}=\binom{3n}{n}\cdot\frac{1}{2^k}\cdot\left[1-\frac{3k^2-k}{4n}+O\left(\frac{k^4}{n^2}\right)\right].\\
+    \sum_{b\le k\le n} \binom {3n}{n-k}&\le &n\cdot \binom{3n}{n-b}=\binom{3n}{n}\cdot \frac{1}{2^b} O(n)=\binom{3n}{n}\cdot O\left(n^{-2}\right) \hbox{if $$\sqrt n\succ b\ge 3\lg n$$}.\\
+    \sum_{0\leq k<3\lg n}\frac{1}{2^k}&=&2-\frac{1}{2^{3\lg n}}=2+O(n^{-3}).\\
+    -\frac{3}{4n}\sum_{0\leq k<3\lg n}\frac{k^2}{2^k}&=&\frac{-9}{2n}+O(n^{-3}).\\
+    +\frac{1}{4n}\sum_{0\leq k<3\lg n}\frac{k}{2^k}&=&\frac{1}{2n}+O(n^{-3}).\\
+    O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k}&=&O(n^{-2})\\
+    \end{aligned}$$
+    $$\sum_{k=0}^{n} \binom {3n}k=\binom{3n}{n}\cdot\left[2-\frac{4}{n}+ O(n^{-2})\right]$$
+
+-   Estimate $$S_n=\sum_{k=0}^n \binom{4n+1}{k+1}$$ with relative error
+    $$O(n^{-2})$$. $$\binom{4n+1}{k+1}=\binom{4n}{k+1}+\binom{4n}{k};$$
+    $$S_n=\sum_{k=0}^n \binom{4n+1}{k+1}=\sum_{k=0}^n\binom{4n}{k}+ \sum_{k=0}^n\binom{4n}{k+1}=\sum_{k=0}^n\binom{4n}{k}+\sum_{k=1}^{n+1}\binom{4n}{k};$$
+    $$S_n=2\sum_{k=0}^n\binom{4n}{k}+\binom{4n}{n+1}-\binom{4n}{0}.$$
+    $$Q_n=\sum_{k=0}^n\binom{4n}{k}=\sum_{k=0}^n\binom{4n}{n-k};$$
+    $$\binom{4n}{n-k}=\binom{4n}{n}\cdot\frac{\prod_{j=0}^{k-1}(n-j)}{\prod_{j=1}^{k}(3n+j)}=\binom{4n}{n}\cdot\left(\frac 13\right)^3\cdot\frac{\prod_{j=0}^{k-1}(1-j/n)}{\prod_{j=1}^{k}(1+j/3n)}$$
+    $$Q_n=\sum_{0\leq k\leq 2\log_3 n}\binom{4n}{n-k}+\sum_{2\log_3 n\leq k<n}\binom{4n}{n-k}$$
+    $$\sum_{2\log_3 n\leq k<n}\binom{4n}{n-k}=O\left(n\cdot\binom{4n}{n-\lceil 2\log_3 n\rceil} \right)=O\left(\binom{4n}{n}\cdot\frac 1n \right).$$
+    $$\frac{\prod_{j=0}^{k-1}(1-j/n)}{\prod_{j=1}^{k}(1+j/3n)}=\frac{1-\frac 1n\cdot\sum_{0\leq j<k}j+O\left(\frac{k^4}{n^2}\right)}{1+\frac{1}{3n}\cdot\sum_{1< j\leq k}j+O\left(\frac{k^4}{n^2}\right)} = 1+\frac{2k^2+k}{3n}+O\left(\frac{\log^n}{n^2}\right),$$
+    $$\sum_{0\leq k\leq 2\log_3 n}\binom{4n}{n-k}=\binom{4n}{n}\cdot\sum_{0\leq k\leq 2\log_3 n}\left( \frac 13\right)^k\cdot[1+\frac{2k^2+k}{3n}+O\left(\frac{\log^n}{n^2}\right)]=$$
+    $$=\frac 32\cdot \binom{4n}{n} (1+O(n^{-1})).$$
+    $$\binom{4n}{n+1}= \binom{4n}{n}\cdot\frac{3n}{n+1}=3\cdot\binom{4n}{n}(1+O(n^{-1}));$$
+    $$S_n=6\cdot\binom{4n}{n}(1+O(n^{-1})).$$
+
+-   How many bits are needed to represent a binary tree with $$n$$
+    internal nodes?
+
+    -   we need just the internal vertices to capture the structure;
+        what is the relation between the number of internal vertices and
+        total number of vertices?
+
+    -   imagine labeling the vertices by $$1,2,\dots,n$$ in such a way
+        that we get a binary search tree (descendants in the left
+        subtree are smaller, in the right subtree are larger); by
+        summing over possible roots of the tree we get
+        $$t_n = \sum_{i=1}^n t_{i-1} t_{n-i}$$; $$t_0 = 1$$
+
+    -   this is the same as for Catalan numbers, so
+        $$t_n = {2n\choose n}{1\over n+1}$$
