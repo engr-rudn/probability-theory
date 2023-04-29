@@ -368,4 +368,4 @@ objectives:
     = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] 
     $$
     $$
-    = 2\cdot 3^{{n\over 2}-1}\cos\left({\pi n\over 6}\right)$$
+    = 2\cdot 3^{{n\over 2}-1}$$
