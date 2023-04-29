@@ -111,7 +111,7 @@ objectives:
 
 -   Find the following coefficients \[W1.5\]:
 
-    ::: center
+    ::: center\
       ------- -------------------------------------- --
        \(a\)  $$[x^n]\, e^{2x}$$                       
        \(b\)  $$[x^n/n!]\, e^{\alpha x}$$              
