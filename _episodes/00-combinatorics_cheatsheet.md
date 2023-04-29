@@ -363,4 +363,4 @@ objectives:
 -   for $$A(x) = (1+x)^n$$, we have
     $$f(x) = {1\over 3}\big(A(x) + A(x\omega^1) + A(x\omega^2)\big)$$ for
     $$\omega=e^{2\pi i/3}$$
-
+ and so $$S_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] =$$
