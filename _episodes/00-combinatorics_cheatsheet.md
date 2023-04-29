@@ -364,7 +364,3 @@ objectives:
     $$f(x) = {1\over 3}\big(A(x) + A(x\omega^1) + A(x\omega^2)\big)$$ for
     $$\omega=e^{2\pi i/3}$$
 
--   and so $$S_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] =$$
-    $$
-    = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{{n\over 2}-1}\cos\left({\pi n\over 6}\right)
-    $$
