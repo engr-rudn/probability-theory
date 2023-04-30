@@ -291,7 +291,7 @@ $$
 
 -   **Rule 4**: for a positive integer $$k$$, we have
 $$
-    \displaystyle f^k\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{n_1+n_2+\dots+n_k=n} a_{n_1}a_{n_2}\dots a_{n_k}\right)_{n\ge 0}
+    f^k\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{n_1+n_2+\dots+n_k=n} a_{n_1}a_{n_2}\dots a_{n_k}\right)_{n\ge 0}
     $$
 
     -   example: let $$p(n,k)$$ be the number of ways $$n$$ can be written
