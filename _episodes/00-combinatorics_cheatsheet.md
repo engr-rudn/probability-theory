@@ -230,11 +230,13 @@ objectives:
 <!-- -->
 ```
 -   introducing a new variable and changing the order of summation can
-    help $$\begin{aligned}
-            \sum_{n\ge 0} {n\choose k}x^n &=& [y^k]\sum_{m\ge 0} \left(\sum_{n\ge 0} {n\choose m}x^n\right)y^m = [y^k]\sum_{n\ge 0} (1+y)^nx^n\nonumber\\
+    help 
+    $$
+    \begin{aligned}
+      \sum_{n\ge 0} {n\choose k}x^n &=& [y^k]\sum_{m\ge 0} \left(\sum_{n\ge 0} {n\choose m}x^n\right)y^m = [y^k]\sum_{n\ge 0} (1+y)^nx^n\nonumber\\
             &=& [y^k] {1\over 1-x(1+y)} = {1\over 1-x}[y^k] {1\over 1-{x\over 1-x}y} = {x^k\over (1-x)^{k+1}} \label{binomial}
-        
-    \end{aligned}$$
+     \end{aligned}
+     $$
 
 -   alternatively, one can use binomial theorem (Knuth 199/5.56 and
     5.57): $$\begin{aligned}
