@@ -240,11 +240,10 @@ objectives:
 
 -   alternatively, one can use binomial theorem (Knuth 199/5.56 and
     5.57): 
-    $$
+$$
     \begin{aligned}
             {1\over (1-z)^{n+1}} &=& (1-z)^{-n-1} =\sum_{k\ge 0} {-n-1\choose k}(-z)^k\\
                                  &=& \sum_{k\ge 0} {(-n-1)(-n-2)\dots(-n-k)\over k!}(-z)^k = \sum_{k\ge 0} {n+k\choose n}z^k
-        
     \end{aligned}
     $$
 
