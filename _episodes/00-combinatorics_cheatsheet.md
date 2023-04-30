@@ -290,7 +290,9 @@ $$
     $$\sum_{k=0}^n (-1)^kk = (-1)^n\sum_{k=0}^n k\cdot (-1)^{n-k} = (-1)^n[x^n]{x\over (1-x)^2}\cdot{1\over 1+x} = {(-1)^n\over 4}\left(2n+1-(-1)^n\right)$$
 
 -   **Rule 4**: for a positive integer $$k$$, we have
-    $$\displaystyle f^k\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{n_1+n_2+\dots+n_k=n} a_{n_1}a_{n_2}\dots a_{n_k}\right)_{n\ge 0}$$
+    $$
+    \displaystyle f^k\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{n_1+n_2+\dots+n_k=n} a_{n_1}a_{n_2}\dots a_{n_k}\right)_{n\ge 0}
+    $$
 
     -   example: let $$p(n,k)$$ be the number of ways $$n$$ can be written
         as an ordered sum of $$k$$ nonnegative integers
@@ -302,7 +304,9 @@ $$
         reference="binomial"}
 
 -   **Rule 5**:
-    $$\displaystyle {f\over (1-x)}\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{k=0}^n a_k\right)_{n\ge 0}$$\
+    $$
+    \displaystyle {f\over (1-x)}\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{k=0}^n a_k\right)_{n\ge 0}
+    $$\
 
     -   example:
         $$\displaystyle (\square_n)_{n\ge 0}\overset{{\rm ogf}}{\longleftrightarrow}{1\over 1-x}\cdot (x{\rm D})^2 {1\over 1-x} = {x(1+x)\over (1-x)^4}$$,
