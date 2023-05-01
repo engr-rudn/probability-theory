@@ -411,8 +411,7 @@ $$
 -   binomial theorem yields $$\begin{aligned}
             \sqrt{1-4x} = (1-4x)^{1/2} = \sum_{k\ge 0} {1/2\choose k}(-4x)^k &=& 1+\sum_{k\ge 1}{1\over 2k\cdot (-4)^{k-1}}{2k-2\choose k-1}(-4)^kx^k\\
             &=& 1 - \sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k 
-        
-    \end{aligned}$$
+        \end{aligned}$$
 
 -   we used
     $${1/2\choose k}={1/2\over k}{-1/2\choose k-1} = {1\over 2k(-4)^{k-1}}{2k-2\choose k-1}$$
