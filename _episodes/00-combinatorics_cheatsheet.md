@@ -725,17 +725,16 @@ internal manipulations within a sum.
     $$b$$ (which is yet to be determined). 
     $$
     \begin{aligned}
-    \sum_{k=0}^{n} \binom {3n}k&=&\sum_{k=0}^{n} \binom {3n}{n-k}=\sum_{0\leq k<b} \binom {3n}{n-k}+\sum_{b\le k\le n} \binom {3n}{n-k}.\\
-    \binom{3n}{n-k} &=& \binom{3n}{n} {n(n-1)\cdot\ldots \cdot 1\over (2n+1)(2n+2)\ldots(2n+k)} =\\
-                    &=& \binom{3n}{n}\cdot\frac{n^k}{(2n)^k}\frac{\prod_{j=0}^{k-1}\left(1-\frac jn\right)}{\prod_{j=1}^k \left(1+\frac j{2n}\right)}=\binom{3n}{n}\cdot\frac{1}{2^k}\cdot\left[1-\frac{3k^2-k}{4n}+O\left(\frac{k^4}{n^2}\right)\right].\\
-    \sum_{b\le k\le n} \binom {3n}{n-k}&\le &n\cdot \binom{3n}{n-b}=\binom{3n}{n}\cdot \frac{1}{2^b} O(n)=\binom{3n}{n}\cdot O\left(n^{-2}\right) \hbox{if $$\sqrt n\succ b\ge 3\lg n$$}.\\
-    \sum_{0\leq k<3\lg n}\frac{1}{2^k}&=&2-\frac{1}{2^{3\lg n}}=2+O(n^{-3}).\\
-    -\frac{3}{4n}\sum_{0\leq k<3\lg n}\frac{k^2}{2^k}&=&\frac{-9}{2n}+O(n^{-3}).\\
-    +\frac{1}{4n}\sum_{0\leq k<3\lg n}\frac{k}{2^k}&=&\frac{1}{2n}+O(n^{-3}).\\
-    O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k}&=&O(n^{-2})\\
-    \end{aligned}$$
-    $$\sum_{k=0}^{n} \binom {3n}k=\binom{3n}{n}\cdot\left[2-\frac{4}{n}+ O(n^{-2})\right]
-    $$
+\sum_{k=0}^{n} \binom {3n}k &= \sum_{k=0}^{n} \binom {3n}{n-k} = \sum_{0\leq k<b} \binom {3n}{n-k}+\sum_{b\le k\le n} \binom {3n}{n-k}.\\
+\binom{3n}{n-k} &= \binom{3n}{n} \frac{n(n-1)\cdot\ldots \cdot 1}{(2n+1)(2n+2)\ldots(2n+k)} =\\
+                 &= \binom{3n}{n}\cdot\frac{n^k}{(2n)^k}\frac{\prod_{j=0}^{k-1}\left(1-\frac jn\right)}{\prod_{j=1}^k \left(1+\frac j{2n}\right)}=\binom{3n}{n}\cdot\frac{1}{2^k}\cdot\left[1-\frac{3k^2-k}{4n}+O\left(\frac{k^4}{n^2}\right)\right].\\
+\sum_{b\le k\le n} \binom {3n}{n-k} &\le n\cdot \binom{3n}{n-b}=\binom{3n}{n}\cdot \frac{1}{2^b} O(n)=\binom{3n}{n}\cdot O\left(n^{-2}\right) \text{if } \sqrt{n} \succ b \geq 3\lg n.\\
+\sum_{0\leq k<3\lg n}\frac{1}{2^k} &= 2-\frac{1}{2^{3\lg n}}=2+O(n^{-3}).\\
+-\frac{3}{4n}\sum_{0\leq k<3\lg n}\frac{k^2}{2^k} &= \frac{-9}{2n}+O(n^{-3}).\\
++\frac{1}{4n}\sum_{0\leq k<3\lg n}\frac{k}{2^k} &= \frac{1}{2n}+O(n^{-3}).\\
+O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
+\end{aligned}
+ $$
 
 -   Estimate $$S_n=\sum_{k=0}^n \binom{4n+1}{k+1}$$ with relative error
     $$O(n^{-2})$$. $$\binom{4n+1}{k+1}=\binom{4n}{k+1}+\binom{4n}{k};$$
