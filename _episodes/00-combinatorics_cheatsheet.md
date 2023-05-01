@@ -778,7 +778,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 2. $$a_{n+1} = \alpha a_n + \beta$$ for $$n\ge 0$$, $$a_0=0$$
+> ### 2. $$a_{n+1} = \alpha a_n + \beta$$ for $$n\ge 0$$, $$a_0=0$$
 > > 
 > > ## Solution
 > > $$\beta x/(1-x)(1-\alpha x)$$\
@@ -786,7 +786,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 3. $$a_{n+1} = a_n/3  +1$$ for $$n\ge 0$$, $$a_0=1$$
+> ### 3. $$a_{n+1} = a_n/3  +1$$ for $$n\ge 0$$, $$a_0=1$$
 > > 
 > > ## Solution
 > >
@@ -795,7 +795,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 4. $$a_{n+2} = 2a_{n+1}-a_n$$ for $$n\ge 0$$, $$a_0=0$$, $$a_1=1$$
+> ### 4. $$a_{n+2} = 2a_{n+1}-a_n$$ for $$n\ge 0$$, $$a_0=0$$, $$a_1=1$$
 > > 
 > > ## Solution
 > >
@@ -804,7 +804,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 5. $$a_{n+2} = 3a_{n+1}-2a_n+3$$ for $$n>0$$, $$a_0=1$$, $$a_1=2$$
+> ### 5. $$a_{n+2} = 3a_{n+1}-2a_n+3$$ for $$n>0$$, $$a_0=1$$, $$a_1=2$$
 > > 
 > > ## Solution
 > >
@@ -813,7 +813,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 6. $$a_n = 2a_{n-1}-a_{n-2}+(-1)^n$$ for $$n>1$$, $$a_0=a_1=1$$
+> ### 6. $$a_n = 2a_{n-1}-a_{n-2}+(-1)^n$$ for $$n>1$$, $$a_0=a_1=1$$
 > > 
 > > ## Solution
 > >
@@ -822,7 +822,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 7. $$a_n = 2a_{n-1}-n\cdot(-1)^n$$ for $$n\ge 1$$, $$a_0=0$$
+> ### 7. $$a_n = 2a_{n-1}-n\cdot(-1)^n$$ for $$n\ge 1$$, $$a_0=0$$
 > > 
 > > ## Solution
 > >
@@ -831,7 +831,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 8. $$a_n = 3a_{n-1} + {n\choose 2}$$ for $$n\ge 1$$, $$a_0=2$$
+> ### 8. $$a_n = 3a_{n-1} + {n\choose 2}$$ for $$n\ge 1$$, $$a_0=2$$
 > > 
 > > ## Solution
 > >
@@ -839,7 +839,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 9. $$a_n = 2a_{n-1}-a_{n-2}-2$$ for $$n > 1$$, $$a_0=a_{10}=0$$
+> ### 9. $$a_n = 2a_{n-1}-a_{n-2}-2$$ for $$n > 1$$, $$a_0=a_{10}=0$$
 > > 
 > > ## Solution
 > >
@@ -847,7 +847,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 10. $$a_n = 4(a_{n-1}-a_{n-2})+(-1)^n$$ for $$n \ge 2$$, $$a_0=1$$, $$a_1=4$$
+> ### 10. $$a_n = 4(a_{n-1}-a_{n-2})+(-1)^n$$ for $$n \ge 2$$, $$a_0=1$$, $$a_1=4$$
 > > 
 > > ## Solution
 > >
@@ -856,7 +856,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 11. $$a_n = -3a_{n-1}+a_{n-2}+3a_{n-3}$$ for $$n\ge 3$$, $$a_0=20$$, $$a_1=-36$$, $$a_2=60$$
+> ### 11. $$a_n = -3a_{n-1}+a_{n-2}+3a_{n-3}$$ for $$n\ge 3$$, $$a_0=20$$, $$a_1=-36$$, $$a_2=60$$
 > > 
 > > ## Solution
 > >
@@ -864,7 +864,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ## 12. $$a_n = -3a_{n-1}+a_{n-2}+3a_{n-3}+128n$$ for $$n\ge 3$$, $$a_0=0$$, $$a_1=0$$, $$a_2=0$$
+> ### 12. $$a_n = -3a_{n-1}+a_{n-2}+3a_{n-3}+128n$$ for $$n\ge 3$$, $$a_0=0$$, $$a_1=0$$, $$a_2=0$$
 > > 
 > > ## Solution
 > >
