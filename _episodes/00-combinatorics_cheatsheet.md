@@ -774,15 +774,15 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > 
 > > ## Solution
 > > $$3x/(1-x)(1-3x)$$\
-> > $$3^n-1$$\
->
+> > $$3^n-1$$
+> >
 >{: .solution}
 {: .challenge}
 > ## 2. $$a_{n+1} = \alpha a_n + \beta$$ for $$n\ge 0$$, $$a_0=0$$
 > > 
 > > ## Solution
 > > $$\beta x/(1-x)(1-\alpha x)$$\
-> > $${\alpha^n-1\over \alpha-1}\beta$$\
+> > $${\alpha^n-1\over \alpha-1}\beta$$
 > >
 >{: .solution}
 {: .challenge}
@@ -791,7 +791,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > ## Solution
 > >
 > > $${3/2\over 1-x}-{1/2\over 1-x/3}$$\
-> > $${3^{n+1}-1\over 2\cdot 3^n}$$\
+> > $${3^{n+1}-1\over 2\cdot 3^n}$$
 > >
 >{: .solution}
 {: .challenge}
@@ -800,7 +800,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > ## Solution
 > >
 > > $$x/(1-x)^2$$\
-> > $$n$$\
+> > $$n$$
 > >
 >{: .solution}
 {: .challenge}
@@ -809,7 +809,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > ## Solution
 > >
 > > $${4\over 1-2x}-{3\over (1-x)^2}$$\
-> > $$2^{n+2}-3n-3$$\
+> > $$2^{n+2}-3n-3$$
 > >
 >{: .solution}
 {: .challenge}
@@ -818,7 +818,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > ## Solution
 > >
 > > $${1/2\over (1-x)^2}-{1/4\over 1-x}+{1/4\over 1+x}$$\
-> > $${2n+3+(-1)^n\over 4}$$\
+> > $${2n+3+(-1)^n\over 4}$$
 > >
 >{: .solution}
 {: .challenge}
@@ -827,7 +827,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > ## Solution
 > >
 > > $${x/9-2/9\over (1+x)^2}+{2/9\over 1-2x}$$\
-> > $${2^{n+1}-(3n+2)(-1)^n\over 9}$$\
+> > $${2^{n+1}-(3n+2)(-1)^n\over 9}$$
 > >
 >{: .solution}
 {: .challenge}
@@ -851,7 +851,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > 
 > > ## Solution
 > >
-> > $${1+x+x^2\over (1+x)(1-2x)^2} = {1\over 9}{1\over 1+x} +\left({-5\over 18}\right) {1\over 1-2x} + \left({7\over 6}\right){1\over (1-2x)^2}$$
+> > $${1+x+x^2\over (1+x)(1-2x)^2} = {1\over 9}{1\over 1+x} +\left({-5\over 18}\right) {1\over 1-2x} + \left({7\over 6}\right){1\over (1-2x)^2}$$\
 > > $${1\over 9}(-1)^n-{5\over 18}\cdot 2^n+{7\over 6}(n+1)\cdot 2^n$$
 > >
 >{: .solution}
