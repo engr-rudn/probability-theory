@@ -75,12 +75,11 @@ Similarly for events A1,…An
 >{: .solution}
 {: .challenge} 
 
-### Conditional Probability
-
-— How should you update probability/beliefs/uncertainty based on new evidence?
-
+> ## Challenge - — How should you update probability/beliefs/uncertainty based on new evidence?
 > "Conditioning is the soul of statistic" 
+{: .challenge}
 
+### Conditional Probability
 #### Definition:
 
 $$
