@@ -854,7 +854,9 @@ $$
 > > 
 > > ## Solution
 > >
-> > $${1+x+x^2\over (1+x)(1-2x)^2} = {1\over 9}{1\over 1+x} +\left({-5\over 18}\right) {1\over 1-2x} + \left({7\over 6}\right){1\over (1-2x)^2}}$$\
+> > $$\begin{align*}
+{1+x+x^2\over (1+x)(1-2x)^2} &= {1\over 9}{1\over 1+x} +\left({-5\over 18}\right) {1\over 1-2x} + \left({7\over 6}\right){1\over (1-2x)^2}
+\end{align*}$$\
 > > $${1\over 9}(-1)^n-{5\over 18}\cdot 2^n+{7\over 6}(n+1)\cdot 2^n$$
 > >
 >{: .solution}
