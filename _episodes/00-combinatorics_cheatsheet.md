@@ -300,8 +300,7 @@ $$
     -   according to R4,
     -   $$(p(n,k))_{n\ge 0}\overset{\text{ogf}}{\longleftrightarrow}1/(1-x)^k$$,
         so $$p(n,k) = {n+k-1\choose n}$$ thanks to
-        [\[binomial\]](#binomial){reference-type="eqref"
-        reference="binomial"}
+        [\[binomial\]](#binomial)
 
 -   **Rule 5**:
     $$
@@ -310,8 +309,7 @@ $$
 
     -   example:
         $$\displaystyle (\square_n)_{n\ge 0}\overset{\text{ogf}}{\longleftrightarrow}{1\over 1-x}\cdot (x{\mathrm D})^2 {1\over 1-x} = {x(1+x)\over (1-x)^4}$$,
-        so by [\[binomial\]](#binomial){reference-type="eqref"
-        reference="binomial"},
+        so by [\[binomial\]](#binomial),
         $$\square_n = {n+2\choose 3}+{n+1\choose 3}$$
 
 1.  Using Rule 5, prove that $$F_0+F_1+\dots+F_n=F_{n+2}-1$$ for $$n\ge 0$$
