@@ -831,6 +831,14 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
+> ### 9. $$a_n = 3a_{n-1} + {n\choose 2}$$ for $$n\ge 1$$, $$a_0=2$$
+> > 
+> > ## Solution
+> >
+> > $$n(a_1+1-n)$$, so with $$a_{10}$$, $$a_n=n(10-n)$$
+> >
+>{: .solution}
+{: .challenge}
 > ### 9. $$a_n = 2a_{n-1}-a_{n-2}-2$$ for $$n > 1$$, $$a_0=a_{10}=0$$
 > > 
 > > ## Solution
