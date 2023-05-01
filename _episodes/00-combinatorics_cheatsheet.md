@@ -474,13 +474,13 @@ internal manipulations within a sum.
     -   let's evaluate
         $$f(n) = \sum_{k} {n+k\choose m+2k}{2k\choose k}{(-1)^k\over k+1}$$,
         where $$m$$, $$n$$ are nonnegative integers $$\begin{aligned}
-                F(x) &=& \sum_{n\ge 0} x^n \sum_{k} {n+k\choose m+2k}{2k\choose k}{(-1)^k\over k+1} \\
-                     &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}\sum_{n\ge 0}{n+k\choose m+2k}x^{n+k}\\
-                     &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}{x^{m+2k}\over (1-x)^{m+2k+1}}\\
-                     &=& {x^m\over (1-x)^{m+1}}\sum_k {2k\choose k}{1\over k+1}\left({-x\over (1-x)^2}\right)^k \\
-                     &=& {-x^{m-1}\over 2(1-x)^{m-1}}\left(1-\sqrt{1+{4x\over (1-x)^2}}\right) = {x^m\over (1-x)^m}
-                
-        \end{aligned}$$
+F(x) &=& \sum_{n\ge 0} x^n \sum_{k} {n+k\choose m+2k}{2k\choose k}{(-1)^k\over k+1} \\
+     &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}\sum_{n\ge 0}{n+k\choose m+2k}x^{n+k}\\
+     &=& \sum_k {2k\choose k}{(-1)^k\over k+1}x^{-k}{x^{m+2k}\over (1-x)^{m+2k+1}}\\
+     &=& {x^m\over (1-x)^{m+1}}\sum_k {2k\choose k}{1\over k+1}\left({-x\over (1-x)^2}\right)^k \\
+     &=& {-x^{m-1}\over 2(1-x)^{m-1}}\left(1-\sqrt{1+{4x\over (1-x)^2}}\right) = {x^m\over (1-x)^m}
+\end{aligned}$$
+
 
     -   so $$f(n) = {n-1\choose m-1}$$
 
