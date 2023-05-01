@@ -769,7 +769,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
  
 ---
 
-> ## Find explicit formulas for the following sequences:
+> ## 1) Find explicit formulas for the following sequences:
 > ### 1) $$a_{n+1} = 3a_n+2$$ for $$n\ge 0$$, $$a_0=0$$
 > > 
 > > ## Solution
