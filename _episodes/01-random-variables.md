@@ -202,7 +202,7 @@ $$P(A_j) = 1 / n $$ since all position equally likely for card labeled j\
 
 $$P(A_1\cap A_2) = (n-2)! / n! = 1/n(n-1)$$\ 
 
-.../
+...
 
 $$P(A_1\cap … A_k) = (n-k)! / n!$$\
 
