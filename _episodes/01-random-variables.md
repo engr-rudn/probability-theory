@@ -9,32 +9,6 @@ keypoints:
 
 ---
 
-### Sample spaces
-
-Statistic is the logic of uncertainty.
-
-A **sample space** is the set of all possible outcomes of an experiment
-
-An **event** is a subset of sample space
-
-### Naive definetion of probability
-
- P(A) = #favorable outcome / #possible outcomes
-
-Example: file coins
-
-Assumes all outcome equally likely, finite sample space
-
-### Sampling table
-
-choose k objects out of n
-
-|               | order matter     | order doesn't      |
-| ------------- | ---------------- | ------------------ |
-| replace       | n^k^             | $$\binom{n+k-1}{k}$$ |
-| don't replace | n(n-1)...(n-k+1) | $$\binom{n}{k}$$     |
-
-
 # Random Variables and Event Probabilities
 
 ## Random variables
@@ -131,6 +105,12 @@ X(\omega) \in
 \mathbb{R}
 $$.]
 
+Statistic is the logic of uncertainty.
+
+A **sample space** is the set of all possible outcomes of an experiment
+
+An **event** is a subset of sample space
+
 Now consider the event $$Y = 0$$, in which our coin flip lands tails. In
 some worlds, the event occurs (i.e., $$0$$ is the value recorded for
 $$Y$$) and in others it doesn't.  An event picks out the subset of
@@ -138,7 +118,106 @@ worlds in which it occurs.^[Formally, an event is defined by a subset
 of the sample space, $$E \subseteq \Omega$$.]
 
 
+### Naive definetion of probability
 
+ P(A) = #favorable outcome / #possible outcomes
+
+Example: tossing of fair coins
+
+Assumes all outcome equally likely, finite sample space
+
+### Sampling table
+
+choose k objects out of n
+
+|               | order matter     | order doesn't      |
+| ------------- | ---------------- | ------------------ |
+| replace       | n^k^             | $$\binom{n+k-1}{k}$$ |
+| don't replace | n(n-1)...(n-k+1) | $$\binom{n}{k}$$     |
+
+1. Don't lose common sense 
+2. Do check answers, especially by doing simple and extreme cases
+3. Label people , objects etc. If have n people, then label them 1,2…n
+
+Example: 10 people, split into them of 6, team of 4 => $$\binom{10}{6}$$  2 teams of 5 => $$\binom{10}{5}$$ /2
+
+Problem: pick k times from set of n objects, where order doesn't matter, with replacement.
+
+Extreme cases: k = 0; k = 1; n = 2
+
+Equiv : how many ways are there to put k indistinguishable particles into  n distinguishable boxes?
+
+### Axioms of Probability
+
+**Non-naive definition**
+
+Probability sample consists of S and P, where S is sample space, and P , a function which takes an event $$A\subseteq S$$ as input, returns $$P(A) \in [0,1]$$ as output. 
+
+such that 
+
+1. $$P(\phi) = 0, P(S) = 1$$ 
+2. $$P(U_{n=1}^{\infty}A_n) =  \sum_{n=1}^{\infty} P(A_n) $$ if $$A1,A2..An$$ are disjoint (not overlap)
+
+### [Birthday Problem](https://en.wikipedia.org/wiki/Birthday_problem)
+
+(Exclude Feb 29, assume 365 days equally likely, assume indep. of birth)
+
+k people , find prob. that two have same birthday 
+
+If k > 365, prob. is 1
+
+Let k <= 365, $$P(no  match) =\frac{ 365 * 364 *... (365 - k + 1) }{365^k}$$ 
+
+P(match) ~ 50.7%, if k = 23; 97% if k = 50; 99.9999%, if k = 100
+
+$$\binom{k}{2} =  \frac{k(k-1)}{2} $$  $$\binom{23}{2} = 253$$ 
+
+### Properties of Probability
+
+1. $$P(A^c) = 1 - P(A)​$$    
+2. If $$A \subseteq B$$ , then $$P(A) \subseteq P(B)$$ 
+3. $$P(A\cup B) = P(A) + P(B) - P(A\cap B)$$
+
+$$P(A\cup B\cup C) = P(A) + P(B) + P(C) - P(A\cap B) - P(A\cap C) - P(B\cap C) + P(A\cap B\cap C)$$ 
+
+**Proof:**
+
+1. $$1 = P(S) = P(A\cap A^c) = P(A) + P(A^c)$$
+2. $$B = A\cup(B\cap A^c)$$  $$P(B) = P(A)+P(B\cap A^c)$$ 
+3. $$P(A\cup B) = P(A\cap (B\cap A^c)) = P(A) + P(B\cap A^c)$$ 
+
+General case: 
+
+
+
+### deMontmort's Problem(1713)
+
+**[matching problem](http://www.math.uah.edu/stat/urn/Matching.html)** 
+
+n cards labeled 1 to n, flipping cards over one by one, you win if the card that you name is the card that appears.
+
+ Let $$A_j$$  be the event, ''jth card matches" 
+
+$$P(A_j) = 1 / n $$ since all position equally likely for card labeled j
+
+$$P(A_1\cap A_2) = (n-2)! / n! = 1/n(n-1)$$ 
+
+...
+
+$$P(A_1\cap … A_k) = (n-k)! / n!$$ 
+
+$$P(A_1\cup …A_n) = n*1/n - n(n-1)/2 * 1/n(n-1) + …$$
+
+$$= 1 - 1/2! + 1/3! - 1/4! … (-1)^n1/n!$$ $$\approx 1- 1/e$$ 
+
+
+### Story proof- proof by interpretation
+
+Ex1 $$\binom{n}{k}$$ =  $$\binom{n}{n-k}$$ 
+
+Ex2  n$$\binom{n-1}{k-1}$$ = k$$\binom{n}{k}$$  pick k people out of n, with one desigenate as president.
+
+Ex3 $$ \binom{m+n}{k} = \sum_{j=0}^k \binom{m}{j} \binom{n}{k-j} $$ ([vandermonde](https://en.wikipedia.org/wiki/Vandermonde_matrix))
 
 ## Simulating random variables
 
@@ -457,9 +536,6 @@ Now the estimates are very close to the true probability being
 estimated (i.e., 0.5, because the flip is fair). This raises the
 questions of how many simulation draws we need in order to be
 confident our estimates are close to the values being estimated.
-
-
-
 
 
 
