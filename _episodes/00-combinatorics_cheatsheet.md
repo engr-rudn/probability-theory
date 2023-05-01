@@ -722,7 +722,8 @@ internal manipulations within a sum.
 
 -   Estimate $$S_n=\sum_{k=0}^n {3n\choose k}$$ with relative error
     $$O(n^{-2})$$. We split the sum into a "small" and a "large" part at
-    $$b$$ (which is yet to be determined). $$
+    $$b$$ (which is yet to be determined). 
+    $$
     \begin{aligned}
     \sum_{k=0}^{n} \binom {3n}k&=&\sum_{k=0}^{n} \binom {3n}{n-k}=\sum_{0\leq k<b} \binom {3n}{n-k}+\sum_{b\le k\le n} \binom {3n}{n-k}.\\
     \binom{3n}{n-k} &=& \binom{3n}{n} {n(n-1)\cdot\ldots \cdot 1\over (2n+1)(2n+2)\ldots(2n+k)} =\\
