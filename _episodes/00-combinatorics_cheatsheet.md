@@ -767,12 +767,12 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
     -   this is the same as for Catalan numbers, so
         $$t_n = {2n\choose n}{1\over n+1}$$
 ---
-> > ## Find explicit formulas for the following sequences:
-> > ### $a_{n+1} = 3a_n+2$ for $n\ge 0$, $a_0=0$
+>  ## Find explicit formulas for the following sequences:
+>  ### $a_{n+1} = 3a_n+2$ for $n\ge 0$, $a_0=0$
 > > 
 > > ## Solution
 > >  * $3x/(1-x)(1-3x)$
 > >  * $3^n-1$
->{: solution}
-{: challenge}
+>{: .solution}
+{: .challenge}
 ---
