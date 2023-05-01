@@ -831,14 +831,6 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 >{: .solution}
 {: .challenge}
-> ### 8. $$a_n = 3a_{n-1} + {n\choose 2}$$ for $$n\ge 1$$, $$a_0=2$$
-> > 
-> > ## Solution
-> >
-> > $${1\over 8}(19\cdot 3^n-2n(n+2)-3)$$
-> >
->{: .solution}
-{: .challenge}
 > ### 9. $$a_n = 2a_{n-1}-a_{n-2}-2$$ for $$n > 1$$, $$a_0=a_{10}=0$$
 > > 
 > > ## Solution
@@ -853,6 +845,14 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > >
 > > $${1+x+x^2\over (1+x)(1-2x)^2} = {1\over 9}{1\over 1+x} +\left({-5\over 18}\right) {1\over 1-2x} + \left({7\over 6}\right){1\over (1-2x)^2}}$$\
 > > $${1\over 9}(-1)^n-{5\over 18}\cdot 2^n+{7\over 6}(n+1)\cdot 2^n$$
+> >
+>{: .solution}
+{: .challenge}
+> ### 8. $$a_n = 3a_{n-1} + {n\choose 2}$$ for $$n\ge 1$$, $$a_0=2$$
+> > 
+> > ## Solution
+> >
+> > $${1\over 8}(19\cdot 3^n-2n(n+2)-3)$$
 > >
 >{: .solution}
 {: .challenge}
