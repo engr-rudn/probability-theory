@@ -298,18 +298,18 @@ $$
         as an ordered sum of $$k$$ nonnegative integers
 
     -   according to R4,
-        $$(p(n,k))_{n\ge 0}\overset{{\rm ogf}}{\longleftrightarrow}1/(1-x)^k$$,
+        $$(p(n,k))_{n\ge 0}\overset{{\mathrm ogf}}{\longleftrightarrow}1/(1-x)^k$$,
         so $$p(n,k) = {n+k-1\choose n}$$ thanks to
         [\[binomial\]](#binomial){reference-type="eqref"
         reference="binomial"}
 
 -   **Rule 5**:
     $$
-    \displaystyle {f\over (1-x)}\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{k=0}^n a_k\right)_{n\ge 0}
+    \displaystyle {f\over (1-x)}\overset{{\mathrm ogf}}{\longleftrightarrow}\left(\sum_{k=0}^n a_k\right)_{n\ge 0}
     $$\
 
     -   example:
-        $$\displaystyle (\square_n)_{n\ge 0}\overset{{\rm ogf}}{\longleftrightarrow}{1\over 1-x}\cdot (x{\rm D})^2 {1\over 1-x} = {x(1+x)\over (1-x)^4}$$,
+        $$\displaystyle (\square_n)_{n\ge 0}\overset{{\mathrm ogf}}{\longleftrightarrow}{1\over 1-x}\cdot (x{\mathrm D})^2 {1\over 1-x} = {x(1+x)\over (1-x)^4}$$,
         so by [\[binomial\]](#binomial){reference-type="eqref"
         reference="binomial"},
         $$\square_n = {n+2\choose 3}+{n+1\choose 3}$$
@@ -355,7 +355,7 @@ $$
 <!-- -->
 ```
 -   why
-    $${1\over 2}(A(x)+A(-x))\overset{{\rm ogf}}{\longleftrightarrow}a_0, 0, a_2, 0, a_4, \dots$$
+    $${1\over 2}(A(x)+A(-x))\overset{{\mathrm ogf}}{\longleftrightarrow}a_0, 0, a_2, 0, a_4, \dots$$
     works: $${1\over 2}(1^n + (-1)^n) = [2\mid n]$$
 
 -   in general, for $$\omega$$ being $$r$$-th root of unity,
@@ -423,7 +423,7 @@ $$
 -   therefore,
     $$C(x)={1\over 2x}\sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k = \sum_{n\ge 0}{1\over n+1}{2n\choose n}x^n$$
 
-1.  Assume that $$A(x)\overset{{\rm ogf}}{\longleftrightarrow}(a_n)$$.
+1.  Assume that $$A(x)\overset{{\mathrm ogf}}{\longleftrightarrow}(a_n)$$.
     Express the generating function for $$\sum_{n\ge 0} a_{3n}x^n$$ in
     terms of $$A(x)$$.\
 
