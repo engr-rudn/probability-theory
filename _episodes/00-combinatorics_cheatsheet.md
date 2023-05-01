@@ -766,3 +766,12 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 
     -   this is the same as for Catalan numbers, so
         $$t_n = {2n\choose n}{1\over n+1}$$
+
+
+
+
+Let $$X_1,X_2,... $$ be a sequence of independent random variables having respective means and variances $$\mu_i =E[X_i],(\sigma_i)^2 =Var(X_i)$$. If (a) the $X_i$ are uniformly bounded—that is, if for some $$M$$, $$P\{X_i < M\} = 1$$ for all $$i$$, and (b) $$\sum_{i=1}^{\infty}(\sigma_i)^2 = \infty$$—then
+
+$$ P\left\{\frac{\sum_{i=1}^n (x_i-\mu_i)}{\sqrt{\sum_{i=1}^n \sigma_i^2}} \leq a\right\} \to \Phi(a) \quad \text{as}\ n \to \infty $$
+
+where $$\Phi(a)$$ denotes the cumulative distribution function of the standard normal distribution.
