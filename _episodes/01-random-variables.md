@@ -155,7 +155,7 @@ Probability sample consists of S and P, where S is sample space, and P , a funct
 
 such that 
 
-1. $$P(\phi) = 0, P(S) = 1$$/ 
+1. $$P(\phi) = 0, P(S) = 1$$\ 
 2. $$P(U_{n=1}^{\infty}A_n) =  \sum_{n=1}^{\infty} P(A_n) $$ if $$A1,A2..An$$ are disjoint (not overlap)
 
 ### [Birthday Problem](https://en.wikipedia.org/wiki/Birthday_problem)
@@ -174,16 +174,16 @@ $$\binom{k}{2} =  \frac{k(k-1)}{2} $$  $$\binom{23}{2} = 253$$
 
 ### Properties of Probability
 
-1. $$P(A^c) = 1 - P(A)​$$/
-2. If $$A \subseteq B$$ , then $$P(A) \subseteq P(B)$$/ 
+1. $$P(A^c) = 1 - P(A)​$$\
+2. If $$A \subseteq B$$ , then $$P(A) \subseteq P(B)$$\ 
 3. $$P(A\cup B) = P(A) + P(B) - P(A\cap B)$$
 
 $$P(A\cup B\cup C) = P(A) + P(B) + P(C) - P(A\cap B) - P(A\cap C) - P(B\cap C) + P(A\cap B\cap C)$$ 
 
 **Proof:**
 
-1. $$1 = P(S) = P(A\cap A^c) = P(A) + P(A^c)$$/
-2. $$B = A\cup(B\cap A^c)$$  $$P(B) = P(A)+P(B\cap A^c)$$/ 
+1. $$1 = P(S) = P(A\cap A^c) = P(A) + P(A^c)$$\
+2. $$B = A\cup(B\cap A^c)$$  $$P(B) = P(A)+P(B\cap A^c)$$\ 
 3. $$P(A\cup B) = P(A\cap (B\cap A^c)) = P(A) + P(B\cap A^c)$$ 
 
 General case: 
@@ -198,15 +198,15 @@ n cards labeled 1 to n, flipping cards over one by one, you win if the card that
 
  Let $$A_j$$  be the event, ''jth card matches" 
 
-$$P(A_j) = 1 / n $$ since all position equally likely for card labeled j/
+$$P(A_j) = 1 / n $$ since all position equally likely for card labeled j\
 
-$$P(A_1\cap A_2) = (n-2)! / n! = 1/n(n-1)$$/ 
+$$P(A_1\cap A_2) = (n-2)! / n! = 1/n(n-1)$$\ 
 
 .../
 
-$$P(A_1\cap … A_k) = (n-k)! / n!$$/
+$$P(A_1\cap … A_k) = (n-k)! / n!$$\
 
-$$P(A_1\cup …A_n) = n*1/n - n(n-1)/2 * 1/n(n-1) + …$$/
+$$P(A_1\cup …A_n) = n*1/n - n(n-1)/2 * 1/n(n-1) + …$$\
 
 $$= 1 - 1/2! + 1/3! - 1/4! … (-1)^n1/n!$$ $$\approx 1- 1/e$$ 
 
