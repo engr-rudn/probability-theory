@@ -211,7 +211,7 @@ objectives:
         $$u_{2n} = {(2+\sqrt 3)^n\over 3-\sqrt 3} + {(2-\sqrt 3)^n\over 3+\sqrt 3} = \left\lceil {(2+\sqrt 3)^n\over 3-\sqrt 3}\right\rceil$$
         (derivation as a homework)
 
--   Given $$f(x)\overset{{\rm ogf}}{\longleftrightarrow}(a_n)_{n\ge 0}$$,
+-   Given $$f(x)\overset{\text{ogf}}{\longleftrightarrow}(a_n)_{n\ge 0}$$,
     express ogf for the following sequences in terms of $$f$$ \[W1.3\]:\
 
       ------- --------------------------------------- -----------------------------------------------------------------------
@@ -269,10 +269,10 @@ $$
 <!-- -->
 ```
 -   **Rule 1**: for a positive integer $$h$$,
-    $$(a_{n+h})\overset{{\rm ogf}}{\longleftrightarrow}(f-a_0-\dots-a_{h-1}x^{h-1})/x^h$$
+    $$(a_{n+h})\overset{\text{ogf}}{\longleftrightarrow}(f-a_0-\dots-a_{h-1}x^{h-1})/x^h$$
 
 -   **Rule 2**: if $$P$$ is a polynomial, then
-    $$P(x{\rm D})f\overset{{\rm ogf}}{\longleftrightarrow}(P(n)a_n)_{n\ge 0}$$
+    $$P(x{\rm D})f\overset{\text{ogf}}{\longleftrightarrow}(P(n)a_n)_{n\ge 0}$$
 
     -   example: $$(n+1)a_{n+1} = 3a_n+1$$ for $$n\ge 0$$, $$a_0 = 1$$; thus
         $$f' = 3f + 1/(1-x)$$
@@ -284,14 +284,14 @@ $$
         containing $$1$$ in the complex plane (that is, it converges to
         its Taylor series)
 
--   **Rule 3**: if $$g\overset{{\rm ogf}}{\longleftrightarrow}(b_n)$$,
+-   **Rule 3**: if $$g\overset{\text{ogf}}{\longleftrightarrow}(b_n)$$,
     then
-    $$fg\overset{{\rm ogf}}{\longleftrightarrow}(\sum_{k=0}^n a_kb_{n-k})_{n\ge 0}$$
+    $$fg\overset{\text{ogf}}{\longleftrightarrow}(\sum_{k=0}^n a_kb_{n-k})_{n\ge 0}$$
     $$\sum_{k=0}^n (-1)^kk = (-1)^n\sum_{k=0}^n k\cdot (-1)^{n-k} = (-1)^n[x^n]{x\over (1-x)^2}\cdot{1\over 1+x} = {(-1)^n\over 4}\left(2n+1-(-1)^n\right)$$
 
 -   **Rule 4**: for a positive integer $$k$$, we have
     $$
-    \displaystyle f^k\overset{{\rm ogf}}{\longleftrightarrow}\left(\sum_{n_1+n_2+\dots+n_k=n} a_{n_1}a_{n_2}\dots a_{n_k}\right)_{n\ge 0}
+    \displaystyle f^k\overset{\text{ogf}}{\longleftrightarrow}\left(\sum_{n_1+n_2+\dots+n_k=n} a_{n_1}a_{n_2}\dots a_{n_k}\right)_{n\ge 0}
     $$
 
     -   example: let $$p(n,k)$$ be the number of ways $$n$$ can be written
