@@ -690,13 +690,16 @@ internal manipulations within a sum.
         anyway, if we carry it through, we get
         $$P_n = \Omega(2^n n^{-c} e^{-0.5n/\ln n})$$
 
-    -   if we try $$k = \sqrt n$$, then $$\begin{aligned}
-                Q_n &= \exp\left((n-\sqrt n)\left[\ln 2 + \ln \left(1-{1\over 2(1+\sqrt n)}\right)\right]\right)\\
-                    &= 2^{n-\sqrt n}\exp\left((n-\sqrt n)\left[{-1\over 2\sqrt n} + {3\over 8n}-{7\over 24n^{3/2}}+O(n^{-2})\right]\right)\\
-                    &= 2^{n-\sqrt n}\exp\left(-{\sqrt n\over 2} + {7\over 8}-{2\over 3\sqrt n}+O(n^{-1})\right),
-         \end{aligned}$$ thus
-        $$P_n \ge 2^n \cdot 0.75^{\sqrt n}\cdot e^{frac{-\sqrt n}{2}}+{7\over 8}-{2\over 3\sqrt n}} (1+O(n^{-1})) = \Omega\left(2^n c^{\sqrt n}\right)$$
-        for $$c\in (0, 1)$$.
+    -   If we try $$k = \sqrt n$$, then
+$$\begin{aligned}
+    Q_n &= \exp\left((n-\sqrt n)\left[\ln 2 + \ln \left(1-{1\over 2(1+\sqrt n)}\right)\right]\right)\\
+        &= 2^{n-\sqrt n}\exp\left((n-\sqrt n)\left[{-1\over 2\sqrt n} + {3\over 8n}-{7\over 24n^{3/2}}+O(n^{-2})\right]\right)\\
+        &= 2^{n-\sqrt n}\exp\left(-{\sqrt n\over 2} + {7\over 8}-{2\over 3\sqrt n}+O(n^{-1})\right),
+ \end{aligned}$$
+thus
+$$P_n \ge 2^n \cdot 0.75^{\sqrt n}\cdot e^{\frac{-\sqrt n}{2}+\frac{7}{8}-\frac{2}{3\sqrt n}} (1+O(n^{-1})) = \Omega\left(2^n c^{\sqrt n}\right)$$
+for $$c\in (0, 1)$$. 
+
 
     -   TODO compare with previous estimate from $$k=\ln n$$; which is
         better?
