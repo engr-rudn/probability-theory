@@ -835,7 +835,7 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > > 
 > > ## Solution
 > >
-> > $${1\over 8}(19\cdot 3^n-2n(n+2)-3)$$
+> > $$n(a_1+1-n)$$, so with $$a_{10}$$, $$a_n=n(10-n)$$
 > >
 >{: .solution}
 {: .challenge}
