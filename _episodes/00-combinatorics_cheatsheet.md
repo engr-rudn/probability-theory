@@ -773,61 +773,73 @@ O(n^{-2})\cdot\sum_{0\leq k<3\lg n}\frac{k^4}{2^k} &= O(n^{-2})
 > ### 1) $$a_{n+1} = 3a_n+2$$ for $$n\ge 0$$, $$a_0=0$$
 > > 
 > > ## Solution
-> > $$3x/(1-x)(1-3x)$$
-> > $$3^n-1$$
+> > $$3x/(1-x)(1-3x)$$\
+> > $$3^n-1$$\
+>
 >{: .solution}
 {: .challenge}
-> ## 2. $a_{n+1} = \alpha a_n + \beta$ for $n\ge 0$, $a_0=0$
+> ## 2. $$a_{n+1} = \alpha a_n + \beta$$ for $$n\ge 0$$, $$a_0=0$$
 > > 
 > > ## Solution
-> > $$\beta x/(1-x)(1-\alpha x)$$
-> > $${\alpha^n-1\over \alpha-1}\beta$$
+> > $$\beta x/(1-x)(1-\alpha x)$$\
+> > $${\alpha^n-1\over \alpha-1}\beta$$\
+> 
 >{: .solution}
 {: .challenge}
 > ## 3. $$a_{n+1} = a_n/3  +1$$ for $$n\ge 0$$, $$a_0=1$$
-> > $${3/2\over 1-x}-{1/2\over 1-x/3}$$
-> > $${3^{n+1}-1\over 2\cdot 3^n}$$
+> > $${3/2\over 1-x}-{1/2\over 1-x/3}$$\
+> > $${3^{n+1}-1\over 2\cdot 3^n}$$\
+> 
 >{: .solution}
 {: .challenge}
 > ## 4. $$a_{n+2} = 2a_{n+1}-a_n$$ for $$n\ge 0$$, $$a_0=0$$, $$a_1=1$$
-> > $$x/(1-x)^2$$;
-> > $$n$$
+> > $$x/(1-x)^2$$\
+> > $$n$$\
+>
 >{: .solution}
 {: .challenge}
 > ## 5. $$a_{n+2} = 3a_{n+1}-2a_n+3$$ for $$n>0$$, $$a_0=1$$, $$a_1=2$$
 > > $${4\over 1-2x}-{3\over (1-x)^2}$$
 > > $$2^{n+2}-3n-3$$
+>
 >{: .solution}
 {: .challenge}
 > ## 6. $$a_n = 2a_{n-1}-a_{n-2}+(-1)^n$$ for $$n>1$$, $$a_0=a_1=1$$
 > > $${1/2\over (1-x)^2}-{1/4\over 1-x}+{1/4\over 1+x}$$
 > > $${2n+3+(-1)^n\over 4}$$
+>
 >{: .solution}
 {: .challenge}
 > ## 7. $$a_n = 2a_{n-1}-n\cdot(-1)^n$$ for $$n\ge 1$$, $$a_0=0$$
 > > $${x/9-2/9\over (1+x)^2}+{2/9\over 1-2x}$$
 > > $${2^{n+1}-(3n+2)(-1)^n\over 9}$$
+>
 >{: .solution}
 {: .challenge}
 > ## 8. $$a_n = 3a_{n-1} + {n\choose 2}$$ for $$n\ge 1$$, $$a_0=2$$
 > > $${1\over 8}(19\cdot 3^n-2n(n+2)-3)$$
+>
 >{: .solution}
 {: .challenge}
 > ## 9. $$a_n = 2a_{n-1}-a_{n-2}-2$$ for $$n > 1$$, $$a_0=a_{10}=0$$
 > > $$n(a_1+1-n)$$, so with $$a_{10}$$, $$a_n=n(10-n)$$
+>
 >{: .solution}
 {: .challenge}
 > ## 10. $$a_n = 4(a_{n-1}-a_{n-2})+(-1)^n$$ for $$n \ge 2$$, $$a_0=1$$, $$a_1=4$$
     * $${1+x+x^2\over (1+x)(1-2x)^2} = {1\over 9}{1\over 1+x} +\left({-5\over 18}\right) {1\over 1-2x} + \left({7\over 6}\right){1\over (1-2x)^2}$$
 > > $${1\over 9}(-1)^n-{5\over 18}\cdot 2^n+{7\over 6}(n+1)\cdot 2^n$$
+>
 >{: .solution}
 {: .challenge}
 > ## 11. $$a_n = -3a_{n-1}+a_{n-2}+3a_{n-3}$$ for $$n\ge 3$$, $$a_0=20$$, $$a_1=-36$$, $$a_2=60$$
 > > $$5(-3)^n+18(-1)^n-3$$
+>
 >{: .solution}
 {: .challenge}
 > ## 12. $$a_n = -3a_{n-1}+a_{n-2}+3a_{n-3}+128n$$ for $$n\ge 3$$, $$a_0=0$$, $$a_1=0$$, $$a_2=0$$
 > > $$8n^2+28n-29-11(-3)^n+40(-1)^n$$
+>
 >{: .solution}
 {: .challenge}
 
