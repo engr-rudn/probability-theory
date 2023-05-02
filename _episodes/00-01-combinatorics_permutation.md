@@ -62,3 +62,16 @@ Consider a binomial situation, where there is a yes or no, success or failure, p
 > 10. Calculate $$_{10}C_3$$ without a calculator.
 > 
 {: .challenge}
+> ### 1. A four-volume work is placed in random order on a bookshelf.  What is the probability of the  volumes being in proper  order  from left  to  right  or  from right to left?
+> 
+> > # Solution
+> >
+> > If you have four volumes, and the question is what order to place them
+in, the question is a simple permutation problem. There are 4
+possibilities for the first, 3 for the second, 2 for the third and only
+one for the last, making the number of permutations of the books 24.
+Only one order has them in ascending order and only one order will have
+them in descending order. Thus: 
+> > $$P=\frac{2}{24}=\frac{1}{12}\label{answer1.1}$$
+>{: .solution}
+{: .challenge}
