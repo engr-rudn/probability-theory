@@ -236,17 +236,20 @@ $$P(A|A) = 1$$
 > 
 > > ## Solution
 > > No
+> > $$$$\
+> > Example - Chess opponent of unknown strength may be that game outcomes are conditionally independent given strength
 > {: .solution}
 {: .challenge}
 
-Ex. Chess opponent of unknown strength may be that game outcomes are conditionally independent given strength 
+ 
 
 > ### Does independent imply conditional independent given C?
 > 
 > > ## Solution
 > > No
-> > Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But 
-$$ P(F|A, C^c^)$$ = 1  not conditionally independent given A
+> > $$$$\
+> > Example - A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But 
+> > $$ P(F|A, C^c^)$$ = 1  not conditionally independent given A
 > {: .solution}
 {: .challenge}
 
