@@ -174,7 +174,10 @@ $$\
 
 > ### Example 1- Suppose we have 2 random cards from standard deck
 > Find $$
- P(both\  aces|have\ ace) $$, $$ P(both\aces|have\ ace\ of\ spade)
+ P(both\  aces|have\ ace) 
+ $$\, 
+ $$
+ P(both\aces|have\ ace\ of\ spade)
  $$
 > >
 > > ## Solution
