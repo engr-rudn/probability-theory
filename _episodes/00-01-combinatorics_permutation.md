@@ -73,5 +73,5 @@ one for the last, making the number of permutations of the books 24.
 Only one order has them in ascending order and only one order will have
 them in descending order. Thus: 
 > > $$P=\frac{2}{24}=\frac{1}{12}\label{answer1.1}$$
->{: .solution}
+> {: .solution}
 {: .challenge}
