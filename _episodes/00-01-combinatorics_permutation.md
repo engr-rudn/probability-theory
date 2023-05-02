@@ -75,3 +75,15 @@ them in descending order. Thus:
 > > $$P=\frac{2}{24}=\frac{1}{12}\label{answer1.1}$$
 > {: .solution}
 {: .challenge}
+> ### 2.A wooden cube with painted faces is sawed  up into  1000 little cubes, all of the same  size.  The  little cubes  are  then mixed  up,  and  one  is chosen at  random. What  is the probability of its having just  2 painted faces?
+> 
+> > ## Solution
+> >
+> >The wooden cube is made of $$10^3$$ cubes implying a 10x10x10 cube. The
+cubes that have two faces painted will be the edges which are not on a
+corner. Thus, since there are 12 edges of 10 cubes each, 8 of which are
+not corners, that implies we have 96 edges. 96 thus becomes our number
+of desireable outcomes and 1000 has always been the total number of
+outcomes: $$P=\frac{96}{1000} = 0.096\label{answer1.2}$$
+> {: .solution}
+{: .challenge}
