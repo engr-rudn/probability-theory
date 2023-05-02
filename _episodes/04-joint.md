@@ -188,7 +188,7 @@ $$
 > ### Example 2 - Patient get tested for disease afflicts 1% of population, tests positive (has disease)
 > Suppose the test is advertised as "95% accurate" , suppose this means 
 > $$D$$: has disease, $$T$$: test positive
-> >
+> 
 > > ## Solution
 > >
 > > Trade-off: It's rare that the test is wrong, it's also rare the disease is rare
