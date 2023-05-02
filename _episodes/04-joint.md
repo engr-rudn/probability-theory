@@ -185,9 +185,7 @@ $$\
 $$
 > {: .solution}
 {: .challenge}
-
-> ### Example 2 - Patient get tested for disease afflicts 1% of population, tests positve (has disease)
-
+> ### Example 2 - Patient get tested for disease afflicts 1% of population, tests positive (has disease)
 > Suppose the test is advertised as "95% accurate" , suppose this means 
 > $$D$$: has disease, $$T$$: test positive
 > >
