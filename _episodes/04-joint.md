@@ -232,16 +232,23 @@ $$P(A|A) = 1$$
  Events $$A,B$$ are conditionally independent given $$C$$ if 
  	$$P(A\cap B|C)$$ = $$P(A|C)P(B|C)$$
 
-**Q:**Does conditional indep given C imply indep. ? No
+> ### Does conditional independence given C imply independence ? 
+> 
+> > ## Solution
+> > No
+> {: .solution}
+{: .challenge}
 
 Ex. Chess opponent of unknown strength may be that game outcomes are conditionally independent given strength 
 
-**Q:**Does independent imply conditional independent given C? No
-
-Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But $$ 
-P(F|A, C^c^)
-$$ = 1  not conditionally independent given A
-
+> ### Does independent imply conditional independent given C?
+> 
+> > ## Solution
+> > No
+> > Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But 
+$$ P(F|A, C^c^)$$ = 1  not conditionally independent given A
+> {: .solution}
+{: .challenge}
 
 ## Joint probability
 
