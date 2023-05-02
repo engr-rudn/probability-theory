@@ -192,7 +192,7 @@ $$
 > > ## Solution
 > >
 > > Trade-off: It's rare that the test is wrong, it's also rare the disease is rare
-> >
+> > $$$$\
 > > $$P(T|D) = 0.95 = P(T^c |D^c)$$
 > > 
 > {: .solution}
