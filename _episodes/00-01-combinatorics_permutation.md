@@ -64,7 +64,7 @@ Consider a binomial situation, where there is a yes or no, success or failure, p
 {: .challenge}
 > ### 1. A four-volume work is placed in random order on a bookshelf.  What is the probability of the  volumes being in proper  order  from left  to  right  or  from right to left?
 > 
-> > # Solution
+> > ## Solution
 > >
 > > If you have four volumes, and the question is what order to place them
 in, the question is a simple permutation problem. There are 4
