@@ -173,10 +173,7 @@ $$\
    law of total probability 
 
 > ### Example 1- Suppose we have 2 random cards from standard deck
-> Find $$ \begin{flalign*}
-&P(both\ aces|have\ ace) \\
-&P(both\ aces|have\ ace\ of\ spade) \\
-\end{flalign*} $$
+> Find $$P(both\ aces|have\ ace)$, $P(both\ aces|have\ ace\ of\ spade)$$
 > >
 > > ## Solution
 > >
