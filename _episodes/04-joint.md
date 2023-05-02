@@ -186,21 +186,21 @@ $$
 > {: .solution}
 {: .challenge}
 
-<u>Example 2</u> 
+> ### Example 2 - Patient get tested for disease afflicts 1% of population, tests positve (has disease)
 
-Patient get tested for disease afflicts 1% of population, tests positve (has disease)
-
-Suppose the test is advertised as "95% accurate" , suppose this means 
-
-$$D$$: has disease, $$T$$: test positive
-
-Trade-off: It's rare that the test is wrong, it's also rare the disease is rare
-
-$$P(T|D) = 0.95 = P(T^c |D^c)$$
-
-$$
+> Suppose the test is advertised as "95% accurate" , suppose this means 
+> $$D$$: has disease, $$T$$: test positive
+> >
+> > ## Solution
+> >
+> > Trade-off: It's rare that the test is wrong, it's also rare the disease is rare
+> >
+> > $$P(T|D) = 0.95 = P(T^c |D^c)$$
+> > $$
 P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^c}
-$$  
+$$
+> {: .solution}
+{: .challenge}
 
 
 
