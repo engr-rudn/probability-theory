@@ -197,7 +197,7 @@ $$
 > > $$
 P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}
 $$
-$$
+> > $$
 {P(T|D)P(D) + P(T|D^c)P(D^c}
 $$
 > {: .solution}
