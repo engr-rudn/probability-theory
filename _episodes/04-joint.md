@@ -173,12 +173,18 @@ $$\
    law of total probability 
 
 > ### Example 1- Suppose we have 2 random cards from standard deck
-> Find $$ P(both\  aces|have\ ace) $$, $$ P(both\aces|have\ ace\ of\ spade)$$
+> Find $$
+ P(both\  aces|have\ ace) $$, $$ P(both\aces|have\ ace\ of\ spade)
+ $$
 > >
 > > ## Solution
 > >
-> > $$P(\text{both aces}|\text{have ace}) = \frac{P(\text{both aces}, \text{have ace})}{P(\text{have ace})} = \frac{\binom{4}{2}/\binom{52}{2}}{1-\binom{48}{2}/\binom{52}{2}} = \frac{1}{33}$$\
-> > $$P(both\ aces|have\ ace\ of\ spade) = 3/51 = 1/17$$
+> > $$P
+(\text{both aces}|\text{have ace}) = \frac{P(\text{both aces}, \text{have ace})}{P(\text{have ace})} = \frac{\binom{4}{2}/\binom{52}{2}}{1-\binom{48}{2}/\binom{52}{2}} = \frac{1}{33}
+$$\
+> > $$P
+(both\ aces|have\ ace\ of\ spade) = 3/51 = 1/17
+$$
 > {: .solution}
 {: .challenge}
 
