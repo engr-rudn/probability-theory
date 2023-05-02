@@ -249,7 +249,8 @@ $$P(A|A) = 1$$
 > > No
 > > $$$$\
 > > Example - A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But 
-> > $$ P(F|A, C^c^)$$ = 1  not conditionally independent given A
+> > $$$$\
+> > $$P(F|A, C^c^) = 1$$ not conditionally independent given A
 > {: .solution}
 {: .challenge}
 
