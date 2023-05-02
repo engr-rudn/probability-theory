@@ -40,6 +40,54 @@ Now suppose the test is 95% accurate in the sense that
 
 We're going to pause the example while we introduce the probability
 notation required to talk about it more precisely.
+Conditional probability notation expresses the diagnostic test's
+accuracy for people have the disease ($$Z = 1$$) as
+
+$$
+\mbox{Pr}[Y = 1 \mid Z = 1] = 0.95
+$$\
+
+and for people who don't have the disease ($$Z = 0$$) as
+
+$$
+\mbox{Pr}[Y = 0 \mid Z = 0] = 0.95.
+$$\
+
+We read $$\mbox{Pr}[\mathrm{A} \mid \mathrm{B}]$$ as the *conditional
+probability* of event $$\mathrm{A}$$ given that we know event
+$$\mathrm{B}$$ occurred.  Knowing that event $$\mathrm{B}$$ occurs often,
+but not always, gives us information about the probability of
+$$\mathrm{A}$$ occurring.
+
+The conditional probability function $$\mbox{Pr}[\, \cdot \mid
+\mathrm{B}]$$ behaves just like the unconditional probability function
+$$\mbox{Pr}[\, \cdot \,]$$.  That is, it satisfies all of the laws of
+probability we have introduced for event probabilities.  The
+difference is in the semantics---conditional probabilities are
+restricted to selecting a way the world can be that is consistent with
+the event $$\mathrm{B}$$ occurring.^[Formally, an event $$\mathrm{B}$$ is
+modeled as a set of ways the world can be, i.e., a subset $$\mathrm{B}
+\subseteq \Omega$$ of the sample space $$\Omega$$.  The conditional
+probability function $$\mbox{Pr}[\, \cdot \mid \mathrm{B}]$$ can be
+interpreted as an ordinary probability distribution with sample space
+$$\mathrm{B}$$ instead of the original $$\Omega$$.]
+
+For example, the sum of exclusive and exhaustive probabilities must be
+one, and thus the diagnostic error probabilities are one minus the
+correct diagnosis probabilities,^[These error rates are often called the
+false positive rate and false negative rate, the positive and negative
+in this case being the test result and the false coming from not
+matching the true disease status.]
+
+$$
+\mbox{Pr}[Y = 0 \mid Z = 1] = 0.05
+$$\
+
+and
+
+$$
+\mbox{Pr}[Y = 1 \mid Z = 0] = 0.05.
+$$\
 
 ## Conditional probability
 
@@ -112,55 +160,89 @@ $$\
 P(A|B) = \frac{P(B|A)P(A)}{P(B)}
 $$\ 
 
+**Thinking** conditionally is a condition for thinking
 
-Conditional probability notation expresses the diagnostic test's
-accuracy for people have the disease ($$Z = 1$$) as
+**How to solve a problem?**
+
+1. Try simple and extreme cases
+
+2. Break up problem into simple pieces 
+
+   $$P(B) = P(B|A_1)P(A_1) + P(B|A_2)P(A_2) +…P(B|A_n)P(A_n)$$
+
+   law of total probability 
+
+> ### Example 1- Suppose we have 2 random cards from standard deck
+> ### Find $$ P(both\  aces|have\ ace) $$, $$ P(both\aces|have\ ace\ of\ spade)$$
+> >
+> > ## Solution
+> >
+> > $$P(both\ aces|have\ ace) = P(both\ aces,\cancel{have\ ace}) / P(have\ ace) =  \frac{\binom{4}{2}/\binom{52}{2}}{1-\binom{48}{2}/\binom{52}{2}} = 1/33
+$$\
+> > $$
+P(both\ aces|have\ ace\ of\ spade) = 3/51 = 1/17 
+$$
+> {: .solution}
+{: .challenge}
+
+<u>Example 2</u> 
+
+Patient get tested for disease afflicts 1% of population, tests positve (has disease)
+
+Suppose the test is advertised as "95% accurate" , suppose this means 
+
+$$D$$: has disease, $$T$$: test positive
+
+Trade-off: It's rare that the test is wrong, it's also rare the disease is rare
+
+$$P(T|D) = 0.95 = P(T^c |D^c)$$
 
 $$
-\mbox{Pr}[Y = 1 \mid Z = 1] = 0.95
-$$\
+P(D|T) = \frac{P(T|D)P(D)}{P(T)} = \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^c}
+$$  
 
-and for people who don't have the disease ($$Z = 0$$) as
 
-$$
-\mbox{Pr}[Y = 0 \mid Z = 0] = 0.95.
-$$\
 
-We read $$\mbox{Pr}[\mathrm{A} \mid \mathrm{B}]$$ as the *conditional
-probability* of event $$\mathrm{A}$$ given that we know event
-$$\mathrm{B}$$ occurred.  Knowing that event $$\mathrm{B}$$ occurs often,
-but not always, gives us information about the probability of
-$$\mathrm{A}$$ occurring.
+### Biohazards
 
-The conditional probability function $$\mbox{Pr}[\, \cdot \mid
-\mathrm{B}]$$ behaves just like the unconditional probability function
-$$\mbox{Pr}[\, \cdot \,]$$.  That is, it satisfies all of the laws of
-probability we have introduced for event probabilities.  The
-difference is in the semantics---conditional probabilities are
-restricted to selecting a way the world can be that is consistent with
-the event $$\mathrm{B}$$ occurring.^[Formally, an event $$\mathrm{B}$$ is
-modeled as a set of ways the world can be, i.e., a subset $$\mathrm{B}
-\subseteq \Omega$$ of the sample space $$\Omega$$.  The conditional
-probability function $$\mbox{Pr}[\, \cdot \mid \mathrm{B}]$$ can be
-interpreted as an ordinary probability distribution with sample space
-$$\mathrm{B}$$ instead of the original $$\Omega$$.]
+1. confusing $$
+P(A|B)
+$$, $$
+P(B|A)
+$$  ([procecutor's fallacy](https://en.wikipedia.org/wiki/Prosecutor%27s_fallacy)) 
 
-For example, the sum of exclusive and exhaustive probabilities must be
-one, and thus the diagnostic error probabilities are one minus the
-correct diagnosis probabilities,^[These error rates are often called the
-false positive rate and false negative rate, the positive and negative
-in this case being the test result and the false coming from not
-matching the true disease status.]
+<u>Ex</u> [Sally Clark](https://en.wikipedia.org/wiki/Sally_Clark) case, SIDS
 
-$$
-\mbox{Pr}[Y = 0 \mid Z = 1] = 0.05
-$$\
+want $$
+P(innocence|evidence)
+$$ 
 
-and
+1. confusing $$
+P(A) - prior 
+$$ with $$
+P(A|B)
+$$ - posterior
 
-$$
-\mbox{Pr}[Y = 1 \mid Z = 0] = 0.05.
-$$\
+$$P(A|A) = 1$$
+
+1. confusing independent with conditional independent 
+
+
+
+**Definition**:
+
+ Events $$A,B$$ are conditionally independent given $$C$$ if 
+ 	$$P(A\cap B|C)$$ = $$P(A|C)P(B|C)$$
+
+**Q:**Does conditional indep given C imply indep. ? No
+
+Ex. Chess opponent of unknown strength may be that game outcomes are conditionally independent given strength 
+
+**Q:**Does independent imply conditional independent given C? No
+
+Ex. A: Fire alarm goes off, cause by : F:fire; C:popcorn. suppose F, C independent But $$ 
+P(F|A, C^c^)
+$$ = 1  not conditionally independent given A
 
 
 ## Joint probability
