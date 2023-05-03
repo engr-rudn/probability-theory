@@ -1254,21 +1254,19 @@ the outcome of a coin-flip experiment and that $$\xi_2$$ is the outcome of
 the first spin measurement of an EPR experiment. 
 >{: .solution}
 {: .challenge}
-> ### 4. A random variable $$\xi$$ has  probability density $$p_{\xi}(x)  = \frac{a}{x^2 + 1}         (-\infy   < x  <\infy)$$. Find
-> > a)  The constant a;\
-> > b)  The  distribution function of  \xi;\
-> > c)  The  probability P{-1   < \xi   < 1}.
+> ### 4. A random variable $$\xi$$ has  probability density $$p_{\xi}(x)  = \frac{a}{x^2 + 1}         (-\infty   < x  <\infty)$$. Find
+> a)  The constant a;\
+> b)  The  distribution function of  $$\xi$$;\
+> c)  The  probability $$P{-1   < \xi   < 1}$$.
 >
 > > ## Solution
 > > The distribution is clearly not normalized so the first step will be to normalise it.
-$$\int^{\infty}_{-\infty} \frac{a}{x^2+1}dx = 1 = a \pi$$
-$$a = \frac{1}{\pi}
-\label{answer4.4a}$$
-sJust by definition:
-$$\Phi(x) = \int^{x}_{\infty} \frac{1}{\pi(x'^2+1)}dx' = \left \frac{\arctan x'}{\pi} \right] ^x_{-\infty} = \frac{\arctan x}{\pi}+\frac{1}{2}
-\label{answer4.4b}$$ and last but not least:
-$$P( \{ -1 \leq x \leq 1 \} = \int^{1}_{-1} \frac{1}{\pi(x'^2+1)}dx' = \frac{1}{2}
-\label{answer4.4c}$$
+> > $$\int^{\infty}_{-\infty} \frac{a}{x^2+1}dx = 1 = a \pi$$
+> > $$a = \frac{1}{\pi}$$
+> > Just by definition:
+> > $$\Phi(x) = \int^{x}_{\infty} \frac{1}{\pi(x'^2+1)}dx' = \left \frac{\arctan x'}{\pi} \right] ^x_{-\infty}$$\
+> > $$= \frac{\arctan x}{\pi}+\frac{1}{2}$$ and last but not least:\
+> > $$P( \{ -1 \leq x \leq 1 \} = \int^{1}_{-1} \frac{1}{\pi(x'^2+1)}dx' = \frac{1}{2}}$$
 >{: .solution}
 {: .challenge}
 > ### 
