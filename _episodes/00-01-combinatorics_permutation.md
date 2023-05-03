@@ -117,7 +117,7 @@ orders giving us a probability of
 > > $$P=\frac{8 \cdot{} 6 \cdot{} 7!}{10!}=\frac{1}{15}\label{answer1.4}$$
 > {: .solution}
 {: .challenge}
-> ### 5.  One marksman has  an 80{ probability of hitting a target, while another has only  a 70%  probability of hitting the  target. What  is the  probability of the target being  hit  (at least  once)  if both  marksman fire at it simultaneously?
+> ### 5.  One marksman has  an 80% probability of hitting a target, while another has only  a 70%  probability of hitting the  target. What  is the  probability of the target being  hit  (at least  once)  if both  marksman fire at it simultaneously?
 > 
 > > ## Solution
 > >
@@ -145,7 +145,7 @@ buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$
 $$
-P = \frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!} = \frac{{n!k!}}{m!(n+k-m)!}
+P = \frac{(n+k)!}{m!(n+k-m)!}\cdot \frac{n!k!}{(n+k)!} = \frac{{n!k!}}{m!(n+k-m)!}
 $$
 > {: .solution}
 {: .challenge}
