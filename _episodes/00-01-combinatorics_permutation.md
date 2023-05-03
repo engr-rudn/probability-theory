@@ -130,7 +130,7 @@ specify $$m$$ seats, you effectively divide the auditorium into two
 buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$\
-> > $$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}$$
+> > <!--  $$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}$$-->
 > {: .solution}
 {: .challenge}
 > ### 7.  Three  cards  are  drawn  at random from  a full deck.  What  is the probability of getting  a three, a seven  and  an ace?
@@ -138,7 +138,7 @@ $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$\
 > > ## Solution
 > >
 > > Again, the number of ways to get three cards from a 52 card deck is
-$\binom{52}{3}$. Since there are 4 each of sevens, threes and aces,
+$$\binom{52}{3}$$. Since there are 4 each of sevens, threes and aces,
 there are $4^3$ desirable hands.
 $$P=\frac{4^3}{\frac{52!}{3!49!}}=\frac{16}{5525}=0.00289593
 \label{answer1.7}$$ Which it is worth pointing out, is no different than
@@ -151,7 +151,7 @@ any other 3-card hand of three different cards.
 > > ## Solution
 > >
 > > If you indiscriminately chose 3 line segments from our bank of 5, you
-have $\binom{5}{3}=10$ total possibilities for triangles. When you look
+have $$\binom{5}{3}=10$$ total possibilities for triangles. When you look
 at the bank (1, 3, 5, 7, 9), however, you have to make sure that no two
 segments are longer than the third segment, otherwise making a triangle
 is impossible. The brute-force way to do this is start with 1 and
@@ -178,7 +178,7 @@ encapsulates the part less than 100 and then the rest of the number
 $$n=a+b=100c+b$$ Now, just for fun, let's cube than number
 $$n^3=(100c+b)^3=b^3+300 b^2 c+30000 b c^2+1000000 c^3$$ Clearly the
 only term here that will matter to the last two digits of the cube is
-$b$, the part less than 100. Now we can reduce our now size 100 subspace
+$$b$$, the part less than 100. Now we can reduce our now size 100 subspace
 by a great deal if you realize that in order for a number's cube to end
 in 1, the last number in the cube will need to be 1, leaving us: (1, 11,
 21, 31, 41, 51, 61, 71, 81, 91). At this point I recommend just cubing
@@ -267,7 +267,7 @@ $$P=\frac{2}{720} = \frac{1}{360}\label{answer1.12}$$
 > > ## Solution
 > >
 > > For any die, there are 6 different possibilities. Since one dice's
-outcome does not depend on another's, that means that for a roll of $6n$
+outcome does not depend on another's, that means that for a roll of $$6n$$
 die, there are $$6^{6n}$$ different possible outcomes for the dice rolls.
 Now for desirable outcomes, we want each of the 6 faces to show up n
 times. To accomplish this, we just count the number of ways to apportion
