@@ -1261,12 +1261,12 @@ the first spin measurement of an EPR experiment.
 >
 > > ## Solution
 > > The distribution is clearly not normalized so the first step will be to normalise it.
-> > $$\int^{\infty}_{-\infty} \frac{a}{x^2+1}dx = 1 = a \pi$$
-> > $$a = \frac{1}{\pi}$$
-> > Just by definition:
-> > $$\Phi(x) = \int^{x}_{\infty} \frac{1}{\pi(x'^2+1)}dx' = \left \frac{\arctan x'}{\pi} \right] ^x_{-\infty}$$\
+> > $$\int^{\infty}_{-\infty} \frac{a}{x^2+1}dx = 1 = a \pi$$\
+> > $$a = \frac{1}{\pi}$$\
+> > Just by definition:\
+> > $$\Phi(x) = \int^{x}_{\infty} \frac{1}{\pi(x\'^2+1)}dx\' = \left \frac{\arctan x\'}{\pi} \right] ^x_{-\infty}$$\
 > > $$= \frac{\arctan x}{\pi}+\frac{1}{2}$$ and last but not least:\
-> > $$P( \{ -1 \leq x \leq 1 \} = \int^{1}_{-1} \frac{1}{\pi(x'^2+1)}dx' = \frac{1}{2}}$$
+> > $$P( \{ -1 \leq x \leq 1 \} = \int^{1}_{-1} \frac{1}{\pi(x\'^2+1)}dx\' = \frac{1}{2}}$$
 >{: .solution}
 {: .challenge}
 > ### 
