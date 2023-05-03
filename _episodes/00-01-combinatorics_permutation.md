@@ -130,7 +130,7 @@ specify $$m$$ seats, you effectively divide the auditorium into two
 buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$\
-> > $$P=(\frac{(n+k)!}{m!(n+k-m)!})(\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!})$$
+> > $$P=\frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!}=\frac{{n!k!}}{m!(n+k-m)!}$$
 > {: .solution}
 {: .challenge}
 > ### 7.  Three  cards  are  drawn  at random from  a full deck.  What  is the probability of getting  a three, a seven  and  an ace?
@@ -201,33 +201,32 @@ and the probability that the last digit is one. To prove that we can use
 the hint given, we'll split the integer into the past less than 10 and
 the part greater than 10. $$n=10a+b$$
 > > #### a--Squared
-> > $$n^2=100a^2+10ab+b^2$$ OK, so clearly only $b^2$ contributes to the
+> > $$n^2=100a^2+10ab+b^2$$ OK, so clearly only $$b^2$$ contributes to the
 last digit. At this point\... just do the squaring especially since it's
 something you can do in your head. (1, 2, 3, 4, 5, 6, 7, 8,
-9)$\rightarrow$(1, 4, 9, 16, 25, 36, 49, 64, 81) therefore there are two
-desireable outcomes for every decade of random positive integers.
-$$P=\frac{2}{10}=.2
-\label{answer1.10a}$$
+9)$$\rightarrow$$(1, 4, 9, 16, 25, 36, 49, 64, 81) therefore there are two
+desireable outcomes for every decade of random positive integers.\
+> > $$P=\frac{2}{10}=.2$$
 > > #### b--fourth-powered
 > > $$n^4=100000000 a^4+4000000 a^3 b+60000 a^2 b^2+400 a b^3+b^4$$ Great,
-once again, just $b^4$. Now, doing the forth power is a little harder so
+once again, just $$b^4$$. Now, doing the forth power is a little harder so
 let's reason through and reduce the subspace. Clearly, only odd numbers
 will contribute since any power of an even number is again an even
 number. Now, let's just do the arithmetic. (1, 3, 5, 7,
-9)$\rightarrow$(1, 81, 625, 2401, 6561) giving us 4 desirable outcomes
-per decade of random numbers $$P=\frac{4}{10}=.4
-\label{answer1.10a}$$
+9)$$\rightarrow$$(1, 81, 625, 2401, 6561) giving us 4 desirable outcomes
+per decade of random numbers\
+> > $$P=\frac{4}{10}=.4$$
 > > #### c--multiplied by random positive number
 > > $$n*r=(10a+b)r$$ Now let's let $r$ be a similar integer as n
 $$n*r=(10a+b)(10c+d)=100ac+10(bc+ad)+bd$$
 So we just need to consider the first two digits of both the random
 number and the arbitrary number. This leaves us with $10^2$
-possibilities; $5^2$ possible desirable outcomes once we exclude even
+possibilities; $$5^2$$ possible desirable outcomes once we exclude even
 numbers: (1, 3, 5, 7, 9). Once again we resort to brute force by just
 defining the above as a vector and multiplying the transpose of that
 vector by the vector. The only desirable outcomes turn out to be (1\*1,
-9\*9, 7\*3, 3\*7), giving four desirable outcomes per century.
-$$P=\frac{4}{100}=.04\label{answer1.10b}$$
+9\*9, 7\*3, 3\*7), giving four desirable outcomes per century.\
+> > $$P=\frac{4}{100}=.04$$
 > {: .solution}
 {: .challenge}
 > ### 11.  One of the numbers 2, 4, 6, 7, 8, 11,  12 and  13 is chosen  at random as the numerator of a fraction, and  then  one  of the  remaining numbers is chosen at random as  the  denominator of  the  fraction. What   is  the  probability of  the fraction being  in lowest  terms?
@@ -236,8 +235,8 @@ $$P=\frac{4}{100}=.04\label{answer1.10b}$$
 > >
 > > Here we are given 8 possible numbers (2, 4, 6, 7, 8, 11, 12, 13) and are
 told that it making a random fraction out of two of the numbers. There
-are $\binom{8}{2}=28$ possible pairs but since
-$\frac{a}{b} \neq \frac{b}{a}$, we multiply that by two to get the total
+are $$\binom{8}{2}=28$$ possible pairs but since
+$$\frac{a}{b} \neq \frac{b}{a}$$, we multiply that by two to get the total
 number of fractions we can get from these numbers as being 56.
 Looking at the numbers given, 7, 11 and 13 are all prime and all the
 others are divisible by two; therefore only the fractions that contain
@@ -245,7 +244,7 @@ one or more prime numbers will be in lowest terms. The number 7 can be
 in 7 different pairs with the other numbers which makes for 14
 fractions. 11 can be in 6 pairs or 12 fractions (since we already
 counted 7) and similarly, 13 can be in 10 uncounted fractions giving 36
-possible fractions in lowest terms.
+possible fractions in lowest terms.\
 $$P=\frac{36}{56}=\frac{9}{14}\label{answer1.11}$$ 
 > {: .solution}
 {: .challenge}
@@ -253,10 +252,10 @@ $$P=\frac{36}{56}=\frac{9}{14}\label{answer1.11}$$
 > 
 > > ## Solution
 > >
-> > The word drawer has 6 letters and there are $6!=720$ possible ways of
+> > The word drawer has 6 letters and there are $$6!=720$$ possible ways of
 arranging the letters. It is then natural to say there's only one way to
 spell reward correctly and thus the probability of spelling it correctly
-after a random reordering is $1/720$ BUT there is a complication in that
+after a random reordering is $$1/720$$ BUT there is a complication in that
 the two of our letters are the same, meaning there are to distinct
 arrangement of our distinguishable tiles that will give us the proper
 spelling.
@@ -269,12 +268,12 @@ $$P=\frac{2}{720} = \frac{1}{360}\label{answer1.12}$$
 > >
 > > For any die, there are 6 different possibilities. Since one dice's
 outcome does not depend on another's, that means that for a roll of $6n$
-die, there are $6^{6n}$ different possible outcomes for the dice rolls.
+die, there are $$6^{6n}$$ different possible outcomes for the dice rolls.
 Now for desirable outcomes, we want each of the 6 faces to show up n
 times. To accomplish this, we just count the number of ways to apportion
-$6n$ things into 6 groups of $n$ each or $$\frac{(6n)!}{(n!)^6}$$ which,
+$$6n$$ things into 6 groups of $n$ each or $$\frac{(6n)!}{(n!)^6}$$ which,
 given Stirling's approximation $$n! \approx \sqrt{2 \pi n} n^n e^{-n}$$
-gives us for large $n$
+gives us for large $$n$$
 $$\frac{(6n)!}{(n!)^6} \approx \sqrt{2 \pi 6n} (6n)^{6n} e^{-6n} * \frac{1}{(\sqrt{2 \pi n} n^n e^{-n})^6} = \frac{3 \cdot 6^{6n}}{4 (\pi n)^{5/2}}$$
 $$P=\frac{(6n)!}{(n!)^6 6^{6n}} \approx \frac{3}{4 (\pi n)^{5/2}}\label{answer1.13}$$
 > {: .solution}
@@ -285,21 +284,21 @@ $$P=\frac{(6n)!}{(n!)^6 6^{6n}} \approx \frac{3}{4 (\pi n)^{5/2}}\label{answer1.
 > >
 > > To figure out the total number of possibilities, we must realize that
 one draw of half a deck, implies the other half of the deck implicitly,
-therefore there are $\binom{52}{26}$ total 26 card draws. Then, to get
-13 red cards, there are $\binom{26}{13} = 10400600$ ways to get 13 red
+therefore there are $$\binom{52}{26}$$ total 26 card draws. Then, to get
+13 red cards, there are $$\binom{26}{13} = 10400600$$ ways to get 13 red
 cards and the same number for black cards making $10400600^2$ the number
-of total possible desirable outcomes.
-$$P=\frac{16232365000}{74417546961}=0.218126
-\label{answer1.14}$$ Because we're cool and modern and have Mathematica,
+of total possible desirable outcomes.\
+$$P=\frac{16232365000}{74417546961}=0.218126$$\
+Because we're cool and modern and have Mathematica,
 we don't NEED to do the Stirling's formula approximation but it'll be
-good for us so we shall.
+good for us so we shall.\
 $$P=\frac{\binom{26}{13}^2}{\binom{52}{26}} = \frac{(26!)^4}{(13!)^4 52!}=\frac{((2n)!)^4}{(n!)^4 (4n)!}$$
-where $n=13$.
-$$P=\frac{(\sqrt{4 \pi n}(2n)^{2n}e^{-2n})^4}{(\sqrt{2 \pi n}n^{n}e^{-n})^4 (\sqrt{8 \pi n}(4n)^{4n}e^{-4n})}$$
-$$P=\frac{(4 \pi n)^2}{(2 \pi n)^2 \sqrt{8 \pi n}} \frac{(2n)^{8n}}{n^{4n}(4n)^{4n}} = \frac{4}{\sqrt{8 \pi n}} \frac{2^{8n}}{4^{4n}}$$
+where $$n=13$$.\
+$$P=\frac{(\sqrt{4 \pi n}(2n)^{2n}e^{-2n})^4}{(\sqrt{2 \pi n}n^{n}e^{-n})^4 (\sqrt{8 \pi n}(4n)^{4n}e^{-4n})}$$\
+$$P=\frac{(4 \pi n)^2}{(2 \pi n)^2 \sqrt{8 \pi n}} \frac{(2n)^{8n}}{n^{4n}(4n)^{4n}} = \frac{4}{\sqrt{8 \pi n}} \frac{2^{8n}}{4^{4n}}$$\
 $$P=\frac{2}{\sqrt{26 \pi}} = 0.221293$$ which when you take the ratio
 of approximate to exact, you get $1.01452$ so the approximation is less
-than $2\%$ off\... not bad!
+than $$2\%$$ off\... not bad!
 > {: .solution}
 {: .challenge}
 > ### 15.  Use  Stirling's   formula  to  estimate   the  probability   that   all  50  states  are represented in a committee of 50 senators  chosen  at random.
@@ -307,30 +306,30 @@ than $2\%$ off\... not bad!
 > > ## Solution
 > >
 > > There are 100 senators at any given time. Much like the previous
-problem, there are $\binom{100}{50}=100891344545564193334812497256$
+problem, there are $$\binom{100}{50}=100891344545564193334812497256$$
 different 50 senator committees. Much like the previous problem, there
-are $\binom{2}{1}=2$ ways for California to be represented on the
-committee making for 50 states $2^{50}$ possible even committees
+are $$\binom{2}{1}=2$$ ways for California to be represented on the
+committee making for 50 states $$2^{50}$$ possible even committees
 $$P=\frac{2^{50}}{\binom{100}{50}} = \text{1.115952921347132$\grave{ }$*${}^{\wedge}$-14}\label{answer1.15}$$
 > {: .solution}
 {: .challenge}
-> ### 16.  Suppose 2n customers stand  in line at a box office, n with  5-dollar bills and n with  IO-dollar  bills.  Suppose  each  ticket  costs  5 dollars,  and  the  box  office has no money  initially.  What  is the probability that  none  of the customers has to wait  for  change?12
+> ### 16.  Suppose 2n customers stand  in line at a box office, n with  5-dollar bills and n with  IO-dollar  bills.  Suppose  each  ticket  costs  5 dollars,  and  the  box  office has no money  initially.  What  is the probability that  none  of the customers has to wait  for  change?
 > 
 > > ## Solution
 > >
-> > For $2n$ people, there are $(2n)!$ different possible lines; we want the
+> > For $$2n$$ people, there are $$(2n)!$$ different possible lines; we want the
 number of lines where at any given point in the line, there are more
 people with 5 dollar bills than 10 dollar bills.
 The given reference (freely available on Google books) has a fascinating
-geometrical argument about how $\binom{2n}{n+1}$ is the number of lines
+geometrical argument about how $$\binom{2n}{n+1}$$ is the number of lines
 that have one or more too many people with tens in front of people with
-fives. Also, in this argument, there are $\binom{2n}{n}$ trajectories
-instead of $(2n)!$ lines.
+fives. Also, in this argument, there are $$\binom{2n}{n}$$ trajectories
+instead of $$(2n)!$$ lines.
 $$P=\frac{\binom{2n}{n}-\binom{2n}{n+1}}{\binom{2n}{n}} = \frac{1}{n+1}\label{answer1.16}$$
 > {: .solution}
 {: .challenge}
 > ### 17. Prove that $$\sum_{k=0}^{n} {n \choose k} ^{2} ={n \choose 2} ^{n}$$
-> Hint. Use the binomial theorem to calculate the coefficient of $x^{n}$ in the product $(1 + x)^{n} \cdot (1 + x)^{n} = (1 + x)^{2n}$.
+> Hint. Use the binomial theorem to calculate the coefficient of $$x^{n}$$ in the product $$(1 + x)^{n} \cdot (1 + x)^{n} = (1 + x)^{2n}$$.
 > 
 > > ## Solution
 > >
