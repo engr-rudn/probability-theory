@@ -119,7 +119,7 @@ product of the two missing probabilities: $$.2*.3=.06$$
 $$P=1-.06=.94\label{answer1.5}$$
 > {: .solution}
 {: .challenge}
-> ### 6.  Suppose  n people  sit down  at random and  independently of each other in an auditorium containingn + k seats. What is the probability that  m seats specified in advance (m  < n) will be occupied?
+> ### 6.  Suppose  n people  sit down  at random and  independently of each other in an auditorium containing n + k seats. What is the probability that  m seats specified in advance (m  < n) will be occupied?
 > 
 > > ## Solution
 > >
