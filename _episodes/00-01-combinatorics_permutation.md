@@ -145,7 +145,7 @@ buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$
 $$
-P = \frac{(n+k)!}{m!(n+k-m)!}\cdot \frac{n!k!}{(n+k)!} = \frac{{n!k!}}{m!(n+k-m)!}
+P = \frac{(n+k)!}{m!(n+k-m)!}
 $$
 > {: .solution}
 {: .challenge}
@@ -198,7 +198,7 @@ $b$, the part less than 100. Now we can reduce our now size 100 subspace
 by a great deal if you realize that in order for a number's cube to end
 in 1, the last number in the cube will need to be 1, leaving us: (1, 11,
 21, 31, 41, 51, 61, 71, 81, 91). At this point I recommend just cubing
-all the numbers and realizing that only $71^3=357911$ fulfills the
+all the numbers and realizing that only $$71^3=357911$$ fulfills the
 requirements giving only one desirable outcome per century(71, 171, 271
 etc.)
 $$P=\frac{10}{1000}=.01\label{answer1.9}$$
