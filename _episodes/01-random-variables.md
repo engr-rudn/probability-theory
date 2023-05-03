@@ -1225,20 +1225,13 @@ Reducing that variability to one hundredth of the variability of a
 single draw would require ten thousand draws. In most applications,
 the extra estimation accuracy is not worth the extra computation.
 
-## Answers to Problems
+## Exercise
 
-### 
-
-Thinking of this problem as 4 buckets each with 2 possibilities paves a
-clear way to the solution of the problem. There are $$2^4 = 16$$
-possibilities. There is only one way for them to all be green
-($$\xi = 4$$), and again only one way for 3 greens followed by one red
-($$\xi = 3$$). Once you have get to $$\xi = 2$$, then the last light can be
-either green or red giving two possibilities then at $$\xi = 1$$ you have
-two lights that can be either red or green giving 4 possibilities.
-Clearly, then, there are 8 for the case of $$\xi = 0$$.
-
-$$P(\xi) = \left\{ \begin{array}{rl}
+> ### 1. A motorist encounters  four consecutive traffic lights, each equally likely to be red  or  green.  Let  Z  be the number  of green lights passed  by the motorist before being stopped by a red light.  What is the probability  distribution of  Z?
+>
+> > ## Solution
+> > Thinking of this problem as 4 buckets each with 2 possibilities paves a clear way to the solution of the problem. There are $$2^4 = 16$$ possibilities. There is only one way for them to all be green ($$\xi = 4$$), and again only one way for 3 greens followed by one red ($$\xi = 3$$). Once you have get to $$\xi = 2$$, then the last light can be either green or red giving two possibilities then at $$\xi = 1$$ you have two lights that can be either red or green giving 4 possibilities. Clearly, then, there are 8 for the case of $$\xi = 0$$.
+> > $$P(\xi) = \left\{ \begin{array}{rl}
     \frac{1}{2}, \xi=0  \\
     \frac{1}{4}, \xi=1  \\
     \frac{1}{8}, \xi=2  \\
@@ -1246,7 +1239,8 @@ $$P(\xi) = \left\{ \begin{array}{rl}
     \frac{1}{16}, \xi=4
        \end{array} \right.
 \label{answer4.1}$$ **Answer not verified**
-
+>{: .solution}
+{: .challenge}
 ### 
 
 To summarize what we want here: $$\begin{aligned}
