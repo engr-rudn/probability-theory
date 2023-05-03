@@ -47,21 +47,7 @@ $$\implies$$ Also called $$n$$ choose $$k$$, noted $$\binom{n}{k} = \frac{n!}{k!
 **Counting Subsets of an $$n$$-Set**<br>
 Consider a binomial situation, where there is a yes or no, success or failure, possibility happening $$n$$ times. The number of ways this can happen is $$2^n$$. There are $$2^n$$ subsets of a set with $$n$$ objects.
 
-> ## Exercises
-> 1. How many ways can 8 runners in a track race finish?
-> 2. Subway is running a special on 6" subs for $3.99 with 6 choices of bread, 3 choices of meat, and 2 choices of cheese. Not including toppings or sause, how many choices are available?
-> 3. How many ways can 2 students of a class of 25 be selected for room reps?
-> 4. How many distinguishable ways can the letters, TOPPINGS be written?
-> 5. A license plate has 3 letters followed by 3 digits. How many possible plates are there?
-> 6. From a group fo 10 people in theater, how many possible ways can a teacher select roles for a show on the 7 dwarfs?
-> 7. In the original version of poker, straight poker, a five-card hand is dealt from a standard deck of 52. How many different hands are possible?
-> 8. A coin is flipped 10 times, and the sequence is recorded.
-     1. How many sequences are possible?
-     2. How many sequences have exactly 7 heads?
-> 9. A particular subway advertises 256 ways for a sandwich to be fixed with veggies. How many veggie toppings does this subway offer?
-> 10. Calculate $$_{10}C_3$$ without a calculator.
-> 
-{: .challenge}
+## Exercises
 > ### 1. A four-volume work is placed in random order on a bookshelf.  What is the probability of the  volumes being in proper  order  from left  to  right  or  from right to left?
 > 
 > > ## Solution
@@ -144,7 +130,7 @@ specify $$m$$ seats, you effectively divide the auditorium into two
 buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$\
-> > $$ P = \frac{(n+k)!}{m!(n+k-m)!}\cdot \frac{n!k!}{(n+k)!} = \frac{{n!k!}}{m!(n+k-m)!}$$
+> > $$ P = \frac{(n+k)!}{m!(n+k-m)!}$$
 > {: .solution}
 {: .challenge}
 > ### 7.  Three  cards  are  drawn  at random from  a full deck.  What  is the probability of getting  a three, a seven  and  an ace?
@@ -360,4 +346,18 @@ $$k=n-j$$\...
 $$\sum_{j=0}^{n} \binom{n}{n-j} \binom{n}{j} = \sum_{j=0}^{n} \frac{n!}{j!(n-j)!}\frac{n!}{(n-j)!j!} = \sum_{j=0}^{n} \binom{n}{j}^2$$ QED
 > {: .solution}
 {: .challenge}
-
+> ## Exercises
+> 1. How many ways can 8 runners in a track race finish?
+> 2. Subway is running a special on 6" subs for $3.99 with 6 choices of bread, 3 choices of meat, and 2 choices of cheese. Not including toppings or sause, how many choices are available?
+> 3. How many ways can 2 students of a class of 25 be selected for room reps?
+> 4. How many distinguishable ways can the letters, TOPPINGS be written?
+> 5. A license plate has 3 letters followed by 3 digits. How many possible plates are there?
+> 6. From a group fo 10 people in theater, how many possible ways can a teacher select roles for a show on the 7 dwarfs?
+> 7. In the original version of poker, straight poker, a five-card hand is dealt from a standard deck of 52. How many different hands are possible?
+> 8. A coin is flipped 10 times, and the sequence is recorded.
+     1. How many sequences are possible?
+     2. How many sequences have exactly 7 heads?
+> 9. A particular subway advertises 256 ways for a sandwich to be fixed with veggies. How many veggie toppings does this subway offer?
+> 10. Calculate $$_{10}C_3$$ without a calculator.
+> 
+{: .challenge}
