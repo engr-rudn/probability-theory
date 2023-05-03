@@ -145,7 +145,7 @@ buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$
 $$
-P = \frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!} = \frac{{n!k!}}{m!(n+k-m)!} \label{answer1.6}
+P = \frac{(n+k)!}{m!(n+k-m)!}\frac{n!k!}{(n+k)!} = \frac{{n!k!}}{m!(n+k-m)!}
 $$
 > {: .solution}
 {: .challenge}
