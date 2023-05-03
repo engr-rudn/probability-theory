@@ -1319,7 +1319,7 @@ circles gets hit: $$p = \frac{2r^2}{R^2}$$. **Answer verified**
 Just like in example 2 in the book, this problem will go by very well if
 we draw a picture indicating the given criteria:
 
-![The Desired Region](overlap.png){width="\\textwidth"}
+![The Desired Region](..\images\chapter-1\overlap.png){width="\\textwidth"}
 
 Where does this come from? $$\begin{aligned}
     x_1 + x_2 \leq 1 \\ 
