@@ -144,9 +144,7 @@ specify $$m$$ seats, you effectively divide the auditorium into two
 buckets so we need to find the number of ways to partition people into
 those two buckets which will give us the numerator,
 $$\binom{n+k}{m}=\frac{(n+k)!}{m!(n+k-m)!}$$
-$$
-P = \frac{(n+k)!}{m!(n+k-m)!}
-$$
+> > $$ P = \frac{(n+k)!}{m!(n+k-m)!}$$
 > {: .solution}
 {: .challenge}
 > ### 7.  Three  cards  are  drawn  at random from  a full deck.  What  is the probability of getting  a three, a seven  and  an ace?
