@@ -491,4 +491,4 @@ that it possible to get to 9 from 7, but 10 is only visited by chance.
 certain state as $n \rightarrow \infty$ are given by the solution to the
 following set of linear equations.
 $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
-{: .notice}
+{: .callout}
