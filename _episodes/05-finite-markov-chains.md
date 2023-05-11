@@ -488,7 +488,7 @@ There is a slight difference between the views of page 9 and 10 in
 that it possible to get to 9 from 7, but 10 is only visited by chance.
 
 > For a Markox transition matrix, the limiting probabilities of being in a
-certain state as $n \rightarrow \infty$ are given by the solution to the
+certain state as $$n \rightarrow \infty$$ are given by the solution to the
 following set of linear equations.
 $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
 {: .callout}
