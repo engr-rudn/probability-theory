@@ -861,10 +861,10 @@ applications will turn out to be reversible.
 > >Let $$P_j$$ denote the probability that the gambler is ruined starting with j dollars.<br>
 > >Suppose that the gambler has j dollars and plays until they are either ruined or have a total capital of m dollars.<br>
 > > Let $$X_k$$ denote the gambler's capital after the $$k^{th}$$ bet, and let $$Y_k$$ denote the adversary's capital after the $$k^{th}$$ bet. Then we have:<br>
-> >$$X_{k+1} = X_k + 1 with probability p$$<br>
-> >$$X_{k+1} = X_k - 1 with probability q$$<br>
-> >$$Y_{k+1} = Y_k - 1 with probability p$$<br>
-> >$$Y_{k+1} = Y_k + 1 with probability q$$<br>
+> >$$X_{k+1} = X_k + 1$$ with probability $$p$$<br>
+> >$$X_{k+1} = X_k - 1$$ with probability $$q$$<br>
+> >$$Y_{k+1} = Y_k - 1$$ with probability $$p$$<br>
+> >$$Y_{k+1} = Y_k + 1$$ with probability $$q$$<br>
 > >Note that $$X_k - Y_k$$ is a martingale, since the expected value of $$X_{k+1} - Y_{k+1}$$ given $$X_k - Y_k$$ is equal to $$X_k - Y_k$$.<br>
 > > This follows from the fact that the expected value of each of the four possible outcomes for $$X_{k+1} - Y_{k+1}$$ given $$X_k - Y_k$$ is $$X_k - Y_k$$.<br>
 > >Let T denote the first time at which the gambler is ruined or has a total capital of m dollars.<br>
