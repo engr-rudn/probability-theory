@@ -555,7 +555,7 @@ being in state $$j$$ is next.<br>
 
 > #### 3.  Suppose  $$m  = 4$$  in  Problem   $$1$$.   Find  the   matrix   $$P(2)  =  \|p_{i,j}(2)$$\|,  where $$p_{i,j}(2)$$ is the probability that the system will go from state $$e_i$$, to state $$e_j$$, in $$2$$ steps.
 > > ## Solution
-> > To do this properly we need to first construct the matrix $P$.
+> > To do this properly we need to first construct the matrix $$$P$.<br>
 > > $$P = \left(
 \begin{array}{ccccc}
  0 & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\
@@ -578,11 +578,54 @@ being in state $$j$$ is next.<br>
 \right)$$
 >{: .solution}
 {: .challenge}
-> #### 3.  Suppose  $$m  = 4$$  in  Problem   $$1$$.   Find  the   matrix   $$P(2)  =  \|p_{i,j}(2)$$\|,  where $$p_{i,j}(2)$$ is the probability that the system will go from state $$e_i$$, to state $$e_j$$, in $$2$$ steps.
+> #### 4.  An urn contains a total  of N balls, some black  and  some white.  Samples are drawn from  the  urn,  m balls  at  a time  $$(m  < N)$$.  After drawing  each sample,the  black balls  are  returned to  the  urn,  while  the  white  balls  are  replaced by black  balls and  then  returned to the urn.  If the number of white  balls in the  um is i, we say that  the  "system" is in the  state  e;.  Prove that  the  random process described by this model  is a Markov chain (imagine that  samples are  drawn at the times  $$t =  1, 2,\ldots$$ and  that  the  system has some initial  probability distribu­tion).   Find  the corresponding transition probabilities $$P_{i,j} (i,j  = 0,  1 ,\ldots, N).Which  states are  persistent and  which  transient?
+> >
 > > ## Solution
-> > In this model, the state $$e_0$$ (no number has been chosen yet) is a transient state because once a number is chosen, the system moves to one of the other states.<br>
-> > All the other states, $$e_1$$ through $$e_m$$, are persistent states because once the system reaches any of these states, it will never return to the state $$e_0$$ (no number has been chosen yet). This is because a number has already been chosen, and the largest number chosen so far is at least $$1$$.<br>
-> >Therefore, the system will always remain in one of the persistent states, and will never return to the state $$e_0$$.
+> > So, if we start with $$i$$ balls in the urn, what is the probability that
+we have $$j$$ after drawing $$m$$ and discarding all the white balls.<br>
+> >The obvious first simplification we can make is that you can't end up with
+fewer that the $$N-m$$ white balls after drawing:<br>
+> >$$p_{ij} = 0, j > N - m$$<br>
+> >You also can't gain white balls<br>
+> >$$p_{ij} = 0, j > i$$<br>
+> > OK! now for the interesting one. <br>
+> >There are $$\binom{N}{m}$$ ways to draw $$m$$ balls from the urn.<br>
+> >In any given step, you are going to draw $$i-j$$ white balls from a total of $$i$$ and $$m - i +j$$ black balls from a total of $$N-i$$.<br>
+> > Thus there are $$\binom{i}{i-j}\binom{N-i}{m - i +j}$$ ways to make that draw.<br>
+> >$$p_{ij} = \frac{\binom{i}{i-j}\binom{N-i}{m - i +j}}{\binom{N}{m}}, \text{otherwise}$$.
+>{: .solution}
+{: .challenge}
+> #### 5.  5.  In the preceding problems, let $$N = 8, m  =4,$$  and  suppose there are  initially $$5$$ white balls  in the urn.  What  is the probability that  no white balls are left after $$2$$ .drawings (of $$4$$ balls each)?
+> >
+> > ## Solution
+> > Once again, we start building the transition matrix. <br>
+> >$$P = \left(
+\begin{array}{ccccccccc}
+ 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ \frac{3}{14} & \frac{4}{7} & \frac{3}{14} & 0 & 0 & 0 & 0 & 0 & 0 \\
+ \frac{1}{14} & \frac{3}{7} & \frac{3}{7} & \frac{1}{14} & 0 & 0 & 0 & 0 & 0 \\
+ \frac{1}{70} & \frac{8}{35} & \frac{18}{35} & \frac{8}{35} & \frac{1}{70} & 0 & 0 & 0 & 0 \\
+ 0 & \frac{1}{14} & \frac{3}{7} & \frac{3}{7} & \frac{1}{14} & 0 & 0 & 0 & 0 \\
+ 0 & 0 & \frac{3}{14} & \frac{4}{7} & \frac{3}{14} & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0
+\end{array}
+\right)$$ And then just square it! $$P^2 = \left(
+\begin{array}{ccccccccc}
+ 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ \frac{3}{4} & \frac{1}{4} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ \frac{107}{196} & \frac{20}{49} & \frac{9}{196} & 0 & 0 & 0 & 0 & 0 & 0 \\
+ \frac{75}{196} & \frac{24}{49} & \frac{6}{49} & \frac{1}{196} & 0 & 0 & 0 & 0 & 0 \\
+ \frac{1251}{4900} & \frac{624}{1225} & \frac{264}{1225} & \frac{24}{1225} & \frac{1}{4900} & 0 & 0 & 0 & 0 \\
+ \frac{39}{245} & \frac{471}{980} & \frac{153}{490} & \frac{23}{490} & \frac{1}{980} & 0 & 0 & 0 & 0 \\
+ \frac{22}{245} & \frac{102}{245} & \frac{393}{980} & \frac{22}{245} & \frac{3}{980} & 0 & 0 & 0 & 0 \\
+ \frac{3}{70} & \frac{23}{70} & \frac{33}{70} & \frac{3}{20} & \frac{1}{140} & 0 & 0 & 0 & 0 \\
+ \frac{1}{70} & \frac{8}{35} & \frac{18}{35} & \frac{8}{35} & \frac{1}{70} & 0 & 0 & 0 & 0
+\end{array}
+\right)$$ <br>
+> >Telling us there is a $$39$$ in $$245$$ chance that if we start with $$5$$
+balls that we'll be at zero after two steps.
 >{: .solution}
 {: .challenge}
  
