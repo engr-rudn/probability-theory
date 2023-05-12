@@ -512,7 +512,7 @@ being in state $$j$$ is next.<br>
 > > ## Solution
 > > To show that the random process described by this model is a Markov chain, we need to demonstrate that the future state of the process depends only on the current state and not on any of the past states. In this case, the current state is determined by the largest number chosen so far, and the future state is determined by the next number that is chosen.<br>
 > > Formally, we can say that the Markov property holds if:<br>
-> > $$P\left(X_{t+1}=j\|X_{t},X_{t-1},...,X_{1}=i_{1}\right)= P\left(X_{t+1}=j\left∣X_{t}=i\right)$$<br>
+> > $$P\left(X_{t+1}=j\|X_{t},X_{t-1},...,X_{1}=i_{1}\right)= P\left(X_{t+1}=j\∣X_{t}=i\right)$$<br>
 > > where $$X_t$$ denotes the state of the system at time $$t$$, and $$P(X_{t+1}=j | X_t=i)$$ represents the probability of transitioning from state $$i$$ to state $$j$$.<br>
 > > In this case, since the future state depends only on the largest number chosen so far (i.e., the current state) and the next number that is chosen, we can say that the Markov property holds.<br>
 > > The transition probabilities can be calculated as follows:<br>
