@@ -583,7 +583,7 @@ P^2 =
 $$
 >{: .solution}
 {: .challenge}
-> #### 4.  An urn contains a total  of N balls, some black  and  some white.  Samples are drawn from  the  urn,  m balls  at  a time  $$(m  < N)$$.  After drawing  each sample,the  black balls  are  returned to  the  urn,  while  the  white  balls  are  replaced by black  balls and  then  returned to the urn.  If the number of white  balls in the  um is i, we say that  the  "system" is in the  state  e;.  Prove that  the  random process described by this model  is a Markov chain (imagine that  samples are  drawn at the times  $$t =  1, 2,\ldots$$ and  that  the  system has some initial  probability distribu­tion).   Find  the corresponding transition probabilities $$P_{i,j} (i,j  = 0,  1 ,\ldots, N).Which  states are  persistent and  which  transient?
+> #### 4.  An urn contains a total  of N balls, some black  and  some white.  Samples are drawn from  the  urn,  $$m$$ balls  at  a time  $$(m  < N)$$.  After drawing  each sample,the  black balls  are  returned to  the  urn,  while  the  white  balls  are  replaced by black  balls and  then  returned to the urn.  If the number of white  balls in the  um is $$i$$, we say that  the  "system" is in the  state  $$e$$;.  Prove that  the  random process described by this model  is a Markov chain (imagine that  samples are  drawn at the times  $$t =  1, 2,\ldots$$ and  that  the  system has some initial  probability distribu­tion).   Find  the corresponding transition probabilities $$P_{i,j} (i,j  = 0,  1 ,\ldots, N)$$.Which  states are  persistent and  which  transient?
 > >
 > > ## Solution
 > > So, if we start with $$i$$ balls in the urn, what is the probability that
@@ -596,11 +596,10 @@ fewer that the $$N-m$$ white balls after drawing:<br>
 > > OK! now for the interesting one. <br>
 > >There are $$\binom{N}{m}$$ ways to draw $$m$$ balls from the urn.<br>
 > >In any given step, you are going to draw $$i-j$$ white balls from a total of $$i$$ and $$m - i +j$$ black balls from a total of $$N-i$$.<br>
-> > Thus there are $$\binom{i}{i-j}\binom{N-i}{m - i +j}$$ ways to make that draw.<br>
-> >$$p_{ij} = \frac{\binom{i}{i-j}\binom{N-i}{m - i +j}}{\binom{N}{m}}, \text{otherwise}$$.
+> > Thus there are $$\binom{i}{i-j}\binom{N-i}{m - i +j}$$ ways to make that draw, $$p_{ij} = \frac{\binom{i}{i-j}\binom{N-i}{m - i +j}}{\binom{N}{m}}, \text{otherwise}$$.
 >{: .solution}
 {: .challenge}
-> #### 5.  5.  In the preceding problems, let $$N = 8, m  =4,$$  and  suppose there are  initially $$5$$ white balls  in the urn.  What  is the probability that  no white balls are left after $$2$$ .drawings (of $$4$$ balls each)?
+> #### 5. In the preceding problems, let $$N = 8, m  =4,$$  and  suppose there are  initially $$5$$ white balls  in the urn.  What  is the probability that  no white balls are left after $$2$$ .drawings (of $$4$$ balls each)?
 > >
 > > ## Solution
 > > Once again, we start building the transition matrix. <br>
@@ -616,7 +615,9 @@ fewer that the $$N-m$$ white balls after drawing:<br>
  0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 \\
  0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0
 \end{array}
-\right)$$ And then just square it! $$P^2 = \left(
+\right)$$<br>
+> > And then just square it!<br>
+> >$$P^2 = \left(
 \begin{array}{ccccccccc}
  1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
  \frac{3}{4} & \frac{1}{4} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
