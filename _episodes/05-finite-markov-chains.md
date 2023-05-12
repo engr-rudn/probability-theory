@@ -492,3 +492,20 @@ certain state as $$n \rightarrow \infty$$ are given by the solution to the
 following set of linear equations.
 $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
 {: .callout}
+> #### 1.  A number from 1 tom is chosen at random, at each of the times $$t  = 1, 2,  . . .$$. A system is said to be in the state e, if no number has yet been chosen, and in the state  e, if the largest  number  so far chosen is i.    Show that  the random process described  by this model is a Markov chain.  Find  the corresponding transition probabilities $$p_{ij}  (i, j= 0, 1 , . . . ,  m)$$.
+> 
+> > ## Solution
+> > 
+> > Since state $$i$$ signifies that the highest number chosen so far is $$i$$,
+what is the probability the next number is lower than $$i$$ and you stay
+in state $$i$$? Well, there are $$m$$ possible numbers that could get picked
+and $$i$$ of them are less than or equal to $i$ giving:<br>
+> > $$p_{ii} = \frac{i}{m}$$<br>
+> > What now if we're in $$i$$ and we want to know what the probability of
+being in state $$j$$ is next. Well, if $$j<i$$ then it's zero because you
+can't go to a lower number in this game. If, however, $$j$$ is not lower
+then there are $$m$$ possible numbers that could get called and only one
+of them is $$j$$, giving: $$p_{ij} = \frac{1}{m}, j>i$$<br>
+> >$$p_{ij} = 0, j<i$$
+>{: .solution}
+{: .challenge}
