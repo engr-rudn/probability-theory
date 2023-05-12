@@ -498,7 +498,8 @@ $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
 > > 
 > > Since state $$i$$ signifies that the highest number chosen so far is $$i$$,<br>
 > > what is the probability the next number is lower than $$i$$ and you stay
-in state $$i$$? Well, there are $$m$$ possible numbers that could get picked
+in state $$i$$?
+> >Well, there are $$m$$ possible numbers that could get picked
 and $$i$$ of them are less than or equal to $$i$$ giving:<br>
 > > $$p_{ii} = \frac{i}{m}$$<br>
 > > What now if we're in $$i$$ and we want to know what the probability of
@@ -520,9 +521,9 @@ being in state $$j$$ is next.<br>
 > > Then, at any given time $$t$$, the probability of choosing a number greater than $$i$$ is $$(m-i)/m$$, and the probability of choosing a number less than or equal to $$i$$ is $$i/m$$.<br>
 > > Therefore, we can write the transition probabilities as:<br>
 > > $$p_{e_0,e_1}  = \frac{1}{m}$$<br>
-> > $$p_{e_i,e_{i+1} = \frac{m-i}{m}$$, for $$i = 0,1,...,m-1$$<br>
+> > $$p_{e_i,e_{i+1}} = \frac{m-i}{m}$$, for $$i = 0,1,...,m-1$$<br>
 > > $$p_{e_i,e_j} = \frac{i}{m}$$, for $$j \le i, i = 1,...,m$$<br>
-> > $$p_{e_i,e_0}= 1 - p_{e_i,e_{i+1} - \sum_{j=1}^{i}p_{e_i,e_j}$$, where the sum is taken over all $$j \le i, i = 1,...,m$$<br>
+> > $$p_{e_i,e_0}= 1 - p_{e_i,e_{i+1}} - \sum_{j=1}^{i}p_{e_i,e_j}$$, where the sum is taken over all $$j \le i, i = 1,...,m$$<br>
 > > Note that $$p_{e_i,e_0}$$ represents the probability of starting over (i.e., going back to the state $$e_0$$) after reaching state $$e_i$$.<br>
 > > These transition probabilities satisfy the Markov property, and therefore, the random process described by this model is a Markov chain.
 >{: .solution}
