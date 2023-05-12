@@ -796,16 +796,19 @@ saw earlier are examples with stationary distributions that are not
 reversible.]  But all of the Markov chains we consider for practical
 applications will turn out to be reversible.
 
-> #### 1. Find the stationary distribution $$p_{0}^{0}, p_{1}^{0},\ldot$$ for  the Markov chain whose only nonzero transition probabilities are:
-> #### $$\p_{j1} = \frac{j}{j+1},p_{j,j+1} = \frac{j}{j+1} (j =  1,  2,\ldot)$$.
+> #### 1. Find the stationary distribution $$p_{0}^{0}, p_{1}^{0},\ldots$$ for  the Markov chain whose only nonzero transition probabilities are:
+> #### $$\p_{j1} = \frac{j}{j+1},p_{j,j+1} = \frac{j}{j+1} (j =  1,  2,\ldots)$$.
 > >
 > > ## Solution
 > > We can find the stationary distribution of the Markov chain by solving the system of equations:<br>
 > >$$\begin{aligned} p_0 &= p_0 \cdot \frac{1}{2} \\ p_j &= p_{j-1} \cdot \frac{j}{j+1} + p_j \cdot \frac{1}{j+1}, \quad j \geq 1 \end{aligned}$$<br>
-> >The first equation simply states that the probability of being in state 0 does not change, since there are no transitions out of state 0. The second equation can be derived from the law of total probability: the probability of being in state $$j$$ can either come from being in state $$j-1$$ and transitioning to state $$j$$, or from already being in state $$j$$ and staying there.<br>
-> >Solving for the first equation gives $$p_0 = 1$$, since any constant multiple of the equation is also a solution. For the second equation, we can simplify it by multiplying both sides by $$(j+1)$$ and rearranging:<br>
+> >The first equation simply states that the probability of being in state 0 does not change, since there are no transitions out of state 0.
+> >The second equation can be derived from the law of total probability:<br>
+> > the probability of being in state $$j$$ can either come from being in state $$j-1$$ and transitioning to state $$j$$, or from already being in state $$j$$ and staying there.<br>
+> >Solving for the first equation gives $$p_0 = 1$$, since any constant multiple of the equation is also a solution.<br>
+> >For the second equation, we can simplify it by multiplying both sides by $$(j+1)$$ and rearranging:<br>
 > >$$ p_{j-1} = \frac{j+1}{j} p_j, \quad j \geq 1 $$<br>
-> >We can use this equation to express $p_j$ in terms of $p_{j-1}$ recursively:<br>
+> >We can use this equation to express $$p_j$$ in terms of $$p_{j-1}$$ recursively:<br>
 > >$$ \begin{aligned} p_1 &= p_0 \cdot \frac{1}{2} = \frac{1}{2} \\ p_2 &= \frac{2}{3} p_1 = \frac{1}{3} \\ p_3 &= \frac{3}{4} p_2 = \frac{1}{4} \\ & \cdots \\ p_j &= \frac{1}{j+1} p_{j-1} \end{aligned} $$
 > >We can see that $$p_j = \frac{1}{j+1}$$ for all $$j \geq 0$$, which is the stationary distribution of the Markov chain.
 >{: .solution}
