@@ -492,7 +492,7 @@ certain state as $$n \rightarrow \infty$$ are given by the solution to the
 following set of linear equations.
 $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
 {: .callout}
-> #### 1.  A number from $$1$$ to $$m$$ is chosen at random, at each of the times $$t  = 1, 2,  . . .$$. A system is said to be in the state $$e$$, if no number has yet been chosen, and in the state  $$e$$, if the largest  number  so far chosen is $$i$$.    Show that  the random process described  by this model is a Markov chain.  Find  the corresponding transition probabilities $$p_{ij}  (i, j= 0, 1 , . . . ,  m)$$.
+> #### 1.  A number from $$1$$ to $$m$$ is chosen at random, at each of the times $$t  = 1, 2,  . . .$$. A system is said to be in the state $$e_{0}$$, if no number has yet been chosen, and in the state  $$e_{i}$$, if the largest  number  so far chosen is $$i$$.    Show that  the random process described  by this model is a Markov chain.  Find  the corresponding transition probabilities $$p_{ij}  (i, j= 0, 1 , . . . ,  m)$$.
 > 
 > > ## Solution
 > > 
@@ -512,15 +512,18 @@ being in state $$j$$ is next.<br>
 > > ## Solution
 > > To show that the random process described by this model is a Markov chain, we need to demonstrate that the future state of the process depends only on the current state and not on any of the past states. In this case, the current state is determined by the largest number chosen so far, and the future state is determined by the next number that is chosen.<br>
 > > Formally, we can say that the Markov property holds if:<br>
-> > $$P\left(X_{t+1}=j|X_{t},X_{t-1},...,X_{1}=i_{1}\right)= P\left(X_{t+1}=j∣X_{t}=i\right)$$<br>
+> > $$P\left(X_{t+1}=j|X_{t}=i,X_{t-1}=i_{t-1},...,X_{1}=i_{1}\right)= P\left(X_{t+1}=j∣X_{t}=i\right)$$<br>
 > > where $$X_t$$ denotes the state of the system at time $$t$$, and $$P(X_{t+1}=j | X_t=i)$$ represents the probability of transitioning from state $$i$$ to state $$j$$.<br>
 > > In this case, since the future state depends only on the largest number chosen so far (i.e., the current state) and the next number that is chosen, we can say that the Markov property holds.<br>
 > > The transition probabilities can be calculated as follows:<br>
-> > Let $$p_i$$ be the probability that the largest number chosen so far is $$i$$. Then, at any given time $$t$$, the probability of choosing a number greater than $$i$$ is $$(m-i)/m$$, and the probability of choosing a number less than or equal to $$i$$ is $$i/m$$. Therefore, we can write the transition probabilities as:<br>
-> > $$p_{i,i+1}  = \frac{m−i}{m}$$<br>
-> > $$p_{i,j} = \frac{j}{m}$$, for $$j \le i$$<br>
-> > $$p_{i,0}= 1 - p_{i,i+1} - \sum_{j=1}^{i}p_{i,j}$$, where the sum is taken over all $$j \le i$$.<br>
-> > Note that $$p_{i,0}$$ represents the probability of starting over (i.e., going back to the state $$e$$) after reaching state $$i$$.<br>
+> > Let $$p_i$$ be the probability that the largest number chosen so far is $$i$$.<br>
+> > Then, at any given time $$t$$, the probability of choosing a number greater than $$i$$ is $$(m-i)/m$$, and the probability of choosing a number less than or equal to $$i$$ is $$i/m$$.<br>
+> > Therefore, we can write the transition probabilities as:<br>
+> > $$p_{e_0,e_1}  = \frac{1}{m}$$<br>
+> > $$p_{e_i,e_{i+1} = \frac{m-i}{m}$$, for $$i = 0,1,...,m-1$$<br>
+> > $$p_{e_i,e_j} = \frac{i}{m}$$, for $$j \le i, i = 1,...,m$$<br>
+> > $$p_{e_i,e_0}= 1 - p_{e_i,e_{i+1} - \sum_{j=1}^{i}p_{e_i,e_j}$$, where the sum is taken over all $$j \le i, i = 1,...,m$$<br>
+> > Note that $$p_{e_i,e_0}$$ represents the probability of starting over (i.e., going back to the state $$e_0$$) after reaching state $$e_i$$.<br>
 > > These transition probabilities satisfy the Markov property, and therefore, the random process described by this model is a Markov chain.
 >{: .solution}
 {: .challenge}
@@ -543,8 +546,8 @@ being in state $$j$$ is next.<br>
 {: .challenge}
 > 
 > > ## Solution
-> > In this model, the state $$e$$ (no number has been chosen yet) is a transient state because once a number is chosen, the system moves to one of the other states.<br>
-> > All the other states, $$1$$ through $$m$$, are persistent states because once the system reaches any of these states, it will never return to the state $$e$$ (no number has been chosen yet). This is because a number has already been chosen, and the largest number chosen so far is at least $$1$$.<br>
-> >Therefore, the system will always remain in one of the persistent states, and will never return to the state $$e$$.
+> > In this model, the state $$e_0$$ (no number has been chosen yet) is a transient state because once a number is chosen, the system moves to one of the other states.<br>
+> > All the other states, $$e_1$$ through $$e_m$$, are persistent states because once the system reaches any of these states, it will never return to the state $$e_0$$ (no number has been chosen yet). This is because a number has already been chosen, and the largest number chosen so far is at least $$1$$.<br>
+> >Therefore, the system will always remain in one of the persistent states, and will never return to the state $$e_0$$.
 >{: .solution}
 {: .challenge}
