@@ -813,3 +813,28 @@ applications will turn out to be reversible.
 > >We can see that $$p_j = \frac{1}{j+1}$$ for all $$j \geq 0$$, which is the stationary distribution of the Markov chain.
 >{: .solution}
 {: .challenge}
+> #### 2. Two  gamblers $$A$$  and  $$B$$ repeatedly play  a game  such  that  $$A's$$  probability of  winning  is $$p$$, while $$B's$$ probability of winning is $$q = 1   - p$$. Each bet  is a dollar, and  the total  capital of both  players is $$m$$ dollars.  Find   the  probability of each  player  being  ruined, given  that  $$A's$$ initial  capital is $$j$$ dollars.
+> Hint.   Let  $$e$$, denote the  state  in which  $$A$$ has $$j$$ dollars.   Then  the  situation is described by a Markov chain  whose  only nonzero transition probabilities are:
+> $$P_{00}  =  1, P_{mm}  =  1, P_{j,j+1}=p,  P_{j,j+1}=q   (j  =  1,  \ldots , m  -1)$$.
+> >
+> > ## Solution
+> > Let e denote the state in which A has j dollars. We can describe the situation using a Markov chain with m+1 states, where state i represents the situation where A has i dollars. The transition probabilities are given by:<br>
+> >$$P_{i,i+1} = p$$, for $$i = 0,1,...,j-1$$<br>
+> >$$P_{i,i+1} = q$$, for $$i = j,j+1,...,m-1$$<br>
+> >$$P_{0,0} = P_{m,m} = 1$$<br>
+> >$$P_{i,j} = 0$$ for all other $$i,j$$<br>
+> >Note that $$P_{0,0}$$ and $$P_{m,m}$$ are absorbing states, since once either player has lost all their money, the game ends.<br>
+> >To find the probability of each player being ruined, we can find the probability of reaching the absorbing states starting from state e. Let $$P_i$$ denote the probability of reaching the absorbing state $$0$$ starting from state $$i$$, and $$Q_i$$ denote the probability of reaching the absorbing state $$m$$ starting from state $$i$$.<br>
+> >We can set up a system of equations to solve for $$P_i$$ and $$Q_i$$:<br>
+> >$$P_{j} = p P_{j+1} + q P_{j-1}$$<br>
+> >$$Q_{j} = p Q_{j+1} + q Q_{j-1}$$<br>
+> >$$P_{0} = 1, P_{m} = 0$$<br>
+> >$$Q_{0} = 0, Q_{m} = 1$$<br>
+> >The first two equations represent the law of total probability: the probability of reaching the absorbing state from state $$j$$ can either come from winning the next game and moving to state $$j+1$$, or losing the next game and moving to state $$j-1$$. The last two equations represent the boundary conditions: the probability of reaching the absorbing state is $$1$$ if you are already in the absorbing state, and 0 otherwise.<br>
+> >We can solve for $$P_i$$ and $$Q_i$$ using standard techniques for solving linear systems of equations. The solution is:<br>
+> >$$P_i = (1 - (q/p)^j (p/q)^{m-j}) / (1 - (q/p)^m)$$<br>
+> >$$Q_i = (1 - (p/q)^{m-j} (q/p)^j) / (1 - (p/q)^m)$$<br>
+> >These formulas give the probability of each player being ruined, depending on their initial capital $$j$$ and the total capital $$m$$. Note that if $$p = q = 1/2$$, then $$P_i = Q_i$$ for all $$i$$, since the game is fair and both players have the same chance of winning.
+>{: .solution}
+{: .challenge}
+
