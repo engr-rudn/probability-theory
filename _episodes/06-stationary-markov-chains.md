@@ -840,10 +840,15 @@ applications will turn out to be reversible.
 > #### 3. In  the  preceding problem, prove  that  if $$p  > q$$, then  $$f's$$ probability of ruin increases if the  stakes are  doubled.
 > >
 > > ## Solution
-> > Suppose that $$p > q$$. Let $$P_j$$ and $$Q_j$$ denote the probabilities of ruin for A and B, respectively, when the stakes are $1. Let $$P'_j$$ and $$Q'_j$$ denote the probabilities of ruin for $$A$$ and $$B$$, respectively, when the stakes are $2.<br>
-> > We can see that if A is ruined when the stakes are $1, then A will also be ruined when the stakes are $2. This is because if A is ruined when the stakes are $1, then A has lost all of their money, which means that they would also lose all of their money if the stakes were doubled.<br>
-> >On the other hand, if A is not ruined when the stakes are $1, then A has some positive probability of winning and eventually reaching the total capital of $m. When the stakes are doubled, A's probability of winning each game is still p, but the amount of money that A wins in each game is now $2 instead of $1. This means that A has a higher expected return on each bet, which increases their chances of reaching the total capital of $m.<br>
-> >Therefore, we can see that $$P'_j <= P_j$$ for all $$j$$, since if A is ruined when the stakes are $1, then A will also be ruined when the stakes are $2, and if A is not ruined when the stakes are $1, then A's probability of ruin is lower when the stakes are $2. Similarly, we can see that $$Q'_j >= Q_j$$ for all j, since B's probability of ruin is higher when the stakes are $2.<br>
+> > Suppose that $$p > q$$. Let $$P_j$$ and $$Q_j$$ denote the probabilities of ruin for A and B, respectively, when the stakes are $1.<br>
+> > Let $$P'_j$$ and $$Q'_j$$ denote the probabilities of ruin for $$A$$ and $$B$$, respectively, when the stakes are $2.<br>
+> > We can see that if A is ruined when the stakes are $1, then A will also be ruined when the stakes are $2.<br>
+> >This is because if A is ruined when the stakes are $1, then A has lost all of their money, which means that they would also lose all of their money if the stakes were doubled.<br>
+> >On the other hand, if A is not ruined when the stakes are $1, then A has some positive probability of winning and eventually reaching the total capital of $m.<br>
+> > When the stakes are doubled, A's probability of winning each game is still p, but the amount of money that A wins in each game is now $2 instead of $1.<br>
+> >This means that A has a higher expected return on each bet, which increases their chances of reaching the total capital of $m.<br>
+> >Therefore, we can see that $$P'_j <= P_j$$ for all $$j$$, since if A is ruined when the stakes are $1, then A will also be ruined when the stakes are $2, and if A is not ruined when the stakes are $1, then A's probability of ruin is lower when the stakes are $2.<br>
+> > Similarly, we can see that $$Q'_j >= Q_j$$ for all j, since B's probability of ruin is higher when the stakes are $2.<br>
 > >Therefore, we can conclude that if $$p > q$$, then A's probability of ruin increases if the stakes are doubled.
 >{: .solution}
 {: .challenge}
