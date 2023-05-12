@@ -616,7 +616,9 @@ fewer that the $$N-m$$ white balls after drawing:<br>
  0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0
 \end{array}
 \right)$$<br>
+> ><br>
 > > And then just square it!<br>
+> ><br>
 > >$$P^2 = \left(
 \begin{array}{ccccccccc}
  1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -630,6 +632,7 @@ fewer that the $$N-m$$ white balls after drawing:<br>
  \frac{1}{70} & \frac{8}{35} & \frac{18}{35} & \frac{8}{35} & \frac{1}{70} & 0 & 0 & 0 & 0
 \end{array}
 \right)$$ <br>
+> ><br>
 > >Telling us there is a $$39$$ in $$245$$ chance that if we start with $$5$$
 balls that we'll be at zero after two steps.
 >{: .solution}
