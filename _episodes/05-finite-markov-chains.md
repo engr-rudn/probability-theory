@@ -492,7 +492,7 @@ certain state as $$n \rightarrow \infty$$ are given by the solution to the
 following set of linear equations.
 $$p_j^* = \sum_{i=1}^{\infty} p_i^* p_{ij}$$
 {: .callout}
-> #### 1.  A number from 1 tom is chosen at random, at each of the times $$t  = 1, 2,  . . .$$. A system is said to be in the state e, if no number has yet been chosen, and in the state  e, if the largest  number  so far chosen is i.    Show that  the random process described  by this model is a Markov chain.  Find  the corresponding transition probabilities $$p_{ij}  (i, j= 0, 1 , . . . ,  m)$$.
+> #### 1.  A number from $$1$$ to $$m$$ is chosen at random, at each of the times $$t  = 1, 2,  . . .$$. A system is said to be in the state $$e$$, if no number has yet been chosen, and in the state  $$e$$, if the largest  number  so far chosen is $$i$$.    Show that  the random process described  by this model is a Markov chain.  Find  the corresponding transition probabilities $$p_{ij}  (i, j= 0, 1 , . . . ,  m)$$.
 > 
 > > ## Solution
 > > 
