@@ -553,10 +553,11 @@ being in state $$j$$ is next.<br>
 >{: .solution}
 {: .challenge}
 
-> #### 3.  Suppose  $$m  = 4$$  in  Problem   $$1$$.   Find  the   matrix   $$P(2)  =  \|p_{i,j}(2)$$\|,  where $$p_{i,j}(2)$$ is the probability that the system will go from state $$e_i$$, to state $$e_j$$, in $$2$$ steps.
+> #### 3.  Suppose  $$m  = 4$$  in  Problem   $$1$$.   Find  the   matrix   $$P(2)  =  \|p_{i,j}(2)$$\||,  where $$p_{i,j}(2)$$ is the probability that the system will go from state $$e_i$$, to state $$e_j$$, in $$2$$ steps.
 > > ## Solution
-> > To do this properly we need to first construct the matrix $$$P$.<br>
-> > $$P = \left(
+> > To do this properly we need to first construct the matrix $$P$$.<br>
+> > $$
+P = \left(
 \begin{array}{ccccc}
  0 & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\
  0 & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\
@@ -564,9 +565,12 @@ being in state $$j$$ is next.<br>
  0 & 0 & 0 & \frac{3}{4} & \frac{1}{4} \\
  0 & 0 & 0 & 0 & 1
 \end{array}
-\right)$$<br>
+\right)
+$$
+> ><br>
 > >Then we square it:<br>
-> > $$P^2 = 
+> > $$
+P^2 = 
 \left(
 \begin{array}{ccccc}
  0 & \frac{1}{16} & \frac{3}{16} & \frac{5}{16} & \frac{7}{16} \\
@@ -575,7 +579,8 @@ being in state $$j$$ is next.<br>
  0 & 0 & 0 & \frac{9}{16} & \frac{7}{16} \\
  0 & 0 & 0 & 0 & 1
 \end{array}
-\right)$$
+\right)
+$$
 >{: .solution}
 {: .challenge}
 > #### 4.  An urn contains a total  of N balls, some black  and  some white.  Samples are drawn from  the  urn,  m balls  at  a time  $$(m  < N)$$.  After drawing  each sample,the  black balls  are  returned to  the  urn,  while  the  white  balls  are  replaced by black  balls and  then  returned to the urn.  If the number of white  balls in the  um is i, we say that  the  "system" is in the  state  e;.  Prove that  the  random process described by this model  is a Markov chain (imagine that  samples are  drawn at the times  $$t =  1, 2,\ldots$$ and  that  the  system has some initial  probability distribu­tion).   Find  the corresponding transition probabilities $$P_{i,j} (i,j  = 0,  1 ,\ldots, N).Which  states are  persistent and  which  transient?
