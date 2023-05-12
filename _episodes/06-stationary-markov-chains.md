@@ -797,7 +797,7 @@ reversible.]  But all of the Markov chains we consider for practical
 applications will turn out to be reversible.
 
 > #### 1. Find the stationary distribution $$p_{0}^{0}, p_{1}^{0},\ldots$$ for  the Markov chain whose only nonzero transition probabilities are:
-> #### $$p_{j1} = \frac{j}{j+1},p_{j,j+1} = \frac{j}{j+1} (j =  1,  2,\ldots)$$.
+> #### $$p_{j1} = \frac{j}{j+1},p_{j,j+1} = \frac{1}{j+1} (j =  1,  2,\ldots)$$.
 > >
 > > ## Solution
 > > We can find the stationary distribution of the Markov chain by solving the system of equations:<br>
