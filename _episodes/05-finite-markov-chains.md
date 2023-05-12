@@ -552,3 +552,37 @@ being in state $$j$$ is next.<br>
 > >Therefore, the system will always remain in one of the persistent states, and will never return to the state $$e_0$$.
 >{: .solution}
 {: .challenge}
+
+> #### 3.  Suppose  $$m  = 4$$  in  Problem   $$1$$.   Find  the   matrix   $$P(2)  =  \|p_{i,j}(2)$$\|,  where $$p_{i,j}(2)$$ is the probability that the system will go from state $$e_i$$, to state $$e_j$$, in $$2$$ steps.
+> > ## Solution
+> > To do this properly we need to first construct the matrix $P$.
+> > $$P = \left(
+\begin{array}{ccccc}
+ 0 & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\
+ 0 & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\
+ 0 & 0 & \frac{1}{2} & \frac{1}{4} & \frac{1}{4} \\
+ 0 & 0 & 0 & \frac{3}{4} & \frac{1}{4} \\
+ 0 & 0 & 0 & 0 & 1
+\end{array}
+\right)$$<br>
+> >Then we square it:<br>
+> > $$P^2 = 
+\left(
+\begin{array}{ccccc}
+ 0 & \frac{1}{16} & \frac{3}{16} & \frac{5}{16} & \frac{7}{16} \\
+ 0 & \frac{1}{16} & \frac{3}{16} & \frac{5}{16} & \frac{7}{16} \\
+ 0 & 0 & \frac{1}{4} & \frac{5}{16} & \frac{7}{16} \\
+ 0 & 0 & 0 & \frac{9}{16} & \frac{7}{16} \\
+ 0 & 0 & 0 & 0 & 1
+\end{array}
+\right)$$
+>{: .solution}
+{: .challenge}
+> #### 3.  Suppose  $$m  = 4$$  in  Problem   $$1$$.   Find  the   matrix   $$P(2)  =  \|p_{i,j}(2)$$\|,  where $$p_{i,j}(2)$$ is the probability that the system will go from state $$e_i$$, to state $$e_j$$, in $$2$$ steps.
+> > ## Solution
+> > In this model, the state $$e_0$$ (no number has been chosen yet) is a transient state because once a number is chosen, the system moves to one of the other states.<br>
+> > All the other states, $$e_1$$ through $$e_m$$, are persistent states because once the system reaches any of these states, it will never return to the state $$e_0$$ (no number has been chosen yet). This is because a number has already been chosen, and the largest number chosen so far is at least $$1$$.<br>
+> >Therefore, the system will always remain in one of the persistent states, and will never return to the state $$e_0$$.
+>{: .solution}
+{: .challenge}
+ 
