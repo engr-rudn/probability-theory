@@ -518,7 +518,7 @@ being in state $$j$$ is next.<br>
 > > The transition probabilities can be calculated as follows:<br>
 > > Let $$p_i$$ be the probability that the largest number chosen so far is $$i$$. Then, at any given time $$t$$, the probability of choosing a number greater than $$i$$ is $$(m-i)/m$$, and the probability of choosing a number less than or equal to $$i$$ is $$i/m$$. Therefore, we can write the transition probabilities as:<br>
 > > $$p_{i,i+1}  = \frac{m−i}{m}$$<br>
-> > $$p_{i,j} = \frac{j}{m}, for j \le i$$<br>
+> > $$p_{i,j} = \frac{j}{m}$$, for $$j \le i$$<br>
 > > $$p_{i,0}= 1 - p_{i,i+1} - \sum_{j=1}^{i}p_{i,j}$$, where the sum is taken over all $$j \le i$$.<br>
 > > Note that $$p_{i,0}$$ represents the probability of starting over (i.e., going back to the state $$e$$) after reaching state $$i$$.<br>
 > > These transition probabilities satisfy the Markov property, and therefore, the random process described by this model is a Markov chain.
@@ -539,5 +539,12 @@ being in state $$j$$ is next.<br>
 > > If, however, $$j$$ is not lower then there are $$m$$ possible numbers that could get called and only one of them is $$j$$, giving:<br>
 > >$$p_{ij} = \frac{1}{m}, j>i$$<br>
 > >$$p_{ij} = 0, j<i$$
+>{: .solution}
+{: .challenge}
+> 
+> > ## Solution
+> > In this model, the state $$e$$ (no number has been chosen yet) is a transient state because once a number is chosen, the system moves to one of the other states.<br>
+> > All the other states, $$1$$ through $$m$$, are persistent states because once the system reaches any of these states, it will never return to the state $$e$$ (no number has been chosen yet). This is because a number has already been chosen, and the largest number chosen so far is at least $$1$$.<br>
+> >Therefore, the system will always remain in one of the persistent states, and will never return to the state $$e$$.
 >{: .solution}
 {: .challenge}
