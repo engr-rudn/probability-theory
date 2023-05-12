@@ -512,14 +512,14 @@ being in state $$j$$ is next.<br>
 > > ## Solution
 > > To show that the random process described by this model is a Markov chain, we need to demonstrate that the future state of the process depends only on the current state and not on any of the past states. In this case, the current state is determined by the largest number chosen so far, and the future state is determined by the next number that is chosen.<br>
 > > Formally, we can say that the Markov property holds if:<br>
-> > $$P\left(X_{t+1}=j\left|X_{t},X_{t-1},...,X_{1}=i_{1}\right)= P\left(X_{t+1}=j\left∣X_{t}=i\right)$$<br>
+> > $$P\left(X_{t+1}=j\|X_{t},X_{t-1},...,X_{1}=i_{1}\right)= P\left(X_{t+1}=j\left∣X_{t}=i\right)$$<br>
 > > where $$X_t$$ denotes the state of the system at time $$t$$, and $$P(X_{t+1}=j | X_t=i)$$ represents the probability of transitioning from state $$i$$ to state $$j$$.<br>
 > > In this case, since the future state depends only on the largest number chosen so far (i.e., the current state) and the next number that is chosen, we can say that the Markov property holds.<br>
 > > The transition probabilities can be calculated as follows:<br>
 > > Let $$p_i$$ be the probability that the largest number chosen so far is $$i$$. Then, at any given time $$t$$, the probability of choosing a number greater than $$i$$ is $$(m-i)/m$$, and the probability of choosing a number less than or equal to $$i$$ is $$i/m$$. Therefore, we can write the transition probabilities as:<br>
 > > $$p_{i,i+1}  = \frac{m−i}{m}$$<br>
 > > $$p_{i,j} = \frac{j}{m}, for j \le i$$<br>
-> > $$p_{i,0}= 1 - p_{i,i+1} - \sum_{j=1}^{i}p_{i,j}, where the sum is taken over all j \le i.<br>
+> > $$p_{i,0}= 1 - p_{i,i+1} - \sum_{j=1}^{i}p_{i,j}$$, where the sum is taken over all $$j \le i$$.<br>
 > > Note that $$p_{i,0}$$ represents the probability of starting over (i.e., going back to the state $$e$$) after reaching state $$i$$.<br>
 > > These transition probabilities satisfy the Markov property, and therefore, the random process described by this model is a Markov chain.
 >{: .solution}
