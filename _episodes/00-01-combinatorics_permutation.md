@@ -335,15 +335,15 @@ $$P=\frac{\binom{2n}{n}-\binom{2n}{n+1}}{\binom{2n}{n}} = \frac{1}{n+1}\label{an
 > > ## Solution
 > >
 > > We wish to prove that
-$$\sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}\label{answer1.17}$$
-This is easies if we listen to the hint and consider that
-$$\binom{2n}{n}$$ is the coefficient of $$x^n$$ in the polynomial
-$$(x+1)^{2n}$$ which is also equivalent to $$(x+1)^n(x+1)^n$$
-We make use of: $$(x+1)^n = \sum_{k=0}^{n} \binom{n}{k} x^k$$
-$$(x+1)^n(x+1)^n = \sum_{k=0}^{n}\sum_{j=0}^{n} \binom{n}{k} \binom{n}{j} x^k x^j$$
-We want the $$x^n$$ term: where $$k+j=n$$ or, put another way, where
+$$\sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}\label{answer1.17}$$\
+This is easies if we listen to the hint and consider that\
+$$\binom{2n}{n}$$ is the coefficient of $$x^n$$ in the polynomial\
+$$(x+1)^{2n}$$ which is also equivalent to $$(x+1)^n(x+1)^n$$\
+We make use of: $$(x+1)^n = \sum_{k=0}^{n} \binom{n}{k} x^k$$\
+$$(x+1)^n(x+1)^n = \sum_{k=0}^{n}\sum_{j=0}^{n} \binom{n}{k} \binom{n}{j} x^k x^j$$\
+We want the $$x^n$$ term: where $$k+j=n$$ or, put another way, where\
 $$k=n-j$$\...
-$$\sum_{j=0}^{n} \binom{n}{n-j} \binom{n}{j} = \sum_{j=0}^{n} \frac{n!}{j!(n-j)!}\frac{n!}{(n-j)!j!} = \sum_{j=0}^{n} \binom{n}{j}^2$$ QED
+$$\sum_{j=0}^{n} \binom{n}{n-j} \binom{n}{j} = \sum_{j=0}^{n} \frac{n!}{j!(n-j)!}\frac{n!}{(n-j)!j!} = \sum_{j=0}^{n} \binom{n}{j}^2$$
 > {: .solution}
 {: .challenge}
 > ## Exercises
