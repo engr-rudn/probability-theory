@@ -37,7 +37,8 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >Arrangements where the 4 given books are together:\
 > >Consider the 4 given books as a single entity. So, we have 7 remaining books and the group of 4 given books, which can be arranged in $$(7 + 1)!$$ ways. However, within the group of 4 given books, they can be arranged in $$4!$$ ways. Therefore, the number of arrangements where the 4 given books are together is $$(7 + 1)! \times 4!$$.\
 > >Now, we can calculate the probability by dividing the number of favorable arrangements (where the 4 given books are together) by the total number of possible arrangements:\
-> >$$\left[Probability = \frac{Number of arrangements with 4 given books together}{Total number of possible arrangements} = \frac{8! \times 4!}{10!}}\right]$$\
+> >Probability = $$\frac{Number of arrangements with 4 given books together}{Total number of possible arrangements} =$$\
+> >$$\frac{8! \times 4!}{10!}$$\
 > >Therefore, the probability of 4 given books being side by side is\
 > > $$\frac{8! \times 4!}{10!}$$.
 {: .solution}
