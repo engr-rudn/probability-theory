@@ -28,6 +28,7 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >Therefore, the value of $$P$$ is $$\frac{2}{35}$$.
 >{: .solution}
 {: .challenge} -->
+
 > ### 10 books are placed in random order on a bookshelf. Find the probability of 4 given books being side by side.
 > >
 > > ## Solution
