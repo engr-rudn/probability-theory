@@ -9,7 +9,7 @@ objectives:
 
 ## Mid-Semester Exam Ac.Year 2022/23
 
-> ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
+<!-- > ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
 > >
 > > ## Solution
 > > 
@@ -27,4 +27,4 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >$$P = \frac{\binom{2}{1}}{\binom{7}{4}} = \frac{2}{35}$$\
 > >Therefore, the value of $$P$$ is $$\frac{2}{35}$$.
 >{: .solution}
-{: .challenge}
+{: .challenge} -->
