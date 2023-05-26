@@ -115,7 +115,6 @@ Similarly for events A1,…An
 > >
 > > ## Solution
 > > Pepys initially thought that outcome C had the highest probability, but Newton correctly concluded that outcome A actually has the highest probability.
-> >
 > > Quoted from Wikipedia : [Newton–Pepys problem](https://en.wikipedia.org/wiki/Newton%E2%80%93Pepys_problem)\
 > > $$P(A) = 1 - (5/6)^6 \approx 0.665$$\
 > ><br> 
