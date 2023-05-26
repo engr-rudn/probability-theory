@@ -118,7 +118,7 @@ Similarly for events A1,…An
 > >
 > > Quoted from Wikipedia : [Newton–Pepys problem](https://en.wikipedia.org/wiki/Newton%E2%80%93Pepys_problem)\
 > > $$P(A) = 1 - (5/6)^6 \approx 0.665$$\
-> > $$P(B) = 1 - (5/6)^{12} - 12 *(1/6)(5/6)^{11}  \approx  0.619$$\ 
+> > $$P(B) = 1 - (5/6)^{12} - 12 *(1/6)(5/6)^{11}  \approx  0.619$$\\ 
 > > $$P(C) = 1 - \sum_{k=0}^2 \binom{18}{k} (1/6)^k (5/6)^{(18-k)}  \approx 0.597$$
 >{: .solution}
 {: .challenge} 

@@ -152,16 +152,12 @@ any other 3-card hand of three different cards.
 > > ## Solution
 > >
 > > If you indiscriminately chose 3 line segments from our bank of 5, you
-have $$\binom{5}{3}=10$$ total possibilities for triangles. When you look
-at the bank (1, 3, 5, 7, 9), however, you have to make sure that no two
-segments are longer than the third segment, otherwise making a triangle
-is impossible. The brute-force way to do this is start with 1 and
-realize there's only one triangle that can be formed with 1: (1, 3, 5).
-Then, looking at 3, you realize that you can do (3, 5, 7) and (3, 5, 9).
-Starting now with 5, you can do (5, 7, 9) but that's the only triangle
-that hasn't already been enumerated. At this point, you realize you're
-done and that the answer is plain to see $$P=\frac{4}{10}=.4
-\label{answer1.8}$$
+have $$\binom{5}{3}=10$$ total possibilities for triangles.\
+> >When you look at the bank $$(1, 3, 5, 7, 9)$$, however, you have to make sure that no two segments are longer than the third segment, otherwise making a triangle is impossible.\
+> >The brute-force way to do this is start with 1 and realize there's no triangle that can be formed with 1.\
+> >Then, looking at 3, you realize that you can do $$(3, 5, 7)$$ and $$(3, 7, 9).\
+> >Starting now with 5, you can do only $$(5, 7, 9)$$ \
+> >At this point, you realize you're done and that the answer is plain to see $$P=\frac{3}{10}=.3\label{answer1.8}$$
 > {: .solution}
 {: .challenge}
 > ### 9.  Suppose a number from  1  to  1000 is selected  at random.  What is the proba­bility that the last two digits of its cube are both  1? 
