@@ -42,3 +42,30 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > > $$\frac{8! \times 4!}{10!}$$.
 {: .solution}
 {: .challenge} -->
+> ### An urn contains a total of N balls, some black and some white. Samples are drawn from the urn, $$m$$ balls at a time $$(m < N)$$. After drawing each sample,the black balls are returned to the urn, while the white balls are replaced by black balls and then returned to the urn. If the number of white balls in the um is $$i$$, we say that the "system" is in the state $$e$$. 
+Now, let $$N = 8, m =4,$$ and suppose there are initially $$5$$ white balls in the urn. What is the probability that no white balls are left after $$2$$ .drawings (of $$4$$ balls each)?
+> 
+> > ## Solution
+> >
+> >To find the probability that no white balls are left after two drawings of three balls each, we need to analyze the system states and calculate the probabilities associated with each state.\
+> > In this problem, the system states represent the number of white balls in the urn after each drawing. Let's consider the possible system states after each drawing:\
+> >$$\text{State } e1: & \text{ 5 white balls (initial state)}$$ \
+> >$$\text{State } e2: & \text{ 4 white balls (after the first drawing)}$$ \
+> >$$\text{State } e3: & \text{ 3 white balls (after the second drawing)}$$
+> >We need to calculate the probability of transitioning from state $$e1$$ to state $$e3$$ in two drawings.\
+> >To calculate the probability, we can consider the number of ways to select the balls from the urn and calculate the desired probability.\
+> >In the first drawing:\
+> >The probability of selecting a white ball is $$\frac{5}{7}$$ since there are 5 white balls and 7 total balls.\
+> >The probability of selecting a black ball is $$\frac{2}{7}$$ since there are 2 black balls and 7 total balls.\
+> >After the first drawing, the urn contains 5 black balls (the returned white ball is replaced by a black ball) and 2 white balls (since the black ball is returned to the urn).\
+> >In the second drawing:\
+> >The probability of selecting a white ball is $$\frac{2}{7}$$ since there are 2 white balls and 7 total balls.\
+> >The probability of selecting a black ball is $$\frac{5}{7}$$ since there are 5 black balls and 7 total balls.\
+> >Now, let's calculate the probability of transitioning from $$e1$$ to $$e3$$ in two drawings:\
+> >$$P(e1 \text{ to } e3 \text{ in 2 drawings}) = P(e1 \text{ to } e2 \text{ in 1st drawing}) \times P(e2 \text{ to } e3 \text{ in 2nd drawing})$$\
+> >$$P(e1 \text{ to } e2 \text{ in 1st drawing}) = \text{Probability of selecting 3 black balls in the first drawing} = \frac{2}{7} \times \frac{2}{7} \times \frac{2}{7} = \frac{8}{343}$$\
+> >$$P(e2 \text{ to } e3 \text{ in 2nd drawing}) = \text{Probability of selecting 3 black balls in the second drawing} = \frac{5}{7} \times \frac{5}{7} \times \frac{5}{7} = \frac{125}{343}$$\
+> >$$P(e1 \text{ to } e3 \text{ in 2 drawings}) = P(e1 \text{ to } e2 \text{ in 1st drawing}) \times P(e2 \text{ to } e3 \text{ in 2nd drawing}) = \frac{8}{343} \times \frac{125}{343} = \frac{1000}{16807}$$\
+> >Therefore, the probability that no white balls are left after two drawings of three balls each is $$\frac{1000}{16807}$$.
+>{: .solution}
+{: .challenge}
