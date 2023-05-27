@@ -49,9 +49,9 @@ Now, let $$N = 8, m =4,$$ and suppose there are initially $$5$$ white balls in t
 > >
 > >To find the probability that no white balls are left after two drawings of three balls each, we need to analyze the system states and calculate the probabilities associated with each state.\
 > > In this problem, the system states represent the number of white balls in the urn after each drawing. Let's consider the possible system states after each drawing:\
-> >$$\text{State } e1: & \text{ 5 white balls (initial state)}$$ \
-> >$$\text{State } e2: & \text{ 4 white balls (after the first drawing)}$$ \
-> >$$\text{State } e3: & \text{ 3 white balls (after the second drawing)}$$
+> >$$\text{State } e1: \text{ 5 white balls (initial state)}$$ \
+> >$$\text{State } e2: \text{ 4 white balls (after the first drawing)}$$ \
+> >$$\text{State } e3: \text{ 3 white balls (after the second drawing)}$$
 > >We need to calculate the probability of transitioning from state $$e1$$ to state $$e3$$ in two drawings.\
 > >To calculate the probability, we can consider the number of ways to select the balls from the urn and calculate the desired probability.\
 > >In the first drawing:\
