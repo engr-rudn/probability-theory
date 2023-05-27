@@ -43,7 +43,7 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 {: .solution}
 {: .challenge} -->
 > ### An urn contains a total of N balls, some black and some white. Samples are drawn from the urn, $$m$$ balls at a time $$(m < N)$$. After drawing each sample,the black balls are returned to the urn, while the white balls are replaced by black balls and then returned to the urn. If the number of white balls in the um is $$i$$, we say that the "system" is in the state $$e$$. 
-Now, let $$N = 8, m =4,$$ and suppose there are initially $$5$$ white balls in the urn. What is the probability that no white balls are left after $$2$$ .drawings (of $$4$$ balls each)?
+> Now, let $$N = 8, m =4,$$ and suppose there are initially $$5$$ white balls in the urn. What is the probability that no white balls are left after $$2$$ drawings (of $$4$$ balls each)?
 > 
 > > ## Solution
 > >
