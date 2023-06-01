@@ -34,7 +34,7 @@ objectives:
 {: .challenge}
 > ### A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. What is the probability of it having just 2 painted faces?
 > >
-> >## Solution
+> > ## Solution
 > >
 > > A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. We want to find the probability of selecting a little cube that has exactly 2 painted faces.\
 > > Let's first determine the total number of little cubes. The wooden cube is divided into 8 layers, each containing 8 little cubes in both the horizontal and vertical directions, resulting in a total of 8 * 8 = 64 little cubes per layer. Since there are 8 layers in total, the number of little cubes is 8 * 64 = 512.\
