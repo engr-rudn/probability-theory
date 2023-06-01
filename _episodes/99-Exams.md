@@ -43,7 +43,7 @@ objectives:
 > > Probability = $$\frac{\text{Number of little cubes with exactly 2 painted faces}}{\text{Total number of little cubes}} = \frac{32}{512} = \frac{1}{16}\
 > > Hence, the probability of selecting a little cube with just 2 painted faces is 0.0625 or 6.25%.
 >{: .solution}
-{ .challenge}
+{: .challenge}
 > ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
 > >
 > > ## Solution
