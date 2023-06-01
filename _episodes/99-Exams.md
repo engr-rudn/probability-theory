@@ -56,6 +56,20 @@ objectives:
 > >Hence, the probability of getting two tails when two coins are tossed is 0.25 or 25%.
 >{: .solution}
 {: .challenge}
+> ### 8 fair dice are tossed independently. Find the probability that at least two “6” appears.
+> >
+> > ## Solution
+> >
+> >To find the probability that at least two "6" appears when 8 fair dice are tossed independently, we can use the concept of complementary probability. We will calculate the probability that no "6" appears and then subtract it from 1 to get the desired probability.\
+> >The probability of getting no "6" on a single die is 5/6, as there are 5 other possible outcomes (1, 2, 3, 4, 5) out of 6.\
+> >Since the dice are tossed independently, the probability of getting no "6" on all 8 dice is:\
+> >$$(5/6) * (5/6) * (5/6) * (5/6) * (5/6) * (5/6) * (5/6) * (5/6) = (5/6)^8$$\
+> >Now, let's find the complementary probability of getting at least two "6" by subtracting the probability of no "6" from 1:\
+> >Probability of at least two $$"6" = 1 - (5/6)^8$$\
+> >Calculating this expression, we can find the desired probability.\
+> >The probability of at least two "6" appearing when 8 fair dice are tossed independently is approximately 0.623.
+>{: .solution}
+{: .challenge}
 > ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
 > >
 > > ## Solution
