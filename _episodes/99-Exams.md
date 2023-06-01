@@ -97,11 +97,11 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >Total number of possible arrangements:\
 > >Since there are 10 books, the total number of possible arrangements is given by the factorial of 10, denoted as $$10!$$.\
 > >Arrangements where the 4 given books are together:\
-> >Consider the 4 given books as a single entity. So, we have 7 remaining books and the group of 4 given books, which can be arranged in $$(7 + 1)!$$ ways. However, within the group of 4 given books, they can be arranged in $$4!$$ ways. Therefore, the number of arrangements where the 4 given books are together is $$(7 + 1)! \times 4!$$.\
+> >Consider the 4 given books as a single entity. So, we have 7 remaining books and the group of 4 given books, which can be arranged in $$(7 + 1)!$$ ways. However, within the group of 4 given books, they can be arranged in $$4!$$ ways. Therefore, the number of arrangements where the 4 given books are together is $$(6 + 1)! \times 4!$$.\
 > >Now, we can calculate the probability by dividing the number of favorable arrangements (where the 4 given books are together) by the total number of possible arrangements:\
-> >$$\left[\textbf{Probability} = \frac{\textbf{Number of arrangements with 4 given books together}}{\textbf{Total number of possible arrangements}} = \frac{8! \times 4!}{10!}\right]$$\
+> >$$\left[\textbf{Probability} = \frac{\textbf{Number of arrangements with 4 given books together}}{\textbf{Total number of possible arrangements}} = \frac{7! \times 4!}{10!}\right]$$\
 > >Therefore, the probability of 4 given books being side by side is\
-> > $$\frac{8! \times 4!}{10!}$$.
+> > $$\frac{7! \times 4!}{10!}$$.
 {: .solution}
 {: .challenge}
 > ### An urn contains a total of N balls, some black and some white. Samples are drawn from the urn, $$m$$ balls at a time $$(m < N)$$. After drawing each sample,the black balls are returned to the urn, while the white balls are replaced by black balls and then returned to the urn. If the number of white balls in the um is $$i$$, we say that the "system" is in the state $$e$$. 
@@ -129,5 +129,17 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >$$P(e2 \text{ to } e3 \text{ in 2nd drawing}) = \text{Probability of selecting 3 black balls in the second drawing} = \frac{5}{7} \times \frac{5}{7} \times \frac{5}{7} = \frac{125}{343}$$\
 > >$$P(e1 \text{ to } e3 \text{ in 2 drawings}) = P(e1 \text{ to } e2 \text{ in 1st drawing}) \times P(e2 \text{ to } e3 \text{ in 2nd drawing}) = \frac{8}{343} \times \frac{125}{343} = \frac{1000}{16807}$$\
 > >Therefore, the probability that no white balls are left after two drawings of three balls each is $$\frac{1000}{16807}$$.
+>{: .solution}
+{: .challenge}
+> ### What will be the probability of getting odd numbers if a dice is thrown?
+> >
+> >## Solution
+> >
+> >When a fair six-sided dice is thrown, there are six possible outcomes: $$\{1, 2, 3, 4, 5, 6\}$$, representing the numbers on the dice's faces.\
+> >Out of these six possible outcomes, three outcomes are odd numbers: $$\{1, 3, 5\}$$, while the remaining three outcomes are even numbers: $$\{2, 4, 6\}$$.\
+> >Therefore, the probability of getting an odd number when a dice is thrown can be calculated by dividing the number of favorable outcomes (odd numbers) by the total number of possible outcomes:\
+> >Probability of getting an odd number $$= \frac{\text{Number of favorable outcomes}}{\text{Total number of possible outcomes}}$$\
+> >Probability of getting an odd number $$= \frac{3}{6} = \frac{1}{2} = 0.5 = 50\%$$\
+> >Hence, the probability of getting an odd number when a dice is thrown is $$0.5$$ or $$50\%$$.
 >{: .solution}
 {: .challenge}
