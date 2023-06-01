@@ -44,6 +44,18 @@ objectives:
 > > Hence, the probability of selecting a little cube with just 2 painted faces is 0.0625 or 6.25%.
 >{: .solution}
 {: .challenge}
+> ### What is the probability of getting two tails when two coins are tossed?
+> >
+> > ## Solution
+> >
+> >The probability of getting two tails when two coins are tossed can be determined by considering all possible outcomes and counting the favorable outcomes. Let's calculate it:\
+> >When two coins are tossed, the possible outcomes for each coin are either heads (H) or tails (T). Therefore, the sample space consists of four possible outcomes: {HH, HT, TH, TT}, where HH represents two heads, HT represents one head and one tail, TH represents one tail and one head, and TT represents two tails.\
+> >Out of these four possible outcomes, there is only one outcome that corresponds to getting two tails (TT). Thus, the favorable outcome is {TT}.\
+> >Therefore, the probability of getting two tails when two coins are tossed is given by:\
+> >Probability = $$\frac{\text{Number of favorable outcomes}}{\text{Total number of possible outcomes}} = \frac{1}{4} = 0.25 = 25%$$\
+> >Hence, the probability of getting two tails when two coins are tossed is 0.25 or 25%.
+>{: .solution}
+{: .challenge}
 > ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
 > >
 > > ## Solution
