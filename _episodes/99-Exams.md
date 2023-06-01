@@ -32,7 +32,7 @@ objectives:
 > >Therefore, there are 120 sequences that have exactly 7 heads when flipping a coin 10 times.
 >{: .solution}
 {: .challenge}
-> >### A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. What is the probability of it having just 2 painted faces?
+> ### A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. What is the probability of it having just 2 painted faces?
 > >
 > >## Solution
 > >
