@@ -25,10 +25,10 @@ objectives:
 > >
 > >To find the number of sequences that have exactly 7 heads, we need to consider the combination of choosing 7 out of the 10 flips to be heads. The remaining 3 flips will automatically be tails since there are only two options (H or T) for each flip.\
 > >The number of sequences with exactly 7 heads can be calculated using the binomial coefficient, which is given by the formula:\
-> >$$C(n, k) = \frac{{n!}}{{k! \cdot (n - k)!}}$$\
-> >where n is the total number of flips (10 in this case), and k is the number of heads (7 in this case).\
+> >$$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$\
+> >where $$n$$ is the total number of flips (10 in this case), and $$k$$ is the number of heads (7 in this case).\
 > >Using the formula:\
-> >$$C(10, 7) = \frac{{10!}}{{7! \cdot (10 - 7)!}} = \frac{{10!}}{{7! \cdot 3!}} = \frac{{10 \cdot 9 \cdot 8}}{{3 \cdot 2 \cdot 1}} = 120$$\
+> >$$\binom{10}{7} = \frac{10!}{7!(10-7)!} = \frac{10!}{7!3!} = \frac{(10 \cdot 9 \cdot 8)}{(3 \cdot 2 \cdot 1)} = 120$$\
 > >Therefore, there are 120 sequences that have exactly 7 heads when flipping a coin 10 times.
 >{: .solution}
 {: .challenge}
