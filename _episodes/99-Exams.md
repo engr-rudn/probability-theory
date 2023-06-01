@@ -32,7 +32,7 @@ objectives:
 > >Therefore, there are 120 sequences that have exactly 7 heads when flipping a coin 10 times.
 >{: .solution}
 {: .challenge}
-> ### Test
+> ### A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. What is the probability of it having just 2 painted faces?
 > > 
 > > ## Solution
 > >
@@ -42,7 +42,7 @@ objectives:
 > > Therefore, the probability of selecting a little cube with exactly 2 painted faces is given by:\
 > > Probability = $$\frac{\text{Number of little cubes with exactly 2 painted faces}}{\text{Total number of little cubes}} = \frac{32}{512} = \frac{1}{16}\
 > > Hence, the probability of selecting a little cube with just 2 painted faces is 0.0625 or 6.25%.
->{:. solution}
+>{: .solution}
 { .challenge}
 > ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
 > >
