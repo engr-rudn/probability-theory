@@ -36,12 +36,12 @@ objectives:
 > >
 > >## Solution
 > >
-> >A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. We want to find the probability of selecting a little cube that has exactly 2 painted faces.\
-> >Let's first determine the total number of little cubes. The wooden cube is divided into 8 layers, each containing 8 little cubes in both the horizontal and vertical directions, resulting in a total of 8 * 8 = 64 little cubes per layer. Since there are 8 layers in total, the number of little cubes is 8 * 64 = 512.\
-> >Now let's consider the number of little cubes with exactly 2 painted faces. Each layer of the wooden cube contributes 4 little cubes with 2 painted faces (the corners of the layer). Since there are 8 layers in total, the number of little cubes with exactly 2 painted faces is 8 * 4 = 32.\
-> >Therefore, the probability of selecting a little cube with exactly 2 painted faces is given by:\
+> > A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. We want to find the probability of selecting a little cube that has exactly 2 painted faces.\
+> > Let's first determine the total number of little cubes. The wooden cube is divided into 8 layers, each containing 8 little cubes in both the horizontal and vertical directions, resulting in a total of 8 * 8 = 64 little cubes per layer. Since there are 8 layers in total, the number of little cubes is 8 * 64 = 512.\
+> > Now let's consider the number of little cubes with exactly 2 painted faces. Each layer of the wooden cube contributes 4 little cubes with 2 painted faces (the corners of the layer). Since there are 8 layers in total, the number of little cubes with exactly 2 painted faces is 8 * 4 = 32.\
+> > Therefore, the probability of selecting a little cube with exactly 2 painted faces is given by:\
 > > Probability = $$\frac{{\text{{Number of little cubes with exactly 2 painted faces}}}}{{\text{{Total number of little cubes}}}} = \frac{{32}}{{512}} = \frac{{1}}{{16}} = 0.0625$$
-> >Hence, the probability of selecting a little cube with just 2 painted faces is 0.0625 or 6.25%.
+> > Hence, the probability of selecting a little cube with just 2 painted faces is 0.0625 or 6.25%.
 >{:. solution}
 { .challenge}
 > ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
