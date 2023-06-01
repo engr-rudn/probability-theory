@@ -8,7 +8,7 @@ objectives:
 ---
 
 ## Mid-Semester Exam Ac.Year 2022/23
-<!-- > ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
+> ### A batch of 7 manufactured items contains 2 defective items. Suppose 4 items are selected at random from the batch. What is the probability that 1 of these items are defective?
 > >
 > > ## Solution
 > > 
@@ -26,8 +26,8 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >$$P = \frac{\binom{2}{1}}{\binom{7}{4}} = \frac{2}{35}$$\
 > >Therefore, the value of $$P$$ is $$\frac{2}{35}$$.
 >{: .solution}
-{: .challenge} -->
-<!-- > ### 10 books are placed in random order on a bookshelf. Find the probability of 4 given books being side by side.
+{: .challenge}
+> ### 10 books are placed in random order on a bookshelf. Find the probability of 4 given books being side by side.
 > >
 > > ## Solution
 > >
@@ -41,8 +41,8 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >Therefore, the probability of 4 given books being side by side is\
 > > $$\frac{8! \times 4!}{10!}$$.
 {: .solution}
-{: .challenge} -->
-<!-- > ### An urn contains a total of N balls, some black and some white. Samples are drawn from the urn, $$m$$ balls at a time $$(m < N)$$. After drawing each sample,the black balls are returned to the urn, while the white balls are replaced by black balls and then returned to the urn. If the number of white balls in the um is $$i$$, we say that the "system" is in the state $$e$$. 
+{: .challenge}
+> ### An urn contains a total of N balls, some black and some white. Samples are drawn from the urn, $$m$$ balls at a time $$(m < N)$$. After drawing each sample,the black balls are returned to the urn, while the white balls are replaced by black balls and then returned to the urn. If the number of white balls in the um is $$i$$, we say that the "system" is in the state $$e$$. 
 > Now, let $$N = 8, m =4,$$ and suppose there are initially $$5$$ white balls in the urn. What is the probability that no white balls are left after $$2$$ drawings (of $$4$$ balls each)?
 > 
 > > ## Solution
@@ -68,4 +68,4 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >$$P(e1 \text{ to } e3 \text{ in 2 drawings}) = P(e1 \text{ to } e2 \text{ in 1st drawing}) \times P(e2 \text{ to } e3 \text{ in 2nd drawing}) = \frac{8}{343} \times \frac{125}{343} = \frac{1000}{16807}$$\
 > >Therefore, the probability that no white balls are left after two drawings of three balls each is $$\frac{1000}{16807}$$.
 >{: .solution}
-{: .challenge} -->
+{: .challenge}
