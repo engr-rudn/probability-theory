@@ -73,7 +73,7 @@ outcomes: $$P=\frac{72}{512} = 0.14\label{answer1.2}$$
 > >$$\left(\frac{5}{6}\right)^8$$\
 > >Probability of getting exactly one "6" in 8 tosses:\
 > >$$\binom{8}{1} \cdot \left(\frac{1}{6}\right) \cdot \left(\frac{5}{6}\right)^7$$\
-> >The "$$\binom{8}{1}$$$" term represents the number of ways to choose one position out of the eight tosses to have a "6".\
+> >The "$$\binom{8}{1}$$" term represents the number of ways to choose one position out of the eight tosses to have a "6".\
 > >Now, let's calculate the probability of fewer than two "6" appearing:\
 > >Probability of fewer than two "6" = Probability of no "6" + Probability of exactly one "6"\
 > >Probability of fewer than two "6" = $$\left(\frac{5}{6}\right)^8 + \binom{8}{1} \cdot \left(\frac{1}{6}\right) \cdot \left(\frac{5}{6}\right)^7$$\
