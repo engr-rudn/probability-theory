@@ -80,7 +80,8 @@ outcomes: $$P=\frac{72}{512} = 0.14\label{answer1.2}$$
 > >Finally, we subtract the probability of fewer than two "6" from 1 to find the probability of at least two "6" appearing:\
 > >Probability of at least two "6" = 1 - Probability of fewer than two "6"\
 > >Probability of at least two "6" = 1 - $$\left[\left(\frac{5}{6}\right)^8 + \binom{8}{1} \cdot \left(\frac{1}{6}\right) \cdot \left(\frac{5}{6}\right)^7\right]$$\
-> >Calculating this expression gives us the probability of at least two "6" appearing when 8 fair dice are tossed independently.
+> >Calculating this expression gives us the probability of at least two "6" appearing when 8 fair dice are tossed independently.\
+> >The result in decimal format is approximately 0.33519, or 33.519%
 <!-- > >To find the probability that at least two "6" appears when 8 fair dice are tossed independently, we can use the concept of complementary probability. We will calculate the probability that no "6" appears and then subtract it from 1 to get the desired probability.\
 > >The probability of getting no "6" on a single die is 5/6, as there are 5 other possible outcomes (1, 2, 3, 4, 5) out of 6.\
 > >Since the dice are tossed independently, the probability of getting no "6" on all 8 dice is:\
