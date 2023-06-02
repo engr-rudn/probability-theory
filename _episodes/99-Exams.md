@@ -147,31 +147,31 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >
 > > ## Solution
 > >
-> > To form a triangle, the sum of the lengths of any two sides must be greater than the length of the third side.\
-> >Let's consider the combinations of three line segments:\
-> >1. Choose the segments of lengths 2, 3, and 6:\
-> >The sum of the lengths of the segments 2 and 3 is 5, which is less than the length of segment 6. So this combination cannot form a triangle.\
-> >2. Choose the segments of lengths 2, 3, and 7:\
-> >The sum of the lengths of the segments 2 and 3 is 5, which is less than the length of segment 7. So this combination cannot form a triangle.\
-> >3. Choose the segments of lengths 2, 3, and 8:\
-> >The sum of the lengths of the segments 2 and 3 is 5, which is less than the length of segment 8. So this combination cannot form a triangle.\
-> >4. Choose the segments of lengths 2, 6, and 7:\
-> >The sum of the lengths of the segments 2 and 6 is 8, which is greater than the length of segment 7. The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 6. So this combination can form a triangle.\
-> >5. Choose the segments of lengths 2, 6, and 8:\
-> >The sum of the lengths of the segments 2 and 6 is 8, which is equal to the length of segment 8. So this combination cannot form a triangle.\
-> >6. Choose the segments of lengths 2, 7, and 8:\
-> >The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 8. The sum of the lengths of the segments 2 and 8 is 10, which is greater than the length of segment 7. So this combination can form a triangle.\
-> >7. Choose the segments of lengths 3, 6, and 7:\
-> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 7. So this combination can form a triangle.\
-> >8. Choose the segments of lengths 3, 6, and 8:\
-> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 8. So this combination can form a triangle.\
-> >9. Choose the segments of lengths 3, 7, and 8:\
-> >The sum of the lengths of the segments 3 and 7 is 10, which is greater than the length of segment 8. So this combination can form a triangle.\
-> >10. Choose the segments of lengths 6, 7, and 8:\
-> >The sum of the lengths of the segments 6 and 7 is 13, which is greater than the length of segment 8. So this combination can form a triangle.\
-> >Out of the 10 possible combinations, 6 of them satisfy the condition for triangle formation. Therefore, the probability of being able to form a triangle is:\
+> > To form a triangle, the sum of the lengths of any two sides must be greater than the length of the third side.
+> >Let's consider the combinations of three line segments:
+> >1. Choose the segments of lengths 2, 3, and 6:
+> >The sum of the lengths of the segments 2 and 3 is 5, which is less than the length of segment 6. So this combination cannot form a triangle.
+> >2. Choose the segments of lengths 2, 3, and 7:
+> >The sum of the lengths of the segments 2 and 3 is 5, which is less than the length of segment 7. So this combination cannot form a triangle.
+> >3. Choose the segments of lengths 2, 3, and 8:
+> >The sum of the lengths of the segments 2 and 3 is 5, which is less than the length of segment 8. So this combination cannot form a triangle.
+> >4. Choose the segments of lengths 2, 6, and 7:
+> >The sum of the lengths of the segments 2 and 6 is 8, which is greater than the length of segment 7. The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 6. So this combination can form a triangle.
+> >5. Choose the segments of lengths 2, 6, and 8:
+> >The sum of the lengths of the segments 2 and 6 is 8, which is equal to the length of segment 8. So this combination cannot form a triangle.
+> >6. Choose the segments of lengths 2, 7, and 8:
+> >The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 8. The sum of the lengths of the segments 2 and 8 is 10, which is greater than the length of segment 7. So this combination can form a triangle.
+> >7. Choose the segments of lengths 3, 6, and 7:
+> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 7. So this combination can form a triangle.
+> >8. Choose the segments of lengths 3, 6, and 8:
+> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 8. So this combination can form a triangle.
+> >9. Choose the segments of lengths 3, 7, and 8:
+> >The sum of the lengths of the segments 3 and 7 is 10, which is greater than the length of segment 8. So this combination can form a triangle.
+> >10. Choose the segments of lengths 6, 7, and 8:
+> >The sum of the lengths of the segments 6 and 7 is 13, which is greater than the length of segment 8. So this combination can form a triangle.
+> >Out of the 10 possible combinations, 6 of them satisfy the condition for triangle formation. Therefore, the probability of being able to form a triangle is:
 > >Probability $$= \frac{\text{Number of favorable combinations}}{\text{Total number of possible combinations}}$$\
-> >Probability $$= \frac{6}{10} = 0.6 = 60\%$$
+> >Probability $$= \frac{6}{10} = 0.6 = 60\%$$\
 Hence, the probability of being able to form a triangle from three segments chosen at random from the given line segments is $$0.6$$ or $$60\%$$.
 >{: .solution}
 {: .challenge}
