@@ -40,7 +40,7 @@ objectives:
 > > Let's first determine the total number of little cubes. The wooden cube is divided into 8 layers, each containing 8 little cubes in both the horizontal and vertical directions, resulting in a total of 8 * 8 = 64 little cubes per layer. Since there are 8 layers in total, the number of little cubes is 8 * 64 = 512.\
 > > Now let's consider the number of little cubes with exactly 2 painted faces. Each layer of the wooden cube contributes 4 little cubes with 2 painted faces (the corners of the layer). Since there are 8 layers in total, the number of little cubes with exactly 2 painted faces is 8 * 4 = 32.\
 > > Therefore, the probability of selecting a little cube with exactly 2 painted faces is given by:\
-> > Probability = $$\frac{\text{Number of little cubes with exactly 2 painted faces}}{\text{Total number of little cubes}} = \frac{32}{512} = \frac{1}{16}\
+> > Probability = $$\frac{\text{Number of little cubes with exactly 2 painted faces}}{\text{Total number of little cubes}} = \frac{32}{512} = \frac{1}{16}$$\
 > > Hence, the probability of selecting a little cube with just 2 painted faces is 0.0625 or 6.25%.
 >{: .solution}
 {: .challenge}
