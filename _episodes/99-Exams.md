@@ -184,15 +184,15 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >5. Choose the segments of lengths 2, 6, and 8:
 > >The sum of the lengths of the segments 2 and 6 is 8, which is equal to the length of segment 8. So this combination cannot form a triangle.
 > >6. Choose the segments of lengths 2, 7, and 8:
-> >The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 8. The sum of the lengths of the segments 2 and 8 is 10, which is greater than the length of segment 7. So this combination can form a triangle.
+> >The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 8. The sum of the lengths of the segments 2 and 8 is 10, which is greater than the length of segment 7. <b>So this combination can form a triangle</b>.
 > >7. Choose the segments of lengths 3, 6, and 7:
-> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 7. So this combination can form a triangle.
+> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 7. <b>So this combination can form a triangle</b>.
 > >8. Choose the segments of lengths 3, 6, and 8:
-> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 8. So this combination can form a triangle.
+> >The sum of the lengths of the segments 3 and 6 is 9, which is greater than the length of segment 8. <b>So this combination can form a triangle</b>.
 > >9. Choose the segments of lengths 3, 7, and 8:
-> >The sum of the lengths of the segments 3 and 7 is 10, which is greater than the length of segment 8. So this combination can form a triangle.
+> >The sum of the lengths of the segments 3 and 7 is 10, which is greater than the length of segment 8. <b>So this combination can form a triangle</b>.
 > >10. Choose the segments of lengths 6, 7, and 8:
-> >The sum of the lengths of the segments 6 and 7 is 13, which is greater than the length of segment 8. So this combination can form a triangle.
+> >The sum of the lengths of the segments 6 and 7 is 13, which is greater than the length of segment 8. <b>So this combination can form a triangle</b>.
 > >Out of the 10 possible combinations, 6 of them satisfy the condition for triangle formation. Therefore, the probability of being able to form a triangle is:
 > >Probability $$= \frac{\text{Number of favorable combinations}}{\text{Total number of possible combinations}}$$\
 > >Probability $$= \frac{6}{10} = 0.6 = 60\%$$\
