@@ -180,7 +180,7 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >3. Choose the segments of lengths 2, 3, and 8:
 > >The sum of the lengths of the segments 2 and 3 is 5, which is less than the length of segment 8. So this combination cannot form a triangle.
 > >4. Choose the segments of lengths 2, 6, and 7:
-> >The sum of the lengths of the segments 2 and 6 is 8, which is greater than the length of segment 7. The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 6. So this combination can form a triangle.
+> >The sum of the lengths of the segments 2 and 6 is 8, which is greater than the length of segment 7. The sum of the lengths of the segments 2 and 7 is 9, which is greater than the length of segment 6. <b>So this combination can form a triangle</b>.
 > >5. Choose the segments of lengths 2, 6, and 8:
 > >The sum of the lengths of the segments 2 and 6 is 8, which is equal to the length of segment 8. So this combination cannot form a triangle.
 > >6. Choose the segments of lengths 2, 7, and 8:
