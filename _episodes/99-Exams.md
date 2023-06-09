@@ -36,12 +36,14 @@ objectives:
 > > 
 > > ## Solution
 > >
-> >The wooden cube is made of $$8^3$$ cubes implying a $$8x8x8$$ cube. The
-cubes that have two faces painted will be the edges which are not on a
-corner. Thus, since there are 12 edges of 8 cubes each, 6 of which are
-not corners, that implies we have 72 edges. 72 thus becomes our number
-of desireable outcomes and 512 has always been the total number of
-outcomes: $$P=\frac{72}{512} = 0.14\label{answer1.2}$$
+> >The wooden cube is made of $$8^3$$ cubes implying a $$8x8x8$$ cube.\
+The cubes that have two faces painted will be the edges which are not on a
+corner.\
+Thus, since there are 12 edges of 8 cubes each, 6 of which are
+not corners, that implies we have 72 edges.\
+72 thus becomes our number of desireable outcomes and 512 has always been the total number of
+outcomes:\
+$$P=\frac{72}{512} = 0.14\label{answer1.2}$$
 > > <!-- A wooden cube with painted faces is sawed up into 512 little cubes, all of the same size. The little cubes are then mixed up, and one is chosen at random. We want to find the probability of selecting a little cube that has exactly 2 painted faces.\
 > > Let's first determine the total number of little cubes. The wooden cube is divided into 8 layers, each containing 8 little cubes in both the horizontal and vertical directions, resulting in a total of 8 * 8 = 64 little cubes per layer. Since there are 8 layers in total, the number of little cubes is 8 * 64 = 512.\
 > > Now let's consider the number of little cubes with exactly 2 painted faces. Each layer of the wooden cube contributes 4 little cubes with 2 painted faces (the corners of the layer). Since there are 8 layers in total, the number of little cubes with exactly 2 painted faces is 8 * 4 = 32.\
