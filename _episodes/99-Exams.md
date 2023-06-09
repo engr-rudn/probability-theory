@@ -195,7 +195,7 @@ $$\binom{2}{1}$$. Therefore the probability P is:\
 > >The sum of the lengths of the segments 6 and 7 is 13, which is greater than the length of segment 8. <b>So this combination can form a triangle</b>.
 > >Out of the 10 possible combinations, 6 of them satisfy the condition for triangle formation. Therefore, the probability of being able to form a triangle is:
 > >Probability $$= \frac{\text{Number of favorable combinations}}{\text{Total number of possible combinations}}$$\
-> >Probability $$= \frac{<b>6</b>}{10} = 0.6 = 60\%$$\
+> >Probability $$= \frac{6}{10} = 0.6 = 60\%$$\
 Hence, the probability of being able to form a triangle from three segments chosen at random from the given line segments is $$0.6$$ or $$60\%$$.
 >{: .solution}
 {: .challenge}
