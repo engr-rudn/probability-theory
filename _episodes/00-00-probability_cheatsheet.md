@@ -16,9 +16,9 @@ Probability textbook (<http://bit.ly/introprobability>). Licensed under
 `CC BY-NC-SA 4.0`. Please share comments, suggestions, and errors at
 <http://github.com/wzchen/probability_cheatsheet>.
 
-![image](../figure/icecream.pdf)
+![image](../figure/attitude_freq_plot-1.png)
 
-![image](../figure/icecream.pdf){width="2in"}
+![image](../figure/icecream.pdf)
 
 Let's say we have a compound experiment (an experiment with multiple
 components). If the 1st component has $$n_1$$ possible outcomes, the 2nd
@@ -114,7 +114,7 @@ $$\begin{aligned}
 
  #### Simpson's Paradox
 
-![image](../figure/SimpsonsParadox.pdf){width="2in"}
+![image](../figure/SimpsonsParadox.pdf)
 
 It is possible to have
 $$P(A\mid B,C) < P(A\mid B^c, C) \textnormal{ and } P(A\mid B, C^c) < P(A \mid B^c, C^c)$$
@@ -158,7 +158,7 @@ odds*.
 :   Gives the probability that a *discrete* random variable takes on the
     value $$x$$. $$p_X(x) = P(X=x)$$
 
-    ![image](../figure/Binpmf.pdf){width="2in"}
+    ![image](../figure/Binpmf.pdf)
 
     The PMF satisfies $$p_X(x) \geq 0 \textrm{ and } \sum_x p_X(x) = 1$$
 
@@ -167,7 +167,7 @@ odds*.
 :   Gives the probability that a random variable is less than or equal
     to $$x$$. $$F_X(x) = P(X \leq x)$$
 
-    ![image](../figure/Bincdf.pdf){width="2in"}
+    ![image](../figure/Bincdf.pdf)
 
     The CDF is an increasing, right-continuous function with
     $$F_X(x) \to 0 \textrm{ as $$x \to -\infty$$ and } F_X(x) \to 1 \textrm{ as $$x \to \infty$$}$$
@@ -197,7 +197,7 @@ odds*.
     $$E(X) = \sum\limits_{i}x_iP(X=x_i)$$
     :::
 
-    ![image](../figure/linearity.pdf){width="2in"}
+    ![image](../figure/linearity.pdf)
 
 #### Linearity
 
@@ -268,7 +268,7 @@ $$\textrm{SD}(X) = \sqrt{\textrm{Var}(X)}$$
         F(x) &=  \int_{-\infty}^x f(t)dt  
        \end{aligned}$$
 
-    ![image](../figure/Logisticpdfcdf.pdf){width="2in"}
+    ![image](../figure/Logisticpdfcdf.pdf)
 
     To find the probability that a CRV takes on a value in an interval,
     integrate the PDF over that interval. $$\begin{aligned}
@@ -552,7 +552,7 @@ Example
     $$\textrm{Pois}(5\lambda), \textrm{Pois}(7\lambda), \textrm{Pois}(10\lambda)$$
     distributions, respectively.
 
-    ![image](../figure/pp.pdf){width="2in"}
+    ![image](../figure/pp.pdf)
 
 #### Count-Time Duality
 
