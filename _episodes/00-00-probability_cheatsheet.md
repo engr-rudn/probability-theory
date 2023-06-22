@@ -7,7 +7,7 @@ objectives:
 ---
 ## Probability Cheatsheet v2.0
 
-
+	
 Compiled by William Chen (<http://wzchen.com>) and Joe Blitzstein, with
 contributions from Sebastian Chiu, Yuan Jiang, Yuqi Hou, and Jessy
 Hwang. Material based on Joe Blitzstein's (`@stat110`) lectures
@@ -16,9 +16,7 @@ Probability textbook (<http://bit.ly/introprobability>). Licensed under
 `CC BY-NC-SA 4.0`. Please share comments, suggestions, and errors at
 <http://github.com/wzchen/probability_cheatsheet>.
 
-![image](../figure/attitude_freq_plot-1.png)
-
-![image](../figure/icecream.pdf)
+![image](../figure/icecream.png)
 
 Let's say we have a compound experiment (an experiment with multiple
 components). If the 1st component has $$n_1$$ possible outcomes, the 2nd
@@ -28,7 +26,7 @@ possibilities for the whole experiment.
 
 
 
-![image](../figure/jar.pdf){width="1.2in"}
+![image](../figure/jar.png){width="1.2in"}
 
 The sampling table gives the number of possible samples of size $$k$$ out
 of a population of size $$n$$, under various assumptions about how the
@@ -114,7 +112,7 @@ $$\begin{aligned}
 
  #### Simpson's Paradox
 
-![image](../figure/SimpsonsParadox.pdf)
+![image](../figure/SimpsonsParadox.png)
 
 It is possible to have
 $$P(A\mid B,C) < P(A\mid B^c, C) \textnormal{ and } P(A\mid B, C^c) < P(A \mid B^c, C^c)$$
@@ -158,7 +156,7 @@ odds*.
 :   Gives the probability that a *discrete* random variable takes on the
     value $$x$$. $$p_X(x) = P(X=x)$$
 
-    ![image](../figure/Binpmf.pdf)
+    ![image](../figure/Binpmf.png)
 
     The PMF satisfies $$p_X(x) \geq 0 \textrm{ and } \sum_x p_X(x) = 1$$
 
@@ -167,7 +165,7 @@ odds*.
 :   Gives the probability that a random variable is less than or equal
     to $$x$$. $$F_X(x) = P(X \leq x)$$
 
-    ![image](../figure/Bincdf.pdf)
+    ![image](../figure/Bincdf.png)
 
     The CDF is an increasing, right-continuous function with
     $$F_X(x) \to 0 \textrm{ as $$x \to -\infty$$ and } F_X(x) \to 1 \textrm{ as $$x \to \infty$$}$$
@@ -197,7 +195,7 @@ odds*.
     $$E(X) = \sum\limits_{i}x_iP(X=x_i)$$
     :::
 
-    ![image](../figure/linearity.pdf)
+    ![image](../figure/linearity.png)
 
 #### Linearity
 
@@ -268,7 +266,7 @@ $$\textrm{SD}(X) = \sqrt{\textrm{Var}(X)}$$
         F(x) &=  \int_{-\infty}^x f(t)dt  
        \end{aligned}$$
 
-    ![image](../figure/Logisticpdfcdf.pdf)
+    ![image](../figure/Logisticpdfcdf.png)
 
     To find the probability that a CRV takes on a value in an interval,
     integrate the PDF over that interval. $$\begin{aligned}
@@ -394,7 +392,7 @@ $$p_{X,Y}(x,y) = P(X=x,Y=y).$$ In the continuous case, they have a
 $$f_{X,Y}(x,y) = \frac{\partial^2}{\partial x \partial y} F_{X,Y}(x,y).$$
 The joint PMF/PDF must be nonnegative and sum/integrate to 1.
 
-![image](../figure/jointPDF.pdf){width="1.0in"}
+![image](../figure/jointPDF.png){width="1.0in"}
 
 ####  Conditional Distributions
 **Conditioning and Bayes' rule for discrete r.v.s**
@@ -552,7 +550,7 @@ Example
     $$\textrm{Pois}(5\lambda), \textrm{Pois}(7\lambda), \textrm{Pois}(10\lambda)$$
     distributions, respectively.
 
-    ![image](../figure/pp.pdf)
+    ![image](../figure/pp.png)
 
 #### Count-Time Duality
 
@@ -709,7 +707,7 @@ $$\frac{\sqrt{n} (\bar{X}_n - \mu_X)}{\sigma_X} \xrightarrow{D} \mathcal{N}(0, 1
 
 ####  Definition
 
-![image](../figure/chainA.pdf){width="2.3in"}
+![image](../figure/chainA.png){width="2.3in"}
 
 A Markov chain is a random walk in a **state space**, which we will
 assume is finite, say $$\{1, 2, \dots, M\}$$. We let $$X_t$$ denote which
@@ -789,7 +787,7 @@ stationary.
 
 ####  Random Walk on an Undirected Network
 
-![image](../figure/network1.pdf){width="1.6in"}
+![image](../figure/network1.png){width="1.6in"}
 
 If you have a collection of **nodes**, pairs of which can be connected
 by undirected **edges**, and a Markov chain is run by going from the
@@ -904,7 +902,7 @@ Max of Expos
 
  Gamma Distribution
 
-![image](../figure/gammapdfs.pdf){width="1.9in"}
+![image](../figure/gammapdfs.png){width="1.9in"}
 
 Let us say that $$X$$ is distributed $$\textrm{Gamma}(a, \lambda)$$. We know
 the following:
@@ -926,7 +924,7 @@ Example
 
  Beta Distribution
 
-![image](../figure/Betapdfs.pdf){width="1.9in"}
+![image](../figure/Betapdfs.png){width="1.9in"}
 
 Conjugate Prior of the Binomial
 
@@ -1012,7 +1010,7 @@ Example
 
  Binomial Distribution
 
-![image](../figure/Bin10_05.pdf){width="1.3in"}
+![image](../figure/Bin10_05.png){width="1.3in"}
 
 Let us say that $$X$$ is distributed [Bin]{.roman}($$n,p$$). We know the
 following:
