@@ -16,7 +16,7 @@ Probability textbook (<http://bit.ly/introprobability>). Licensed under
 `CC BY-NC-SA 4.0`. Please share comments, suggestions, and errors at
 <http://github.com/wzchen/probability_cheatsheet>.
 
-
+![image](../figure/icecream.pdf)
 
 ![image](../figure/icecream.pdf){width="2in"}
 
