@@ -550,8 +550,8 @@ Example
     $$\textrm{Pois}(5\lambda), \textrm{Pois}(7\lambda), \textrm{Pois}(10\lambda)$$
     distributions, respectively.
 
-    ![image](../figure/pp.png)
-
+ ![image](../figure/pp.png)
+ 
 #### Count-Time Duality
 
 :   Consider a Poisson process of emails arriving in an inbox at rate
@@ -1478,7 +1478,7 @@ of the adjacent hexagons.
 > >
 > > ## Solution
 > >
-> >$$\boxed{\textnormal{Yes to both.}}$$ The Markov chain is irreducible
+> >$$\boxed{\text{Yes to both.}}$$ The Markov chain is irreducible
     because it can get from anywhere to anywhere else. The Markov chain
     is aperiodic because the robber can return back to a square in
     $$2, 3, 4, 5, \dots$$ moves, and the GCD of those numbers is $$1$$.
@@ -1497,12 +1497,11 @@ of the adjacent hexagons.
     the center is $$6/84 = 1/14$$.
 >{: .solution}
 {: .challenge}
-> #### 3.  What fraction of the time will the robber be in the center tile in
-    this game, in the long run? 
+> #### 3.  What fraction of the time will the robber be in the center tile in this game, in the long run? 
 > >
 > > ## Solution
-> >By the above,
-    $$\boxed{1/14}$$.
+> >
+> >By the above,$$\boxed{1/14}$$.
 >{: .solution}
 {: .challenge}
 > #### 4.  What is the expected amount of moves it will take for the robber to return to the center tile? 
