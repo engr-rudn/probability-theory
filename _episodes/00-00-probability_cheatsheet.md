@@ -17,8 +17,6 @@ Probability textbook (<http://bit.ly/introprobability>). Licensed under
 <http://github.com/wzchen/probability_cheatsheet>.
 
 ![image](../figure/icecream.png)
-![image](../figure/icecream.png)
-![image](../figure/attitude_freq_plot-1.png)
 
 Let's say we have a compound experiment (an experiment with multiple
 components). If the 1st component has $$n_1$$ possible outcomes, the 2nd
@@ -808,14 +806,14 @@ $$(\frac{3}{14}, \frac{3}{14}, \frac{2}{14}, \frac{4}{14}, \frac{2}{14})$$.
 say that $$U$$ is distributed $$\textrm{Unif}(a, b)$$. We know the
 following:
 
-Properties of the Uniform
+#### Properties of the Uniform
 
 :   For a Uniform distribution, the probability of a draw from any
     interval within the support is proportional to the length of the
     interval. See *Universality of Uniform* and *Order Statistics* for
     other properties.
 
-Example
+#### Example
 
 :   William throws darts really badly, so his darts are uniform over the
     whole room because they're equally likely to appear anywhere.
@@ -826,18 +824,18 @@ Example
     occurrence in any one specific spot is constant throughout the whole
     support.
 
- Normal Distribution Let us
+####  Normal Distribution Let us
 say that $$X$$ is distributed $$\mathcal{N}(\mu, \sigma^2)$$. We know the
 following:
 
-Central Limit Theorem
+#### Central Limit Theorem
 
 :   The Normal distribution is ubiquitous because of the Central Limit
     Theorem, which states that the sample mean of i.i.d. r.v.s will
     approach a Normal distribution as the sample size grows, regardless
     of the initial distribution.
 
-Location-Scale Transformation
+#### Location-Scale Transformation
 
 :   Every time we shift a Normal r.v. (by adding a constant) or rescale
     a Normal (by multiplying by a constant), we change it to another
@@ -846,17 +844,17 @@ Location-Scale Transformation
     following transformation:
     $$Z= \frac{X - \mu}{\sigma} \sim \mathcal{N}(0, 1)$$
 
-Standard Normal
+#### Standard Normal
 
 :   The Standard Normal, $$Z \sim \mathcal{N}(0, 1)$$, has mean $$0$$ and
     variance $$1$$. Its CDF is denoted by $$\Phi$$.
 
- Exponential Distribution
+####  Exponential Distribution
 
 Let us say that $$X$$ is distributed $$\textrm{Expo}(\lambda)$$. We know the
 following:
 
-Story
+#### Story
 
 :   You're sitting on an open meadow right before the break of dawn,
     wishing that airplanes in the night sky were shooting stars, because
@@ -866,7 +864,7 @@ Story
     memoryless; the additional time until the next shooting star comes
     does not depend on how long you've waited already.
 
-Example
+#### Example
 
 :   The waiting time until the next shooting star is distributed
     $$\textrm{Expo}(4)$$ hours. Here $$\lambda=4$$ is the **rate
@@ -874,11 +872,11 @@ Example
     hour on average. The expected time until the next shooting star is
     $$1/\lambda = 1/4$$ hour.
 
-Expos as a rescaled Expo(1)
+#### Expos as a rescaled Expo(1)
 
 :   $$Y \sim \textrm{Expo}(\lambda) \rightarrow X = \lambda Y \sim \textrm{Expo}(1)$$
 
-Memorylessness
+#### Memorylessness
 
 :   The Exponential Distribution is the only continuous memoryless
     distribution. The memoryless property says that for
@@ -890,33 +888,33 @@ Memorylessness
     product has survived $$a$$ years, the additional time that it will
     last is still $$\textrm{Expo}(\lambda)$$.
 
-Min of Expos
+#### Min of Expos
 
 :   If we have independent $$X_i \sim \textrm{Expo}(\lambda_i)$$, then
     $$\min(X_1, \dots, X_k) \sim \textrm{Expo}(\lambda_1 + \lambda_2 + \dots + \lambda_k)$$.
 
-Max of Expos
+#### Max of Expos
 
 :   If we have i.i.d. $$X_i \sim \textrm{Expo}(\lambda)$$, then
     $$\max(X_1, \dots, X_k)$$ has the same distribution as
     $$Y_1+Y_2+\dots+Y_k$$, where $$Y_j \sim \textrm{Expo}(j\lambda)$$ and
     the $$Y_j$$ are independent.
 
- Gamma Distribution
+####  Gamma Distribution
 
-![image](../figure/gammapdfs.png){width="1.9in"}
+![image](../figure/gammapdfs.png)
 
 Let us say that $$X$$ is distributed $$\textrm{Gamma}(a, \lambda)$$. We know
 the following:
 
-Story
+#### Story
 
 :   You sit waiting for shooting stars, where the waiting time for a
     star is distributed $$\textrm{Expo}(\lambda)$$. You want to see $$n$$
     shooting stars before you go home. The total waiting time for the
     $$n$$th shooting star is $$\textrm{Gamma}(n,\lambda)$$.
 
-Example
+#### Example
 
 :   You are at a bank, and there are 3 people ahead of you. The serving
     time for each person is Exponential with mean $$2$$ minutes. Only one
@@ -924,11 +922,11 @@ Example
     time until it's your turn to be served is
     $$\textrm{Gamma}(3, \frac{1}{2})$$.
 
- Beta Distribution
+####  Beta Distribution
 
-![image](../figure/Betapdfs.png){width="1.9in"}
+![image](../figure/Betapdfs.png)
 
-Conjugate Prior of the Binomial
+#### Conjugate Prior of the Binomial
 
 :   In the Bayesian approach to statistics, parameters are viewed as
     random variables, to reflect our uncertainty. The *prior* for a
@@ -945,11 +943,11 @@ Conjugate Prior of the Binomial
     posterior distribution
     $$p|(X=x) \sim \textrm{Beta}(a + x, b + n - x)$$
 
-Order statistics of the Uniform
+#### Order statistics of the Uniform
 
 :   See *Order Statistics*.
 
-Beta-Gamma relationship
+#### Beta-Gamma relationship
 
 :   If $$X \sim \textrm{Gamma}(a, \lambda)$$,
     $$Y \sim \textrm{Gamma}(b, \lambda)$$, with
@@ -961,29 +959,23 @@ Beta-Gamma relationship
 
     This is known as the **bank--post office result**.
 
- $$\chi^2$$ (Chi-Square)
-Distribution
+####  $$\chi^2$$ (Chi-Square) Distribution
 
 Let us say that $$X$$ is distributed $$\chi^2_n$$. We know the following:
 
-Story
+#### Story
 
 :   A Chi-Square($$n$$) is the sum of the squares of $$n$$ independent
     standard Normal r.v.s.
 
-Properties and Representations
+#### Properties and Representations
 
 :   $$X \textrm{ is distributed as } Z_1^2 + Z_2^2 + \dots + Z_n^2 \textrm{ for i.i.d.~$$Z_i \sim \mathcal{N}(0,1)$$}$$
     $$X \sim \textrm{Gamma}(n/2,1/2)$$
 
 ###  Discrete Distributions
 
-------------------------------------------------------------------------
-
-height 2pt
-
- Distributions for four
-sampling schemes
+####  Distributions for four sampling schemes
 
 ::: center
                                    **Replace**      **No Replace**
@@ -994,30 +986,30 @@ sampling schemes
                                 (Geom if $$r = 1$$)          
 :::
 
- Bernoulli Distribution The
+####  Bernoulli Distribution The
 Bernoulli distribution is the simplest case of the Binomial
 distribution, where we only have one trial ($$n=1$$). Let us say that X is
 distributed [Bern]{.roman}($$p$$). We know the following:
 
-Story
+#### Story
 
 :   A trial is performed with probability $$p$$ of "success\", and $$X$$ is
     the indicator of success: $$1$$ means success, $$0$$ means failure.
 
-Example
+#### Example
 
 :   Let $$X$$ be the indicator of Heads for a fair coin toss. Then
     $$X \sim \textrm{Bern}(\frac{1}{2})$$. Also,
     $$1-X  \sim \textrm{Bern}(\frac{1}{2})$$ is the indicator of Tails.
 
- Binomial Distribution
+####  Binomial Distribution
 
 ![image](../figure/Bin10_05.png){width="1.3in"}
 
 Let us say that $$X$$ is distributed [Bin]{.roman}($$n,p$$). We know the
 following:
 
-Story
+#### Story
 
 :   $$X$$ is the number of "successes\" that we will achieve in $$n$$
     independent trials, where each trial is either a success or a
@@ -1027,13 +1019,13 @@ Story
     $$X_j \sim \textrm{Bern}(p)$$, where all of the Bernoullis are
     independent. Then $$X = X_1 + X_2 + X_3 + \dots + X_n$$
 
-Example
+#### Example
 
 :   If Jeremy Lin makes 10 free throws and each one independently has a
     $$\frac{3}{4}$$ chance of getting in, then the number of free throws
     he makes is distributed [Bin]{.roman}($$10,\frac{3}{4}$$).
 
-Properties
+#### Properties
 
 :   Let $$X \sim \textrm{Bin}(n,p), Y \sim \textrm{Bin}(m,p)$$ with
     $$X \protect\mathpalette{\protect\independenT}{\perp}Y$$.
@@ -1051,45 +1043,45 @@ Properties
         approximately $$\mathcal{N}(np,np(1-p))$$ if $$n$$ is large and $$p$$
         is not near $$0$$ or $$1$$.
 
- Geometric Distribution Let us
-say that $$X$$ is distributed $$\textrm{Geom}(p)$$. We know the following:
+####  Geometric Distribution
+ Let us say that $$X$$ is distributed $$\textrm{Geom}(p)$$. We know the following:
 
-Story
+#### Story
 
 :   $$X$$ is the number of "failures\" that we will achieve before we
     achieve our first success. Our successes have probability $$p$$.
 
-Example
+#### Example
 
 :   If each pokeball we throw has probability $$\frac{1}{10}$$ to catch
     Mew, the number of failed pokeballs will be distributed
     $$\textrm{Geom}(\frac{1}{10})$$.
 
- First Success Distribution
+####  First Success Distribution
 Equivalent to the Geometric distribution, except that it includes the
 first success in the count. This is 1 more than the number of failures.
 If $$X \sim \textnormal{FS}(p)$$ then $$E(X) = 1/p$$.
 
- Negative Binomial
+####  Negative Binomial
 Distribution Let us say that $$X$$ is distributed $$\textrm{NBin}(r, p)$$.
 We know the following:
 
-Story
+#### Story
 
 :   $$X$$ is the number of "failures\" that we will have before we achieve
     our $$r$$th success. Our successes have probability $$p$$.
 
-Example
+#### Example
 
 :   Thundershock has 60% accuracy and can faint a wild Raticate in 3
     hits. The number of misses before Pikachu faints Raticate with
     Thundershock is distributed $$\textrm{NBin}(3, 0.6)$$.
 
- Hypergeometric Distribution
+####  Hypergeometric Distribution
 Let us say that $$X$$ is distributed $$\textrm{HGeom}(w, b, n)$$. We know
 the following:
 
-Story
+#### Story
 
 :   In a population of $$w$$ desired objects and $$b$$ undesired objects,
     $$X$$ is the number of "successes\" we will have in a draw of $$n$$
@@ -1097,7 +1089,7 @@ Story
     be a **simple random sample** (all sets of $$n$$ objects are equally
     likely).
 
-Examples
+#### Examples
 
 :   Here are some HGeom examples.
 
@@ -1121,18 +1113,18 @@ Examples
         sample of size $$m$$. How many tagged elk are now in the new
         sample? $$\textrm{HGeom}(n,N-n,m)$$
 
- Poisson Distribution Let us
-say that $$X$$ is distributed $$\textrm{Pois}(\lambda)$$. We know the
+####  Poisson Distribution
+Let us say that $$X$$ is distributed $$\textrm{Pois}(\lambda)$$. We know the
 following:
 
-Story
+#### Story
 
 :   There are rare events (low probability events) that occur many
     different ways (high possibilities of occurences) at an average rate
     of $$\lambda$$ occurrences per unit space or time. The number of
     events that occur in that unit of space or time is $$X$$.
 
-Example
+#### Example
 
 :   A certain busy intersection has an average of 2 accidents per month.
     Since an accident is a low probability event that can happen many
@@ -1141,7 +1133,7 @@ Example
     of accidents that happen in two months at that intersection is
     distributed $$\textrm{Pois}(4)$$.
 
-Properties
+#### Properties
 
 :   Let $$X \sim \textrm{Pois}(\lambda_1)$$ and
     $$Y \sim \textrm{Pois}(\lambda_2)$$, with
@@ -1161,22 +1153,18 @@ Properties
 
 ###  Multivariate Distributions
 
-------------------------------------------------------------------------
-
-height 2pt
-
- Multinomial Distribution Let
-us say that the vector
+#### Multinomial Distribution
+Let us say that the vector
 $$\vec{X} = (X_1, X_2, X_3, \dots, X_k) \sim \textnormal{Mult}_k(n, \vec{p})$$
 where $$\vec{p} = (p_1, p_2, \dots, p_k)$$.
 
-Story
+#### Story
 
 :   We have $$n$$ items, which can fall into any one of the $$k$$ buckets
     independently with the probabilities
     $$\vec{p} = (p_1, p_2, \dots, p_k)$$.
 
-Example
+#### Example
 
 :   Let us assume that every year, 100 students in the Harry Potter
     Universe are randomly and independently sorted into one of four
@@ -1185,12 +1173,12 @@ Example
     $$\vec{p} = (0.25, 0.25, 0.25, 0.25)$$. Note that
     $$X_1 + X_2 + \dots + X_4 = 100$$, and they are dependent.
 
-Joint PMF
+#### Joint PMF
 
 :   For $$n = n_1 + n_2 + \dots + n_k$$,
     $$P(\vec{X} = \vec{n}) =  \frac{n!}{n_1!n_2!\dots n_k!}p_1^{n_1}p_2^{n_2}\dots p_k^{n_k}$$
 
-Marginal PMF, Lumping, and Conditionals
+#### Marginal PMF, Lumping, and Conditionals
 
 :   Marginally, $$X_i \sim \textrm{Bin}(n,p_i)$$ since we can define
     "success\" to mean category $$i$$. If you lump together multiple
@@ -1203,20 +1191,20 @@ Marginal PMF, Lumping, and Conditionals
     Conditioning on some $$X_j$$ also still gives a Multinomial:
     $$X_1, \dots, X_{k-1} | X_k = n_k \sim \textrm{Mult}_{k-1}\left(n - n_k, \left(\frac{p_1}{1 - p_k}, \dots, \frac{p_{k-1}}{1 - p_k}\right)\right)$$
 
-Variances and Covariances
+#### Variances and Covariances
 
 :   We have $$X_i \sim \textrm{Bin}(n, p_i)$$ marginally, so
     $$\textrm{Var}(X_i) = np_i(1-p_i)$$. Also,
     $$\textrm{Cov}(X_i, X_j) = -np_ip_j$$ for $$i \neq j$$.
 
- Multivariate Uniform
+####  Multivariate Uniform
 Distribution See the univariate Uniform for stories and examples. For
 the 2D Uniform on some region, probability is proportional to area.
 Every point in the support has equal density, of value
 $$\frac{1}{\textnormal{area of region}}$$. For the 3D Uniform, probability
 is proportional to volume.
 
- Multivariate Normal (MVN)
+####  Multivariate Normal (MVN)
 Distribution A vector $$\vec{X} = (X_1, X_2, \dots, X_k)$$ is Multivariate
 Normal if every linear combination is Normally distributed, i.e.,
 $$t_1X_1 + t_2X_2 + \dots + t_kX_k$$ is Normal for any constants
@@ -1225,7 +1213,7 @@ the **mean vector** $$\vec{\mu} = (\mu_1, \mu_2, \dots, \mu_k)$$ and the
 **covariance matrix** where the $$(i, j)$$ entry is
 $$\textrm{Cov}(X_i, X_j)$$.
 
-Properties
+#### Properties
 
 :   The Multivariate Normal has the following properties.
 
@@ -1242,23 +1230,21 @@ Properties
 
 ###  Distribution Properties
 
-------------------------------------------------------------------------
+#### Important CDFs
 
-height 2pt  Important CDFs
-
-Standard Normal
+#### Standard Normal
 
 :   $$\Phi$$
 
-Exponential($$\lambda$$)
+#### Exponential($$\lambda$$)
 
 :   $$F(x) = 1 - e^{-\lambda x}, \textrm{ for } x \in (0, \infty)$$
 
-Uniform(0,1)
+#### Uniform(0,1)
 
 :   $$F(x) = x, \textrm{ for } x \in (0, 1)$$
 
- Convolutions of Random
+####  Convolutions of Random
 Variables A convolution of $$n$$ random variables is simply their sum. For
 the following results, let $$X$$ and $$Y$$ be *independent*.
 
@@ -1285,8 +1271,7 @@ the following results, let $$X$$ and $$Y$$ be *independent*.
     $$Y \sim \mathcal{N}(\mu_2, \sigma_2^2)$$
     $$\longrightarrow  X + Y \sim \mathcal{N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$$
 
- Special Cases of
-Distributions
+####  Special Cases of Distributions
 
 1.  $$\textrm{Bin}(1, p) \sim \textrm{Bern}(p)$$
 
@@ -1298,7 +1283,7 @@ Distributions
 
 5.  $$\textrm{NBin}(1, p) \sim \textrm{Geom}(p)$$
 
- Inequalities
+####  Inequalities
 
 1.  **Cauchy-Schwarz** $$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
 
@@ -1312,17 +1297,15 @@ Distributions
 
 ###  Formulas
 
-------------------------------------------------------------------------
-
-height 2pt  Geometric Series
+#### Geometric Series
 $$1 + r + r^2 + \dots + r^{n-1} = \sum_{k=0}^{n-1} r^k = \frac{1 - r^n}{1 -r}$$
 $$1 + r + r^2 + \dots = \frac{1}{1-r} \textnormal{ if $$|r|<1$$}$$
 
- Exponential Function ($$e^x$$)
+#### Exponential Function ($$e^x$$)
 $$e^x = \sum_{n=0}^\infty \frac{x^n}{n!}= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n} \right)^n$$
 
- Gamma and Beta Integrals You
-can sometimes solve complicated-looking integrals by pattern-matching to
+#### Gamma and Beta Integrals 
+You can sometimes solve complicated-looking integrals by pattern-matching to
 a gamma or beta integral:
 $$\int_0^\infty x^{t-1}e^{-x}\, dx = \Gamma(t) \hspace{1 cm} \int_0^1 x^{a - 1}(1-x)^{b-1}\, dx = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}$$
 Also, $$\Gamma(a+1) = a \Gamma(a)$$, and $$\Gamma(n) = (n - 1)!$$ if $$n$$ is
@@ -1334,31 +1317,25 @@ Factorials $$n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$$
 
 ###  Miscellaneous Definitions
 
-------------------------------------------------------------------------
-
-height 2pt
-
-Medians and Quantiles
+#### Medians and Quantiles
 
 :   Let $$X$$ have CDF $$F$$. Then $$X$$ has median $$m$$ if $$F(m) \geq 0.5$$ and
     $$P(X \geq m) \geq 0.5$$. For $$X$$ continuous, $$m$$ satisfies
     $$F(m)=1/2$$. In general, the $$a$$th quantile of $$X$$ is
     $$\min \{x: F(x)\geq a\}$$; the median is the case $$a=1/2$$.
 
-log
+#### log
 
 :   Statisticians generally use $$\log$$ to refer to natural log (i.e.,
     base $$e$$).
 
-i.i.d r.v.s
+#### i.i.d r.v.s
 
 :   Independent, identically-distributed random variables.
 
 ###  Example Problems
 
-------------------------------------------------------------------------
-
-height 2pt Contributions from Sebastian Chiu
+#### Contributions from Sebastian Chiu
 
  Calculating Probability A
 textbook has $$n$$ typos, which are randomly scattered amongst its $$n$$
@@ -1370,7 +1347,7 @@ $$\boxed{\left( 1 - \frac{1}{n} \right)^n}$$ probability that there are no
 typos on your page. For $$n$$ large, this is approximately
 $$e^{-1} = {1/e}$$.
 
- Linearity and Indicators (1)
+####  Linearity and Indicators (1)
 In a group of $$n$$ people, what is the expected number of distinct
 birthdays (month and day)? What is the expected number of birthday
 matches? **Answer:** Let $$X$$ be the number of distinct birthdays and
@@ -1382,7 +1359,7 @@ the $$i$$th pair of people have the same birthday. The probability that
 any two specific people share a birthday is $$1/365$$, so
 $$\boxed{E(Y) = \binom{n}{2} / 365}$$.
 
- Linearity and Indicators (2)
+####  Linearity and Indicators (2)
 *This problem is commonly known as the **hat-matching problem***. There
 are $$n$$ people at a party, each with hat. At the end of the party, they
 each leave with a random hat. What is the expected number of people who
@@ -1390,7 +1367,7 @@ leave with the right hat? **Answer:** Each hat has a $$1/n$$ chance of
 going to the right person. By linearity, the average number of hats that
 go to their owners is $$\boxed{n(1/n) = 1}$$.
 
- Linearity and First Success
+####  Linearity and First Success
 *This problem is commonly known as the **coupon collector problem***.
 There are $$n$$ coupon types. At each draw, you get a uniformly random
 coupon type. What is the expected number of coupons needed until you
@@ -1405,8 +1382,8 @@ $$N_j \sim \textnormal{FS}((n-j+1)/n)$$. By linearity,
 $$E(N) = E(N_1) + \dots + E(N_n) = \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} = \boxed{n\sum^n_{j=1} \frac{1}{j}}$$
 This is approximately $$n (\log(n) + 0.577)$$ by Euler's approximation.
 
- Orderings of i.i.d. random
-variables I call 2 UberX's and 3 Lyfts at the same time. If the time it
+####  Orderings of i.i.d. 
+random variables I call 2 UberX's and 3 Lyfts at the same time. If the time it
 takes for the rides to reach me are i.i.d., what is the probability that
 all the Lyfts will arrive first? **Answer:** Since the arrival times of
 the five cars are i.i.d., all $$5!$$ orderings of the arrivals are equally
@@ -1418,7 +1395,7 @@ where each of the choices are equally likely. One of these choices has
 all 3 of the Lyfts arriving first, so the probability is
 $$\boxed{1 / {5 \choose 3} = 1/10}$$.
 
- Expectation of Negative
+####  Expectation of Negative
 Hypergeometric What is the expected number of cards that you draw before
 you pick your first Ace in a shuffled deck (not counting the Ace)?
 **Answer:** Consider a non-Ace. Denote this to be card $$j$$. Let $$I_j$$ be
@@ -1430,7 +1407,7 @@ $$X = I_1 + I_2 + ... + I_{48}$$, where each indicator corresponds to one
 of the 48 non-Aces. Thus,
 $$E(X) = E(I_1) + E(I_2) + ... + E(I_{48}) = 48/5 = \boxed{9.6}.$$
 
- Minimum and Maximum of RVs
+####  Minimum and Maximum of RVs
 What is the CDF of the maximum of $$n$$ independent Unif(0,1) random
 variables? **Answer:** Note that for r.v.s $$X_1,X_2,\dots,X_n$$,
 $$P(\min(X_1, X_2, \dots, X_n) \geq a) = P(X_1 \geq a, X_2 \geq a, \dots, X_n \geq a)$$
@@ -1445,12 +1422,12 @@ P(\max(U_1, U_2, \dots, U_n) \leq a)
 &= \boxed{a^n}\end{aligned}$$ for $$0<a<1$$ (and the CDF is $$0$$ for
 $$a \leq 0$$ and $$1$$ for $$a \geq 1$$).
 
- Pattern-matching with $$e^x$$
+####  Pattern-matching with $$e^x$$
 Taylor series For $$X \sim \textrm{Pois}(\lambda)$$, find
 $$\displaystyle E\bigg{(}\frac{1}{X+1}\bigg{)}$$. **Answer:** By LOTUS,
 $$E\left(\frac{1}{X+1}\right) = \displaystyle\sum_{k=0}^\infty \frac{1}{k+1} \frac{e^{-\lambda}\lambda^k}{k!} = \frac{e^{-\lambda}}{\lambda}\sum_{k=0}^\infty \frac{\lambda^{k+1}}{(k+1)!} = \boxed{\frac{e^{-\lambda}}{\lambda}(e^\lambda-1)}$$
 
- Adam's Law and Eve's Law
+####  Adam's Law and Eve's Law
 William really likes speedsolving Rubik's Cubes. But he's pretty bad at
 it, so sometimes he fails. On any given day, William will attempt
 $$N \sim \textrm{Geom}(s)$$ Rubik's Cubes. Suppose each time, he has
@@ -1463,7 +1440,7 @@ Similarly, by Eve's Law, we have that $$\begin{aligned}
     \textrm{Var}(T) &= E(\textrm{Var}(T|N)) + \textrm{Var}(E(T|N)) =  E(Np(1-p)) + \textrm{Var}(Np)\\&= \frac{p(1-p)(1-s)}{s} +  \frac{p^2(1-s)}{s^2} = \boxed{\frac{p(1-s)(p+s(1-p))}{s^2}}
     \end{aligned}$$
 
- MGF -- Finding Moments Find
+####  MGF -- Finding Moments Find
 $$E(X^3)$$ for $$X \sim \textrm{Expo}(\lambda)$$ using the MGF of $$X$$.
 **Answer:** The MGF of an $$\textrm{Expo}(\lambda)$$ is
 $$M(t) = \frac{\lambda}{\lambda-t}$$. To get the third moment, we can take
@@ -1476,7 +1453,7 @@ The coefficient of $$\frac{t^n}{n!}$$ here is the $$n$$th moment of $$X$$, so
 we have $$E(X^n) = \frac{n!}{\lambda^n}$$ for all nonnegative integers
 $$n$$.
 
- Markov chains (1) Suppose
+####  Markov chains (1) Suppose
 $$X_n$$ is a two-state Markov chain with transition matrix
 $$Q = \bordermatrix{~ & 0 & 1 \cr
                   0 & 1-\alpha & \alpha \cr
@@ -1493,22 +1470,24 @@ show $$s_i q_{ij} = s_j q_{ji}$$ for all $$i, j$$. This is done if we can
 show $$s_0 q_{01} = s_1 q_{10}$$. And indeed,
 $$s_0  q_{01}  = \frac{\alpha\beta}{\alpha+\beta} = s_1 q_{10}$$
 
- Markov chains (2) William and
-Sebastian play a modified game of Settlers of Catan, where every turn
+####  Markov chains (2)
+William and Sebastian play a modified game of Settlers of Catan, where every turn
 they randomly move the robber (which starts on the center tile) to one
 of the adjacent hexagons.
-
-::: center
-:::
-
-1.  Is this Markov chain irreducible? Is it aperiodic? **Answer:**
-    $$\boxed{\textnormal{Yes to both.}}$$ The Markov chain is irreducible
+> #### 1. Is this Markov chain irreducible? Is it aperiodic?
+> >
+> > ## Solution
+> >
+> >$$\boxed{\textnormal{Yes to both.}}$$ The Markov chain is irreducible
     because it can get from anywhere to anywhere else. The Markov chain
     is aperiodic because the robber can return back to a square in
     $$2, 3, 4, 5, \dots$$ moves, and the GCD of those numbers is $$1$$.
-
-2.  What is the stationary distribution of this Markov chain?
-    **Answer:** Since this is a random walk on an undirected graph, the
+>{: .solution}
+{: .challenge}
+> #### 2.  What is the stationary distribution of this Markov chain?
+> >
+> > ## Solution
+> >Since this is a random walk on an undirected graph, the
     stationary distribution is proportional to the degree sequence. The
     degree for the corner pieces is 3, the degree for the edge pieces is
     4, and the degree for the center pieces is 6. To normalize this
@@ -1516,24 +1495,26 @@ of the adjacent hexagons.
     $$6(3) + 6(4) + 7(6) = 84$$. Thus the stationary probability of being
     on a corner is $$3/84 = 1/28$$, on an edge is $$4/84 =  1/21$$, and in
     the center is $$6/84 = 1/14$$.
-
-3.  What fraction of the time will the robber be in the center tile in
-    this game, in the long run? **Answer:** By the above,
+>{: .solution}
+{: .challenge}
+> #### 3.  What fraction of the time will the robber be in the center tile in
+    this game, in the long run? 
+> >
+> > ## Solution
+> >By the above,
     $$\boxed{1/14}$$.
-
-4.  What is the expected amount of moves it will take for the robber to
-    return to the center tile? **Answer:** Since this chain is
-    irreducible and aperiodic, to get the expected time to return we can
+>{: .solution}
+{: .challenge}
+> #### 4.  What is the expected amount of moves it will take for the robber to return to the center tile? 
+> >
+> > ## Solution
+> >Since this chain is irreducible and aperiodic, to get the expected time to return we can
     just invert the stationary probability. Thus on average it will take
     $$\boxed{14}$$ turns for the robber to return to the center tile.
-
+>{: .solution}
+{: .challenge}
 ###  Problem-Solving Strategies
-
-------------------------------------------------------------------------
-
-height 2pt
-
-Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
+#### Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 
 1.  **Getting started.** Start by *defining relevant events and random
     variables*. ("Let $$A$$ be the event that I pick the fair coin"; "Let
@@ -1603,11 +1584,7 @@ Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 
 ###  Biohazards
 
-------------------------------------------------------------------------
-
-height 2pt
-
-Contributions from Jessy Hwang
+#### Contributions from Jessy Hwang
 
 1.  **Don't misuse the naive definition of probability.** When answering
     "What is the probability that in a group of 3 people, no two have
@@ -1655,11 +1632,6 @@ Contributions from Jessy Hwang
 
 ###  Distributions in R
 
-------------------------------------------------------------------------
-
-height 2pt
-
-::: center
         **Command**                        **What it does**
   ----------------------- --------------------------------------------------
    `help(distributions)`         shows documentation on distributions
@@ -1679,7 +1651,6 @@ height 2pt
       `dnorm(x,m,s)`          PDF $$f(x)$$ for $$X \sim \mathcal{N}(m,s^2)$$
          `dt(x,n)`                   PDF $$f(x)$$ for $$X \sim t_n$$
       `dunif(x,a,b)`          PDF $$f(x)$$ for $$X \sim \textrm{Unif}(a,b)$$
-:::
 
 The table above gives R commands for working with various named
 distributions. Commands analogous to `pbinom`, `qbinom`, and `rbinom`
@@ -1693,10 +1664,6 @@ joint PDF and `rmvnorm` can be used for generating random vectors.
 
 ###  Recommended Resources
 
-------------------------------------------------------------------------
-
-height 2pt
-
 -   Introduction to Probability Book (<http://bit.ly/introprobability>)
 
 -   Stat 110 Online (<http://stat110.net>)
@@ -1709,15 +1676,11 @@ height 2pt
 
 -   LaTeX File (`github.com/wzchen/probability_cheatsheet`)
 
-::: center
 *Please share this cheatsheet with friends!*
 <http://wzchen.com/probability-cheatsheet>
-:::
-:::
 
 ###  Table of Distributions
 
-::: center
                 **Distribution**                     **PMF/PDF and Support**                                 **Expected Value**                                                     **Variance**                           **MGF**  
   --------------------------------------------- ---------------------------------- ----------------------------------------------------------------------- -------------------------------------------------------------- --------- --
                                                                                                                                                                                                                                     
@@ -1762,4 +1725,4 @@ height 2pt
                                                                                                                                                                                                                                     
                       $$t_n$$                                                                                                                                                                                                         
             $$x \in (-\infty, \infty)$$                      $$0$$ if $$n>1$$                                   $$\frac{n}{n-2}$$ if $$n>2$$                                                 doesn't exist                                    
-:::
+
