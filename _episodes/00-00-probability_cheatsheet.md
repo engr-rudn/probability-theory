@@ -17,6 +17,8 @@ Probability textbook (<http://bit.ly/introprobability>). Licensed under
 <http://github.com/wzchen/probability_cheatsheet>.
 
 ![image](../figure/icecream.png)
+![image](../figure/icecream.png)
+![image](../figure/attitude_freq_plot-1.png)
 
 Let's say we have a compound experiment (an experiment with multiple
 components). If the 1st component has $$n_1$$ possible outcomes, the 2nd
