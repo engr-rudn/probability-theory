@@ -42,7 +42,7 @@ sample is collected.
 ### Naive Definition of Probability 
 If all outcomes are equally likely, the probability of an
 event $$A$$ happening is:
-$$P_{\textrm{naive}}(A) = \frac{\textnormal{number of outcomes favorable to $$A$$}}{\textnormal{number of outcomes}}$$
+$$P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $$A$$}}{\text{number of outcomes}}$$
 
 ###  Thinking Conditionally
 
@@ -115,8 +115,8 @@ $$\begin{aligned}
 ![image](../figure/SimpsonsParadox.png)
 
 It is possible to have
-$$P(A\mid B,C) < P(A\mid B^c, C) \textnormal{ and } P(A\mid B, C^c) < P(A \mid B^c, C^c)$$
-$$\textnormal{yet also } P(A\mid B) > P(A \mid B^c).$$
+$$P(A\mid B,C) < P(A\mid B^c, C) \text{ and } P(A\mid B, C^c) < P(A \mid B^c, C^c)$$
+$$\text{yet also } P(A\mid B) > P(A \mid B^c).$$
 
 ####  Law of Total Probability
 (LOTP) Let $${ B}_1, { B}_2, { B}_3, ... { B}_n$$ be a *partition* of the
@@ -285,14 +285,14 @@ $$\textrm{SD}(X) = \sqrt{\textrm{Var}(X)}$$
 #### Expected value of a function of an r.v.
 
 :   The expected value of $$X$$ is defined this way:
-    $$E(X) = \sum_x xP(X=x) \textnormal{ (for discrete $$X$$)}$$
-    $$E(X) = \int^\infty_{-\infty}xf(x)dx  \textnormal{ (for continuous $$X$$)}$$
+    $$E(X) = \sum_x xP(X=x) \text{ (for discrete $$X$$)}$$
+    $$E(X) = \int^\infty_{-\infty}xf(x)dx  \text{ (for continuous $$X$$)}$$
     The **Law of the Unconscious Statistician (LOTUS)** states that you
     can find the expected value of a *function of a random variable*,
     $$g(X)$$, in a similar way, by replacing the $$x$$ in front of the
     PMF/PDF by $$g(x)$$ but still working with the PMF/PDF of $$X$$:
-    $$E(g(X)) = \sum_x g(x)P(X=x) \textnormal{ (for discrete $$X$$)}$$
-    $$E(g(X)) = \int^\infty_{-\infty}g(x)f(x)dx \textnormal{ (for continuous $$X$$)}$$
+    $$E(g(X)) = \sum_x g(x)P(X=x) \text{ (for discrete $$X$$)}$$
+    $$E(g(X)) = \int^\infty_{-\infty}g(x)f(x)dx \text{ (for continuous $$X$$)}$$
 
 #### What's a function of a random variable?
 
@@ -1060,7 +1060,7 @@ following:
 ####  First Success Distribution
 Equivalent to the Geometric distribution, except that it includes the
 first success in the count. This is 1 more than the number of failures.
-If $$X \sim \textnormal{FS}(p)$$ then $$E(X) = 1/p$$.
+If $$X \sim \text{FS}(p)$$ then $$E(X) = 1/p$$.
 
 ####  Negative Binomial
 Distribution Let us say that $$X$$ is distributed $$\textrm{NBin}(r, p)$$.
@@ -1155,7 +1155,7 @@ following:
 
 #### Multinomial Distribution
 Let us say that the vector
-$$\vec{X} = (X_1, X_2, X_3, \dots, X_k) \sim \textnormal{Mult}_k(n, \vec{p})$$
+$$\vec{X} = (X_1, X_2, X_3, \dots, X_k) \sim \text{Mult}_k(n, \vec{p})$$
 where $$\vec{p} = (p_1, p_2, \dots, p_k)$$.
 
 #### Story
@@ -1201,7 +1201,7 @@ where $$\vec{p} = (p_1, p_2, \dots, p_k)$$.
 Distribution See the univariate Uniform for stories and examples. For
 the 2D Uniform on some region, probability is proportional to area.
 Every point in the support has equal density, of value
-$$\frac{1}{\textnormal{area of region}}$$. For the 3D Uniform, probability
+$$\frac{1}{\text{area of region}}$$. For the 3D Uniform, probability
 is proportional to volume.
 
 ####  Multivariate Normal (MVN)
@@ -1299,7 +1299,7 @@ the following results, let $$X$$ and $$Y$$ be *independent*.
 
 #### Geometric Series
 $$1 + r + r^2 + \dots + r^{n-1} = \sum_{k=0}^{n-1} r^k = \frac{1 - r^n}{1 -r}$$
-$$1 + r + r^2 + \dots = \frac{1}{1-r} \textnormal{ if $$|r|<1$$}$$
+$$1 + r + r^2 + \dots = \frac{1}{1-r} \text{ if $$|r|<1$$}$$
 
 #### Exponential Function ($$e^x$$)
 $$e^x = \sum_{n=0}^\infty \frac{x^n}{n!}= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n} \right)^n$$
@@ -1352,7 +1352,7 @@ In a group of $$n$$ people, what is the expected number of distinct
 birthdays (month and day)? What is the expected number of birthday
 matches? **Answer:** Let $$X$$ be the number of distinct birthdays and
 $$I_j$$ be the indicator for the $$j$$th day being represented.
-$$E(I_j) = 1-P(\textnormal{no one born on day }j) = 1 - \left(364/365\right)^n$$
+$$E(I_j) = 1-P(\text{no one born on day }j) = 1 - \left(364/365\right)^n$$
 By linearity, $$\boxed{E(X) = 365\left(1-(364/365\right)^n)}$$. Now let
 $$Y$$ be the number of birthday matches and $$J_i$$ be the indicator that
 the $$i$$th pair of people have the same birthday. The probability that
@@ -1375,10 +1375,10 @@ have a complete set? **Answer:** Let $$N$$ be the number of coupons
 needed; we want $$E(N)$$. Let $$N = N_1 + \dots + N_n$$, where $$N_1$$ is the
 draws to get our first new coupon, $$N_2$$ is the *additional* draws
 needed to draw our second new coupon and so on. By the story of the
-First Success, $$N_2 \sim \textnormal{FS}((n-1)/n)$$ (after collecting
+First Success, $$N_2 \sim \text{FS}((n-1)/n)$$ (after collecting
 first coupon type, there's $$(n-1)/n$$ chance you'll get something new).
-Similarly, $$N_3 \sim \textnormal{FS}((n-2)/n)$$, and
-$$N_j \sim \textnormal{FS}((n-j+1)/n)$$. By linearity,
+Similarly, $$N_3 \sim \text{FS}((n-2)/n)$$, and
+$$N_j \sim \text{FS}((n-j+1)/n)$$. By linearity,
 $$E(N) = E(N_1) + \dots + E(N_n) = \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} = \boxed{n\sum^n_{j=1} \frac{1}{j}}$$
 This is approximately $$n (\log(n) + 0.577)$$ by Euler's approximation.
 
@@ -1462,7 +1462,7 @@ distribution $$\vec{s} = (s_0, s_1)$$ of $$X_n$$ by solving
 $$\vec{s} Q = \vec{s}$$, and show that the chain is reversible with
 respect to $$\vec{s}$$. **Answer:** The equation $$\vec{s}Q = \vec{s}$$ says
 that
-$$s_0 = s_0(1-\alpha) + s_1 \beta \textnormal{ and } s_1 = s_0(\alpha) + s_0(1-\beta)$$
+$$s_0 = s_0(1-\alpha) + s_1 \beta \text{ and } s_1 = s_0(\alpha) + s_0(1-\beta)$$
 By solving this system of linear equations, we have
 $$\boxed{\vec{s} = \displaystyle\bigg{(}\frac{\beta}{\alpha+\beta}, \frac{\alpha}{\alpha+\beta}\bigg{)}}$$
 To show that the chain is reversible with respect to $$\vec{s}$$, we must
