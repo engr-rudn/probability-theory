@@ -81,43 +81,43 @@ $$\begin{align*}
 ![Simpson's Paradox](../figure/SimpsonsParadox.png)
 
 It is possible to have
-\[P(A\mid B,C) < P(A\mid B^c, C) \text{ and } P(A\mid B, C^c) < P(A \mid B^c, C^c)\]
-\[ \text{yet also } P(A\mid B) > P(A \mid B^c).\]
+$$P(A\mid B,C) < P(A\mid B^c, C) \text{ and } P(A\mid B, C^c) < P(A \mid B^c, C^c)$$
+$$\text{yet also } P(A\mid B) > P(A \mid B^c).$$
 
 ### Law of Total Probability (LOTP)
 
 Let $${ B}_1, { B}_2, { B}_3, ... { B}_n$$ be a *partition* of the sample space (i.e., they are disjoint and their union is the entire sample space).
 
-\begin{align*} 
+$$\begin{align*} 
     P({ A}) &= P({ A} | { B}_1)P({ B}_1) + P({ A} | { B}_2)P({ B}_2) + \dots + P({ A} | { B}_n)P({ B}_n)\\
     P({ A}) &= P({ A} \cap { B}_1)+ P({ A} \cap { B}_2)+ \dots + P({ A} \cap { B}_n)
-\end{align*} 
+\end{align*}$$ 
 
 For **LOTP with extra conditioning**, just add in another event $$C$$!
 
-\begin{align*} 
+$$\begin{align*} 
     P({ A}| { C}) &= P({ A} | { B}_1, { C})P({ B}_1 | { C}) + \dots +  P({ A} | { B}_n, { C})P({ B}_n | { C})\\
     P({ A}| { C}) &= P({ A} \cap { B}_1 | { C})+ P({ A} \cap { B}_2 | { C})+ \dots +  P({ A} \cap { B}_n | { C})
-\end{align*} 
+\end{align*}$$ 
 
 Special case of LOTP with $${ B}$$ and $${ B^c}$$ as partition:
 
-\begin{align*} 
+$$\begin{align*} 
 P({ A}) &= P({ A} | { B})P({ B}) + P({ A} | { B^c})P({ B^c}) \\
 P({ A}) &= P({ A} \cap { B})+ P({ A} \cap { B^c})
-\end{align*} 
+\end{align*}$$ 
 
 ### Bayes' Rule**Bayes' Rule, and with extra conditioning (just add in $$C$$!)**
 
-\[P({ A}|{ B})  = \frac{P({ B}|{ A})P({ A})}{P({ B})}\]
+$$P({ A}|{ B})  = \frac{P({ B}|{ A})P({ A})}{P({ B})}$$
 
-\[P({ A}|{ B}, { C}) = \frac{P({ B}|{ A}, { C})P({ A} | { C})}{P({ B} | { C})}\]
+$$P({ A}|{ B}, { C}) = \frac{P({ B}|{ A}, { C})P({ A} | { C})}{P({ B} | { C})}$$
 
 We can also write
 
-\[P(A|B,C) = \frac{P(A,B,C)}{P(B,C)} = \frac{P(B,C|A)P(A)}{P(B,C)}\]
+$$P(A|B,C) = \frac{P(A,B,C)}{P(B,C)} = \frac{P(B,C|A)P(A)}{P(B,C)}$$
 
-**Odds Form of Bayes' Rule**\[\frac{P({ A}| { B})}{P({ A^c}| { B})} = \frac{P({ B}|{ A})}{P({ B}| { A^c})}\frac{P({ A})}{P({ A^c})}\]
+**Odds Form of Bayes' Rule**$$\frac{P({ A}| { B})}{P({ A^c}| { B})} = \frac{P({ B}|{ A})}{P({ B}| { A^c})}\frac{P({ A})}{P({ A^c})}$$
 
 The *posterior odds* of $$A$$ are the *likelihood ratio* times the *prior odds*.
 
@@ -129,23 +129,23 @@ The *posterior odds* of $$A$$ are the *likelihood ratio* times the *prior odds*.
 **Probability Mass Function (PMF)**  
 Gives the probability that a *discrete* random variable takes on the value *x*.
 
-\[ p_X(x) = P(X=x) \]
+$$ p_X(x) = P(X=x) $$
 
 The PMF satisfies:  
-\[p_X(x) \geq 0 \quad \textrm{and} \quad \sum_x p_X(x) = 1\]
+$$p_X(x) \geq 0 \quad \textrm{and} \quad \sum_x p_X(x) = 1$$
 
 **Cumulative Distribution Function (CDF)**  
 Gives the probability that a random variable is less than or equal to *x*.
 
-\[F_X(x) = P(X \leq x)\]
+$$F_X(x) = P(X \leq x)$$
 
 The CDF is an increasing, right-continuous function with:  
-\[F_X(x) \to 0 \quad \textrm{as} \quad x \to -\infty \quad \textrm{and} \quad F_X(x) \to 1 \quad \textrm{as} \quad x \to \infty\]
+$$F_X(x) \to 0 \quad \textrm{as} \quad x \to -\infty \quad \textrm{and} \quad F_X(x) \to 1 \quad \textrm{as} \quad x \to \infty$$
 
 **Independence**  
 Intuitively, two random variables are independent if knowing the value of one gives no information about the other. Discrete random variables *X* and *Y* are independent if for all values of *x* and *y*:
 
-\[P(X=x, Y=y) = P(X = x)P(Y = y)\]
+$$P(X=x, Y=y) = P(X = x)P(Y = y)$$
 
 ## Expected Value and Indicators
 ---
@@ -155,34 +155,34 @@ Intuitively, two random variables are independent if knowing the value of one gi
 **Expected Value**  
 (a.k.a. *mean*, *expectation*, or *average*) is a weighted average of the possible outcomes of our random variable. Mathematically, if *x<sub>1</sub>*, *x<sub>2</sub>*, *x<sub>3</sub>*, ... are all of the distinct possible values that *X* can take, the expected value of *X* is:
 
-\[E(X) = \sum\limits_{i}x_iP(X=x_i)\]
+$$E(X) = \sum\limits_{i}x_iP(X=x_i)$$
 
 **Linearity**  
 For any random variables *X* and *Y*, and constants *a*, *b*, *c*:
 
-\[E(aX + bY + c) = aE(X) + bE(Y) + c\]
+$$E(aX + bY + c) = aE(X) + bE(Y) + c$$
 
 **Same distribution implies same mean**  
 If *X* and *Y* have the same distribution, then *E(X) = E(Y)* and, more generally:
 
-\[E(g(X)) = E(g(Y))\]
+$$E(g(X)) = E(g(Y))$$
 
 **Conditional Expected Value**  
 Conditional expected value is defined like expectation, only conditioned on any event *A*:
 
-\[E(X | A) = \sum\limits_{x}xP(X=x | A)\]
+$$E(X | A) = \sum\limits_{x}xP(X=x | A)$$
 
 ### Indicator Random Variables
 
 **Indicator Random Variable**  
 An indicator random variable is a random variable that takes on the value 1 or 0. It is always an indicator of some event: if the event occurs, the indicator is 1; otherwise, it is 0. They are useful for many problems about counting how many events of some kind occur. Write:
 
-\[I_A =
+$$I_A =
  \begin{cases}
    1 & \text{if $$A$$ occurs,} \\
    0 & \text{if $$A$$ does not occur.}
   \end{cases}
-\]
+$$
 
 Note that:  
 - \(I_A^2 = I_A\)
@@ -197,9 +197,9 @@ The expectation of the indicator for event *A* is the probability of event *A*: 
 
 ### Variance and Standard Deviation
 
-\[\var(X) = E \left(X - E(X)\right)^2 = E(X^2) - (E(X))^2\]
+$$\var(X) = E \left(X - E(X)\right)^2 = E(X^2) - (E(X))^2$$
 
-\[\textrm{SD}(X) = \sqrt{\var(X)}\]
+$$\textrm{SD}(X) = \sqrt{\var(X)}$$
 
 # Continuous RVs, LOTUS, UoU
 ---
@@ -218,31 +218,31 @@ No. The probability that a continuous random variable takes on any specific valu
 
 Take the difference in CDF values (or use the PDF as described later).
 
-\[P(a \leq X \leq b) = P(X \leq b) - P(X \leq a) = F_X(b) - F_X(a)\]
+$$P(a \leq X \leq b) = P(X \leq b) - P(X \leq a) = F_X(b) - F_X(a)$$
 
 For X ~ N(μ, σ^2), this becomes
 
-\[P(a \leq X \leq b) = \Phi\left(\frac{b-\mu}{\sigma}\right) - \Phi\left(\frac{a-\mu}{\sigma}\right)\]
+$$P(a \leq X \leq b) = \Phi\left(\frac{b-\mu}{\sigma}\right) - \Phi\left(\frac{a-\mu}{\sigma}\right)$$
 
 ### What is the Probability Density Function (PDF)?
 
 The PDF f is the derivative of the CDF F.
 
-\[F'(x) = f(x)\]
+$$F'(x) = f(x)$$
 
 A PDF is nonnegative and integrates to 1. By the fundamental theorem of calculus, to get from PDF back to CDF we can integrate:
 
-\[F(x) = \int_{-\infty}^x f(t)dt\]
+$$F(x) = \int_{-\infty}^x f(t)dt$$
 
 To find the probability that a CRV takes on a value in an interval, integrate the PDF over that interval.
 
-\[F(b) - F(a) = \int_a^b f(x)dx\]
+$$F(b) - F(a) = \int_a^b f(x)dx$$
 
 ### How do I find the expected value of a CRV?
 
 Analogous to the discrete case, where you sum x times the PMF, for CRVs you integrate x times the PDF.
 
-\[E(X) = \int_{-\infty}^\infty xf(x)dx\]
+$$E(X) = \int_{-\infty}^\infty xf(x)dx$$
 
 ## LOTUS
 
@@ -250,13 +250,13 @@ Analogous to the discrete case, where you sum x times the PMF, for CRVs you inte
 
 The expected value of X is defined this way:
 
-\[E(X) = \sum_x xP(X=x) \text{ (for discrete X)}\]
-\[E(X) = \int_{-\infty}^\infty xf(x)dx \text{ (for continuous X)}\]
+$$E(X) = \sum_x xP(X=x) \text{ (for discrete X)}$$
+$$E(X) = \int_{-\infty}^\infty xf(x)dx \text{ (for continuous X)}$$
 
 The Law of the Unconscious Statistician (LOTUS) states that you can find the expected value of a function of a random variable, g(X), in a similar way, by replacing the x in front of the PMF/PDF by g(x) but still working with the PMF/PDF of X:
 
-\[E(g(X)) = \sum_x g(x)P(X=x) \text{ (for discrete X)}\]
-\[E(g(X)) = \int_{-\infty}^\infty g(x)f(x)dx \text{ (for continuous X)}\]
+$$E(g(X)) = \sum_x g(x)P(X=x) \text{ (for discrete X)}$$
+$$E(g(X)) = \int_{-\infty}^\infty g(x)f(x)dx \text{ (for continuous X)}$$
 
 ### What's a function of a random variable?
 
@@ -270,11 +270,11 @@ You don't need to know the PMF/PDF of g(X) to find its expected value. All you n
 
 When you plug any CRV into its own CDF, you get a Uniform(0,1) random variable. When you plug a Uniform(0,1) r.v. into an inverse CDF, you get an r.v. with that CDF. For example, let's say that a random variable X has CDF
 
-\[F(x) = 1 - e^{-x}, \textrm{ for } x>0\]
+$$F(x) = 1 - e^{-x}, \textrm{ for } x>0$$
 
 By UoU, if we plug X into this function then we get a uniformly distributed random variable.
 
-\[F(X) = 1 - e^{-X} \sim \textrm{Unif}(0,1)\]
+$$F(X) = 1 - e^{-X} \sim \textrm{Unif}(0,1)$$
 
 Similarly, if U ~ Unif(0,1) then F^{-1}(U) has CDF F. The key point is that for any continuous random variable X, we can transform it into a Uniform random variable and back by using its CDF.
 
@@ -426,7 +426,7 @@ Consider a Poisson process of emails arriving in an inbox at rate $$\lambda$$ em
 
 Let's find the distribution of $$T_1$$. The event $$T_1 > t$$, the event that you have to wait more than $$t$$ hours to get the first email, is the same as the event $$N_t = 0$$, which is the event that there are no emails in the first $$t$$ hours. So,
 
-\[P(T_1 > t) = P(N_t = 0) = e^{-\lambda t}\]
+$$P(T_1 > t) = P(N_t = 0) = e^{-\lambda t}$$
 
 Therefore, $$P(T_1 \leq t) = 1 - e^{-\lambda t}$$, and $$T_1$$ follows an exponential distribution with parameter $$\lambda$$.
 
@@ -442,8 +442,8 @@ Note that the order statistics are *dependent*, e.g., learning $$X_{(4)} = 42$$ 
 
 ### Distribution
 Taking $$n$$ i.i.d. random variables $$X_1, X_2, \dots, X_n$$ with CDF $$F(x)$$ and PDF $$f(x)$$, the CDF and PDF of $$X_{(i)}$$ are:
-\[F_{X_{(i)}}(x) = P (X_{(i)} \leq x) = \sum_{k=i}^n {n \choose k} F(x)^k(1 - F(x))^{n - k}\]
-\[f_{X_{(i)}}(x) = n{n - 1 \choose i - 1}F(x)^{i-1}(1 - F(x))^{n-i}f(x)\]
+$$F_{X_{(i)}}(x) = P (X_{(i)} \leq x) = \sum_{k=i}^n {n \choose k} F(x)^k(1 - F(x))^{n - k}$$
+$$f_{X_{(i)}}(x) = n{n - 1 \choose i - 1}F(x)^{i-1}(1 - F(x))^{n-i}f(x)$$
 
 ### Uniform Order Statistics
 The $$j$$th order statistic of i.i.d. $$U_1,\dots,U_n \sim \text{Unif}(0,1)$$ is $$U_{(j)} \sim \text{Beta}(j, n - j + 1)$$.
@@ -475,13 +475,13 @@ For example:
 
 ### Adam's Law (a.k.a. Law of Total Expectation)
 For any events $$A_1, A_2, \dots, A_n$$ that partition the sample space:
-\[E(Y) = E(Y|A_1)P(A_1) + \dots + E(Y|A_n)P(A_n)\]
+$$E(Y) = E(Y|A_1)P(A_1) + \dots + E(Y|A_n)P(A_n)$$
 
 For the special case where the partition is $$A, A^c$$, this says:
-\[E(Y) = E(Y|A)P(A) + E(Y|A^c)P(A^c)\]
+$$E(Y) = E(Y|A)P(A) + E(Y|A^c)P(A^c)$$
 
 ### Eve's Law (a.k.a. Law of Total Variance)
-\[\text{Var}(Y) = E(\text{Var}(Y|X)) + \text{Var}(E(Y|X))\]
+$$\text{Var}(Y) = E(\text{Var}(Y|X)) + \text{Var}(E(Y|X))$$
 
 # MVN, LLN, CLT
 ---
@@ -492,23 +492,23 @@ Let $$X_1, X_2, X_3, \dots$$ be i.i.d. with mean $$\mu$$. The sample mean is $$\
 ## Central Limit Theorem (CLT)
 ### Approximation using CLT
 We use $$\dot{\,\sim\,}$$ to denote "is approximately distributed." We can use the Central Limit Theorem to approximate the distribution of a random variable $$Y = X_1 + X_2 + \dots + X_n$$ that is a sum of $$n$$ i.i.d. random variables $$X_i$$. Let $$E(Y) = \mu_Y$$ and $$\text{Var}(Y) = \sigma^2_Y$$. The CLT says:
-\[Y \dot{\,\sim\,} \mathcal{N}(\mu_Y, \sigma^2_Y)\]
+$$Y \dot{\,\sim\,} \mathcal{N}(\mu_Y, \sigma^2_Y)$$
 
 If the $$X_i$$ are i.i.d. with mean $$\mu_X$$ and variance $$\sigma^2_X$$, then $$\mu_Y = n \mu_X$$ and $$\sigma^2_Y = n \sigma^2_X$$. For the sample mean $$\bar{X}_n$$, the CLT says:
-\[\bar{X}_n = \frac{1}{n}(X_1 + X_2 + \dots + X_n) \dot{\,\sim\,} \mathcal{N}(\mu_X, \frac{\sigma^2_X}{n})\]
+$$\bar{X}_n = \frac{1}{n}(X_1 + X_2 + \dots + X_n) \dot{\,\sim\,} \mathcal{N}(\mu_X, \frac{\sigma^2_X}{n})$$
 
 ### Asymptotic Distributions using CLT
 We use $$\xrightarrow{D}$$ to denote "converges in distribution to" as $$n \to \infty$$. The CLT says that if we standardize the sum $$X_1 + \dots + X_n$$, then the distribution of the sum converges to $$\mathcal{N}(0,1)$$ as $$n \to \infty$$:
-\[\frac{1}{\sigma\sqrt{n}}(X_1 + \dots + X_n - n\mu_X) \xrightarrow{D} \mathcal{N}(0, 1)\]
+$$\frac{1}{\sigma\sqrt{n}}(X_1 + \dots + X_n - n\mu_X) \xrightarrow{D} \mathcal{N}(0, 1)$$
 In other words, the CDF of the left-hand side goes to the standard Normal CDF, $$\Phi$$. In terms of the sample mean, the CLT says:
-\[\frac{\sqrt{n}(\bar{X}_n - \mu_X)}{\sigma_X} \xrightarrow{D} \mathcal{N}(0, 1)\]
+$$\frac{\sqrt{n}(\bar{X}_n - \mu_X)}{\sigma_X} \xrightarrow{D} \mathcal{N}(0, 1)$$
 
 # Markov Chains
 ---
 
 ## Definition
 A Markov chain is a random walk in a state space, which we will assume is finite, say $$\{1, 2, \dots, M\}$$. We let $$X_t$$ denote which element of the state space the walk is visiting at time $$t$$. The Markov chain is the sequence of random variables tracking where the walk is at all points in time, $$X_0, X_1, X_2, \dots$$. By definition, a Markov chain must satisfy the Markov property, which says that if you want to predict where the chain will be at a future time, if we know the present state then the entire past history is irrelevant. Given the present, the past and future are conditionally independent. In symbols:
-\[P(X_{n+1} = j | X_0 = i_0, X_1 = i_1, \dots, X_n = i) = P(X_{n+1} = j | X_n = i)\]
+$$P(X_{n+1} = j | X_0 = i_0, X_1 = i_1, \dots, X_n = i) = P(X_{n+1} = j | X_n = i)$$
 
 ## State Properties
 A state is either recurrent or transient.
@@ -522,11 +522,11 @@ A state is either periodic or aperiodic.
 ## Transition Matrix
 Let the state space be $$\{1,2,\dots,M\}$$. The transition matrix $$Q$$ is the $$M \times M$$ matrix where element $$q_{ij}$$ is the probability that the chain goes from state $$i$$ to state $$j$$ in one step:
 
-\[q_{ij} = P(X_{n+1} = j | X_n = i)\]
+$$q_{ij} = P(X_{n+1} = j | X_n = i)$$
 
 To find the probability that the chain goes from state $$i$$ to state $$j$$ in exactly $$m$$ steps, take the $$(i, j)$$ element of $$Q^m$$:
 
-\[q^{(m)}_{ij} = P(X_{n+m} = j | X_n = i)\]
+$$q^{(m)}_{ij} = P(X_{n+m} = j | X_n = i)$$
 
 If $$X_0$$ is distributed according to the row vector PMF $$\vec{p}$$, i.e., $$p_j = P(X_0 = j)$$, then the PMF of $$X_n$$ is $$\vec{p}Q^n$$.
 
@@ -563,16 +563,16 @@ For the Uniform distribution:
 
 - Unif(0, 1):
   - PDF:
-    \[
+    $$
     f(x) = \left\{
     \begin{array}{lr}
     1 & x \in [0, 1] \\
     0 & x \notin [0, 1]
     \end{array}
     \right.
-    \]
+    $$
   - CDF:
-    \[
+    $$
     F(x) = \left\{
     \begin{array}{lr}
     0 & x < 0 \\
@@ -580,20 +580,20 @@ For the Uniform distribution:
     1 & x > 1
     \end{array}
     \right.
-    \]
+    $$
 
 - Unif(a, b):
   - PDF:
-    \[
+    $$
     f(x) = \left\{
     \begin{array}{lr}
     \frac{1}{b-a} & x \in [a, b] \\
     0 & x \notin [a, b]
     \end{array}
     \right.
-    \]
+    $$
   - CDF:
-    \[
+    $$
     F(x) = \left\{
     \begin{array}{lr}
     0 & x < a \\
@@ -601,7 +601,7 @@ For the Uniform distribution:
     1 & x > b
     \end{array}
     \right.
-    \]
+    $$
 ### Normal Distribution
 
 Let us say that X is distributed N(μ, σ^2). We know the following:
@@ -732,7 +732,7 @@ If each Pokéball we throw has a 1/10 probability of catching Mew, then the numb
 
 The PMF of a Poisson distribution is given by:
 
-\[P(X = k) = \frac{e^{-\lambda}\lambda^k}{k!}\]
+$$P(X = k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
 
 where X is the random variable following a Poisson distribution, and λ is the average rate of events occurring per unit space or time.
 
@@ -743,7 +743,7 @@ Let us say that the vector $$\vec{X} = (X_1, X_2, X_3, \dots, X_k) \sim \text{Mu
 - **Story:** We have $$n$$ items, which can fall into any one of the $$k$$ buckets independently with the probabilities $$\vec{p} = (p_1, p_2, \dots, p_k)$$.
 - **Example:** Let us assume that every year, 100 students in the Harry Potter Universe are randomly and independently sorted into one of four houses with equal probability. The number of people in each of the houses is distributed $$\text{Mult}_4(100, \vec{p})$$, where $$\vec{p} = (0.25, 0.25, 0.25, 0.25)$$. Note that $$X_1 + X_2 + \dots + X_4 = 100$$, and they are dependent.
 - **Joint PMF:** For $$n = n_1 + n_2 + \dots + n_k$$, the joint probability mass function is:
-\[P(\vec{X} = \vec{n}) = \frac{n!}{n_1!n_2!\dots n_k!}p_1^{n_1}p_2^{n_2}\dots p_k^{n_k}\]
+$$P(\vec{X} = \vec{n}) = \frac{n!}{n_1!n_2!\dots n_k!}p_1^{n_1}p_2^{n_2}\dots p_k^{n_k}$$
 - **Marginal PMF, Lumping, and Conditionals:** Marginally, $$X_i \sim \text{Bin}(n,p_i)$$ since we can define "success" to mean category $$i$$. If you lump together multiple categories in a Multinomial, then it is still Multinomial. Conditioning on some $$X_j$$ also gives a Multinomial.
 - **Variances and Covariances:** We have $$X_i \sim \text{Bin}(n, p_i)$$ marginally, so $$\text{Var}(X_i) = np_i(1-p_i)$$. Also, $$\text{Cov}(X_i, X_j) = -np_ip_j$$ for $$i \neq j.
 
@@ -757,7 +757,7 @@ A vector $$\vec{X} = (X_1, X_2, \dots, X_k)$$ is Multivariate Normal if every li
   - Any subvector is also MVN.
   - If any two elements within an MVN are uncorrelated, then they are independent.
   - The joint PDF of a Bivariate Normal $$(X,Y)$$ with $$\mathcal{N}(0,1)$$ marginal distributions and correlation $$\rho \in (-1,1)$$ is:
-    \[f_{X,Y}(x,y) = \frac{1}{2 \pi \tau} \exp\left(-\frac{1}{2 \tau^2} (x^2+y^2-2 \rho xy)\right),\]
+    $$f_{X,Y}(x,y) = \frac{1}{2 \pi \tau} \exp\left(-\frac{1}{2 \tau^2} (x^2+y^2-2 \rho xy)\right),$$
     with $$\tau = \sqrt{1-\rho^2}$$.
 
 # Distribution Properties
@@ -873,7 +873,7 @@ A textbook has $$n$$ typos, which are randomly scattered amongst its $$n$$ pages
 In a group of $$n$$ people, what is the expected number of distinct birthdays (month and day)? What is the expected number of birthday matches?
 **Answer:** Let $$X$$ be the number of distinct birthdays and $$I_j$$ be the indicator for the $$j$$th day being represented.
 
-\[E(I_j) = 1 - P(\text{no one born on day }j) = 1 - \left(\frac{364}{365}\right)^n\]
+$$E(I_j) = 1 - P(\text{no one born on day }j) = 1 - \left(\frac{364}{365}\right)^n$$
 
 By linearity, $$\boxed{E(X) = 365\left(1-\frac{364}{365}\right)^n}$$. 
 
@@ -888,7 +888,7 @@ Now let $$Y$$ be the number of birthday matches and $$J_i$$ be the indicator tha
 There are $$n$$ coupon types. At each draw, you get a uniformly random coupon type. What is the expected number of coupons needed until you have a complete set?
 **Answer:** Let $$N$$ be the number of coupons needed; we want $$E(N)$$. Let $$N = N_1 + \dots + N_n$$, where $$N_1$$ is the draws to get our first new coupon, $$N_2$$ is the *additional* draws needed to draw our second new coupon, and so on. By the story of the First Success, $$N_2 \sim \text{FS}\left(\frac{n-1}{n}\right)$$ (after collecting the first coupon type, there's $$\frac{n-1}{n}$$ chance you'll get something new). Similarly, $$N_3 \sim \text{FS}\left(\frac{n-2}{n}\right)$$, and $$N_j \sim \text{FS}\left(\frac{n-j+1}{n}\right)$$. By linearity,
 
-\[E(N) = E(N_1) + \dots + E(N_n) = \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} = \boxed{n\sum^n_{j=1} \frac{1}{j}}\]
+$$E(N) = E(N_1) + \dots + E(N_n) = \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} = \boxed{n\sum^n_{j=1} \frac{1}{j}}$$
 
 This is approximately $$n (\log(n) + 0.577)$$ by Euler's approximation.
 
@@ -900,23 +900,23 @@ I call 2 UberX's and 3 Lyfts at the same time. If the time it takes for the ride
 What is the expected number of cards that you draw before you pick your first Ace in a shuffled deck (not counting the Ace)?
 **Answer:** Consider a non-Ace. Denote this to be card $$j$$. Let $$I_j$$ be the indicator that card $$j$$ will be drawn before the first Ace. Note that $$I_j=1$$ says that $$j$$ is before all 4 of the Aces in the deck. The probability that this occurs is $$\frac{1}{5}$$ by symmetry. Let $$X$$ be the number of cards drawn before the first Ace. Then $$X = I_1 + I_2 + \ldots + I_{48}$$, where each indicator corresponds to one of the 48 non-Aces. Thus,
 
-\[E(X) = E(I_1) + E(I_2) + \ldots + E(I_{48}) = \frac{48}{5} = \boxed{9.6}\].
+$$E(X) = E(I_1) + E(I_2) + \ldots + E(I_{48}) = \frac{48}{5} = \boxed{9.6}$$.
 
 ## Minimum and Maximum of RVs
 What is the CDF of the maximum of $$n$$ independent Unif(0,1) random variables?
 **Answer:** Note that for r.v.s $$X_1,X_2,\dots,X_n$$,
 
-\[ P(\min(X_1, X_2, \dots, X_n) \geq a) = P(X_1 \geq a, X_2 \geq a, \dots, X_n \geq a) \]
+$$ P(\min(X_1, X_2, \dots, X_n) \geq a) = P(X_1 \geq a, X_2 \geq a, \dots, X_n \geq a) $$
 
 Similarly,
 
-\[ P(\max(X_1, X_2, \dots, X_n) \leq a) = P(X_1 \leq a, X_2 \leq a, \dots, X_n \leq a) \]
+$$ P(\max(X_1, X_2, \dots, X_n) \leq a) = P(X_1 \leq a, X_2 \leq a, \dots, X_n \leq a) $$
 
 We will use this principle to find the CDF of $$U_{(n)}$$, where $$U_{(n)} = \max(U_1, U_2, \dots, U_n)$$ and $$U_i \sim \text{Unif}(0, 1)$$ are i.i.d.
 
-\[
+$$
 P(\max(U_1, U_2, \dots, U_n) \leq a) = P(U_1 \leq a, U_2 \leq a, \dots, U_n \leq a) = P(U_1 \leq a)P(U_2 \leq a)\dots P(U_n \leq a) = \boxed{a^n}
-\]
+$$
 
 for $$0<a<1$$ (and the CDF is $$0$$ for $$a \leq 0$$ and $$1$$ for $$a \geq 1$$).
 
@@ -924,84 +924,84 @@ for $$0<a<1$$ (and the CDF is $$0$$ for $$a \leq 0$$ and $$1$$ for $$a \geq 1$$)
 For $$X \sim \text{Pois}(\lambda)$$, find $$E\left(\frac{1}{X+1}\right)$$.
 **Answer:** By LOTUS,
 
-\[
+$$
 E\left(\frac{1}{X+1}\right) = \sum_{k=0}^\infty \frac{1}{k+1} \frac{e^{-\lambda}\lambda^k}{k!} = \frac{e^{-\lambda}}{\lambda}\sum_{k=0}^\infty \frac{\lambda^{k+1}}{(k+1)!} = \boxed{\frac{e^{-\lambda}}{\lambda}(e^\lambda-1)}
-\]
+$$
 
 ## Adam's Law and Eve's Law
 William really likes speedsolving Rubik's Cubes. But he's pretty bad at it, so sometimes he fails. On any given day, William will attempt $$N \sim \text{Geom}(s)$$ Rubik's Cubes. Suppose each time, he has probability $$p$$ of solving the cube, independently. Let $$T$$ be the number of Rubik's Cubes he solves during a day. Find the mean and variance of $$T$$.
 **Answer:** Note that $$T|N \sim \text{Bin}(N,p)$$. So by Adam's Law,
 
-\[E(T) = E(E(T|N)) = E(Np) = \boxed{\frac{p (1-s)}{s}}\]
+$$E(T) = E(E(T|N)) = E(Np) = \boxed{\frac{p (1-s)}{s}}$$
 
 Similarly, by Eve's Law, we have
 
-\[
+$$
 \text{Var}(T) = E(\text{Var}(T|N)) + \text{Var}(E(T|N)) =  E(Np(1-p)) + \text{Var}(Np) = \frac{p(1-p)(1-s)}{s} +  \frac{p^2(1-s)}{s^2} = \boxed{\frac{p(1-s)(p+s(1-p))}{s^2}}
-\]
+$$
 
 ## MGF -- Distribution Matching
 (Continuing the Rubik's Cube question above) Find the MGF of $$T$$. What is the name of this distribution and its parameter(s)?
 **Answer:** By Adam's Law, we have
 
-\[
+$$
 E(e^{tT}) = E(E(e^{tT}|N)) = E((pe^t + q)^N) = s\sum_{n=0}^\infty(pe^t + 1-p)^n(1-s)^n =\frac{s}{1-(1-s)(pe^t+1-p)} =\frac{s}{s+(1-s)p-(1-s)pe^t}
-\]
+$$
 
 Intuitively, we would expect that $$T$$ is distributed Geometrically since $$T$$ is just a filtered version of $$N$$, which itself is Geometrically distributed. The MGF of $$X\sim\text{Geom}(\theta)$$ is
 
-\[E(e^{tX}) = \frac{\theta}{1-(1-\theta) e^t}\]
+$$E(e^{tX}) = \frac{\theta}{1-(1-\theta) e^t}$$
 
 So, we would want to try to get our MGF into this form to identify what $$\theta$$ is. Taking our original MGF, it would appear that dividing by $$s+(1-s)p$$ would allow us to do this. Therefore, we have that
 
-\[
+$$
 E(e^{tT}) = \frac{s}{s+(1-s)p - (1-s)pe^t} = \frac{\frac{s}{s+(1-s)p}}{1-\frac{(1-s)p}{s+(1-s)p}e^t}
-\]
+$$
 
 By pattern-matching, it thus follows that $$\boxed{T \sim \text{Geom}(\theta)}$$ where
 
-\[\boxed{\theta = \frac{s}{s+(1-s)p}}\]
+$$\boxed{\theta = \frac{s}{s+(1-s)p}}$$
 
 ## MGF -- Finding Moments
 Find $$E(X^3)$$ for $$X \sim \text{Expo}(\lambda)$$ using the MGF of $$X$$.
 **Answer:** The MGF of an $$\text{Expo}(\lambda)$$ is $$M(t) = \frac{\lambda}{\lambda-t}$$. To get the third moment, we can take the third derivative of the MGF and evaluate at $$t=0$$:
 
-\[\boxed{E(X^3) = \frac{6}{\lambda^3}}\]
+$$\boxed{E(X^3) = \frac{6}{\lambda^3}}$$
 
 But a much nicer way to use the MGF here is via pattern recognition: note that $$M(t)$$ looks like it came from a geometric series:
 
-\[\frac{1}{1-\frac{t}{\lambda}} = \sum^{\infty}_{n=0} \left(\frac{t}{\lambda}\right)^n = \sum^{\infty}_{n=0} \frac{n!}{\lambda^n} \frac{t^n}{n!}\]
+$$\frac{1}{1-\frac{t}{\lambda}} = \sum^{\infty}_{n=0} \left(\frac{t}{\lambda}\right)^n = \sum^{\infty}_{n=0} \frac{n!}{\lambda^n} \frac{t^n}{n!}$$
 
 The coefficient of $$\frac{t^n}{n!}$$ here is the $$n$$th moment of $$X$$, so we have $$E(X^n) = \frac{n!}{\lambda^n}$$ for all nonnegative integers $$n$$.
 
 ## Markov chains (1)
 Suppose $$X_n$$ is a two-state Markov chain with transition matrix 
 
-\[
+$$
 Q = \begin{bmatrix}
 1-\alpha & \alpha \\
 \beta & 1-\beta
 \end{bmatrix}
-\]
+$$
 
 Find the stationary distribution $$\vec{s} = (s_0, s_1)$$ of $$X_n$$ by solving $$\vec{s} Q = \vec{s}$$, and show that the chain is reversible with respect to $$\vec{s}$$.
 **Answer:** The equation $$\vec{s}Q = \vec{s}$$ says that
 
-\[
+$$
 s_0 = s_0(1-\alpha) + s_1 \beta \text{ and } s_1 = s_0(\alpha) + s_0(1-\beta)
-\]
+$$
 
 By solving this system of linear equations, we have 
 
-\[
+$$
 \boxed{\vec{s} = \left(\frac{\beta}{\alpha+\beta}, \frac{\alpha}{\alpha+\beta}\right)}
-\]
+$$
 
 To show that the chain is reversible with respect to $$\vec{s}$$, we must show $$s_i q_{ij} = s_j q_{ji}$$ for all $$i, j$$. This is done if we can show $$s_0 q_{01} = s_1 q_{10}$$. And indeed,
 
-\[
+$$
 s_0  q_{01}  = \frac{\alpha\beta}{\alpha+\beta} = s_1 q_{10}
-\]
+$$
 
 ### Markov chains (2)
 
