@@ -107,7 +107,8 @@ P({ A}) &= P({ A} | { B})P({ B}) + P({ A} | { B^c})P({ B^c}) \\
 P({ A}) &= P({ A} \cap { B})+ P({ A} \cap { B^c})
 \end{align*}$$ 
 
-### Bayes' Rule**Bayes' Rule, and with extra conditioning (just add in $$C$$!)**
+### Bayes' Rule
+**Bayes' Rule, with extra conditioning (just add in $$C$$!)**
 
 $$P({ A}|{ B})  = \frac{P({ B}|{ A})P({ A})}{P({ B})}$$
 
@@ -117,7 +118,8 @@ We can also write
 
 $$P(A|B,C) = \frac{P(A,B,C)}{P(B,C)} = \frac{P(B,C|A)P(A)}{P(B,C)}$$
 
-**Odds Form of Bayes' Rule**$$\frac{P({ A}| { B})}{P({ A^c}| { B})} = \frac{P({ B}|{ A})}{P({ B}| { A^c})}\frac{P({ A})}{P({ A^c})}$$
+**Odds Form of Bayes' Rule**
+$$\frac{P({ A}\| { B})}{P({ A^c}\| { B})} = \frac{P({ B}\|{ A})}{P({ B}| { A^c})}\frac{P({ A})}{P({ A^c})}$$
 
 The *posterior odds* of $$A$$ are the *likelihood ratio* times the *prior odds*.
 
