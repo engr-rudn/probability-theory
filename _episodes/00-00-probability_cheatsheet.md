@@ -30,16 +30,18 @@ The sampling table gives the number of possible samples of size $$k$$ out of a p
 
 If all outcomes are equally likely, the probability of an event $$A$$ happening is:
 
-\[P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $$A$$}}{\text{number of outcomes}}\]
+$$\left[P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $$A$$}}{\text{number of outcomes}}\right]$$
 
 ### Independence
 
-- Independent Events: $$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
+#### Independent Events:
+$$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
     - $$P(A \cap B) = P(A)P(B)$$
     - $$P(A|B) = P(A)$$
     - $$P(B|A) = P(B)$$
 
-- Conditional Independence: $$A$$ and $$B$$ are conditionally independent given $$C$$ if $$P(A \cap B|C) = P(A|C)P(B|C)$$. Conditional independence does not imply independence, and independence does not imply conditional independence.
+#### Conditional Independence: 
+$$A$$ and $$B$$ are conditionally independent given $$C$$ if $$P(A \cap B\|C) = P(A\|C)P(B\|C)$$. Conditional independence does not imply independence, and independence does not imply conditional independence.
 
 ### Unions, Intersections, and Complements
 
