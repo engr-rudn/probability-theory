@@ -597,4 +597,234 @@ For the Uniform distribution:
     \end{array}
     \right.
     \]
+### Normal Distribution
+
+Let us say that X is distributed N(μ, σ^2). We know the following:
+
+**Central Limit Theorem**
+The Normal distribution is ubiquitous because of the Central Limit Theorem, which states that the sample mean of i.i.d. r.v.s will approach a Normal distribution as the sample size grows, regardless of the initial distribution.
+
+**Location-Scale Transformation**
+Every time we shift a Normal r.v. (by adding a constant) or rescale a Normal (by multiplying by a constant), we change it to another Normal r.v. For any Normal X ~ N(μ, σ^2), we can transform it to the standard N(0, 1) by the following transformation:
+Z = (X - μ) / σ ~ N(0, 1)
+
+**Standard Normal**
+The Standard Normal, Z ~ N(0, 1), has mean 0 and variance 1. Its CDF is denoted by Φ.
+
+### Exponential Distribution
+
+Let us say that X is distributed Expo(λ). We know the following:
+
+**Story**
+You're sitting on an open meadow right before the break of dawn, wishing that airplanes in the night sky were shooting stars, because you could really use a wish right now. You know that shooting stars come on average every 15 minutes, but a shooting star is not "due" to come just because you've waited so long. Your waiting time is memoryless; the additional time until the next shooting star comes does not depend on how long you've waited already.
+
+**Example**
+The waiting time until the next shooting star is distributed Expo(4) hours. Here λ=4 is the rate parameter, since shooting stars arrive at a rate of 1 per 1/4 hour on average. The expected time until the next shooting star is 1/λ = 1/4 hour.
+
+**Expos as a rescaled Expo(1)**
+Y ~ Expo(λ) ⇒ X = λY ~ Expo(1)
+
+**Memorylessness**
+The Exponential Distribution is the only continuous memoryless distribution. The memoryless property says that for X ~ Expo(λ) and any positive numbers s and t:
+P(X > s + t | X > s) = P(X > t)
+Equivalently,
+(X - a | X > a) ~ Expo(λ)
+
+**Min of Expos**
+If we have independent Xi ~ Expo(λi), then min(X1, ..., Xk) ~ Expo(λ1 + λ2 + ... + λk).
+
+**Max of Expos**
+If we have i.i.d. Xi ~ Expo(λ), then max(X1, ..., Xk) has the same distribution as Y1 + Y2 + ... + Yk, where Yj ~ Expo(jλ) and the Yj are independent.
+
+### Gamma Distribution
+
+Let us say that X is distributed Gam(a, λ). We know the following:
+
+**Story**
+You sit waiting for shooting stars, where the waiting time for a star is distributed Expo(λ). You want to see n shooting stars before you go home. The total waiting time for the nth shooting star is Gam(n, λ).
+
+**Example**
+You are at a bank, and there are 3 people ahead of you. The serving time for each person is Exponential with mean 2 minutes. Only one person at a time can be served. The distribution of your waiting time until it's your turn to be served is Gam(3, 1/2).
+
+### Beta Distribution
+
+**Conjugate Prior of the Binomial**
+In the Bayesian approach to statistics, parameters are viewed as random variables, to reflect our uncertainty. The prior for a parameter is its distribution before observing data. The posterior is the distribution for the parameter after observing data. Beta is the conjugate prior of the Binomial because if you have a Beta-distributed prior on p in a Binomial, then the posterior distribution on p given the Binomial data is also Beta-distributed. Consider the following two-level model:
+X | p ~ Bin(n, p)
+p ~ Beta(a, b)
+Then after observing X = x, we get the posterior distribution p | (X = x) ~ Beta(a + x, b + n - x)
+
+**Order statistics of the Uniform**
+See Order Statistics.
+
+**Beta-Gamma relationship**
+If X ~ Gam(a, λ), Y ~ Gam(b, λ), with X independent of Y, then:
+- X / (X + Y) ~ Beta(a, b)
+- X + Y independent of X / (X + Y)
+
+### Chi-Square Distribution
+
+Let us say that X is distributed chi2_n. We know the following:
+
+**Story**
+A Chi-Square(n) is the sum of the squares of n independent standard Normal r.v.s.
+
+**Properties and Representations**
+- X is distributed as Z1^2 + Z2^2 + ... + Zn^2 for i.i.d. Z_i ~ N(0,1)
+- X ~ Gam(n/2, 1/2)
+
+## Discrete Distributions
+---
+
+### Distributions for four sampling schemes
+
+|                   | Replace          | No Replace        |
+|-------------------|------------------|-------------------|
+| **Fixed # trials ($n$)**  | Binomial         | Hypergeometric    |
+|                     | (Bern if $n = 1$)|                   |
+| **Draw until $r$ success** | Negative Binomial| Noncentral Hypergeometric |
+|                     | (Geometric if $r = 1$) |              |
+
+### Bernoulli Distribution
+
+The Bernoulli distribution is the simplest case of the Binomial distribution, where we only have one trial ($n=1$). Let us say that X is distributed Bern(p). We know the following:
+
+**Story**
+A trial is performed with probability p of "success", and X is the indicator of success: 1 means success, 0 means failure.
+
+**Example**
+Let X be the indicator of Heads for a fair coin toss. Then X follows the Bernoulli distribution with parameter p=1/2. Also, 1 - X follows the Bernoulli distribution with parameter p=1/2, representing the indicator of Tails.
+
+### Binomial Distribution
+
+![Binomial Distribution](figures/Bin10_05.pdf)
+
+Let us say that X is distributed Bin(n, p). We know the following:
+
+**Story**
+X is the number of "successes" that we will achieve in n independent trials, where each trial is either a success or a failure, each with the same probability p of success. X can be expressed as the sum of multiple independent Bernoulli random variables with parameter p. If X ~ Bin(n, p) and Xj ~ Bern(p), where all the Bernoullis are independent, then:
+X = X1 + X2 + X3 + ... + Xn
+
+**Example**
+If Jeremy Lin makes 10 free throws, and each throw independently has a 3/4 chance of getting in, then the number of successful throws is distributed as Bin(10, 3/4).
+
+**Properties**
+- Redefine success: If X ~ Bin(n, p), then n - X ~ Bin(n, 1 - p)
+- Sum: If X ~ Bin(n, p) and Y ~ Bin(m, p) with X and Y being independent, then X + Y ~ Bin(n + m, p)
+- Conditional: If X ~ Bin(n, p) and Y ~ Bin(m, p) with X and Y being independent, then X | (X + Y = r) ~ Hypergeometric(n, m, r)
+- Binomial-Poisson Relationship: Bin(n, p) is approximately Pois(np) if p is small.
+- Binomial-Normal Relationship: Bin(n, p) is approximately N(np, np(1 - p)) if n is large and p is not near 0 or 1.
+
+### Geometric Distribution
+
+Let us say that X is distributed Geom(p). We know the following:
+
+**Story**
+X is the number of "failures" that we will achieve before we achieve our first success. The successes have a probability p.
+
+**Example**
+If each Pokéball we throw has a 1/10 probability of catching Mew, then the number of failed Pokéballs before catching Mew follows the Geometric distribution with parameter p = 1/10.
+
+The PMF of a Poisson distribution is given by:
+
+\[P(X = k) = \frac{e^{-\lambda}\lambda^k}{k!}\]
+
+where X is the random variable following a Poisson distribution, and λ is the average rate of events occurring per unit space or time.
+
+# Multivariate Distributions
+## Multinomial Distribution
+Let us say that the vector $\vec{X} = (X_1, X_2, X_3, \dots, X_k) \sim \text{Mult}_k(n, \vec{p})$  where $\vec{p} = (p_1, p_2, \dots, p_k)$.
+
+- **Story:** We have $n$ items, which can fall into any one of the $k$ buckets independently with the probabilities $\vec{p} = (p_1, p_2, \dots, p_k)$.
+- **Example:** Let us assume that every year, 100 students in the Harry Potter Universe are randomly and independently sorted into one of four houses with equal probability. The number of people in each of the houses is distributed $\text{Mult}_4(100, \vec{p})$, where $\vec{p} = (0.25, 0.25, 0.25, 0.25)$. Note that $X_1 + X_2 + \dots + X_4 = 100$, and they are dependent.
+- **Joint PMF:** For $n = n_1 + n_2 + \dots + n_k$, the joint probability mass function is:
+\[P(\vec{X} = \vec{n}) = \frac{n!}{n_1!n_2!\dots n_k!}p_1^{n_1}p_2^{n_2}\dots p_k^{n_k}\]
+- **Marginal PMF, Lumping, and Conditionals:** Marginally, $X_i \sim \text{Bin}(n,p_i)$ since we can define "success" to mean category $i$. If you lump together multiple categories in a Multinomial, then it is still Multinomial. Conditioning on some $X_j$ also gives a Multinomial.
+- **Variances and Covariances:** We have $X_i \sim \text{Bin}(n, p_i)$ marginally, so $\text{Var}(X_i) = np_i(1-p_i)$. Also, $\text{Cov}(X_i, X_j) = -np_ip_j$ for $i \neq j.
+
+## Multivariate Uniform Distribution
+See the univariate Uniform for stories and examples. For the 2D Uniform on some region, probability is proportional to area. Every point in the support has equal density, of value $1/\text{area of region}$. For the 3D Uniform, probability is proportional to volume.
+
+## Multivariate Normal (MVN) Distribution
+A vector $\vec{X} = (X_1, X_2, \dots, X_k)$ is Multivariate Normal if every linear combination is Normally distributed, i.e., $t_1X_1 + t_2X_2 + \dots + t_kX_k$ is Normal for any constants $t_1, t_2, \dots, t_k$. The parameters of the Multivariate Normal are the mean vector $\vec{\mu} = (\mu_1, \mu_2, \dots, \mu_k)$ and the covariance matrix where the $(i, j)$ entry is $\text{cov}(X_i, X_j)$.
+
+- **Properties:** The Multivariate Normal has the following properties:
+  - Any subvector is also MVN.
+  - If any two elements within an MVN are uncorrelated, then they are independent.
+  - The joint PDF of a Bivariate Normal $(X,Y)$ with $\mathcal{N}(0,1)$ marginal distributions and correlation $\rho \in (-1,1)$ is:
+    \[f_{X,Y}(x,y) = \frac{1}{2 \pi \tau} \exp\left(-\frac{1}{2 \tau^2} (x^2+y^2-2 \rho xy)\right),\]
+    with $\tau = \sqrt{1-\rho^2}$.
+
+# Distribution Properties
+## Important CDFs
+- **Standard Normal:** $\Phi$
+- **Exponential($\lambda$):** $F(x) = 1 - e^{-\lambda x}$, for $x \in (0, \infty)$
+- **Uniform(0,1):** $F(x) = x$, for $x \in (0, 1)$
+
+## Convolutions of Random Variables
+A convolution of $n$ random variables is simply their sum. For the following results, let $X$ and $Y$ be independent.
+1. $X \sim \text{Pois}(\lambda_1)$, $Y \sim \text{Pois}(\lambda_2)$ $\longrightarrow X + Y \sim \text{Pois}(\lambda_1 + \lambda_2)$
+2. $X \sim \text{Bin}(n_1, p)$, $Y \sim \text{Bin}(n_2, p)$ $\longrightarrow X + Y \sim \text{Bin}(n_1 + n_2, p)$. $\text{Bin}(n,p)$ can be thought of as a sum of i.i.d. $\text{Bern}(p)$ random variables.
+3. $X \sim \text{Gam}(a_1, \lambda)$, $Y \sim \text{Gam}(a_2, \lambda)$ $\longrightarrow X + Y \sim \text{Gam}(a_1 + a_2, \lambda)$. $\text{Gam}(n,\lambda)$ with $n$ an integer can be thought of as a sum of i.i.d. $\text{Expo}(\lambda)$ random variables.
+4. $X \sim \text{NBin}(r_1, p)$, $Y \sim \text{NBin}(r_2, p)$ $\longrightarrow X + Y \sim \text{NBin}(r_1 + r_2, p)$. $\text{NBin}(r,p)$ can be thought of as a sum of i.i.d. $\text{Geom}(p)$ random variables.
+5. $X \sim \mathcal{N}(\mu_1, \sigma_1^2)$, $Y \sim \mathcal{N}(\mu_2, \sigma_2^2)$ $\longrightarrow X + Y \sim \mathcal{N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$
+
+## Special Cases of Distributions
+1. $\text{Bin}(1, p) \sim \text{Bern}(p)$
+2. $\text{Beta}(1, 1) \sim \text{Unif}(0, 1)$
+3. $\text{Gam}(1, \lambda) \sim \text{Expo}(\lambda)$
+4. $\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$
+5. $\text{NBin}(1, p) \sim \text{Geom}(p)$
+
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+\section{Inequalities}
+
+\subsection{Cauchy-Schwarz}
+$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$
+
+\subsection{Markov}
+$P(X \geq a) \leq \frac{E|X|}{a}$ for $a>0$
+
+\subsection{Chebyshev}
+$P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$ for $E(X)=\mu, \text{Var}(X) = \sigma^2$
+
+\subsection{Jensen}
+$E(g(X)) \geq g(E(X))$ for $g$ convex; reverse if $g$ is concave
+
+
+\section{Formulas}
+
+\subsection{Geometric Series}
+\[ 1 + r + r^2 + \dots + r^{n-1} = \sum_{k=0}^{n-1} r^k = \frac{1 - r^n}{1 -r} \]
+\[ 1 + r + r^2 + \dots = \frac{1}{1-r} \text{ if $|r|<1$} \]
+
+\subsection{Exponential Function ($e^x$)}
+\[ e^x = \sum_{n=0}^\infty \frac{x^n}{n!}= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n} \right)^n \]
+
+\subsection{Gamma and Beta Integrals}
+You can sometimes solve complicated-looking integrals by pattern-matching to a gamma or beta integral:
+\[ \int_0^\infty x^{t-1}e^{-x}\, dx = \Gamma(t) \quad \int_0^1 x^{a - 1}(1-x)^{b-1}\, dx = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)} \]
+Also, $\Gamma(a+1) = a \Gamma(a)$, and $\Gamma(n) = (n - 1)!$ if $n$ is a positive integer. 
+
+\subsection{Euler's Approximation for Harmonic Sums}
+\[ 1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n} \approx \log n + 0.577 \dots\]
+
+\subsection{Stirling's Approximation for Factorials}
+\[ n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n\]
+
+
+\section{Miscellaneous Definitions}
+
+\begin{itemize}
+  \item Medians and Quantiles: Let $X$ have CDF $F$. Then $X$ has median $m$ if $F(m) \geq 0.5$ and $P(X \geq m) \geq 0.5$. For $X$ continuous, $m$ satisfies $F(m)=1/2$. In general, the $a$th quantile of $X$ is $\min \{x: F(x)\geq a\}$; the median is the case $a=1/2$.
+  \item log: Statisticians generally use $\log$ to refer to natural log (i.e. base-$e$ log).
+  \item Normal distribution: A random variable $X$ is normal if it has PDF $f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x-\mu)^2/2\sigma^2}$.
+  \item $z$-score: If $X$ is a random variable with mean $\mu$ and standard deviation $\sigma$, then the $z$-score of a value $x$ is $z=\frac{x-\mu}{\sigma}$.
+\end{itemize}
+
+\end{document}
 
