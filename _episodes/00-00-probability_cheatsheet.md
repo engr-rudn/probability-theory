@@ -176,7 +176,7 @@ $$E(X | A) = \sum\limits_{x}xP(X=x | A)$$
 
 ### Indicator Random Variables
 
-**Indicator Random Variable**  
+**Indicator Random Variable** 
 An indicator random variable is a random variable that takes on the value 1 or 0. It is always an indicator of some event: if the event occurs, the indicator is 1; otherwise, it is 0. They are useful for many problems about counting how many events of some kind occur. Write:
 
 $$I_A =
@@ -187,15 +187,15 @@ $$I_A =
 $$
 
 Note that:  
-- \(I_A^2 = I_A\)
-- \(I_A I_B = I_{A \cap B}\)
-- \(I_{A \cup B} = I_A + I_B - I_A I_B\)
+- $$\(I_A^2 = I_A\)$$
+- $$\(I_A I_B = I_{A \cap B}\)$$
+- $$\(I_{A \cup B} = I_A + I_B - I_A I_B\)$$
 
 **Distribution**  
-\(I_A \sim \Bern(p)\) where \(p = P(A)\).
+$$\(I_A \sim \Bern(p)\) where \(p = P(A)\)$$.
 
 **Fundamental Bridge**  
-The expectation of the indicator for event *A* is the probability of event *A*: \(E(I_A) = P(A)\).
+The expectation of the indicator for event *A* is the probability of event *A*: $$\(E(I_A) = P(A)\)$$.
 
 ### Variance and Standard Deviation
 
