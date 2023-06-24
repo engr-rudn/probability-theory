@@ -776,38 +776,27 @@ A convolution of $n$ random variables is simply their sum. For the following res
 4. $\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$
 5. $\text{NBin}(1, p) \sim \text{Geom}(p)$
 
-\documentclass{article}
-\usepackage{amsmath}
+## Inequalities
 
-\begin{document}
-
-\section{Inequalities}
-
-\subsection{Cauchy-Schwarz}
-$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$
-
-\subsection{Markov}
-$P(X \geq a) \leq \frac{E|X|}{a}$ for $a>0$
-
-\subsection{Chebyshev}
-$P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$ for $E(X)=\mu, \text{Var}(X) = \sigma^2$
-
-\subsection{Jensen}
-$E(g(X)) \geq g(E(X))$ for $g$ convex; reverse if $g$ is concave
+\begin{enumerate}
+\item \textbf{Cauchy-Schwarz} $|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$
+\item \textbf{Markov} $P(X \geq a) \leq \frac{E|X|}{a}$ for $a>0$
+\item \textbf{Chebyshev} $P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$ for $E(X)=\mu, \var(X) = \sigma^2$
+\item \textbf{Jensen} $E(g(X)) \geq g(E(X))$ for $g$ convex; reverse if $g$ is concave
+\end{enumerate}
 
 
-\section{Formulas}
-
+\section{Formulas} \smallskip \hrule height 2pt \smallskip
 \subsection{Geometric Series}
 \[ 1 + r + r^2 + \dots + r^{n-1} = \sum_{k=0}^{n-1} r^k = \frac{1 - r^n}{1 -r} \]
-\[ 1 + r + r^2 + \dots = \frac{1}{1-r} \text{ if $|r|<1$} \]
+\[ 1 + r + r^2 + \dots = \frac{1}{1-r} \textnormal{ if $|r|<1$} \]
 
 \subsection{Exponential Function ($e^x$)}
 \[ e^x = \sum_{n=0}^\infty \frac{x^n}{n!}= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n} \right)^n \]
 
 \subsection{Gamma and Beta Integrals}
 You can sometimes solve complicated-looking integrals by pattern-matching to a gamma or beta integral:
-\[ \int_0^\infty x^{t-1}e^{-x}\, dx = \Gamma(t) \quad \int_0^1 x^{a - 1}(1-x)^{b-1}\, dx = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)} \]
+\[ \int_0^\infty x^{t-1}e^{-x}\, dx = \Gamma(t) \hspace{1 cm} \int_0^1 x^{a - 1}(1-x)^{b-1}\, dx = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)} \]
 Also, $\Gamma(a+1) = a \Gamma(a)$, and $\Gamma(n) = (n - 1)!$ if $n$ is a positive integer. 
 
 \subsection{Euler's Approximation for Harmonic Sums}
@@ -815,16 +804,3 @@ Also, $\Gamma(a+1) = a \Gamma(a)$, and $\Gamma(n) = (n - 1)!$ if $n$ is a positi
 
 \subsection{Stirling's Approximation for Factorials}
 \[ n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n\]
-
-
-\section{Miscellaneous Definitions}
-
-\begin{itemize}
-  \item Medians and Quantiles: Let $X$ have CDF $F$. Then $X$ has median $m$ if $F(m) \geq 0.5$ and $P(X \geq m) \geq 0.5$. For $X$ continuous, $m$ satisfies $F(m)=1/2$. In general, the $a$th quantile of $X$ is $\min \{x: F(x)\geq a\}$; the median is the case $a=1/2$.
-  \item log: Statisticians generally use $\log$ to refer to natural log (i.e. base-$e$ log).
-  \item Normal distribution: A random variable $X$ is normal if it has PDF $f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x-\mu)^2/2\sigma^2}$.
-  \item $z$-score: If $X$ is a random variable with mean $\mu$ and standard deviation $\sigma$, then the $z$-score of a value $x$ is $z=\frac{x-\mu}{\sigma}$.
-\end{itemize}
-
-\end{document}
-
