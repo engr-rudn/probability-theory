@@ -32,6 +32,12 @@ The sampling table gives the number of possible samples of size $$k$$ out
 of a population of size $$n$$, under various assumptions about how the
 sample is collected.
 
+|         Order Matters      |             Not Matter         |
+|:--------------------------|:------------------------------|
+| **With Replacement**      | $$\displaystyle n^k$$         |
+| **Without Replacement**   | $$\displaystyle\frac{n!}{(n - k)!}$$ |
+
+
 
 |         Order Matters         |             Not Matter             |
 |:----------------------------- |:--------------------------------- |
