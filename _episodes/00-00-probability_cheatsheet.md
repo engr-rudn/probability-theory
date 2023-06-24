@@ -11,47 +11,47 @@ objectives:
 
 ## Multiplication Rule
 
-![icecream](figures/icecream.pdf)
+![icecream](../figure/icecream.png)
 
-Let's say we have a compound experiment (an experiment with multiple components). If the 1st component has $n_1$ possible outcomes, the 2nd component has $n_2$ possible outcomes, ..., and the $r$th component has $n_r$ possible outcomes, then overall there are $n_1n_2 \dots n_r$ possibilities for the whole experiment.
+Let's say we have a compound experiment (an experiment with multiple components). If the 1st component has $$n_1$$ possible outcomes, the 2nd component has $$n_2$$ possible outcomes, ..., and the $$r$$th component has $$n_r$$ possible outcomes, then overall there are $$n_1n_2 \dots n_r$$ possibilities for the whole experiment.
 
 ## Sampling Table
 
-![jar](figures/jar.pdf)
+![jar](../figure/jar.png)
 
-The sampling table gives the number of possible samples of size $k$ out of a population of size $n$, under various assumptions about how the sample is collected.
+The sampling table gives the number of possible samples of size $$k$$ out of a population of size $$n$$, under various assumptions about how the sample is collected.
 
 |                      | Order Matters          | Not Matter                    |
 |----------------------|------------------------|-------------------------------|
-| With Replacement     | $n^k$                  | ${n+k-1 \choose k}$           |
-| Without Replacement  | $\frac{n!}{(n - k)!}$  | ${n \choose k}$               |
+| With Replacement     | $$n^k$$                  | $${n+k-1 \choose k}$$           |
+| Without Replacement  | $$\frac{n!}{(n - k)!}$$  | $${n \choose k}$$               |
 
 ## Naive Definition of Probability
 
-If all outcomes are equally likely, the probability of an event $A$ happening is:
+If all outcomes are equally likely, the probability of an event $$A$$ happening is:
 
-\[P_{\textrm{naive}}(A) = \frac{\textnormal{number of outcomes favorable to $A$}}{\textnormal{number of outcomes}}\]
+\[P_{\textrm{naive}}(A) = \frac{\textnormal{number of outcomes favorable to $$A$$}}{\textnormal{number of outcomes}}\]
 
 ### Independence
 
-- Independent Events: $A$ and $B$ are independent if knowing whether $A$ occurred gives no information about whether $B$ occurred. More formally, $A$ and $B$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
-    - $P(A \cap B) = P(A)P(B)$
-    - $P(A|B) = P(A)$
-    - $P(B|A) = P(B)$
+- Independent Events: $$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
+    - $$P(A \cap B) = P(A)P(B)$$
+    - $$P(A|B) = P(A)$$
+    - $$P(B|A) = P(B)$$
 
-- Conditional Independence: $A$ and $B$ are conditionally independent given $C$ if $P(A \cap B|C) = P(A|C)P(B|C)$. Conditional independence does not imply independence, and independence does not imply conditional independence.
+- Conditional Independence: $$A$$ and $$B$$ are conditionally independent given $$C$$ if $$P(A \cap B|C) = P(A|C)P(B|C)$$. Conditional independence does not imply independence, and independence does not imply conditional independence.
 
 ### Unions, Intersections, and Complements
 
 - De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.
-    - $(A \cup B)^c = A^c \cap B^c$
-    - $(A \cap B)^c = A^c \cup B^c`
+    - $$(A \cup B)^c = A^c \cap B^c$$
+    - $$(A \cap B)^c = A^c \cup B^c`
 ### Joint, Marginal, and Conditional
 
-- Joint Probability: $P(A \cap B)$ or $P(A, B)$ -- Probability of $A$ and $B$.
-- Marginal (Unconditional) Probability: $P(A)$ -- Probability of $A$.
-- Conditional Probability: $P(A|B) = \frac{P(A, B)}{P(B)}$ -- Probability of $A$, given that $B$ occurred.
-- Conditional Probability *is* Probability: $P(A|B)$ is a probability function for any fixed $B$. Any theorem that holds for probability also holds for conditional probability.
+- Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.
+- Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.
+- Conditional Probability: $$P(A|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.
+- Conditional Probability *is* Probability: $$P(A|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
 
 ### Probability of an Intersection or Union
 
@@ -73,7 +73,7 @@ If all outcomes are equally likely, the probability of an event $A$ happening is
 
 ### Simpson's Paradox
 
-![Simpson's Paradox](figures/SimpsonsParadox.pdf)
+![Simpson's Paradox](../figure/SimpsonsParadox.png)
 
 It is possible to have
 \[P(A\mid B,C) < P(A\mid B^c, C) \text{ and } P(A\mid B, C^c) < P(A \mid B^c, C^c)\]
@@ -81,28 +81,28 @@ It is possible to have
 
 ### Law of Total Probability (LOTP)
 
-Let ${ B}_1, { B}_2, { B}_3, ... { B}_n$ be a *partition* of the sample space (i.e., they are disjoint and their union is the entire sample space).
+Let $${ B}_1, { B}_2, { B}_3, ... { B}_n$$ be a *partition* of the sample space (i.e., they are disjoint and their union is the entire sample space).
 
 \begin{align*} 
     P({ A}) &= P({ A} | { B}_1)P({ B}_1) + P({ A} | { B}_2)P({ B}_2) + \dots + P({ A} | { B}_n)P({ B}_n)\\
     P({ A}) &= P({ A} \cap { B}_1)+ P({ A} \cap { B}_2)+ \dots + P({ A} \cap { B}_n)
 \end{align*} 
 
-For **LOTP with extra conditioning**, just add in another event $C$!
+For **LOTP with extra conditioning**, just add in another event $$C$$!
 
 \begin{align*} 
     P({ A}| { C}) &= P({ A} | { B}_1, { C})P({ B}_1 | { C}) + \dots +  P({ A} | { B}_n, { C})P({ B}_n | { C})\\
     P({ A}| { C}) &= P({ A} \cap { B}_1 | { C})+ P({ A} \cap { B}_2 | { C})+ \dots +  P({ A} \cap { B}_n | { C})
 \end{align*} 
 
-Special case of LOTP with ${ B}$ and ${ B^c}$ as partition:
+Special case of LOTP with $${ B}$$ and $${ B^c}$$ as partition:
 
 \begin{align*} 
 P({ A}) &= P({ A} | { B})P({ B}) + P({ A} | { B^c})P({ B^c}) \\
 P({ A}) &= P({ A} \cap { B})+ P({ A} \cap { B^c})
 \end{align*} 
 
-### Bayes' Rule**Bayes' Rule, and with extra conditioning (just add in $C$!)**
+### Bayes' Rule**Bayes' Rule, and with extra conditioning (just add in $$C$$!)**
 
 \[P({ A}|{ B})  = \frac{P({ B}|{ A})P({ A})}{P({ B})}\]
 
@@ -114,7 +114,7 @@ We can also write
 
 **Odds Form of Bayes' Rule**\[\frac{P({ A}| { B})}{P({ A^c}| { B})} = \frac{P({ B}|{ A})}{P({ B}| { A^c})}\frac{P({ A})}{P({ A^c})}\]
 
-The *posterior odds* of $A$ are the *likelihood ratio* times the *prior odds*.
+The *posterior odds* of $$A$$ are the *likelihood ratio* times the *prior odds*.
 
 # Random Variables and their Distributions
 ---
@@ -174,8 +174,8 @@ An indicator random variable is a random variable that takes on the value 1 or 0
 
 \[I_A =
  \begin{cases}
-   1 & \text{if $A$ occurs,} \\
-   0 & \text{if $A$ does not occur.}
+   1 & \text{if $$A$$ occurs,} \\
+   0 & \text{if $$A$$ does not occur.}
   \end{cases}
 \]
 
@@ -255,7 +255,7 @@ The Law of the Unconscious Statistician (LOTUS) states that you can find the exp
 
 ### What's a function of a random variable?
 
-A function of a random variable is also a random variable. For example, if X is the number of bikes you see in an hour, then g(X) = 2X is the number of bike wheels you see in that hour, and h(X) = ${X \choose 2} = \frac{X(X-1)}{2}$ is the number of pairs of bikes such that you see both of those bikes in that hour.
+A function of a random variable is also a random variable. For example, if X is the number of bikes you see in an hour, then g(X) = 2X is the number of bike wheels you see in that hour, and h(X) = $${X \choose 2} = \frac{X(X-1)}{2}$$ is the number of pairs of bikes such that you see both of those bikes in that hour.
 
 ### What's the point?
 
@@ -349,44 +349,44 @@ E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy
     Note that 
     $$\text{cov}(X, X) = E(X^2) - (E(X))^2 =  \text{var}(X)$$
 
-**Correlation** is a standardized version of covariance that is always between $-1$ and $1$.
+**Correlation** is a standardized version of covariance that is always between $$-1$$ and $$1$$.
     $$\text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sqrt{\text{var}(X)\text{var}(Y)}}$$
 
-**Covariance and Independence** If two random variables are independent, then they are uncorrelated. The converse is not necessarily true (e.g., consider $X \sim \mathcal{N}(0,1)$ and $Y=X^2$).
+**Covariance and Independence** If two random variables are independent, then they are uncorrelated. The converse is not necessarily true (e.g., consider $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$).
     $$X \independent Y \longrightarrow \text{cov}(X, Y) = 0 \longrightarrow E(XY) = E(X)E(Y)$$
 
 **Covariance and Variance** The variance of a sum can be found by
     $$\var(X + Y) = \var(X) + \var(Y) + 2\text{cov}(X, Y)$$
     $$\var(X_1 + X_2 + \dots + X_n ) = \sum_{i = 1}^{n}\var(X_i) + 2\sum_{i < j} \text{cov}(X_i, X_j)$$
-    If $X$ and $Y$ are independent, then they have covariance $0$, so
+    If $$X$$ and $$Y$$ are independent, then they have covariance $$0$$, so
     $$X \independent Y \Longrightarrow \var(X + Y) = \var(X) + \var(Y)$$
-    If $X_1, X_2, \dots, X_n$ are identically distributed and have the same covariance relationships (often by symmetry), then 
+    If $$X_1, X_2, \dots, X_n$$ are identically distributed and have the same covariance relationships (often by symmetry), then 
     $$\var(X_1 + X_2 + \dots + X_n ) = n\var(X_1) + 2{n \choose 2}\text{cov}(X_1, X_2)$$
 
-**Covariance Properties** For random variables $W, X, Y, Z$ and constants $a, b$:
+**Covariance Properties** For random variables $$W, X, Y, Z$$ and constants $$a, b$$:
     $$\text{cov}(X, Y) = \text{cov}(Y, X)$$
     $$\text{cov}(X + a, Y + b) = \text{cov}(X, Y)$$
     $$\text{cov}(aX, bY) = ab\text{cov}(X, Y)$$
     $$\text{cov}(W + X, Y + Z) = \text{cov}(W, Y) + \text{cov}(W, Z) + \text{cov}(X, Y) + \text{cov}(X, Z)$$
 
-**Correlation is location-invariant and scale-invariant** For any constants $a,b,c,d$ with $a$ and $c$ nonzero,
+**Correlation is location-invariant and scale-invariant** For any constants $$a,b,c,d$$ with $$a$$ and $$c$$ nonzero,
     $$\text{corr}(aX + b, cY + d) = \text{corr}(X, Y)$$
 
 
 ### Transformations
 
-**One Variable Transformations** Let's say that we have a random variable $X$ with PDF $f_X(x)$, but we are also interested in some function of $X$. We call this function $Y = g(X)$. Also let $y=g(x)$. If $g$ is differentiable and strictly increasing (or strictly decreasing), then the PDF of $Y$ is
+**One Variable Transformations** Let's say that we have a random variable $$X$$ with PDF $$f_X(x)$$, but we are also interested in some function of $$X$$. We call this function $$Y = g(X)$$. Also let $$y=g(x)$$. If $$g$$ is differentiable and strictly increasing (or strictly decreasing), then the PDF of $$Y$$ is
     $$f_Y(y) = f_X(x)\left|\frac{dx}{dy}\right| =  f_X(g^{-1}(y))\left|\frac{d}{dy}g^{-1}(y)\right|$$
     The derivative of the inverse transformation is called the **Jacobian**.
 
-**Two Variable Transformations** Similarly, let's say we know the joint PDF of $U$ and $V$ but are also interested in the random vector $(X, Y)$ defined by $(X, Y) = g(U, V)$. Let 
+**Two Variable Transformations** Similarly, let's say we know the joint PDF of $$U$$ and $$V$$ but are also interested in the random vector $$(X, Y)$$ defined by $$(X, Y) = g(U, V)$$. Let 
    $$  \frac{\partial (u,v)}{\partial (x,y)}  = \begin{pmatrix} 
           \frac{\partial u}{\partial x} &  \frac{\partial u}{\partial y} \\
        \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}   \\
     \end{pmatrix}$$
- be the **Jacobian matrix**. If the entries in this matrix exist and are continuous, and the determinant of the matrix is never $0$, then
+ be the **Jacobian matrix**. If the entries in this matrix exist and are continuous, and the determinant of the matrix is never $$0$$, then
  $$f_{X,Y}(x, y) = f_{U,V}(u,v) \left|\left|   \frac{\partial (u,v)}{\partial (x,y)}\right| \right|$$
- The inner bars tell us to take the matrix's determinant, and the outer bars tell us to take the absolute value. In a $2 \times 2$ matrix, 
+ The inner bars tell us to take the matrix's determinant, and the outer bars tell us to take the absolute value. In a $$2 \times 2$$ matrix, 
  $$ \left| \left|
  \begin{array}{ccc}
      a & b \\
@@ -397,82 +397,82 @@ E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy
 
 ### Convolutions
 
-**Convolution Integral** If you want to find the PDF of the sum of two independent CRVs $X$ and $Y$, you can do the following integral:
+**Convolution Integral** If you want to find the PDF of the sum of two independent CRVs $$X$$ and $$Y$$, you can do the following integral:
     $$f_{X+Y}(t)=\int_{-\infty}^\infty f_X(x)f_Y(t-x)dx$$
 
-**Example** Let $X,Y \sim \mathcal{N}(0,1)$ be i.i.d. Then for each fixed $t$,
+**Example** Let $$X,Y \sim \mathcal{N}(0,1)$$ be i.i.d. Then for each fixed $$t$$,
 $$f_{X+Y}(t)=\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{-x^2/2} \frac{1}{\sqrt{2\pi}}e^{-(t-x)^2/2} dx$$
-By completing the square and using the fact that a Normal PDF integrates to $1$, this works out to $f_{X+Y}(t)$ being the $\mathcal{N}(0,2)$ PDF.
+By completing the square and using the fact that a Normal PDF integrates to $$1$$, this works out to $$f_{X+Y}(t)$$ being the $$\mathcal{N}(0,2)$$ PDF.
 
 ## Poisson Process
 ---
 
 ### Definition
-We have a **Poisson process** of rate $\lambda$ arrivals per unit time if the following conditions hold:
-1. The number of arrivals in a time interval of length $t$ is $\text{Pois}(\lambda t)$.
+We have a **Poisson process** of rate $$\lambda$$ arrivals per unit time if the following conditions hold:
+1. The number of arrivals in a time interval of length $$t$$ is $$\text{Pois}(\lambda t)$$.
 2. Numbers of arrivals in disjoint time intervals are independent.
 
-For example, the numbers of arrivals in the time intervals $[0,5]$, $(5,12),$ and $[13,23)$ are independent with $\text{Pois}(5\lambda)$, $\text{Pois}(7\lambda)$, and $\text{Pois}(10\lambda)$ distributions, respectively.
+For example, the numbers of arrivals in the time intervals $$[0,5]$$, $$(5,12),$$ and $$[13,23)$$ are independent with $$\text{Pois}(5\lambda)$$, $$\text{Pois}(7\lambda)$$, and $$\text{Pois}(10\lambda)$$ distributions, respectively.
 
-![Poisson Process](figures/pp.pdf)
+![Poisson Process](../figure/pp.png)
 
 ### Count-Time Duality
-Consider a Poisson process of emails arriving in an inbox at rate $\lambda$ emails per hour. Let $T_n$ be the time of arrival of the $n$th email (relative to some starting time $0$) and $N_t$ be the number of emails that arrive in $[0,t]$.
+Consider a Poisson process of emails arriving in an inbox at rate $$\lambda$$ emails per hour. Let $$T_n$$ be the time of arrival of the $$n$$th email (relative to some starting time $$0$$) and $$N_t$$ be the number of emails that arrive in $$[0,t]$$.
 
-Let's find the distribution of $T_1$. The event $T_1 > t$, the event that you have to wait more than $t$ hours to get the first email, is the same as the event $N_t = 0$, which is the event that there are no emails in the first $t$ hours. So,
+Let's find the distribution of $$T_1$$. The event $$T_1 > t$$, the event that you have to wait more than $$t$$ hours to get the first email, is the same as the event $$N_t = 0$$, which is the event that there are no emails in the first $$t$$ hours. So,
 
 \[P(T_1 > t) = P(N_t = 0) = e^{-\lambda t}\]
 
-Therefore, $P(T_1 \leq t) = 1 - e^{-\lambda t}$, and $T_1$ follows an exponential distribution with parameter $\lambda$.
+Therefore, $$P(T_1 \leq t) = 1 - e^{-\lambda t}$$, and $$T_1$$ follows an exponential distribution with parameter $$\lambda$$.
 
-By the memoryless property and similar reasoning, the interarrival times between emails are i.i.d. exponential random variables with parameter $\lambda$, i.e., the differences $T_n - T_{n-1}$ are i.i.d. exponential random variables with parameter $\lambda$.
+By the memoryless property and similar reasoning, the interarrival times between emails are i.i.d. exponential random variables with parameter $$\lambda$$, i.e., the differences $$T_n - T_{n-1}$$ are i.i.d. exponential random variables with parameter $$\lambda$$.
 
 ## Order Statistics
 ---
 
 ### Definition
-Let's say you have $n$ i.i.d. random variables $X_1, X_2, \dots, X_n$. If you arrange them from smallest to largest, the $i$th element in that list is the $i$th order statistic, denoted $X_{(i)}$. So $X_{(1)}$ is the smallest in the list and $X_{(n)}$ is the largest in the list.
+Let's say you have $$n$$ i.i.d. random variables $$X_1, X_2, \dots, X_n$$. If you arrange them from smallest to largest, the $$i$$th element in that list is the $$i$$th order statistic, denoted $$X_{(i)}$$. So $$X_{(1)}$$ is the smallest in the list and $$X_{(n)}$$ is the largest in the list.
 
-Note that the order statistics are *dependent*, e.g., learning $X_{(4)} = 42$ gives us the information that $X_{(1)},X_{(2)},X_{(3)}$ are $\leq 42$ and $X_{(5)},X_{(6)},\dots,X_{(n)}$ are $\geq 42$.
+Note that the order statistics are *dependent*, e.g., learning $$X_{(4)} = 42$$ gives us the information that $$X_{(1)},X_{(2)},X_{(3)}$$ are $$\leq 42$$ and $$X_{(5)},X_{(6)},\dots,X_{(n)}$$ are $$\geq 42$$.
 
 ### Distribution
-Taking $n$ i.i.d. random variables $X_1, X_2, \dots, X_n$ with CDF $F(x)$ and PDF $f(x)$, the CDF and PDF of $X_{(i)}$ are:
+Taking $$n$$ i.i.d. random variables $$X_1, X_2, \dots, X_n$$ with CDF $$F(x)$$ and PDF $$f(x)$$, the CDF and PDF of $$X_{(i)}$$ are:
 \[F_{X_{(i)}}(x) = P (X_{(i)} \leq x) = \sum_{k=i}^n {n \choose k} F(x)^k(1 - F(x))^{n - k}\]
 \[f_{X_{(i)}}(x) = n{n - 1 \choose i - 1}F(x)^{i-1}(1 - F(x))^{n-i}f(x)\]
 
 ### Uniform Order Statistics
-The $j$th order statistic of i.i.d. $U_1,\dots,U_n \sim \text{Unif}(0,1)$ is $U_{(j)} \sim \text{Beta}(j, n - j + 1)$.
+The $$j$$th order statistic of i.i.d. $$U_1,\dots,U_n \sim \text{Unif}(0,1)$$ is $$U_{(j)} \sim \text{Beta}(j, n - j + 1)$$.
 
 ## Conditional Expectation
 ---
 
 ### Conditioning on an Event
-We can find $E(Y|A)$, the expected value of $Y$ given that event $A$ occurred. A very important case is when $A$ is the event $X=x$. Note that $E(Y|A)$ is a *number*.
+We can find $$E(Y|A)$$, the expected value of $$Y$$ given that event $$A$$ occurred. A very important case is when $$A$$ is the event $$X=x$$. Note that $$E(Y|A)$$ is a *number*.
 
 For example:
-- The expected value of a fair die roll, given that it is prime, is $\frac{1}{3} \cdot 2 + \frac{1}{3} \cdot 3 + \frac{1}{3} \cdot 5 = \frac{10}{3}$.
-- Let $Y$ be the number of successes in $10$ independent Bernoulli trials with probability $p$ of success. Let $A$ be the event that the first $3$ trials are all successes. Then $E(Y|A) = 3 + 7p$ since the number of successes among the last $7$ trials is $\text{Bin}(7,p)$.
-- Let $T \sim \text{Expo}(1/10)$ be how long you have to wait until the shuttle comes. Given that you have already waited $t$ minutes, the expected additional waiting time is $10$ more minutes, by the memoryless property. That is, $E(T|T>t) = t + 10$.
+- The expected value of a fair die roll, given that it is prime, is $$\frac{1}{3} \cdot 2 + \frac{1}{3} \cdot 3 + \frac{1}{3} \cdot 5 = \frac{10}{3}$$.
+- Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success. Let $$A$$ be the event that the first $$3$$ trials are all successes. Then $$E(Y|A) = 3 + 7p$$ since the number of successes among the last $$7$$ trials is $$\text{Bin}(7,p)$$.
+- Let $$T \sim \text{Expo}(1/10)$$ be how long you have to wait until the shuttle comes. Given that you have already waited $$t$$ minutes, the expected additional waiting time is $$10$$ more minutes, by the memoryless property. That is, $$E(T|T>t) = t + 10$$.
 
 ### Conditioning on a Random Variable
-We can also find $E(Y|X)$, the expected value of $Y$ given the random variable $X$. This is *a function of the random variable $X$*. It is *not* a number except in certain special cases such as if $X \independent Y$. To find $E(Y|X)$, find $E(Y|X = x)$ and then plug in $X$ for $x$.
+We can also find $$E(Y|X)$$, the expected value of $$Y$$ given the random variable $$X$$. This is *a function of the random variable $$X$$*. It is *not* a number except in certain special cases such as if $$X \independent Y$$. To find $$E(Y|X)$$, find $$E(Y|X = x)$$ and then plug in $$X$$ for $$x$$.
 
 For example:
-- If $E(Y|X=x) = x^3+5x$, then $E(Y|X) = X^3 + 5X$.
-- Let $Y$ be the number of successes in $10$ independent Bernoulli trials with probability $p$ of success and $X$ be the number of successes among the first $3$ trials. Then $E(Y|X)=X+7p$.
-- Let $X \sim \mathcal{N}(0,1)$ and $Y=X^2$. Then $E(Y|X=x) = x^2$ since if we know $X=x$ then we know $Y=x^2$. And $E(X|Y=y) = 0$ since if we know $Y=y$ then we know $X = \pm \sqrt{y}$, with equal probabilities (by symmetry). So $E(Y|X)=X^2$, $E(X|Y)=0$.
+- If $$E(Y|X=x) = x^3+5x$$, then $$E(Y|X) = X^3 + 5X$$.
+- Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success and $$X$$ be the number of successes among the first $$3$$ trials. Then $$E(Y|X)=X+7p$$.
+- Let $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$. Then $$E(Y|X=x) = x^2$$ since if we know $$X=x$$ then we know $$Y=x^2$$. And $$E(X|Y=y) = 0$$ since if we know $$Y=y$$ then we know $$X = \pm \sqrt{y}$$, with equal probabilities (by symmetry). So $$E(Y|X)=X^2$$, $$E(X|Y)=0$$.
 
 ### Properties of Conditional Expectation
-1. $E(Y|X) = E(Y)$ if $X \independent Y$
-2. $E(h(X)W|X) = h(X)E(W|X)$ (taking out what's known) \\
-   In particular, $E(h(X)|X) = h(X)$.
-3. $E(E(Y|X)) = E(Y)$ (Adam's Law, a.k.a. Law of Total Expectation)
+1. $$E(Y|X) = E(Y)$$ if $$X \independent Y$$
+2. $$E(h(X)W|X) = h(X)E(W|X)$$ (taking out what's known) \\
+   In particular, $$E(h(X)|X) = h(X)$$.
+3. $$E(E(Y|X)) = E(Y)$$ (Adam's Law, a.k.a. Law of Total Expectation)
 
 ### Adam's Law (a.k.a. Law of Total Expectation)
-For any events $A_1, A_2, \dots, A_n$ that partition the sample space:
+For any events $$A_1, A_2, \dots, A_n$$ that partition the sample space:
 \[E(Y) = E(Y|A_1)P(A_1) + \dots + E(Y|A_n)P(A_n)\]
 
-For the special case where the partition is $A, A^c$, this says:
+For the special case where the partition is $$A, A^c$$, this says:
 \[E(Y) = E(Y|A)P(A) + E(Y|A^c)P(A^c)\]
 
 ### Eve's Law (a.k.a. Law of Total Variance)
@@ -482,27 +482,27 @@ For the special case where the partition is $A, A^c$, this says:
 ---
 
 ## Law of Large Numbers (LLN)
-Let $X_1, X_2, X_3, \dots$ be i.i.d. with mean $\mu$. The sample mean is $\bar{X}_n = \frac{X_1 + X_2 + X_3 + \dots + X_n}{n}$. The Law of Large Numbers states that as $n \to \infty$, $\bar{X}_n \to \mu$ with probability $1$. For example, in flips of a coin with probability $p$ of Heads, let $X_j$ be the indicator of the $j$th flip being Heads. Then LLN says the proportion of Heads converges to $p$ (with probability $1$).
+Let $$X_1, X_2, X_3, \dots$$ be i.i.d. with mean $$\mu$$. The sample mean is $$\bar{X}_n = \frac{X_1 + X_2 + X_3 + \dots + X_n}{n}$$. The Law of Large Numbers states that as $$n \to \infty$$, $$\bar{X}_n \to \mu$$ with probability $$1$$. For example, in flips of a coin with probability $$p$$ of Heads, let $$X_j$$ be the indicator of the $$j$$th flip being Heads. Then LLN says the proportion of Heads converges to $$p$$ (with probability $$1$$).
 
 ## Central Limit Theorem (CLT)
 ### Approximation using CLT
-We use $\dot{\,\sim\,}$ to denote "is approximately distributed." We can use the Central Limit Theorem to approximate the distribution of a random variable $Y = X_1 + X_2 + \dots + X_n$ that is a sum of $n$ i.i.d. random variables $X_i$. Let $E(Y) = \mu_Y$ and $\text{Var}(Y) = \sigma^2_Y$. The CLT says:
+We use $$\dot{\,\sim\,}$$ to denote "is approximately distributed." We can use the Central Limit Theorem to approximate the distribution of a random variable $$Y = X_1 + X_2 + \dots + X_n$$ that is a sum of $$n$$ i.i.d. random variables $$X_i$$. Let $$E(Y) = \mu_Y$$ and $$\text{Var}(Y) = \sigma^2_Y$$. The CLT says:
 \[Y \dot{\,\sim\,} \mathcal{N}(\mu_Y, \sigma^2_Y)\]
 
-If the $X_i$ are i.i.d. with mean $\mu_X$ and variance $\sigma^2_X$, then $\mu_Y = n \mu_X$ and $\sigma^2_Y = n \sigma^2_X$. For the sample mean $\bar{X}_n$, the CLT says:
+If the $$X_i$$ are i.i.d. with mean $$\mu_X$$ and variance $$\sigma^2_X$$, then $$\mu_Y = n \mu_X$$ and $$\sigma^2_Y = n \sigma^2_X$$. For the sample mean $$\bar{X}_n$$, the CLT says:
 \[\bar{X}_n = \frac{1}{n}(X_1 + X_2 + \dots + X_n) \dot{\,\sim\,} \mathcal{N}(\mu_X, \frac{\sigma^2_X}{n})\]
 
 ### Asymptotic Distributions using CLT
-We use $\xrightarrow{D}$ to denote "converges in distribution to" as $n \to \infty$. The CLT says that if we standardize the sum $X_1 + \dots + X_n$, then the distribution of the sum converges to $\mathcal{N}(0,1)$ as $n \to \infty$:
+We use $$\xrightarrow{D}$$ to denote "converges in distribution to" as $$n \to \infty$$. The CLT says that if we standardize the sum $$X_1 + \dots + X_n$$, then the distribution of the sum converges to $$\mathcal{N}(0,1)$$ as $$n \to \infty$$:
 \[\frac{1}{\sigma\sqrt{n}}(X_1 + \dots + X_n - n\mu_X) \xrightarrow{D} \mathcal{N}(0, 1)\]
-In other words, the CDF of the left-hand side goes to the standard Normal CDF, $\Phi$. In terms of the sample mean, the CLT says:
+In other words, the CDF of the left-hand side goes to the standard Normal CDF, $$\Phi$$. In terms of the sample mean, the CLT says:
 \[\frac{\sqrt{n}(\bar{X}_n - \mu_X)}{\sigma_X} \xrightarrow{D} \mathcal{N}(0, 1)\]
 
 # Markov Chains
 ---
 
 ## Definition
-A Markov chain is a random walk in a state space, which we will assume is finite, say $\{1, 2, \dots, M\}$. We let $X_t$ denote which element of the state space the walk is visiting at time $t$. The Markov chain is the sequence of random variables tracking where the walk is at all points in time, $X_0, X_1, X_2, \dots$. By definition, a Markov chain must satisfy the Markov property, which says that if you want to predict where the chain will be at a future time, if we know the present state then the entire past history is irrelevant. Given the present, the past and future are conditionally independent. In symbols:
+A Markov chain is a random walk in a state space, which we will assume is finite, say $$\{1, 2, \dots, M\}$$. We let $$X_t$$ denote which element of the state space the walk is visiting at time $$t$$. The Markov chain is the sequence of random variables tracking where the walk is at all points in time, $$X_0, X_1, X_2, \dots$$. By definition, a Markov chain must satisfy the Markov property, which says that if you want to predict where the chain will be at a future time, if we know the present state then the entire past history is irrelevant. Given the present, the past and future are conditionally independent. In symbols:
 \[P(X_{n+1} = j | X_0 = i_0, X_1 = i_1, \dots, X_n = i) = P(X_{n+1} = j | X_n = i)\]
 
 ## State Properties
@@ -511,43 +511,43 @@ A state is either recurrent or transient.
 - Otherwise, you are at a transient state. There is some positive probability that once you leave, you will never return. \textmusicalnote You don't have to go home, but you can't stay here. \textmusicalnote
 
 A state is either periodic or aperiodic.
-- If you start at a periodic state of period $k$, then the GCD of the possible numbers of steps it would take to return back is $k > 1$.
+- If you start at a periodic state of period $$k$$, then the GCD of the possible numbers of steps it would take to return back is $$k > 1$$.
 - Otherwise, you are at an aperiodic state. The GCD of the possible numbers of steps it would take to return back is 1.
 
 ## Transition Matrix
-Let the state space be $\{1,2,\dots,M\}$. The transition matrix $Q$ is the $M \times M$ matrix where element $q_{ij}$ is the probability that the chain goes from state $i$ to state $j$ in one step:
+Let the state space be $$\{1,2,\dots,M\}$$. The transition matrix $$Q$$ is the $$M \times M$$ matrix where element $$q_{ij}$$ is the probability that the chain goes from state $$i$$ to state $$j$$ in one step:
 
 \[q_{ij} = P(X_{n+1} = j | X_n = i)\]
 
-To find the probability that the chain goes from state $i$ to state $j$ in exactly $m$ steps, take the $(i, j)$ element of $Q^m$:
+To find the probability that the chain goes from state $$i$$ to state $$j$$ in exactly $$m$$ steps, take the $$(i, j)$$ element of $$Q^m$$:
 
 \[q^{(m)}_{ij} = P(X_{n+m} = j | X_n = i)\]
 
-If $X_0$ is distributed according to the row vector PMF $\vec{p}$, i.e., $p_j = P(X_0 = j)$, then the PMF of $X_n$ is $\vec{p}Q^n$.
+If $$X_0$$ is distributed according to the row vector PMF $$\vec{p}$$, i.e., $$p_j = P(X_0 = j)$$, then the PMF of $$X_n$$ is $$\vec{p}Q^n$$.
 
 ## Chain Properties
 A chain is **irreducible** if you can get from anywhere to anywhere. If a chain (on a finite state space) is irreducible, then all of its states are recurrent. A chain is **periodic** if any of its states are periodic, and is **aperiodic** if none of its states are periodic. In an irreducible chain, all states have the same period.
 
-A chain is **reversible** with respect to $\vec{s}$ if $s_iq_{ij} = s_jq_{ji}$ for all $i, j$. Examples of reversible chains include any chain with $q_{ij} = q_{ji}$, with $\vec{s} = (\frac{1}{M}, \frac{1}{M}, \dots, \frac{1}{M})$, and random walk on an undirected network.
+A chain is **reversible** with respect to $$\vec{s}$$ if $$s_iq_{ij} = s_jq_{ji}$$ for all $$i, j$$. Examples of reversible chains include any chain with $$q_{ij} = q_{ji}$$, with $$\vec{s} = (\frac{1}{M}, \frac{1}{M}, \dots, \frac{1}{M})$$, and random walk on an undirected network.
 
 ## Stationary Distribution
-Let $\vec{s} = (s_1, s_2, \dots, s_M)$ be a PMF (written as a row vector). We will call $\vec{s}$ the **stationary distribution** for the chain if $\vec{s}Q = \vec{s}$. As a consequence, if $X_t$ has the stationary distribution, then all future $X_{t+1}, X_{t + 2}, \dots$ also have the stationary distribution.
+Let $$\vec{s} = (s_1, s_2, \dots, s_M)$$ be a PMF (written as a row vector). We will call $$\vec{s}$$ the **stationary distribution** for the chain if $$\vec{s}Q = \vec{s}$$. As a consequence, if $$X_t$$ has the stationary distribution, then all future $$X_{t+1}, X_{t + 2}, \dots$$ also have the stationary distribution.
 
-For irreducible, aperiodic chains, the stationary distribution exists, is unique, and $s_i$ is the long-run probability of a chain being at state $i$. The expected number of steps to return to $i$ starting from $i$ is $1/s_i$.
+For irreducible, aperiodic chains, the stationary distribution exists, is unique, and $$s_i$$ is the long-run probability of a chain being at state $$i$$. The expected number of steps to return to $$i$$ starting from $$i$$ is $$1/s_i$$.
 
-To find the stationary distribution, you can solve the matrix equation $(Q' - I){\vec{s}\,}'= 0$. The stationary distribution is uniform if the columns of $Q$ sum to 1.
+To find the stationary distribution, you can solve the matrix equation $$(Q' - I){\vec{s}\,}'= 0$$. The stationary distribution is uniform if the columns of $$Q$$ sum to 1.
 
-**Reversibility Condition Implies Stationarity:** If you have a PMF $\vec{s}$ and a Markov chain with transition matrix $Q$, then $s_iq_{ij} = s_jq_{ji}$ for all states $i, j$ implies that $\vec{s}$ is stationary.
+**Reversibility Condition Implies Stationarity:** If you have a PMF $$\vec{s}$$ and a Markov chain with transition matrix $$Q$$, then $$s_iq_{ij} = s_jq_{ji}$$ for all states $$i, j$$ implies that $$\vec{s}$$ is stationary.
 
 ## Random Walk on an Undirected Network
-![Random Walk on an Undirected Network](figures/network1.pdf)
+![Random Walk on an Undirected Network](../figure/network1.png)
 
-If you have a collection of **nodes**, pairs of which can be connected by undirected **edges**, and a Markov chain is run by going from the current node to a uniformly random node that is connected to it by an edge, then this is a random walk on an undirected network. The stationary distribution of this chain is proportional to the **degree sequence** (this is the sequence of degrees, where the degree of a node is how many edges are attached to it). For example, the stationary distribution of random walk on the network shown above is proportional to $(3,3,2,4,2)$, so it's $(\frac{3}{14}, \frac{3}{14}, \frac{2}{14}, \frac{4}{14}, \frac{2}{14})$.
+If you have a collection of **nodes**, pairs of which can be connected by undirected **edges**, and a Markov chain is run by going from the current node to a uniformly random node that is connected to it by an edge, then this is a random walk on an undirected network. The stationary distribution of this chain is proportional to the **degree sequence** (this is the sequence of degrees, where the degree of a node is how many edges are attached to it). For example, the stationary distribution of random walk on the network shown above is proportional to $$(3,3,2,4,2)$$, so it's $$(\frac{3}{14}, \frac{3}{14}, \frac{2}{14}, \frac{4}{14}, \frac{2}{14})$$.
 
 ## Continuous Distributions
 
 ### Uniform Distribution
-Let $U$ be distributed $\text{Unif}(a, b)$. We know the following:
+Let $$U$$ be distributed $$\text{Unif}(a, b)$$. We know the following:
 
 - **Properties of the Uniform:** For a Uniform distribution, the probability of a draw from any interval within the support is proportional to the length of the interval.
 - **Example:** William throws darts really badly, so his darts are uniform over the whole room because they're equally likely to appear anywhere. William's darts have a Uniform distribution on the surface of the room. The Uniform is the only distribution where the probability of hitting in any specific region is proportional to the length/area/volume of that region, and where the density of occurrence in any one specific spot is constant throughout the whole support.
@@ -680,14 +680,14 @@ A Chi-Square(n) is the sum of the squares of n independent standard Normal r.v.s
 
 |                   | Replace          | No Replace        |
 |-------------------|------------------|-------------------|
-| **Fixed # trials ($n$)**  | Binomial         | Hypergeometric    |
-|                     | (Bern if $n = 1$)|                   |
-| **Draw until $r$ success** | Negative Binomial| Noncentral Hypergeometric |
-|                     | (Geometric if $r = 1$) |              |
+| **Fixed # trials ($$n$$)**  | Binomial         | Hypergeometric    |
+|                     | (Bern if $$n = 1$$)|                   |
+| **Draw until $$r$$ success** | Negative Binomial| Noncentral Hypergeometric |
+|                     | (Geometric if $$r = 1$$) |              |
 
 ### Bernoulli Distribution
 
-The Bernoulli distribution is the simplest case of the Binomial distribution, where we only have one trial ($n=1$). Let us say that X is distributed Bern(p). We know the following:
+The Bernoulli distribution is the simplest case of the Binomial distribution, where we only have one trial ($$n=1$$). Let us say that X is distributed Bern(p). We know the following:
 
 **Story**
 A trial is performed with probability p of "success", and X is the indicator of success: 1 means success, 0 means failure.
@@ -697,7 +697,7 @@ Let X be the indicator of Heads for a fair coin toss. Then X follows the Bernoul
 
 ### Binomial Distribution
 
-![Binomial Distribution](figures/Bin10_05.pdf)
+![Binomial Distribution](../figure/Bin10_05.png)
 
 Let us say that X is distributed Bin(n, p). We know the following:
 
@@ -733,48 +733,48 @@ where X is the random variable following a Poisson distribution, and λ is the a
 
 # Multivariate Distributions
 ## Multinomial Distribution
-Let us say that the vector $\vec{X} = (X_1, X_2, X_3, \dots, X_k) \sim \text{Mult}_k(n, \vec{p})$  where $\vec{p} = (p_1, p_2, \dots, p_k)$.
+Let us say that the vector $$\vec{X} = (X_1, X_2, X_3, \dots, X_k) \sim \text{Mult}_k(n, \vec{p})$$  where $$\vec{p} = (p_1, p_2, \dots, p_k)$$.
 
-- **Story:** We have $n$ items, which can fall into any one of the $k$ buckets independently with the probabilities $\vec{p} = (p_1, p_2, \dots, p_k)$.
-- **Example:** Let us assume that every year, 100 students in the Harry Potter Universe are randomly and independently sorted into one of four houses with equal probability. The number of people in each of the houses is distributed $\text{Mult}_4(100, \vec{p})$, where $\vec{p} = (0.25, 0.25, 0.25, 0.25)$. Note that $X_1 + X_2 + \dots + X_4 = 100$, and they are dependent.
-- **Joint PMF:** For $n = n_1 + n_2 + \dots + n_k$, the joint probability mass function is:
+- **Story:** We have $$n$$ items, which can fall into any one of the $$k$$ buckets independently with the probabilities $$\vec{p} = (p_1, p_2, \dots, p_k)$$.
+- **Example:** Let us assume that every year, 100 students in the Harry Potter Universe are randomly and independently sorted into one of four houses with equal probability. The number of people in each of the houses is distributed $$\text{Mult}_4(100, \vec{p})$$, where $$\vec{p} = (0.25, 0.25, 0.25, 0.25)$$. Note that $$X_1 + X_2 + \dots + X_4 = 100$$, and they are dependent.
+- **Joint PMF:** For $$n = n_1 + n_2 + \dots + n_k$$, the joint probability mass function is:
 \[P(\vec{X} = \vec{n}) = \frac{n!}{n_1!n_2!\dots n_k!}p_1^{n_1}p_2^{n_2}\dots p_k^{n_k}\]
-- **Marginal PMF, Lumping, and Conditionals:** Marginally, $X_i \sim \text{Bin}(n,p_i)$ since we can define "success" to mean category $i$. If you lump together multiple categories in a Multinomial, then it is still Multinomial. Conditioning on some $X_j$ also gives a Multinomial.
-- **Variances and Covariances:** We have $X_i \sim \text{Bin}(n, p_i)$ marginally, so $\text{Var}(X_i) = np_i(1-p_i)$. Also, $\text{Cov}(X_i, X_j) = -np_ip_j$ for $i \neq j.
+- **Marginal PMF, Lumping, and Conditionals:** Marginally, $$X_i \sim \text{Bin}(n,p_i)$$ since we can define "success" to mean category $$i$$. If you lump together multiple categories in a Multinomial, then it is still Multinomial. Conditioning on some $$X_j$$ also gives a Multinomial.
+- **Variances and Covariances:** We have $$X_i \sim \text{Bin}(n, p_i)$$ marginally, so $$\text{Var}(X_i) = np_i(1-p_i)$$. Also, $$\text{Cov}(X_i, X_j) = -np_ip_j$$ for $$i \neq j.
 
 ## Multivariate Uniform Distribution
-See the univariate Uniform for stories and examples. For the 2D Uniform on some region, probability is proportional to area. Every point in the support has equal density, of value $1/\text{area of region}$. For the 3D Uniform, probability is proportional to volume.
+See the univariate Uniform for stories and examples. For the 2D Uniform on some region, probability is proportional to area. Every point in the support has equal density, of value $$1/\text{area of region}$$. For the 3D Uniform, probability is proportional to volume.
 
 ## Multivariate Normal (MVN) Distribution
-A vector $\vec{X} = (X_1, X_2, \dots, X_k)$ is Multivariate Normal if every linear combination is Normally distributed, i.e., $t_1X_1 + t_2X_2 + \dots + t_kX_k$ is Normal for any constants $t_1, t_2, \dots, t_k$. The parameters of the Multivariate Normal are the mean vector $\vec{\mu} = (\mu_1, \mu_2, \dots, \mu_k)$ and the covariance matrix where the $(i, j)$ entry is $\text{cov}(X_i, X_j)$.
+A vector $$\vec{X} = (X_1, X_2, \dots, X_k)$$ is Multivariate Normal if every linear combination is Normally distributed, i.e., $$t_1X_1 + t_2X_2 + \dots + t_kX_k$$ is Normal for any constants $$t_1, t_2, \dots, t_k$$. The parameters of the Multivariate Normal are the mean vector $$\vec{\mu} = (\mu_1, \mu_2, \dots, \mu_k)$$ and the covariance matrix where the $$(i, j)$$ entry is $$\text{cov}(X_i, X_j)$$.
 
 - **Properties:** The Multivariate Normal has the following properties:
   - Any subvector is also MVN.
   - If any two elements within an MVN are uncorrelated, then they are independent.
-  - The joint PDF of a Bivariate Normal $(X,Y)$ with $\mathcal{N}(0,1)$ marginal distributions and correlation $\rho \in (-1,1)$ is:
+  - The joint PDF of a Bivariate Normal $$(X,Y)$$ with $$\mathcal{N}(0,1)$$ marginal distributions and correlation $$\rho \in (-1,1)$$ is:
     \[f_{X,Y}(x,y) = \frac{1}{2 \pi \tau} \exp\left(-\frac{1}{2 \tau^2} (x^2+y^2-2 \rho xy)\right),\]
-    with $\tau = \sqrt{1-\rho^2}$.
+    with $$\tau = \sqrt{1-\rho^2}$$.
 
 # Distribution Properties
 ## Important CDFs
-- **Standard Normal:** $\Phi$
-- **Exponential($\lambda$):** $F(x) = 1 - e^{-\lambda x}$, for $x \in (0, \infty)$
-- **Uniform(0,1):** $F(x) = x$, for $x \in (0, 1)$
+- **Standard Normal:** $$\Phi$$
+- **Exponential($$\lambda$$):** $$F(x) = 1 - e^{-\lambda x}$$, for $$x \in (0, \infty)$$
+- **Uniform(0,1):** $$F(x) = x$$, for $$x \in (0, 1)$$
 
 ## Convolutions of Random Variables
-A convolution of $n$ random variables is simply their sum. For the following results, let $X$ and $Y$ be independent.
-1. $X \sim \text{Pois}(\lambda_1)$, $Y \sim \text{Pois}(\lambda_2)$ $\longrightarrow X + Y \sim \text{Pois}(\lambda_1 + \lambda_2)$
-2. $X \sim \text{Bin}(n_1, p)$, $Y \sim \text{Bin}(n_2, p)$ $\longrightarrow X + Y \sim \text{Bin}(n_1 + n_2, p)$. $\text{Bin}(n,p)$ can be thought of as a sum of i.i.d. $\text{Bern}(p)$ random variables.
-3. $X \sim \text{Gam}(a_1, \lambda)$, $Y \sim \text{Gam}(a_2, \lambda)$ $\longrightarrow X + Y \sim \text{Gam}(a_1 + a_2, \lambda)$. $\text{Gam}(n,\lambda)$ with $n$ an integer can be thought of as a sum of i.i.d. $\text{Expo}(\lambda)$ random variables.
-4. $X \sim \text{NBin}(r_1, p)$, $Y \sim \text{NBin}(r_2, p)$ $\longrightarrow X + Y \sim \text{NBin}(r_1 + r_2, p)$. $\text{NBin}(r,p)$ can be thought of as a sum of i.i.d. $\text{Geom}(p)$ random variables.
-5. $X \sim \mathcal{N}(\mu_1, \sigma_1^2)$, $Y \sim \mathcal{N}(\mu_2, \sigma_2^2)$ $\longrightarrow X + Y \sim \mathcal{N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$
+A convolution of $$n$$ random variables is simply their sum. For the following results, let $$X$$ and $$Y$$ be independent.
+1. $$X \sim \text{Pois}(\lambda_1)$$, $$Y \sim \text{Pois}(\lambda_2)$$ $$\longrightarrow X + Y \sim \text{Pois}(\lambda_1 + \lambda_2)$$
+2. $$X \sim \text{Bin}(n_1, p)$$, $$Y \sim \text{Bin}(n_2, p)$$ $$\longrightarrow X + Y \sim \text{Bin}(n_1 + n_2, p)$$. $$\text{Bin}(n,p)$$ can be thought of as a sum of i.i.d. $$\text{Bern}(p)$$ random variables.
+3. $$X \sim \text{Gam}(a_1, \lambda)$$, $$Y \sim \text{Gam}(a_2, \lambda)$$ $$\longrightarrow X + Y \sim \text{Gam}(a_1 + a_2, \lambda)$$. $$\text{Gam}(n,\lambda)$$ with $$n$$ an integer can be thought of as a sum of i.i.d. $$\text{Expo}(\lambda)$$ random variables.
+4. $$X \sim \text{NBin}(r_1, p)$$, $$Y \sim \text{NBin}(r_2, p)$$ $$\longrightarrow X + Y \sim \text{NBin}(r_1 + r_2, p)$$. $$\text{NBin}(r,p)$$ can be thought of as a sum of i.i.d. $$\text{Geom}(p)$$ random variables.
+5. $$X \sim \mathcal{N}(\mu_1, \sigma_1^2)$$, $$Y \sim \mathcal{N}(\mu_2, \sigma_2^2)$$ $$\longrightarrow X + Y \sim \mathcal{N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$$
 
 ## Special Cases of Distributions
-1. $\text{Bin}(1, p) \sim \text{Bern}(p)$
-2. $\text{Beta}(1, 1) \sim \text{Unif}(0, 1)$
-3. $\text{Gam}(1, \lambda) \sim \text{Expo}(\lambda)$
-4. $\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$
-5. $\text{NBin}(1, p) \sim \text{Geom}(p)$
+1. $$\text{Bin}(1, p) \sim \text{Bern}(p)$$
+2. $$\text{Beta}(1, 1) \sim \text{Unif}(0, 1)$$
+3. $$\text{Gam}(1, \lambda) \sim \text{Expo}(\lambda)$$
+4. $$\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$$
+5. $$\text{NBin}(1, p) \sim \text{Geom}(p)$$
 
 $$
 \textbf{Inequalities}
@@ -783,11 +783,11 @@ $$
 \begin{enumerate}
 \item \textbf{Cauchy-Schwarz}: $$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
 
-\item \textbf{Markov}: $$P(X \geq a) \leq \frac{E|X|}{a}$$ for $a>0$
+\item \textbf{Markov}: $$P(X \geq a) \leq \frac{E|X|}{a}$$ for $$a>0$$
 
-\item \textbf{Chebyshev}: $$P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$$ for $E(X)=\mu$, $\text{Var}(X) = \sigma^2$
+\item \textbf{Chebyshev}: $$P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$$ for $$E(X)=\mu$$, $$\text{Var}(X) = \sigma^2$$
 
-\item \textbf{Jensen}: $$E(g(X)) \geq g(E(X))$$ for $g$ convex; reverse if $g$ is concave
+\item \textbf{Jensen}: $$E(g(X)) \geq g(E(X))$$ for $$g$$ convex; reverse if $$g$$ is concave
 \end{enumerate}
 
 
@@ -810,7 +810,7 @@ $$
 $$
 
 $$
-\textbf{Exponential Function ($e^x$)}
+\textbf{Exponential Function ($$e^x$$)}
 $$
 
 $$
@@ -827,7 +827,7 @@ $$
 \int_0^\infty x^{t-1}e^{-x}\, dx = \Gamma(t) \hspace{1 cm} \int_0^1 x^{a - 1}(1-x)^{b-1}\, dx = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}
 $$
 
-Also, $\Gamma(a+1) = a \Gamma(a)$, and $\Gamma(n) = (n - 1)!$ if $n$ is a positive integer.
+Also, $$\Gamma(a+1) = a \Gamma(a)$$, and $$\Gamma(n) = (n - 1)!$$ if $$n$$ is a positive integer.
 
 $$
 \textbf{Euler's Approximation for Harmonic Sums}
@@ -849,10 +849,10 @@ $$
 ---
 
 **Medians and Quantiles**
-Let $X$ have CDF $F$. Then $X$ has median $m$ if $F(m) \geq 0.5$ and $P(X \geq m) \geq 0.5$. For $X$ continuous, $m$ satisfies $F(m) = \frac{1}{2}$. In general, the $a$th quantile of $X$ is $\min \{x: F(x) \geq a\}$; the median is the case $a = \frac{1}{2}$.
+Let $$X$$ have CDF $$F$$. Then $$X$$ has median $$m$$ if $$F(m) \geq 0.5$$ and $$P(X \geq m) \geq 0.5$$. For $$X$$ continuous, $$m$$ satisfies $$F(m) = \frac{1}{2}$$. In general, the $$a$$th quantile of $$X$$ is $$\min \{x: F(x) \geq a\}$$; the median is the case $$a = \frac{1}{2}$$.
 
 **log**
-Statisticians generally use $\log$ to refer to natural log (i.e., base $e$).
+Statisticians generally use $$\log$$ to refer to natural log (i.e., base $$e$$).
 
 **i.i.d r.v.s**
 Independent, identically-distributed random variables.
@@ -861,45 +861,45 @@ Independent, identically-distributed random variables.
 ---
 
 ### Calculating Probability
-A textbook has $n$ typos, which are randomly scattered amongst its $n$ pages, independently. You pick a random page. What is the probability that it has no typos?
-**Answer:** There is a $\left(1 - \frac{1}{n}\right)$ probability that any specific typo isn't on your page, and thus a $\boxed{\left(1 - \frac{1}{n}\right)^n}$ probability that there are no typos on your page. For $n$ large, this is approximately $e^{-1} = \frac{1}{e}$.
+A textbook has $$n$$ typos, which are randomly scattered amongst its $$n$$ pages, independently. You pick a random page. What is the probability that it has no typos?
+**Answer:** There is a $$\left(1 - \frac{1}{n}\right)$$ probability that any specific typo isn't on your page, and thus a $$\boxed{\left(1 - \frac{1}{n}\right)^n}$$ probability that there are no typos on your page. For $$n$$ large, this is approximately $$e^{-1} = \frac{1}{e}$$.
 
 ### Linearity and Indicators (1)
-In a group of $n$ people, what is the expected number of distinct birthdays (month and day)? What is the expected number of birthday matches?
-**Answer:** Let $X$ be the number of distinct birthdays and $I_j$ be the indicator for the $j$th day being represented.
+In a group of $$n$$ people, what is the expected number of distinct birthdays (month and day)? What is the expected number of birthday matches?
+**Answer:** Let $$X$$ be the number of distinct birthdays and $$I_j$$ be the indicator for the $$j$$th day being represented.
 
 \[E(I_j) = 1 - P(\textnormal{no one born on day }j) = 1 - \left(\frac{364}{365}\right)^n\]
 
-By linearity, $\boxed{E(X) = 365\left(1-\frac{364}{365}\right)^n}$. 
+By linearity, $$\boxed{E(X) = 365\left(1-\frac{364}{365}\right)^n}$$. 
 
-Now let $Y$ be the number of birthday matches and $J_i$ be the indicator that the $i$th pair of people have the same birthday. The probability that any two specific people share a birthday is $\frac{1}{365}$, so $\boxed{E(Y) = \frac{\binom{n}{2}}{365}}$. 
+Now let $$Y$$ be the number of birthday matches and $$J_i$$ be the indicator that the $$i$$th pair of people have the same birthday. The probability that any two specific people share a birthday is $$\frac{1}{365}$$, so $$\boxed{E(Y) = \frac{\binom{n}{2}}{365}}$$. 
 
 ### Linearity and Indicators (2)
-*This problem is commonly known as the* ***hat-matching problem***. *There are $n$ people at a party, each with a hat. At the end of the party, they each leave with a random hat. What is the expected number of people who leave with the right hat?*
-**Answer:** Each hat has a $\frac{1}{n}$ chance of going to the right person. By linearity, the average number of hats that go to their owners is $\boxed{1}$.
+*This problem is commonly known as the* ***hat-matching problem***. *There are $$n$$ people at a party, each with a hat. At the end of the party, they each leave with a random hat. What is the expected number of people who leave with the right hat?*
+**Answer:** Each hat has a $$\frac{1}{n}$$ chance of going to the right person. By linearity, the average number of hats that go to their owners is $$\boxed{1}$$.
 
 ### Linearity and First Success
 *This problem is commonly known as the* ***coupon collector problem***.
-There are $n$ coupon types. At each draw, you get a uniformly random coupon type. What is the expected number of coupons needed until you have a complete set?
-**Answer:** Let $N$ be the number of coupons needed; we want $E(N)$. Let $N = N_1 + \dots + N_n$, where $N_1$ is the draws to get our first new coupon, $N_2$ is the *additional* draws needed to draw our second new coupon, and so on. By the story of the First Success, $N_2 \sim \textnormal{FS}\left(\frac{n-1}{n}\right)$ (after collecting the first coupon type, there's $\frac{n-1}{n}$ chance you'll get something new). Similarly, $N_3 \sim \textnormal{FS}\left(\frac{n-2}{n}\right)$, and $N_j \sim \textnormal{FS}\left(\frac{n-j+1}{n}\right)$. By linearity,
+There are $$n$$ coupon types. At each draw, you get a uniformly random coupon type. What is the expected number of coupons needed until you have a complete set?
+**Answer:** Let $$N$$ be the number of coupons needed; we want $$E(N)$$. Let $$N = N_1 + \dots + N_n$$, where $$N_1$$ is the draws to get our first new coupon, $$N_2$$ is the *additional* draws needed to draw our second new coupon, and so on. By the story of the First Success, $$N_2 \sim \textnormal{FS}\left(\frac{n-1}{n}\right)$$ (after collecting the first coupon type, there's $$\frac{n-1}{n}$$ chance you'll get something new). Similarly, $$N_3 \sim \textnormal{FS}\left(\frac{n-2}{n}\right)$$, and $$N_j \sim \textnormal{FS}\left(\frac{n-j+1}{n}\right)$$. By linearity,
 
 \[E(N) = E(N_1) + \dots + E(N_n) = \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} = \boxed{n\sum^n_{j=1} \frac{1}{j}}\]
 
-This is approximately $n (\log(n) + 0.577)$ by Euler's approximation.
+This is approximately $$n (\log(n) + 0.577)$$ by Euler's approximation.
 
 ### Orderings of i.i.d. random variables
 I call 2 UberX's and 3 Lyfts at the same time. If the time it takes for the rides to reach me are i.i.d., what is the probability that all the Lyfts will arrive first?
-**Answer:** Since the arrival times of the five cars are i.i.d., all $5!$ orderings of the arrivals are equally likely. There are $3!2!$ orderings that involve the Lyfts arriving first, so the probability that the Lyfts arrive first is $\boxed{\frac{3!2!}{5!} = \frac{1}{10}}$. Alternatively, there are $\binom{5}{3}$ ways to choose 3 of the 5 slots for the Lyfts to occupy, where each of the choices is equally likely. One of these choices has all 3 of the Lyfts arriving first, so the probability is $\boxed{\frac{1}{{5 \choose 3}} = \frac{1}{10}}$.
+**Answer:** Since the arrival times of the five cars are i.i.d., all $$5!$$ orderings of the arrivals are equally likely. There are $$3!2!$$ orderings that involve the Lyfts arriving first, so the probability that the Lyfts arrive first is $$\boxed{\frac{3!2!}{5!} = \frac{1}{10}}$$. Alternatively, there are $$\binom{5}{3}$$ ways to choose 3 of the 5 slots for the Lyfts to occupy, where each of the choices is equally likely. One of these choices has all 3 of the Lyfts arriving first, so the probability is $$\boxed{\frac{1}{{5 \choose 3}} = \frac{1}{10}}$$.
 
 ### Expectation of Negative Hypergeometric
 What is the expected number of cards that you draw before you pick your first Ace in a shuffled deck (not counting the Ace)?
-**Answer:** Consider a non-Ace. Denote this to be card $j$. Let $I_j$ be the indicator that card $j$ will be drawn before the first Ace. Note that $I_j=1$ says that $j$ is before all 4 of the Aces in the deck. The probability that this occurs is $\frac{1}{5}$ by symmetry. Let $X$ be the number of cards drawn before the first Ace. Then $X = I_1 + I_2 + \ldots + I_{48}$, where each indicator corresponds to one of the 48 non-Aces. Thus,
+**Answer:** Consider a non-Ace. Denote this to be card $$j$$. Let $$I_j$$ be the indicator that card $$j$$ will be drawn before the first Ace. Note that $$I_j=1$$ says that $$j$$ is before all 4 of the Aces in the deck. The probability that this occurs is $$\frac{1}{5}$$ by symmetry. Let $$X$$ be the number of cards drawn before the first Ace. Then $$X = I_1 + I_2 + \ldots + I_{48}$$, where each indicator corresponds to one of the 48 non-Aces. Thus,
 
 \[E(X) = E(I_1) + E(I_2) + \ldots + E(I_{48}) = \frac{48}{5} = \boxed{9.6}\].
 
 ## Minimum and Maximum of RVs
-What is the CDF of the maximum of $n$ independent Unif(0,1) random variables?
-**Answer:** Note that for r.v.s $X_1,X_2,\dots,X_n$,
+What is the CDF of the maximum of $$n$$ independent Unif(0,1) random variables?
+**Answer:** Note that for r.v.s $$X_1,X_2,\dots,X_n$$,
 
 \[ P(\min(X_1, X_2, \dots, X_n) \geq a) = P(X_1 \geq a, X_2 \geq a, \dots, X_n \geq a) \]
 
@@ -907,16 +907,16 @@ Similarly,
 
 \[ P(\max(X_1, X_2, \dots, X_n) \leq a) = P(X_1 \leq a, X_2 \leq a, \dots, X_n \leq a) \]
 
-We will use this principle to find the CDF of $U_{(n)}$, where $U_{(n)} = \max(U_1, U_2, \dots, U_n)$ and $U_i \sim \text{Unif}(0, 1)$ are i.i.d.
+We will use this principle to find the CDF of $$U_{(n)}$$, where $$U_{(n)} = \max(U_1, U_2, \dots, U_n)$$ and $$U_i \sim \text{Unif}(0, 1)$$ are i.i.d.
 
 \[
 P(\max(U_1, U_2, \dots, U_n) \leq a) = P(U_1 \leq a, U_2 \leq a, \dots, U_n \leq a) = P(U_1 \leq a)P(U_2 \leq a)\dots P(U_n \leq a) = \boxed{a^n}
 \]
 
-for $0<a<1$ (and the CDF is $0$ for $a \leq 0$ and $1$ for $a \geq 1$).
+for $$0<a<1$$ (and the CDF is $$0$$ for $$a \leq 0$$ and $$1$$ for $$a \geq 1$$).
 
-## Pattern-matching with $e^x$ Taylor series
-For $X \sim \text{Pois}(\lambda)$, find $E\left(\frac{1}{X+1}\right)$.
+## Pattern-matching with $$e^x$$ Taylor series
+For $$X \sim \text{Pois}(\lambda)$$, find $$E\left(\frac{1}{X+1}\right)$$.
 **Answer:** By LOTUS,
 
 \[
@@ -924,8 +924,8 @@ E\left(\frac{1}{X+1}\right) = \sum_{k=0}^\infty \frac{1}{k+1} \frac{e^{-\lambda}
 \]
 
 ## Adam's Law and Eve's Law
-William really likes speedsolving Rubik's Cubes. But he's pretty bad at it, so sometimes he fails. On any given day, William will attempt $N \sim \text{Geom}(s)$ Rubik's Cubes. Suppose each time, he has probability $p$ of solving the cube, independently. Let $T$ be the number of Rubik's Cubes he solves during a day. Find the mean and variance of $T$.
-**Answer:** Note that $T|N \sim \text{Bin}(N,p)$. So by Adam's Law,
+William really likes speedsolving Rubik's Cubes. But he's pretty bad at it, so sometimes he fails. On any given day, William will attempt $$N \sim \text{Geom}(s)$$ Rubik's Cubes. Suppose each time, he has probability $$p$$ of solving the cube, independently. Let $$T$$ be the number of Rubik's Cubes he solves during a day. Find the mean and variance of $$T$$.
+**Answer:** Note that $$T|N \sim \text{Bin}(N,p)$$. So by Adam's Law,
 
 \[E(T) = E(E(T|N)) = E(Np) = \boxed{\frac{p (1-s)}{s}}\]
 
@@ -936,41 +936,41 @@ Similarly, by Eve's Law, we have
 \]
 
 ## MGF -- Distribution Matching
-(Continuing the Rubik's Cube question above) Find the MGF of $T$. What is the name of this distribution and its parameter(s)?
+(Continuing the Rubik's Cube question above) Find the MGF of $$T$$. What is the name of this distribution and its parameter(s)?
 **Answer:** By Adam's Law, we have
 
 \[
 E(e^{tT}) = E(E(e^{tT}|N)) = E((pe^t + q)^N) = s\sum_{n=0}^\infty(pe^t + 1-p)^n(1-s)^n =\frac{s}{1-(1-s)(pe^t+1-p)} =\frac{s}{s+(1-s)p-(1-s)pe^t}
 \]
 
-Intuitively, we would expect that $T$ is distributed Geometrically since $T$ is just a filtered version of $N$, which itself is Geometrically distributed. The MGF of $X\sim\text{Geom}(\theta)$ is
+Intuitively, we would expect that $$T$$ is distributed Geometrically since $$T$$ is just a filtered version of $$N$$, which itself is Geometrically distributed. The MGF of $$X\sim\text{Geom}(\theta)$$ is
 
 \[E(e^{tX}) = \frac{\theta}{1-(1-\theta) e^t}\]
 
-So, we would want to try to get our MGF into this form to identify what $\theta$ is. Taking our original MGF, it would appear that dividing by $s+(1-s)p$ would allow us to do this. Therefore, we have that
+So, we would want to try to get our MGF into this form to identify what $$\theta$$ is. Taking our original MGF, it would appear that dividing by $$s+(1-s)p$$ would allow us to do this. Therefore, we have that
 
 \[
 E(e^{tT}) = \frac{s}{s+(1-s)p - (1-s)pe^t} = \frac{\frac{s}{s+(1-s)p}}{1-\frac{(1-s)p}{s+(1-s)p}e^t}
 \]
 
-By pattern-matching, it thus follows that $\boxed{T \sim \text{Geom}(\theta)}$ where
+By pattern-matching, it thus follows that $$\boxed{T \sim \text{Geom}(\theta)}$$ where
 
 \[\boxed{\theta = \frac{s}{s+(1-s)p}}\]
 
 ## MGF -- Finding Moments
-Find $E(X^3)$ for $X \sim \text{Expo}(\lambda)$ using the MGF of $X$.
-**Answer:** The MGF of an $\text{Expo}(\lambda)$ is $M(t) = \frac{\lambda}{\lambda-t}$. To get the third moment, we can take the third derivative of the MGF and evaluate at $t=0$:
+Find $$E(X^3)$$ for $$X \sim \text{Expo}(\lambda)$$ using the MGF of $$X$$.
+**Answer:** The MGF of an $$\text{Expo}(\lambda)$$ is $$M(t) = \frac{\lambda}{\lambda-t}$$. To get the third moment, we can take the third derivative of the MGF and evaluate at $$t=0$$:
 
 \[\boxed{E(X^3) = \frac{6}{\lambda^3}}\]
 
-But a much nicer way to use the MGF here is via pattern recognition: note that $M(t)$ looks like it came from a geometric series:
+But a much nicer way to use the MGF here is via pattern recognition: note that $$M(t)$$ looks like it came from a geometric series:
 
 \[\frac{1}{1-\frac{t}{\lambda}} = \sum^{\infty}_{n=0} \left(\frac{t}{\lambda}\right)^n = \sum^{\infty}_{n=0} \frac{n!}{\lambda^n} \frac{t^n}{n!}\]
 
-The coefficient of $\frac{t^n}{n!}$ here is the $n$th moment of $X$, so we have $E(X^n) = \frac{n!}{\lambda^n}$ for all nonnegative integers $n$.
+The coefficient of $$\frac{t^n}{n!}$$ here is the $$n$$th moment of $$X$$, so we have $$E(X^n) = \frac{n!}{\lambda^n}$$ for all nonnegative integers $$n$$.
 
 ## Markov chains (1)
-Suppose $X_n$ is a two-state Markov chain with transition matrix 
+Suppose $$X_n$$ is a two-state Markov chain with transition matrix 
 
 \[
 Q = \begin{bmatrix}
@@ -979,8 +979,8 @@ Q = \begin{bmatrix}
 \end{bmatrix}
 \]
 
-Find the stationary distribution $\vec{s} = (s_0, s_1)$ of $X_n$ by solving $\vec{s} Q = \vec{s}$, and show that the chain is reversible with respect to $\vec{s}$.
-**Answer:** The equation $\vec{s}Q = \vec{s}$ says that
+Find the stationary distribution $$\vec{s} = (s_0, s_1)$$ of $$X_n$$ by solving $$\vec{s} Q = \vec{s}$$, and show that the chain is reversible with respect to $$\vec{s}$$.
+**Answer:** The equation $$\vec{s}Q = \vec{s}$$ says that
 
 \[
 s_0 = s_0(1-\alpha) + s_1 \beta \text{ and } s_1 = s_0(\alpha) + s_0(1-\beta)
@@ -992,7 +992,7 @@ By solving this system of linear equations, we have
 \boxed{\vec{s} = \left(\frac{\beta}{\alpha+\beta}, \frac{\alpha}{\alpha+\beta}\right)}
 \]
 
-To show that the chain is reversible with respect to $\vec{s}$, we must show $s_i q_{ij} = s_j q_{ji}$ for all $i, j$. This is done if we can show $s_0 q_{01} = s_1 q_{10}$. And indeed,
+To show that the chain is reversible with respect to $$\vec{s}$$, we must show $$s_i q_{ij} = s_j q_{ji}$$ for all $$i, j$$. This is done if we can show $$s_0 q_{01} = s_1 q_{10}$$. And indeed,
 
 \[
 s_0  q_{01}  = \frac{\alpha\beta}{\alpha+\beta} = s_1 q_{10}
@@ -1023,29 +1023,29 @@ William and Sebastian play a modified game of Settlers of Catan, where every tur
 ---
 Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 
-1. **Getting started.** Start by *defining relevant events and random variables*. ("Let $A$ be the event that I pick the fair coin"; "Let $X$ be the number of successes.") Clear notion is important for clear thinking! Then decide what it is that you're supposed to be finding, in terms of your notation ("I want to find $P(X=3|A)$"). Think about what type of object your answer should be (a number? A random variable? A PMF? A PDF?) and what it should be in terms of.
+1. **Getting started.** Start by *defining relevant events and random variables*. ("Let $$A$$ be the event that I pick the fair coin"; "Let $$X$$ be the number of successes.") Clear notion is important for clear thinking! Then decide what it is that you're supposed to be finding, in terms of your notation ("I want to find $$P(X=3|A)$$"). Think about what type of object your answer should be (a number? A random variable? A PMF? A PDF?) and what it should be in terms of.
 
 Try simple and extreme cases. To make an abstract experiment more concrete, try *drawing a picture* or making up numbers that could have happened. Pattern recognition: does the structure of the problem resemble something we've seen before?
 
 2. **Calculating probability of an event.** Use counting principles if the naive definition of probability applies. Is the probability of the complement easier to find? Look for symmetries. Look for something to condition on, then apply Bayes' Rule or the Law of Total Probability.
 
-3. **Finding the distribution of a random variable.** First make sure you need the full distribution not just the mean (see next item). Check the *support* of the random variable: what values can it take on? Use this to rule out distributions that don't fit. Is there a *story* for one of the named distributions that fits the problem at hand? Can you write the random variable as a function of an r.v. with a known distribution, say $Y = g(X)$?
+3. **Finding the distribution of a random variable.** First make sure you need the full distribution not just the mean (see next item). Check the *support* of the random variable: what values can it take on? Use this to rule out distributions that don't fit. Is there a *story* for one of the named distributions that fits the problem at hand? Can you write the random variable as a function of an r.v. with a known distribution, say $$Y = g(X)$$?
 
 4. **Calculating expectation.** If it has a named distribution, check out the table of distributions. If it's a function of an r.v. with a named distribution, try LOTUS. If it's a count of something, try breaking it up into indicator r.v.s. If you can condition on something natural, consider using Adam's law.
 
 5. **Calculating variance.** Consider independence, named distributions, and LOTUS. If it's a count of something, break it up into a sum of indicator r.v.s. If it's a sum, use properties of covariance. If you can condition on something natural, consider using Eve's Law.
 
-6. **Calculating $E(X^2)$.** Do you already know $E(X)$ or $\text{Var}(X)$? Recall that $\text{Var}(X) = E(X^2) - (E(X))^2$. Otherwise try LOTUS.
+6. **Calculating $$E(X^2)$$.** Do you already know $$E(X)$$ or $$\text{Var}(X)$$? Recall that $$\text{Var}(X) = E(X^2) - (E(X))^2$$. Otherwise try LOTUS.
 
-7. **Calculating covariance.** Use the properties of covariance. If you're trying to find the covariance between two components of a Multinomial distribution, $X_i, X_j$, then the covariance is $-np_ip_j$ for $i \neq j$.
+7. **Calculating covariance.** Use the properties of covariance. If you're trying to find the covariance between two components of a Multinomial distribution, $$X_i, X_j$$, then the covariance is $$-np_ip_j$$ for $$i \neq j$$.
 
-8. **Symmetry.** If $X_1,\dots,X_n$ are i.i.d., consider using symmetry.
+8. **Symmetry.** If $$X_1,\dots,X_n$$ are i.i.d., consider using symmetry.
 
-9. **Calculating probabilities of orderings.** Remember that all $n!$ ordering of i.i.d. continuous random variables $X_1,\dots,X_n$ are equally likely.
+9. **Calculating probabilities of orderings.** Remember that all $$n!$$ ordering of i.i.d. continuous random variables $$X_1,\dots,X_n$$ are equally likely.
 
 10. **Determining independence.** There are several equivalent definitions. Think about simple and extreme cases to see if you can find a counterexample.
 
-11. **Do a painful integral.** If your integral looks painful, see if you can write your integral in terms of a known PDF (like Gamma or Beta), and use the fact that PDFs integrate to $1$?
+11. **Do a painful integral.** If your integral looks painful, see if you can write your integral in terms of a known PDF (like Gamma or Beta), and use the fact that PDFs integrate to $$1$$?
 
 12. **Before moving on.** Check some simple and extreme cases, check whether the answer seems plausible, check for biohazards.
 
@@ -1055,17 +1055,17 @@ Contributions from Jessy Hwang
 
 1. **Don't misuse the naive definition of probability.** When answering "What is the probability that in a group of 3 people, no two have the same birth month?", it is *not* correct to treat the people as indistinguishable balls being placed into 12 boxes, since that assumes the list of birth months {January, January, January} is just as likely as the list {January, April, June}, even though the latter is six times more likely.
 
-2. **Don't confuse unconditional, conditional, and joint probabilities.** In applying $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$, it is *not* correct to say "$P(B) = 1$ because we know $B$ happened"; $P(B)$ is the *prior* probability of $B$. Don't confuse $P(A|B)$ with $P(A,B)$.
+2. **Don't confuse unconditional, conditional, and joint probabilities.** In applying $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$, it is *not* correct to say "$$P(B) = 1$$ because we know $$B$$ happened"; $$P(B)$$ is the *prior* probability of $$B$$. Don't confuse $$P(A|B)$$ with $$P(A,B)$$.
 
-3. **Don't assume independence without justification.** In the matching problem, the probability that card 1 is a match and card 2 is a match is not $1/n^2$. Binomial and Hypergeometric are often confused; the trials are independent in the Binomial story and dependent in the Hypergeometric story.
+3. **Don't assume independence without justification.** In the matching problem, the probability that card 1 is a match and card 2 is a match is not $$1/n^2$$. Binomial and Hypergeometric are often confused; the trials are independent in the Binomial story and dependent in the Hypergeometric story.
 
-4. **Don't forget to do sanity checks.** Probabilities must be between $0$ and $1$. Variances must be $\geq 0$. Supports must make sense. PMFs must sum to $1$. PDFs must integrate to $1$.
+4. **Don't forget to do sanity checks.** Probabilities must be between $$0$$ and $$1$$. Variances must be $$\geq 0$$. Supports must make sense. PMFs must sum to $$1$$. PDFs must integrate to $$1$$.
 
-5. **Don't confuse random variables, numbers, and events.** Let $X$ be an r.v. Then $g(X)$ is an r.v. for any function $g$. In particular, $X^2$, $|X|$, $F(X)$, and $I_{X>3}$ are r.v.s. $P(X^2 < X | X \geq 0)$, $E(X)$, $\text{Var}(X)$, and $g(E(X))$ are numbers. $X = 2$ and $F(X) \geq -1$ are events. It does not make sense to write $\int_{-\infty}^\infty F(X) dx$, because $F(X)$ is a random variable. It does not make sense to write $P(X)$, because $X$ is not an event.
+5. **Don't confuse random variables, numbers, and events.** Let $$X$$ be an r.v. Then $$g(X)$$ is an r.v. for any function $$g$$. In particular, $$X^2$$, $$|X|$$, $$F(X)$$, and $$I_{X>3}$$ are r.v.s. $$P(X^2 < X | X \geq 0)$$, $$E(X)$$, $$\text{Var}(X)$$, and $$g(E(X))$$ are numbers. $$X = 2$$ and $$F(X) \geq -1$$ are events. It does not make sense to write $$\int_{-\infty}^\infty F(X) dx$$, because $$F(X)$$ is a random variable. It does not make sense to write $$P(X)$$, because $$X$$ is not an event.
 
-6. **Don't confuse a random variable with its distribution.** To get the PDF of $X^2$, you can't just square the PDF of $X$. The right way is to use transformations. To get the PDF of $X + Y$, you can't just add the PDF of $X$ and the PDF of $Y$. The right way is to compute the [convolution](#convolutions).
+6. **Don't confuse a random variable with its distribution.** To get the PDF of $$X^2$$, you can't just square the PDF of $$X$$. The right way is to use transformations. To get the PDF of $$X + Y$$, you can't just add the PDF of $$X$$ and the PDF of $$Y$$. The right way is to compute the [convolution](#convolutions).
 
-7. **Don't pull non-linear functions out of expectations.** $E(g(X))$ does not equal $g(E(X))$ in general. The St. Petersburg paradox is an extreme example. See also Jensen's inequality. The right way to find $E(g(X))$ is with [LOTUS](#lotus).
+7. **Don't pull non-linear functions out of expectations.** $$E(g(X))$$ does not equal $$g(E(X))$$ in general. The St. Petersburg paradox is an extreme example. See also Jensen's inequality. The right way to find $$E(g(X))$$ is with [LOTUS](#lotus).
 
 ## Distributions in R
 ---
@@ -1074,22 +1074,22 @@ Contributions from Jessy Hwang
 | Command                  | What it does                                    |
 |--------------------------|-------------------------------------------------|
 | `help(distributions)`    | shows documentation on distributions            |
-| `dbinom(k,n,p)`          | PMF $P(X=k)$ for $X \sim \text{Bin}(n,p)$       |
-| `pbinom(x,n,p)`          | CDF $P(X \leq x)$ for $X \sim \text{Bin}(n,p)$  |
-| `qbinom(a,n,p)`          | $a$th quantile for $X \sim \text{Bin}(n,p)$     |
-| `rbinom(r,n,p)`          | vector of $r$ i.i.d. $\text{Bin}(n,p)$ r.v.s     |
-| `dgeom(k,p)`             | PMF $P(X=k)$ for $X \sim \text{Geom}(p)$        |
-| `dhyper(k,w,b,n)`        | PMF $P(X=k)$ for $X \sim \text{HGeom}(w,b,n)$   |
-| `dnbinom(k,r,p)`         | PMF $P(X=k)$ for $X \sim \text{NBin}(r,p)$      |
-| `dpois(k,r)`             | PMF $P(X=k)$ for $X \sim \text{Pois}(r)$        |
-| `dbeta(x,a,b)`           | PDF $f(x)$ for $X \sim \text{Beta}(a,b)$        |
-| `dchisq(x,n)`            | PDF $f(x)$ for $X \sim \chi^2_n$                |
-| `dexp(x,b)`              | PDF $f(x)$ for $X \sim \text{Expo}(b)$          |
-| `dgamma(x,a,r)`          | PDF $f(x)$ for $X \sim \text{Gam}(a,r)$         |
-| `dlnorm(x,m,s)`          | PDF $f(x)$ for $X \sim \mathcal{LN}(m,s^2)$     |
-| `dnorm(x,m,s)`           | PDF $f(x)$ for $X \sim \mathcal{N}(m,s^2)$      |
-| `dt(x,n)`                | PDF $f(x)$ for $X \sim t_n$                      |
-| `dunif(x,a,b)`           | PDF $f(x)$ for $X \sim \text{Unif}(a,b)$        |
+| `dbinom(k,n,p)`          | PMF $$P(X=k)$$ for $$X \sim \text{Bin}(n,p)$$       |
+| `pbinom(x,n,p)`          | CDF $$P(X \leq x)$$ for $$X \sim \text{Bin}(n,p)$$  |
+| `qbinom(a,n,p)`          | $$a$$th quantile for $$X \sim \text{Bin}(n,p)$$     |
+| `rbinom(r,n,p)`          | vector of $$r$$ i.i.d. $$\text{Bin}(n,p)$$ r.v.s     |
+| `dgeom(k,p)`             | PMF $$P(X=k)$$ for $$X \sim \text{Geom}(p)$$        |
+| `dhyper(k,w,b,n)`        | PMF $$P(X=k)$$ for $$X \sim \text{HGeom}(w,b,n)$$   |
+| `dnbinom(k,r,p)`         | PMF $$P(X=k)$$ for $$X \sim \text{NBin}(r,p)$$      |
+| `dpois(k,r)`             | PMF $$P(X=k)$$ for $$X \sim \text{Pois}(r)$$        |
+| `dbeta(x,a,b)`           | PDF $$f(x)$$ for $$X \sim \text{Beta}(a,b)$$        |
+| `dchisq(x,n)`            | PDF $$f(x)$$ for $$X \sim \chi^2_n$$                |
+| `dexp(x,b)`              | PDF $$f(x)$$ for $$X \sim \text{Expo}(b)$$          |
+| `dgamma(x,a,r)`          | PDF $$f(x)$$ for $$X \sim \text{Gam}(a,r)$$         |
+| `dlnorm(x,m,s)`          | PDF $$f(x)$$ for $$X \sim \mathcal{LN}(m,s^2)$$     |
+| `dnorm(x,m,s)`           | PDF $$f(x)$$ for $$X \sim \mathcal{N}(m,s^2)$$      |
+| `dt(x,n)`                | PDF $$f(x)$$ for $$X \sim t_n$$                      |
+| `dunif(x,a,b)`           | PDF $$f(x)$$ for $$X \sim \text{Unif}(a,b)$$        |
 
 The table above gives R commands for working with various named distributions. Commands analogous to `pbinom`, `qbinom`, and `rbinom` work for the other distributions in the table. For example, `pnorm`, `qnorm`, and `rnorm` can be used to get the CDF, quantiles, and random generation for the Normal. For the Multinomial, `dmultinom` can be used for calculating the joint PMF and `rmultinom` can be used for generating random vectors. For the Multivariate Normal, after installing and loading the `mvtnorm` package, `dmvnorm` can be used for calculating the joint PDF and `rmvnorm` can be used for generating random vectors.
 
@@ -1112,20 +1112,20 @@ The table above gives R commands for working with various named distributions. C
 
 | Distribution | PMF/PDF and Support                        | Expected Value                                   | Variance                                         | MGF                                |
 |--------------|--------------------------------------------|-------------------------------------------------|--------------------------------------------------|------------------------------------|
-| Bernoulli    | $P(X=1) = p$<br>$P(X=0) = q=1-p$            | $p$                                             | $pq$                                             | $q + pe^t$                         |
-| Binomial     | $P(X=k) = {n \choose k}p^k q^{n-k}$          | $np$                                            | $npq$                                            | $(q + pe^t)^n$                      |
-| Geometric    | $P(X=k) = q^kp$                             | $q/p$                                           | $q/p^2$                                          | $\frac{p}{1-qe^t}, \, qe^t < 1$    |
-| Negative Binomial | $P(X=n) = {r + n - 1 \choose r -1}p^rq^n$ | $rq/p$                                          | $rq/p^2$                                         | $(\frac{p}{1-qe^t})^r, \, qe^t < 1$ |
-| | Hypergeometric | $P(X=k) = \sfrac{{w \choose k}}{{b \choose n-k}}{{w + b \choose n}}$ | $\mu = \frac{nw}{b+w}$               | $\left(\frac{w+b-n}{w+b-1} \right) n\frac{\mu}{n}(1 - \frac{\mu}{n})$ | messy  |
-| Poisson      | $P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}$  | $\lambda$                                       | $\lambda$                                        | $e^{\lambda(e^t-1)}$                |
-| Uniform      | $f(x) = \frac{1}{b-a}$                       | $\frac{a+b}{2}$                                 | $\frac{(b-a)^2}{12}$                            | $\frac{e^{tb}-e^{ta}}{t(b-a)}$      |
-| Normal       | $f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\sfrac{(x - \mu)^2}{(2 \sigma^2)}}$ | $\mu$                 | $\sigma^2$                                      | $e^{t\mu + \frac{\sigma^2t^2}{2}}$ |
-| Exponential  | $f(x) = \lambda e^{-\lambda x}$              | $\frac{1}{\lambda}$                             | $\frac{1}{\lambda^2}$                           | $\frac{\lambda}{\lambda - t}, \, t < \lambda$ |
-| Gamma        | $f(x) = \frac{1}{\Gamma(a)}(\lambda x)^ae^{-\lambda x}\frac{1}{x}$ | $\frac{a}{\lambda}$           | $\frac{a}{\lambda^2}$                           | $\left(\frac{\lambda}{\lambda - t}\right)^a, \, t < \lambda$ |
-| Beta         | $f(x) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}$ | $\mu = \frac{a}{a + b}$           | $\frac{\mu(1-\mu)}{(a + b + 1)}$                 | messy                              |
-| Log-Normal   | $\frac{1}{x\sigma \sqrt{2\pi}}e^{-(\log x - \mu)^2/(2\sigma^2)}$ | $\theta = e^{ \mu + \sigma^2/2}$ | $\theta^2 (e^{\sigma^2} - 1)$                    | doesn't exist                      |
-| Chi-Square   | $\frac{1}{2^{n/2}\Gamma(n/2)}x^{n/2 - 1}e^{-x/2}$ | $n$                                           | $2n$                                             | $(1 - 2t)^{-n/2}, \, t < 1/2$      |
-| Student-$t$  | $\frac{\Gamma((n+1)/2)}{\sqrt{n\pi} \Gamma(n/2)} (1+x^2/n)^{-(n+1)/2}$ | $0$ if $n>1$                         | $\frac{n}{n-2}$ if $n>2$                         | doesn't exist                      |
+| Bernoulli    | $$P(X=1) = p$$<br>$$P(X=0) = q=1-p$$            | $$p$$                                             | $$pq$$                                             | $$q + pe^t$$                         |
+| Binomial     | $$P(X=k) = {n \choose k}p^k q^{n-k}$$          | $$np$$                                            | $$npq$$                                            | $$(q + pe^t)^n$$                      |
+| Geometric    | $$P(X=k) = q^kp$$                             | $$q/p$$                                           | $$q/p^2$$                                          | $$\frac{p}{1-qe^t}, \, qe^t < 1$$    |
+| Negative Binomial | $$P(X=n) = {r + n - 1 \choose r -1}p^rq^n$$ | $$rq/p$$                                          | $$rq/p^2$$                                         | $$(\frac{p}{1-qe^t})^r, \, qe^t < 1$$ |
+| | Hypergeometric | $$P(X=k) = \sfrac{{w \choose k}}{{b \choose n-k}}{{w + b \choose n}}$$ | $$\mu = \frac{nw}{b+w}$$               | $$\left(\frac{w+b-n}{w+b-1} \right) n\frac{\mu}{n}(1 - \frac{\mu}{n})$$ | messy  |
+| Poisson      | $$P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}$$  | $$\lambda$$                                       | $$\lambda$$                                        | $$e^{\lambda(e^t-1)}$$                |
+| Uniform      | $$f(x) = \frac{1}{b-a}$$                       | $$\frac{a+b}{2}$$                                 | $$\frac{(b-a)^2}{12}$$                            | $$\frac{e^{tb}-e^{ta}}{t(b-a)}$$      |
+| Normal       | $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\sfrac{(x - \mu)^2}{(2 \sigma^2)}}$$ | $$\mu$$                 | $$\sigma^2$$                                      | $$e^{t\mu + \frac{\sigma^2t^2}{2}}$$ |
+| Exponential  | $$f(x) = \lambda e^{-\lambda x}$$              | $$\frac{1}{\lambda}$$                             | $$\frac{1}{\lambda^2}$$                           | $$\frac{\lambda}{\lambda - t}, \, t < \lambda$$ |
+| Gamma        | $$f(x) = \frac{1}{\Gamma(a)}(\lambda x)^ae^{-\lambda x}\frac{1}{x}$$ | $$\frac{a}{\lambda}$$           | $$\frac{a}{\lambda^2}$$                           | $$\left(\frac{\lambda}{\lambda - t}\right)^a, \, t < \lambda$$ |
+| Beta         | $$f(x) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}$$ | $$\mu = \frac{a}{a + b}$$           | $$\frac{\mu(1-\mu)}{(a + b + 1)}$$                 | messy                              |
+| Log-Normal   | $$\frac{1}{x\sigma \sqrt{2\pi}}e^{-(\log x - \mu)^2/(2\sigma^2)}$$ | $$\theta = e^{ \mu + \sigma^2/2}$$ | $$\theta^2 (e^{\sigma^2} - 1)$$                    | doesn't exist                      |
+| Chi-Square   | $$\frac{1}{2^{n/2}\Gamma(n/2)}x^{n/2 - 1}e^{-x/2}$$ | $$n$$                                           | $$2n$$                                             | $$(1 - 2t)^{-n/2}, \, t < 1/2$$      |
+| Student-$$t$$  | $$\frac{\Gamma((n+1)/2)}{\sqrt{n\pi} \Gamma(n/2)} (1+x^2/n)^{-(n+1)/2}$$ | $$0$$ if $$n>1$$                         | $$\frac{n}{n-2}$$ if $$n>2$$                         | doesn't exist                      |
 
 
 
