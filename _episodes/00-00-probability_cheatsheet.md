@@ -26,18 +26,17 @@ possibilities for the whole experiment.
 
 
 
-![image](../figure/jar.png){width="1.2in"}
+![image](../figure/jar.png)
 
 The sampling table gives the number of possible samples of size $$k$$ out
 of a population of size $$n$$, under various assumptions about how the
 sample is collected.
 
 
-                                     **Order Matters**                     **Not Matter**
-  ------------------------- ------------------------------------ ----------------------------------
-       **With Replacement**         $$\displaystyle n^k$$           $$\displaystyle{n+k-1 \choose k}$$
-    **Without Replacement**  $$\displaystyle\frac{n!}{(n - k)!}$$     $$\displaystyle{n \choose k}$$
-:::
+|         Order Matters         |             Not Matter             |
+|----------------------------- | --------------------------------- |
+|   **With Replacement**       |     $$\displaystyle n^k$$          |
+|**Without Replacement**       |$$\displaystyle\frac{n!}{(n - k)!}$$|
 
 ### Naive Definition of Probability 
 If all outcomes are equally likely, the probability of an
