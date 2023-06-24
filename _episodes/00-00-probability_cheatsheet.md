@@ -34,7 +34,7 @@ sample is collected.
 
 
 |         Order Matters         |             Not Matter             |
-|----------------------------- | --------------------------------- |
+|:----------------------------- |:--------------------------------- |
 |   **With Replacement**       |     $$\displaystyle n^k$$          |
 |**Without Replacement**       |$$\displaystyle\frac{n!}{(n - k)!}$$|
 
