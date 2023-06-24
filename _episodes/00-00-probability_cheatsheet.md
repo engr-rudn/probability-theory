@@ -181,8 +181,8 @@ An indicator random variable is a random variable that takes on the value 1 or 0
 
 $$I_A =
  \begin{cases}
-   1 & \text{if $$A$$ occurs,} \\
-   0 & \text{if $$A$$ does not occur.}
+   1 & \text{if $A$ occurs,} \\
+   0 & \text{if $A$ does not occur.}
   \end{cases}
 $$
 $$
