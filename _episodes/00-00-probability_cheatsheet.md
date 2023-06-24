@@ -30,7 +30,7 @@ The sampling table gives the number of possible samples of size $$k$$ out of a p
 
 If all outcomes are equally likely, the probability of an event $$A$$ happening is:
 
-\[P_{\textrm{naive}}(A) = \frac{\textnormal{number of outcomes favorable to $$A$$}}{\textnormal{number of outcomes}}\]
+\[P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $$A$$}}{\text{number of outcomes}}\]
 
 ### Independence
 
@@ -245,13 +245,13 @@ Analogous to the discrete case, where you sum x times the PMF, for CRVs you inte
 
 The expected value of X is defined this way:
 
-\[E(X) = \sum_x xP(X=x) \textnormal{ (for discrete X)}\]
-\[E(X) = \int_{-\infty}^\infty xf(x)dx \textnormal{ (for continuous X)}\]
+\[E(X) = \sum_x xP(X=x) \text{ (for discrete X)}\]
+\[E(X) = \int_{-\infty}^\infty xf(x)dx \text{ (for continuous X)}\]
 
 The Law of the Unconscious Statistician (LOTUS) states that you can find the expected value of a function of a random variable, g(X), in a similar way, by replacing the x in front of the PMF/PDF by g(x) but still working with the PMF/PDF of X:
 
-\[E(g(X)) = \sum_x g(x)P(X=x) \textnormal{ (for discrete X)}\]
-\[E(g(X)) = \int_{-\infty}^\infty g(x)f(x)dx \textnormal{ (for continuous X)}\]
+\[E(g(X)) = \sum_x g(x)P(X=x) \text{ (for discrete X)}\]
+\[E(g(X)) = \int_{-\infty}^\infty g(x)f(x)dx \text{ (for continuous X)}\]
 
 ### What's a function of a random variable?
 
@@ -806,7 +806,7 @@ $$
 $$
 
 $$
-1 + r + r^2 + \dots = \frac{1}{1-r} \textnormal{ if } |r|<1
+1 + r + r^2 + \dots = \frac{1}{1-r} \text{ if } |r|<1
 $$
 
 $$
@@ -868,7 +868,7 @@ A textbook has $$n$$ typos, which are randomly scattered amongst its $$n$$ pages
 In a group of $$n$$ people, what is the expected number of distinct birthdays (month and day)? What is the expected number of birthday matches?
 **Answer:** Let $$X$$ be the number of distinct birthdays and $$I_j$$ be the indicator for the $$j$$th day being represented.
 
-\[E(I_j) = 1 - P(\textnormal{no one born on day }j) = 1 - \left(\frac{364}{365}\right)^n\]
+\[E(I_j) = 1 - P(\text{no one born on day }j) = 1 - \left(\frac{364}{365}\right)^n\]
 
 By linearity, $$\boxed{E(X) = 365\left(1-\frac{364}{365}\right)^n}$$. 
 
@@ -881,7 +881,7 @@ Now let $$Y$$ be the number of birthday matches and $$J_i$$ be the indicator tha
 ### Linearity and First Success
 *This problem is commonly known as the* ***coupon collector problem***.
 There are $$n$$ coupon types. At each draw, you get a uniformly random coupon type. What is the expected number of coupons needed until you have a complete set?
-**Answer:** Let $$N$$ be the number of coupons needed; we want $$E(N)$$. Let $$N = N_1 + \dots + N_n$$, where $$N_1$$ is the draws to get our first new coupon, $$N_2$$ is the *additional* draws needed to draw our second new coupon, and so on. By the story of the First Success, $$N_2 \sim \textnormal{FS}\left(\frac{n-1}{n}\right)$$ (after collecting the first coupon type, there's $$\frac{n-1}{n}$$ chance you'll get something new). Similarly, $$N_3 \sim \textnormal{FS}\left(\frac{n-2}{n}\right)$$, and $$N_j \sim \textnormal{FS}\left(\frac{n-j+1}{n}\right)$$. By linearity,
+**Answer:** Let $$N$$ be the number of coupons needed; we want $$E(N)$$. Let $$N = N_1 + \dots + N_n$$, where $$N_1$$ is the draws to get our first new coupon, $$N_2$$ is the *additional* draws needed to draw our second new coupon, and so on. By the story of the First Success, $$N_2 \sim \text{FS}\left(\frac{n-1}{n}\right)$$ (after collecting the first coupon type, there's $$\frac{n-1}{n}$$ chance you'll get something new). Similarly, $$N_3 \sim \text{FS}\left(\frac{n-2}{n}\right)$$, and $$N_j \sim \text{FS}\left(\frac{n-j+1}{n}\right)$$. By linearity,
 
 \[E(N) = E(N_1) + \dots + E(N_n) = \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} = \boxed{n\sum^n_{j=1} \frac{1}{j}}\]
 
