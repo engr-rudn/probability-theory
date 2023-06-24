@@ -30,7 +30,7 @@ The sampling table gives the number of possible samples of size $$k$$ out of a p
 
 If all outcomes are equally likely, the probability of an event $$A$$ happening is:
 
-$$\left[P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $$A$$}}{\text{number of outcomes}}\right]$$
+$$\left[P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $A$}}{\text{number of outcomes}}\right]$$
 
 ### Independence
 
