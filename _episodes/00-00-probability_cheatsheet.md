@@ -997,3 +997,52 @@ To show that the chain is reversible with respect to $\vec{s}$, we must show $s_
 \[
 s_0  q_{01}  = \frac{\alpha\beta}{\alpha+\beta} = s_1 q_{10}
 \]
+
+### Markov chains (2)
+
+William and Sebastian play a modified game of Settlers of Catan, where every turn they randomly move the robber (which starts on the center tile) to one of the adjacent hexagons.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{image_url}
+\end{figure}
+
+1. Is this Markov chain irreducible? Is it aperiodic?
+   \textbf{Answer:} Yes to both. The Markov chain is irreducible because it can get from anywhere to anywhere else. The Markov chain is aperiodic because the robber can return back to a square in 2, 3, 4, 5, ... moves, and the greatest common divisor (GCD) of those numbers is 1.
+
+2. What is the stationary distribution of this Markov chain?
+   \textbf{Answer:} Since this is a random walk on an undirected graph, the stationary distribution is proportional to the degree sequence. The degree for the corner pieces is 3, the degree for the edge pieces is 4, and the degree for the center pieces is 6. To normalize this degree sequence, we divide by its sum. The sum of the degrees is 6(3) + 6(4) + 7(6) = 84. Thus, the stationary probability of being on a corner is 3/84 = 1/28, on an edge is 4/84 = 1/21, and in the center is 6/84 = 1/14.
+
+3. What fraction of the time will the robber be in the center tile in this game, in the long run?
+   \textbf{Answer:} By the above, 1/14.
+
+4. What is the expected amount of moves it will take for the robber to return to the center tile?
+   \textbf{Answer:} Since this chain is irreducible and aperiodic, to get the expected time to return we can just invert the stationary probability. Thus, on average it will take 14 turns for the robber to return to the center tile.
+
+### Problem-Solving Strategies
+
+Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
+
+1. \textbf{Getting started.} Start by defining relevant events and random variables. Clear notion is important for clear thinking! Try simple and extreme cases and look for patterns.
+
+2. \textbf{Calculating probability of an event.} Use counting principles, consider complements, and look for symmetries. Condition on relevant information and apply Bayes' Rule or the Law of Total Probability.
+
+3. \textbf{Finding the distribution of a random variable.} Check the support of the random variable and look for named distributions that fit the problem. Try to express the random variable as a function of another random variable with a known distribution.
+
+4. \textbf{Calculating expectation.} Utilize the table of distributions for named distributions. For functions of random variables, use the Law of the Unconscious Statistician (LOTUS) or condition on relevant information.
+
+5. \textbf{Calculating variance.} Consider independence, named distributions, and LOTUS. Break counts into sums of indicator random variables or use properties of covariance. Condition on relevant information and apply the Law of Total Variance.
+
+6. \textbf{Calculating E(X^2).} If you know E(X) or Var(X), use the relationship Var(X) = E(X^2) - [E(X)]^2 to solve for E(X^2).
+
+7. \textbf{Finding the MGF of a random variable.} Use the definition of the MGF and apply properties of MGFs. Try to express the random variable as a linear combination of other random variables with known MGFs.
+
+8. \textbf{Using indicator random variables.} Break events into disjoint pieces and express complex events in terms of indicator random variables. Use linearity of expectation and properties of indicator random variables to calculate probabilities.
+
+9. \textbf{Convergence of random variables.} Consider modes of convergence, such as convergence in probability, almost sure convergence, and convergence in distribution. Use definitions and relevant theorems to prove convergence.
+
+10. \textbf{Familiarize yourself with standard distributions.} Understand the properties and key parameters of named distributions, such as the binomial, Poisson, exponential, normal, and gamma distributions.
+
+11. \textbf{Simulation.} When analytical approaches are difficult, simulate the problem and calculate relevant statistics. Verify your simulation results with theoretical expectations.
+
+12. \textbf{Study old exam problems.} Work on past exam problems to familiarize yourself with common problem-solving techniques and to identify areas where you need more practice.
