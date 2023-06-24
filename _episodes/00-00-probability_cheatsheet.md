@@ -38,9 +38,12 @@ sample is collected.
 | **Without Replacement**   | $$\displaystyle\frac{n!}{(n - k)!}$$ |
 
 
-| <div style="width:290px">property</div> | description                           |
-| --------------------------------------- | ------------------------------------- |
-| `border-bottom-right-radius`            | Defines the shape of the bottom-right |
+
+|         Order Matters      |             Not Matter         |
+|:--------------------------|:------------------------------|
+| **With Replacement**      | $$\displaystyle n^k$$         |
+| **Without Replacement**   | $$\displaystyle\frac{n!}{(n - k)!}$$ |
+
 
 
 ### Naive Definition of Probability 
