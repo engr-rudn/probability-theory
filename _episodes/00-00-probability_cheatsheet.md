@@ -188,9 +188,9 @@ I_A =
 $$
 
 Note that:  
-* $$I_A^2 = I_A$$
-* $$I_A I_B = I_{A \cap B}$$
-* $$I_{A \cup B} = I_A + I_B - I_A I_B$$
+. $$I_A^2 = I_A$$
+. $$I_A I_B = I_{A \cap B}$$
+. $$I_{A \cup B} = I_A + I_B - I_A I_B$$
  
 * The first part is some text that specifies the directory to store our
   data file in (data/yearly_files/) and the first part of the file name
