@@ -38,6 +38,13 @@ sample is collected.
 |   **With Replacement**       |     $$\displaystyle n^k$$          |
 |**Without Replacement**       |$$\displaystyle\frac{n!}{(n - k)!}$$|
 
+
+| Order Matters              | Not Matter                       |
+|:--------------------------|:---------------------------------|
+| **With Replacement**      | $$\displaystyle n^k$$            |
+| **Without Replacement**   | $$\displaystyle\frac{n!}{(n - k)!}$$ |
+
+
 ### Naive Definition of Probability 
 If all outcomes are equally likely, the probability of an
 event $$A$$ happening is:
