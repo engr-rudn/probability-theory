@@ -404,4 +404,113 @@ E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy
 $$f_{X+Y}(t)=\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{-x^2/2} \frac{1}{\sqrt{2\pi}}e^{-(t-x)^2/2} dx$$
 By completing the square and using the fact that a Normal PDF integrates to $1$, this works out to $f_{X+Y}(t)$ being the $\mathcal{N}(0,2)$ PDF.
 
+## Poisson Process
+---
+
+### Definition
+We have a **Poisson process** of rate $\lambda$ arrivals per unit time if the following conditions hold:
+1. The number of arrivals in a time interval of length $t$ is $\text{Pois}(\lambda t)$.
+2. Numbers of arrivals in disjoint time intervals are independent.
+
+For example, the numbers of arrivals in the time intervals $[0,5]$, $(5,12),$ and $[13,23)$ are independent with $\text{Pois}(5\lambda)$, $\text{Pois}(7\lambda)$, and $\text{Pois}(10\lambda)$ distributions, respectively.
+
+![Poisson Process](figures/pp.pdf)
+
+### Count-Time Duality
+Consider a Poisson process of emails arriving in an inbox at rate $\lambda$ emails per hour. Let $T_n$ be the time of arrival of the $n$th email (relative to some starting time $0$) and $N_t$ be the number of emails that arrive in $[0,t]$.
+
+Let's find the distribution of $T_1$. The event $T_1 > t$, the event that you have to wait more than $t$ hours to get the first email, is the same as the event $N_t = 0$, which is the event that there are no emails in the first $t$ hours. So,
+
+\[P(T_1 > t) = P(N_t = 0) = e^{-\lambda t}\]
+
+Therefore, $P(T_1 \leq t) = 1 - e^{-\lambda t}$, and $T_1$ follows an exponential distribution with parameter $\lambda$.
+
+By the memoryless property and similar reasoning, the interarrival times between emails are i.i.d. exponential random variables with parameter $\lambda$, i.e., the differences $T_n - T_{n-1}$ are i.i.d. exponential random variables with parameter $\lambda$.
+
+## Order Statistics
+---
+
+### Definition
+Let's say you have $n$ i.i.d. random variables $X_1, X_2, \dots, X_n$. If you arrange them from smallest to largest, the $i$th element in that list is the $i$th order statistic, denoted $X_{(i)}$. So $X_{(1)}$ is the smallest in the list and $X_{(n)}$ is the largest in the list.
+
+Note that the order statistics are *dependent*, e.g., learning $X_{(4)} = 42$ gives us the information that $X_{(1)},X_{(2)},X_{(3)}$ are $\leq 42$ and $X_{(5)},X_{(6)},\dots,X_{(n)}$ are $\geq 42$.
+
+### Distribution
+Taking $n$ i.i.d. random variables $X_1, X_2, \dots, X_n$ with CDF $F(x)$ and PDF $f(x)$, the CDF and PDF of $X_{(i)}$ are:
+\[F_{X_{(i)}}(x) = P (X_{(i)} \leq x) = \sum_{k=i}^n {n \choose k} F(x)^k(1 - F(x))^{n - k}\]
+\[f_{X_{(i)}}(x) = n{n - 1 \choose i - 1}F(x)^{i-1}(1 - F(x))^{n-i}f(x)\]
+
+### Uniform Order Statistics
+The $j$th order statistic of i.i.d. $U_1,\dots,U_n \sim \text{Unif}(0,1)$ is $U_{(j)} \sim \text{Beta}(j, n - j + 1)$.
+
+## Conditional Expectation
+---
+
+### Conditioning on an Event
+We can find $E(Y|A)$, the expected value of $Y$ given that event $A$ occurred. A very important case is when $A$ is the event $X=x$. Note that $E(Y|A)$ is a *number*.
+
+For example:
+- The expected value of a fair die roll, given that it is prime, is $\frac{1}{3} \cdot 2 + \frac{1}{3} \cdot 3 + \frac{1}{3} \cdot 5 = \frac{10}{3}$.
+- Let $Y$ be the number of successes in $10$ independent Bernoulli trials with probability $p$ of success. Let $A$ be the event that the first $3$ trials are all successes. Then $E(Y|A) = 3 + 7p$ since the number of successes among the last $7$ trials is $\text{Bin}(7,p)$.
+- Let $T \sim \text{Expo}(1/10)$ be how long you have to wait until the shuttle comes. Given that you have already waited $t$ minutes, the expected additional waiting time is $10$ more minutes, by the memoryless property. That is, $E(T|T>t) = t + 10$.
+
+### Conditioning on a Random Variable
+We can also find $E(Y|X)$, the expected value of $Y$ given the random variable $X$. This is *a function of the random variable $X$*. It is *not* a number except in certain special cases such as if $X \independent Y$. To find $E(Y|X)$, find $E(Y|X = x)$ and then plug in $X$ for $x$.
+
+For example:
+- If $E(Y|X=x) = x^3+5x$, then $E(Y|X) = X^3 + 5X$.
+- Let $Y$ be the number of successes in $10$ independent Bernoulli trials with probability $p$ of success and $X$ be the number of successes among the first $3$ trials. Then $E(Y|X)=X+7p$.
+- Let $X \sim \mathcal{N}(0,1)$ and $Y=X^2$. Then $E(Y|X=x) = x^2$ since if we know $X=x$ then we know $Y=x^2$. And $E(X|Y=y) = 0$ since if we know $Y=y$ then we know $X = \pm \sqrt{y}$, with equal probabilities (by symmetry). So $E(Y|X)=X^2$, $E(X|Y)=0$.
+
+### Properties of Conditional Expectation
+1. $E(Y|X) = E(Y)$ if $X \independent Y$
+2. $E(h(X)W|X) = h(X)E(W|X)$ (taking out what's known) \\
+   In particular, $E(h(X)|X) = h(X)$.
+3. $E(E(Y|X)) = E(Y)$ (Adam's Law, a.k.a. Law of Total Expectation)
+
+### Adam's Law (a.k.a. Law of Total Expectation)
+For any events $A_1, A_2, \dots, A_n$ that partition the sample space:
+\[E(Y) = E(Y|A_1)P(A_1) + \dots + E(Y|A_n)P(A_n)\]
+
+For the special case where the partition is $A, A^c$, this says:
+\[E(Y) = E(Y|A)P(A) + E(Y|A^c)P(A^c)\]
+
+### Eve's Law (a.k.a. Law of Total Variance)
+\[\text{Var}(Y) = E(\text{Var}(Y|X)) + \text{Var}(E(Y|X))\]
+
+# MVN, LLN, CLT
+---
+
+## Law of Large Numbers (LLN)
+Let $X_1, X_2, X_3, \dots$ be i.i.d. with mean $\mu$. The sample mean is $\bar{X}_n = \frac{X_1 + X_2 + X_3 + \dots + X_n}{n}$. The Law of Large Numbers states that as $n \to \infty$, $\bar{X}_n \to \mu$ with probability $1$. For example, in flips of a coin with probability $p$ of Heads, let $X_j$ be the indicator of the $j$th flip being Heads. Then LLN says the proportion of Heads converges to $p$ (with probability $1$).
+
+## Central Limit Theorem (CLT)
+### Approximation using CLT
+We use $\dot{\,\sim\,}$ to denote "is approximately distributed." We can use the Central Limit Theorem to approximate the distribution of a random variable $Y = X_1 + X_2 + \dots + X_n$ that is a sum of $n$ i.i.d. random variables $X_i$. Let $E(Y) = \mu_Y$ and $\text{Var}(Y) = \sigma^2_Y$. The CLT says:
+\[Y \dot{\,\sim\,} \mathcal{N}(\mu_Y, \sigma^2_Y)\]
+
+If the $X_i$ are i.i.d. with mean $\mu_X$ and variance $\sigma^2_X$, then $\mu_Y = n \mu_X$ and $\sigma^2_Y = n \sigma^2_X$. For the sample mean $\bar{X}_n$, the CLT says:
+\[\bar{X}_n = \frac{1}{n}(X_1 + X_2 + \dots + X_n) \dot{\,\sim\,} \mathcal{N}(\mu_X, \frac{\sigma^2_X}{n})\]
+
+### Asymptotic Distributions using CLT
+We use $\xrightarrow{D}$ to denote "converges in distribution to" as $n \to \infty$. The CLT says that if we standardize the sum $X_1 + \dots + X_n$, then the distribution of the sum converges to $\mathcal{N}(0,1)$ as $n \to \infty$:
+\[\frac{1}{\sigma\sqrt{n}}(X_1 + \dots + X_n - n\mu_X) \xrightarrow{D} \mathcal{N}(0, 1)\]
+In other words, the CDF of the left-hand side goes to the standard Normal CDF, $\Phi$. In terms of the sample mean, the CLT says:
+\[\frac{\sqrt{n}(\bar{X}_n - \mu_X)}{\sigma_X} \xrightarrow{D} \mathcal{N}(0, 1)\]
+
+# Markov Chains
+---
+
+## Definition
+A Markov chain is a random walk in a state space, which we will assume is finite, say $\{1, 2, \dots, M\}$. We let $X_t$ denote which element of the state space the walk is visiting at time $t$. The Markov chain is the sequence of random variables tracking where the walk is at all points in time, $X_0, X_1, X_2, \dots$. By definition, a Markov chain must satisfy the Markov property, which says that if you want to predict where the chain will be at a future time, if we know the present state then the entire past history is irrelevant. Given the present, the past and future are conditionally independent. In symbols:
+\[P(X_{n+1} = j | X_0 = i_0, X_1 = i_1, \dots, X_n = i) = P(X_{n+1} = j | X_n = i)\]
+
+## State Properties
+A state is either recurrent or transient.
+- If you start at a recurrent state, then you will always return back to that state at some point in the future. \textmusicalnote You can check-out any time you like, but you can never leave. \textmusicalnote
+- Otherwise, you are at a transient state. There is some positive probability that once you leave, you will never return. \textmusicalnote You don't have to go home, but you can't stay here. \textmusicalnote
+
+A state is either periodic or aperiodic.
+- If you start at a periodic state of period $k$, then the GCD of the possible numbers of steps it would take to return back is $k > 1$.
+- Otherwise, you are at an aperiodic state. The GCD of the possible numbers of steps it would take to return back is 1.
 
