@@ -514,3 +514,87 @@ A state is either periodic or aperiodic.
 - If you start at a periodic state of period $k$, then the GCD of the possible numbers of steps it would take to return back is $k > 1$.
 - Otherwise, you are at an aperiodic state. The GCD of the possible numbers of steps it would take to return back is 1.
 
+## Transition Matrix
+Let the state space be $\{1,2,\dots,M\}$. The transition matrix $Q$ is the $M \times M$ matrix where element $q_{ij}$ is the probability that the chain goes from state $i$ to state $j$ in one step:
+
+\[q_{ij} = P(X_{n+1} = j | X_n = i)\]
+
+To find the probability that the chain goes from state $i$ to state $j$ in exactly $m$ steps, take the $(i, j)$ element of $Q^m$:
+
+\[q^{(m)}_{ij} = P(X_{n+m} = j | X_n = i)\]
+
+If $X_0$ is distributed according to the row vector PMF $\vec{p}$, i.e., $p_j = P(X_0 = j)$, then the PMF of $X_n$ is $\vec{p}Q^n$.
+
+## Chain Properties
+A chain is **irreducible** if you can get from anywhere to anywhere. If a chain (on a finite state space) is irreducible, then all of its states are recurrent. A chain is **periodic** if any of its states are periodic, and is **aperiodic** if none of its states are periodic. In an irreducible chain, all states have the same period.
+
+A chain is **reversible** with respect to $\vec{s}$ if $s_iq_{ij} = s_jq_{ji}$ for all $i, j$. Examples of reversible chains include any chain with $q_{ij} = q_{ji}$, with $\vec{s} = (\frac{1}{M}, \frac{1}{M}, \dots, \frac{1}{M})$, and random walk on an undirected network.
+
+## Stationary Distribution
+Let $\vec{s} = (s_1, s_2, \dots, s_M)$ be a PMF (written as a row vector). We will call $\vec{s}$ the **stationary distribution** for the chain if $\vec{s}Q = \vec{s}$. As a consequence, if $X_t$ has the stationary distribution, then all future $X_{t+1}, X_{t + 2}, \dots$ also have the stationary distribution.
+
+For irreducible, aperiodic chains, the stationary distribution exists, is unique, and $s_i$ is the long-run probability of a chain being at state $i$. The expected number of steps to return to $i$ starting from $i$ is $1/s_i$.
+
+To find the stationary distribution, you can solve the matrix equation $(Q' - I){\vec{s}\,}'= 0$. The stationary distribution is uniform if the columns of $Q$ sum to 1.
+
+**Reversibility Condition Implies Stationarity:** If you have a PMF $\vec{s}$ and a Markov chain with transition matrix $Q$, then $s_iq_{ij} = s_jq_{ji}$ for all states $i, j$ implies that $\vec{s}$ is stationary.
+
+## Random Walk on an Undirected Network
+![Random Walk on an Undirected Network](figures/network1.pdf)
+
+If you have a collection of **nodes**, pairs of which can be connected by undirected **edges**, and a Markov chain is run by going from the current node to a uniformly random node that is connected to it by an edge, then this is a random walk on an undirected network. The stationary distribution of this chain is proportional to the **degree sequence** (this is the sequence of degrees, where the degree of a node is how many edges are attached to it). For example, the stationary distribution of random walk on the network shown above is proportional to $(3,3,2,4,2)$, so it's $(\frac{3}{14}, \frac{3}{14}, \frac{2}{14}, \frac{4}{14}, \frac{2}{14})$.
+
+## Continuous Distributions
+
+### Uniform Distribution
+Let $U$ be distributed $\text{Unif}(a, b)$. We know the following:
+
+- **Properties of the Uniform:** For a Uniform distribution, the probability of a draw from any interval within the support is proportional to the length of the interval.
+- **Example:** William throws darts really badly, so his darts are uniform over the whole room because they're equally likely to appear anywhere. William's darts have a Uniform distribution on the surface of the room. The Uniform is the only distribution where the probability of hitting in any specific region is proportional to the length/area/volume of that region, and where the density of occurrence in any one specific spot is constant throughout the whole support.
+
+- **PDF and CDF (top is Unif(0, 1), bottom is Unif(a, b))**
+
+For the Uniform distribution:
+
+- Unif(0, 1):
+  - PDF:
+    \[
+    f(x) = \left\{
+    \begin{array}{lr}
+    1 & x \in [0, 1] \\
+    0 & x \notin [0, 1]
+    \end{array}
+    \right.
+    \]
+  - CDF:
+    \[
+    F(x) = \left\{
+    \begin{array}{lr}
+    0 & x < 0 \\
+    x & x \in [0, 1] \\
+    1 & x > 1
+    \end{array}
+    \right.
+    \]
+
+- Unif(a, b):
+  - PDF:
+    \[
+    f(x) = \left\{
+    \begin{array}{lr}
+    \frac{1}{b-a} & x \in [a, b] \\
+    0 & x \notin [a, b]
+    \end{array}
+    \right.
+    \]
+  - CDF:
+    \[
+    F(x) = \left\{
+    \begin{array}{lr}
+    0 & x < a \\
+    \frac{x-a}{b-a} & x \in [a, b] \\
+    1 & x > b
+    \end{array}
+    \right.
+    \]
+
