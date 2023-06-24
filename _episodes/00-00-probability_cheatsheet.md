@@ -776,31 +776,224 @@ A convolution of $n$ random variables is simply their sum. For the following res
 4. $\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$
 5. $\text{NBin}(1, p) \sim \text{Geom}(p)$
 
-## Inequalities
+$$
+\textbf{Inequalities}
+$$
 
 \begin{enumerate}
-\item \textbf{Cauchy-Schwarz} $|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$
-\item \textbf{Markov} $P(X \geq a) \leq \frac{E|X|}{a}$ for $a>0$
-\item \textbf{Chebyshev} $P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$ for $E(X)=\mu, \var(X) = \sigma^2$
-\item \textbf{Jensen} $E(g(X)) \geq g(E(X))$ for $g$ convex; reverse if $g$ is concave
+\item \textbf{Cauchy-Schwarz}: $$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
+
+\item \textbf{Markov}: $$P(X \geq a) \leq \frac{E|X|}{a}$$ for $a>0$
+
+\item \textbf{Chebyshev}: $$P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$$ for $E(X)=\mu$, $\text{Var}(X) = \sigma^2$
+
+\item \textbf{Jensen}: $$E(g(X)) \geq g(E(X))$$ for $g$ convex; reverse if $g$ is concave
 \end{enumerate}
 
 
-\section{Formulas} \smallskip \hrule height 2pt \smallskip
-\subsection{Geometric Series}
-\[ 1 + r + r^2 + \dots + r^{n-1} = \sum_{k=0}^{n-1} r^k = \frac{1 - r^n}{1 -r} \]
-\[ 1 + r + r^2 + \dots = \frac{1}{1-r} \textnormal{ if $|r|<1$} \]
+$$
+\textbf{Formulas}
+$$
 
-\subsection{Exponential Function ($e^x$)}
-\[ e^x = \sum_{n=0}^\infty \frac{x^n}{n!}= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n} \right)^n \]
+\hrule height 2pt
 
-\subsection{Gamma and Beta Integrals}
+$$
+\textbf{Geometric Series}
+$$
+
+$$
+1 + r + r^2 + \dots + r^{n-1} = \sum_{k=0}^{n-1} r^k = \frac{1 - r^n}{1 -r}
+$$
+
+$$
+1 + r + r^2 + \dots = \frac{1}{1-r} \textnormal{ if } |r|<1
+$$
+
+$$
+\textbf{Exponential Function ($e^x$)}
+$$
+
+$$
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \lim_{n \rightarrow \infty} \left( 1 + \frac{x}{n} \right)^n
+$$
+
+$$
+\textbf{Gamma and Beta Integrals}
+$$
+
 You can sometimes solve complicated-looking integrals by pattern-matching to a gamma or beta integral:
-\[ \int_0^\infty x^{t-1}e^{-x}\, dx = \Gamma(t) \hspace{1 cm} \int_0^1 x^{a - 1}(1-x)^{b-1}\, dx = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)} \]
-Also, $\Gamma(a+1) = a \Gamma(a)$, and $\Gamma(n) = (n - 1)!$ if $n$ is a positive integer. 
 
-\subsection{Euler's Approximation for Harmonic Sums}
-\[ 1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n} \approx \log n + 0.577 \dots\]
+$$
+\int_0^\infty x^{t-1}e^{-x}\, dx = \Gamma(t) \hspace{1 cm} \int_0^1 x^{a - 1}(1-x)^{b-1}\, dx = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}
+$$
 
-\subsection{Stirling's Approximation for Factorials}
-\[ n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n\]
+Also, $\Gamma(a+1) = a \Gamma(a)$, and $\Gamma(n) = (n - 1)!$ if $n$ is a positive integer.
+
+$$
+\textbf{Euler's Approximation for Harmonic Sums}
+$$
+
+$$
+1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n} \approx \log n + 0.577 \dots
+$$
+
+$$
+\textbf{Stirling's Approximation for Factorials}
+$$
+
+$$
+n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n
+$$
+
+## Miscellaneous Definitions
+---
+
+**Medians and Quantiles**
+Let $X$ have CDF $F$. Then $X$ has median $m$ if $F(m) \geq 0.5$ and $P(X \geq m) \geq 0.5$. For $X$ continuous, $m$ satisfies $F(m) = \frac{1}{2}$. In general, the $a$th quantile of $X$ is $\min \{x: F(x) \geq a\}$; the median is the case $a = \frac{1}{2}$.
+
+**log**
+Statisticians generally use $\log$ to refer to natural log (i.e., base $e$).
+
+**i.i.d r.v.s**
+Independent, identically-distributed random variables.
+
+## Example Problems
+---
+
+### Calculating Probability
+A textbook has $n$ typos, which are randomly scattered amongst its $n$ pages, independently. You pick a random page. What is the probability that it has no typos?
+**Answer:** There is a $\left(1 - \frac{1}{n}\right)$ probability that any specific typo isn't on your page, and thus a $\boxed{\left(1 - \frac{1}{n}\right)^n}$ probability that there are no typos on your page. For $n$ large, this is approximately $e^{-1} = \frac{1}{e}$.
+
+### Linearity and Indicators (1)
+In a group of $n$ people, what is the expected number of distinct birthdays (month and day)? What is the expected number of birthday matches?
+**Answer:** Let $X$ be the number of distinct birthdays and $I_j$ be the indicator for the $j$th day being represented.
+
+\[E(I_j) = 1 - P(\textnormal{no one born on day }j) = 1 - \left(\frac{364}{365}\right)^n\]
+
+By linearity, $\boxed{E(X) = 365\left(1-\frac{364}{365}\right)^n}$. 
+
+Now let $Y$ be the number of birthday matches and $J_i$ be the indicator that the $i$th pair of people have the same birthday. The probability that any two specific people share a birthday is $\frac{1}{365}$, so $\boxed{E(Y) = \frac{\binom{n}{2}}{365}}$. 
+
+### Linearity and Indicators (2)
+*This problem is commonly known as the* ***hat-matching problem***. *There are $n$ people at a party, each with a hat. At the end of the party, they each leave with a random hat. What is the expected number of people who leave with the right hat?*
+**Answer:** Each hat has a $\frac{1}{n}$ chance of going to the right person. By linearity, the average number of hats that go to their owners is $\boxed{1}$.
+
+### Linearity and First Success
+*This problem is commonly known as the* ***coupon collector problem***.
+There are $n$ coupon types. At each draw, you get a uniformly random coupon type. What is the expected number of coupons needed until you have a complete set?
+**Answer:** Let $N$ be the number of coupons needed; we want $E(N)$. Let $N = N_1 + \dots + N_n$, where $N_1$ is the draws to get our first new coupon, $N_2$ is the *additional* draws needed to draw our second new coupon, and so on. By the story of the First Success, $N_2 \sim \textnormal{FS}\left(\frac{n-1}{n}\right)$ (after collecting the first coupon type, there's $\frac{n-1}{n}$ chance you'll get something new). Similarly, $N_3 \sim \textnormal{FS}\left(\frac{n-2}{n}\right)$, and $N_j \sim \textnormal{FS}\left(\frac{n-j+1}{n}\right)$. By linearity,
+
+\[E(N) = E(N_1) + \dots + E(N_n) = \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} = \boxed{n\sum^n_{j=1} \frac{1}{j}}\]
+
+This is approximately $n (\log(n) + 0.577)$ by Euler's approximation.
+
+### Orderings of i.i.d. random variables
+I call 2 UberX's and 3 Lyfts at the same time. If the time it takes for the rides to reach me are i.i.d., what is the probability that all the Lyfts will arrive first?
+**Answer:** Since the arrival times of the five cars are i.i.d., all $5!$ orderings of the arrivals are equally likely. There are $3!2!$ orderings that involve the Lyfts arriving first, so the probability that the Lyfts arrive first is $\boxed{\frac{3!2!}{5!} = \frac{1}{10}}$. Alternatively, there are $\binom{5}{3}$ ways to choose 3 of the 5 slots for the Lyfts to occupy, where each of the choices is equally likely. One of these choices has all 3 of the Lyfts arriving first, so the probability is $\boxed{\frac{1}{{5 \choose 3}} = \frac{1}{10}}$.
+
+### Expectation of Negative Hypergeometric
+What is the expected number of cards that you draw before you pick your first Ace in a shuffled deck (not counting the Ace)?
+**Answer:** Consider a non-Ace. Denote this to be card $j$. Let $I_j$ be the indicator that card $j$ will be drawn before the first Ace. Note that $I_j=1$ says that $j$ is before all 4 of the Aces in the deck. The probability that this occurs is $\frac{1}{5}$ by symmetry. Let $X$ be the number of cards drawn before the first Ace. Then $X = I_1 + I_2 + \ldots + I_{48}$, where each indicator corresponds to one of the 48 non-Aces. Thus,
+
+\[E(X) = E(I_1) + E(I_2) + \ldots + E(I_{48}) = \frac{48}{5} = \boxed{9.6}\].
+
+## Minimum and Maximum of RVs
+What is the CDF of the maximum of $n$ independent Unif(0,1) random variables?
+**Answer:** Note that for r.v.s $X_1,X_2,\dots,X_n$,
+
+\[ P(\min(X_1, X_2, \dots, X_n) \geq a) = P(X_1 \geq a, X_2 \geq a, \dots, X_n \geq a) \]
+
+Similarly,
+
+\[ P(\max(X_1, X_2, \dots, X_n) \leq a) = P(X_1 \leq a, X_2 \leq a, \dots, X_n \leq a) \]
+
+We will use this principle to find the CDF of $U_{(n)}$, where $U_{(n)} = \max(U_1, U_2, \dots, U_n)$ and $U_i \sim \text{Unif}(0, 1)$ are i.i.d.
+
+\[
+P(\max(U_1, U_2, \dots, U_n) \leq a) = P(U_1 \leq a, U_2 \leq a, \dots, U_n \leq a) = P(U_1 \leq a)P(U_2 \leq a)\dots P(U_n \leq a) = \boxed{a^n}
+\]
+
+for $0<a<1$ (and the CDF is $0$ for $a \leq 0$ and $1$ for $a \geq 1$).
+
+## Pattern-matching with $e^x$ Taylor series
+For $X \sim \text{Pois}(\lambda)$, find $E\left(\frac{1}{X+1}\right)$.
+**Answer:** By LOTUS,
+
+\[
+E\left(\frac{1}{X+1}\right) = \sum_{k=0}^\infty \frac{1}{k+1} \frac{e^{-\lambda}\lambda^k}{k!} = \frac{e^{-\lambda}}{\lambda}\sum_{k=0}^\infty \frac{\lambda^{k+1}}{(k+1)!} = \boxed{\frac{e^{-\lambda}}{\lambda}(e^\lambda-1)}
+\]
+
+## Adam's Law and Eve's Law
+William really likes speedsolving Rubik's Cubes. But he's pretty bad at it, so sometimes he fails. On any given day, William will attempt $N \sim \text{Geom}(s)$ Rubik's Cubes. Suppose each time, he has probability $p$ of solving the cube, independently. Let $T$ be the number of Rubik's Cubes he solves during a day. Find the mean and variance of $T$.
+**Answer:** Note that $T|N \sim \text{Bin}(N,p)$. So by Adam's Law,
+
+\[E(T) = E(E(T|N)) = E(Np) = \boxed{\frac{p (1-s)}{s}}\]
+
+Similarly, by Eve's Law, we have
+
+\[
+\text{Var}(T) = E(\text{Var}(T|N)) + \text{Var}(E(T|N)) =  E(Np(1-p)) + \text{Var}(Np) = \frac{p(1-p)(1-s)}{s} +  \frac{p^2(1-s)}{s^2} = \boxed{\frac{p(1-s)(p+s(1-p))}{s^2}}
+\]
+
+## MGF -- Distribution Matching
+(Continuing the Rubik's Cube question above) Find the MGF of $T$. What is the name of this distribution and its parameter(s)?
+**Answer:** By Adam's Law, we have
+
+\[
+E(e^{tT}) = E(E(e^{tT}|N)) = E((pe^t + q)^N) = s\sum_{n=0}^\infty(pe^t + 1-p)^n(1-s)^n =\frac{s}{1-(1-s)(pe^t+1-p)} =\frac{s}{s+(1-s)p-(1-s)pe^t}
+\]
+
+Intuitively, we would expect that $T$ is distributed Geometrically since $T$ is just a filtered version of $N$, which itself is Geometrically distributed. The MGF of $X\sim\text{Geom}(\theta)$ is
+
+\[E(e^{tX}) = \frac{\theta}{1-(1-\theta) e^t}\]
+
+So, we would want to try to get our MGF into this form to identify what $\theta$ is. Taking our original MGF, it would appear that dividing by $s+(1-s)p$ would allow us to do this. Therefore, we have that
+
+\[
+E(e^{tT}) = \frac{s}{s+(1-s)p - (1-s)pe^t} = \frac{\frac{s}{s+(1-s)p}}{1-\frac{(1-s)p}{s+(1-s)p}e^t}
+\]
+
+By pattern-matching, it thus follows that $\boxed{T \sim \text{Geom}(\theta)}$ where
+
+\[\boxed{\theta = \frac{s}{s+(1-s)p}}\]
+
+## MGF -- Finding Moments
+Find $E(X^3)$ for $X \sim \text{Expo}(\lambda)$ using the MGF of $X$.
+**Answer:** The MGF of an $\text{Expo}(\lambda)$ is $M(t) = \frac{\lambda}{\lambda-t}$. To get the third moment, we can take the third derivative of the MGF and evaluate at $t=0$:
+
+\[\boxed{E(X^3) = \frac{6}{\lambda^3}}\]
+
+But a much nicer way to use the MGF here is via pattern recognition: note that $M(t)$ looks like it came from a geometric series:
+
+\[\frac{1}{1-\frac{t}{\lambda}} = \sum^{\infty}_{n=0} \left(\frac{t}{\lambda}\right)^n = \sum^{\infty}_{n=0} \frac{n!}{\lambda^n} \frac{t^n}{n!}\]
+
+The coefficient of $\frac{t^n}{n!}$ here is the $n$th moment of $X$, so we have $E(X^n) = \frac{n!}{\lambda^n}$ for all nonnegative integers $n$.
+
+## Markov chains (1)
+Suppose $X_n$ is a two-state Markov chain with transition matrix 
+
+\[
+Q = \begin{bmatrix}
+1-\alpha & \alpha \\
+\beta & 1-\beta
+\end{bmatrix}
+\]
+
+Find the stationary distribution $\vec{s} = (s_0, s_1)$ of $X_n$ by solving $\vec{s} Q = \vec{s}$, and show that the chain is reversible with respect to $\vec{s}$.
+**Answer:** The equation $\vec{s}Q = \vec{s}$ says that
+
+\[
+s_0 = s_0(1-\alpha) + s_1 \beta \text{ and } s_1 = s_0(\alpha) + s_0(1-\beta)
+\]
+
+By solving this system of linear equations, we have 
+
+\[
+\boxed{\vec{s} = \left(\frac{\beta}{\alpha+\beta}, \frac{\alpha}{\alpha+\beta}\right)}
+\]
+
+To show that the chain is reversible with respect to $\vec{s}$, we must show $s_i q_{ij} = s_j q_{ji}$ for all $i, j$. This is done if we can show $s_0 q_{01} = s_1 q_{10}$. And indeed,
+
+\[
+s_0  q_{01}  = \frac{\alpha\beta}{\alpha+\beta} = s_1 q_{10}
+\]
