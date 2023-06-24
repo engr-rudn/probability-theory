@@ -340,44 +340,68 @@ E(g(X, Y)) = ∑ₓ∑y g(x, y)P(X=x, Y=y)
 For continuous random variables:
 E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy
 
-\section{Covariance and Transformations}\smallskip \hrule height 2pt \smallskip
+### Covariance and Transformations
 
-\subsection{Covariance and Correlation}
-\begin{description}
-\item [Covariance] is the analog of variance for two random variables.
-    $$ \text{cov}(X, Y) = \mathbb{E}\left((X - \mathbb{E}(X))(Y - \mathbb{E}(Y))\right) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y) $$
+### Covariance and Correlation
+
+**Covariance** is the analog of variance for two random variables.
+    $$\text{cov}(X, Y) = E\left((X - E(X))(Y - E(Y))\right) = E(XY) - E(X)E(Y)$$
     Note that 
-    $$ \text{cov}(X, X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2 =  \text{var}(X) $$
-\item [Correlation] is a standardized version of covariance that is always between $-1$ and $1$.
-    $$ \text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sqrt{\text{var}(X)\text{var}(Y)}} $$
-\item [Covariance and Independence] If two random variables are independent, then they are uncorrelated. The converse is not necessarily true (e.g., consider $X \sim \mathcal{N}(0,1)$ and $Y=X^2$).
-    \begin{align*}
-    	X \independent Y &\longrightarrow \text{cov}(X, Y) = 0 \longrightarrow \mathbb{E}(XY) = \mathbb{E}(X)\mathbb{E}(Y)
-    \end{align*}
-%, except in the case of Multivariate Normal, where uncorrelated \emph{does} imply independence.
-\item [Covariance and Variance]  The variance of a sum can be found by
-    \begin{align*}
-        %\text{cov}(X, X) &= \text{var}(X) \\
-        \text{var}(X + Y) &= \text{var}(X) + \text{var}(Y) + 2\text{cov}(X, Y) \\
-        \text{var}(X_1 + X_2 + \dots + X_n ) &= \sum_{i = 1}^{n}\text{var}(X_i) + 2\sum_{i < j} \text{cov}(X_i, X_j)
-    \end{align*}
-    If $X$ and $Y$ are independent then they have covariance $0$, so
-    $$X \independent Y \Longrightarrow \text{var}(X + Y) = \text{var}(X) + \text{var}(Y)$$
-    If $X_1, X_2, \dots, X_n$ are identically distributed and have the same covariance relationships (often by \textbf{symmetry}), then 
-    $$\text{var}(X_1 + X_2 + \dots + X_n ) = n\text{var}(X_1) + 2{n \choose 2}\text{cov}(X_1, X_2)$$
-\item [Covariance Properties]  For random variables $W, X, Y, Z$ and constants $a, b$:
-    \begin{align*}
-    	\text{cov}(X, Y) &= \text{cov}(Y, X) \\
-        \text{cov}(X + a, Y + b) &= \text{cov}(X, Y) \\
-        \text{cov}(aX, bY) &= ab\text{cov}(X, Y) \\
-        \text{cov}(W + X, Y + Z) &= \text{cov}(W, Y) + \text{cov}(W, Z) + \text{cov}(X, Y)\\
-        &\quad + \text{cov}(X, Z)
-    \end{align*}
-\item [Correlation is location-invariant and scale-invariant] For any constants $a,b,c,d$ with $a$ and $c$ nonzero,
-    \begin{align*}
-        \text{corr}(aX + b, cY + d) &= \text{corr}(X, Y) 
-    \end{align*}
-\end{description}
+    $$\text{cov}(X, X) = E(X^2) - (E(X))^2 =  \text{var}(X)$$
 
+**Correlation** is a standardized version of covariance that is always between $-1$ and $1$.
+    $$\text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sqrt{\text{var}(X)\text{var}(Y)}}$$
+
+**Covariance and Independence** If two random variables are independent, then they are uncorrelated. The converse is not necessarily true (e.g., consider $X \sim \mathcal{N}(0,1)$ and $Y=X^2$).
+    $$X \independent Y \longrightarrow \text{cov}(X, Y) = 0 \longrightarrow E(XY) = E(X)E(Y)$$
+
+**Covariance and Variance** The variance of a sum can be found by
+    $$\var(X + Y) = \var(X) + \var(Y) + 2\text{cov}(X, Y)$$
+    $$\var(X_1 + X_2 + \dots + X_n ) = \sum_{i = 1}^{n}\var(X_i) + 2\sum_{i < j} \text{cov}(X_i, X_j)$$
+    If $X$ and $Y$ are independent, then they have covariance $0$, so
+    $$X \independent Y \Longrightarrow \var(X + Y) = \var(X) + \var(Y)$$
+    If $X_1, X_2, \dots, X_n$ are identically distributed and have the same covariance relationships (often by symmetry), then 
+    $$\var(X_1 + X_2 + \dots + X_n ) = n\var(X_1) + 2{n \choose 2}\text{cov}(X_1, X_2)$$
+
+**Covariance Properties** For random variables $W, X, Y, Z$ and constants $a, b$:
+    $$\text{cov}(X, Y) = \text{cov}(Y, X)$$
+    $$\text{cov}(X + a, Y + b) = \text{cov}(X, Y)$$
+    $$\text{cov}(aX, bY) = ab\text{cov}(X, Y)$$
+    $$\text{cov}(W + X, Y + Z) = \text{cov}(W, Y) + \text{cov}(W, Z) + \text{cov}(X, Y) + \text{cov}(X, Z)$$
+
+**Correlation is location-invariant and scale-invariant** For any constants $a,b,c,d$ with $a$ and $c$ nonzero,
+    $$\text{corr}(aX + b, cY + d) = \text{corr}(X, Y)$$
+
+
+### Transformations
+
+**One Variable Transformations** Let's say that we have a random variable $X$ with PDF $f_X(x)$, but we are also interested in some function of $X$. We call this function $Y = g(X)$. Also let $y=g(x)$. If $g$ is differentiable and strictly increasing (or strictly decreasing), then the PDF of $Y$ is
+    $$f_Y(y) = f_X(x)\left|\frac{dx}{dy}\right| =  f_X(g^{-1}(y))\left|\frac{d}{dy}g^{-1}(y)\right|$$
+    The derivative of the inverse transformation is called the **Jacobian**.
+
+**Two Variable Transformations** Similarly, let's say we know the joint PDF of $U$ and $V$ but are also interested in the random vector $(X, Y)$ defined by $(X, Y) = g(U, V)$. Let 
+   $$  \frac{\partial (u,v)}{\partial (x,y)}  = \begin{pmatrix} 
+          \frac{\partial u}{\partial x} &  \frac{\partial u}{\partial y} \\
+       \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}   \\
+    \end{pmatrix}$$
+ be the **Jacobian matrix**. If the entries in this matrix exist and are continuous, and the determinant of the matrix is never $0$, then
+ $$f_{X,Y}(x, y) = f_{U,V}(u,v) \left|\left|   \frac{\partial (u,v)}{\partial (x,y)}\right| \right|$$
+ The inner bars tell us to take the matrix's determinant, and the outer bars tell us to take the absolute value. In a $2 \times 2$ matrix, 
+ $$ \left| \left|
+ \begin{array}{ccc}
+     a & b \\
+     c & d
+ \end{array}
+ \right| \right| = |ad - bc|$$
+
+
+### Convolutions
+
+**Convolution Integral** If you want to find the PDF of the sum of two independent CRVs $X$ and $Y$, you can do the following integral:
+    $$f_{X+Y}(t)=\int_{-\infty}^\infty f_X(x)f_Y(t-x)dx$$
+
+**Example** Let $X,Y \sim \mathcal{N}(0,1)$ be i.i.d. Then for each fixed $t$,
+$$f_{X+Y}(t)=\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{-x^2/2} \frac{1}{\sqrt{2\pi}}e^{-(t-x)^2/2} dx$$
+By completing the square and using the fact that a Normal PDF integrates to $1$, this works out to $f_{X+Y}(t)$ being the $\mathcal{N}(0,2)$ PDF.
 
 
