@@ -1045,4 +1045,4 @@ Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 
 11. \textbf{Simulation.} When analytical approaches are difficult, simulate the problem and calculate relevant statistics. Verify your simulation results with theoretical expectations.
 
-12. \textbf{Study old exam problems.} Work on past exam problems to familiarize yourself with common problem-solving techniques and to identify areas where you need more practice.
+12. $$\textbf{Study old exam problems.}$$ Work on past exam problems to familiarize yourself with common problem-solving techniques and to identify areas where you need more practice.
