@@ -185,17 +185,25 @@ $$I_A =
    0 & \text{if $$A$$ does not occur.}
   \end{cases}
 $$
+$$
+I_A =
+\begin{cases}
+   1 & \text{if $A$ occurs}, \\
+   0 & \text{if $A$ does not occur}.
+\end{cases}
+$$
+
 
 Note that:  
-- $$\(I_A^2 = I_A\)$$
-- $$\(I_A I_B = I_{A \cap B}\)$$
-- $$\(I_{A \cup B} = I_A + I_B - I_A I_B\)$$
+- $$I_A^2 = I_A$$
+- $$I_A I_B = I_{A \cap B}$$
+- $$I_{A \cup B} = I_A + I_B - I_A I_B$$
 
 **Distribution**  
-$$\(I_A \sim \Bern(p)\) where \(p = P(A)\)$$.
+$$I_A \sim \Bern(p) where p = P(A)$$.
 
 **Fundamental Bridge**  
-The expectation of the indicator for event *A* is the probability of event *A*: $$\(E(I_A) = P(A)\)$$.
+The expectation of the indicator for event *A* is the probability of event *A*: $$E(I_A) = P(A)$$.
 
 ### Variance and Standard Deviation
 
