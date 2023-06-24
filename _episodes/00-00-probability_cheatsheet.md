@@ -188,14 +188,9 @@ I_A =
 $$
 
 Note that:  
-- $$I_A^2 = I_A$$.
-- $$I_A I_B = I_{A \cap B}$$.
-- $$I_{A \cup B} = I_A + I_B - I_A I_B$$.
-
-- $$I_A^2 = I_A$$
-- $$I_A I_B = I_{A \cap B}$$
-- $$I_{A \cup B} = I_A + I_B - I_A I_B$$
-
+ - $$I_A^2 = I_A$$
+ - $$I_A I_B = I_{A \cap B}$$
+ - $$I_{A \cup B} = I_A + I_B - I_A I_B$$
 
 **Distribution**  
 $$I_A \sim \Bern(p) where p = P(A)$$.
