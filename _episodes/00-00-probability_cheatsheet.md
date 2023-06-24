@@ -30,48 +30,51 @@ The sampling table gives the number of possible samples of size $$k$$ out of a p
 
 If all outcomes are equally likely, the probability of an event $$A$$ happening is:
 
-$$\left[P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $A$}}{\text{number of outcomes}}\right]$$
+$$P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $A$}}{\text{number of outcomes}}$$
 
 ### Independence
 
 #### Independent Events:
 $$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
-    - $$P(A \cap B) = P(A)P(B)$$
-    - $$P(A|B) = P(A)$$
-    - $$P(B|A) = P(B)$$
+- $$P(A \cap B) = P(A)P(B)$$
+- $$P(A|B) = P(A)$$
+- $$P(B|A) = P(B)$$
 
 #### Conditional Independence: 
-$$A$$ and $$B$$ are conditionally independent given $$C$$ if $$P(A \cap B\|C) = P(A\|C)P(B\|C)$$. Conditional independence does not imply independence, and independence does not imply conditional independence.
+$$A$$ and $$B$$ are conditionally independent given $$C$$ if\
+$$P(A \cap B\|C) = P(A\|C)P(B\|C)$$.\
+Conditional independence does not imply independence, and independence does not imply conditional independence.
 
 ### Unions, Intersections, and Complements
 
 - De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.
-    - $$(A \cup B)^c = A^c \cap B^c$$
-    - $$(A \cap B)^c = A^c \cup B^c`
+- $$(A \cup B)^c = A^c \cap B^c$$
+- $$(A \cap B)^c = A^c \cup B^c$$
+- 
 ### Joint, Marginal, and Conditional
 
 - Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.
 - Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.
-- Conditional Probability: $$P(A|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.
-- Conditional Probability *is* Probability: $$P(A|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
+- Conditional Probability: $$P(A\|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.
+- Conditional Probability *is* Probability: $$P(A\|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
 
 ### Probability of an Intersection or Union
 
 **Intersections via Conditioning**
 
-\begin{align*} 
+$$\begin{align*} 
     P(A,B) &= P(A)P(B|A) \\
     P(A,B,C) &= P(A)P(B|A)P(C|A,B)
-\end{align*}
+\end{align*}$$
 
 **Unions via Inclusion-Exclusion**
 
-\begin{align*} 
+$$\begin{align*} 
     P(A \cup B) &= P(A) + P(B) - P(A \cap B) \\
     P(A \cup B \cup C) &= P(A) + P(B) + P(C) \\
     &\quad - P(A \cap B) - P(A \cap C) - P(B \cap C) \\
     &\quad + P(A \cap B \cap C)
-\end{align*}
+\end{align*}$$
 
 ### Simpson's Paradox
 
