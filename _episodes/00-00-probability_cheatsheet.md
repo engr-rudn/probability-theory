@@ -1019,44 +1019,113 @@ William and Sebastian play a modified game of Settlers of Catan, where every tur
 4. What is the expected amount of moves it will take for the robber to return to the center tile?
    \textbf{Answer:} Since this chain is irreducible and aperiodic, to get the expected time to return we can just invert the stationary probability. Thus, on average it will take 14 turns for the robber to return to the center tile.
 
-### Problem-Solving Strategies
-
+## Problem-Solving Strategies
+---
 Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 
-1. \textbf{Getting started.} Start by defining relevant events and random variables. Clear notion is important for clear thinking! Try simple and extreme cases and look for patterns.
+1. **Getting started.** Start by *defining relevant events and random variables*. ("Let $A$ be the event that I pick the fair coin"; "Let $X$ be the number of successes.") Clear notion is important for clear thinking! Then decide what it is that you're supposed to be finding, in terms of your notation ("I want to find $P(X=3|A)$"). Think about what type of object your answer should be (a number? A random variable? A PMF? A PDF?) and what it should be in terms of.
 
-2. \textbf{Calculating probability of an event.} Use counting principles, consider complements, and look for symmetries. Condition on relevant information and apply Bayes' Rule or the Law of Total Probability.
+Try simple and extreme cases. To make an abstract experiment more concrete, try *drawing a picture* or making up numbers that could have happened. Pattern recognition: does the structure of the problem resemble something we've seen before?
 
-3. \textbf{Finding the distribution of a random variable.} Check the support of the random variable and look for named distributions that fit the problem. Try to express the random variable as a function of another random variable with a known distribution.
+2. **Calculating probability of an event.** Use counting principles if the naive definition of probability applies. Is the probability of the complement easier to find? Look for symmetries. Look for something to condition on, then apply Bayes' Rule or the Law of Total Probability.
 
-4. \textbf{Calculating expectation.} Utilize the table of distributions for named distributions. For functions of random variables, use the Law of the Unconscious Statistician (LOTUS) or condition on relevant information.
+3. **Finding the distribution of a random variable.** First make sure you need the full distribution not just the mean (see next item). Check the *support* of the random variable: what values can it take on? Use this to rule out distributions that don't fit. Is there a *story* for one of the named distributions that fits the problem at hand? Can you write the random variable as a function of an r.v. with a known distribution, say $Y = g(X)$?
 
-5. \textbf{Calculating variance.} Consider independence, named distributions, and LOTUS. Break counts into sums of indicator random variables or use properties of covariance. Condition on relevant information and apply the Law of Total Variance.
+4. **Calculating expectation.** If it has a named distribution, check out the table of distributions. If it's a function of an r.v. with a named distribution, try LOTUS. If it's a count of something, try breaking it up into indicator r.v.s. If you can condition on something natural, consider using Adam's law.
 
-6. \textbf{Calculating E(X^2).} If you know E(X) or Var(X), use the relationship Var(X) = E(X^2) - [E(X)]^2 to solve for E(X^2).
+5. **Calculating variance.** Consider independence, named distributions, and LOTUS. If it's a count of something, break it up into a sum of indicator r.v.s. If it's a sum, use properties of covariance. If you can condition on something natural, consider using Eve's Law.
 
-7. \textbf{Finding the MGF of a random variable.} Use the definition of the MGF and apply properties of MGFs. Try to express the random variable as a linear combination of other random variables with known MGFs.
+6. **Calculating $E(X^2)$.** Do you already know $E(X)$ or $\text{Var}(X)$? Recall that $\text{Var}(X) = E(X^2) - (E(X))^2$. Otherwise try LOTUS.
 
-8. \textbf{Using indicator random variables.} Break events into disjoint pieces and express complex events in terms of indicator random variables. Use linearity of expectation and properties of indicator random variables to calculate probabilities.
+7. **Calculating covariance.** Use the properties of covariance. If you're trying to find the covariance between two components of a Multinomial distribution, $X_i, X_j$, then the covariance is $-np_ip_j$ for $i \neq j$.
 
-9. \textbf{Convergence of random variables.} Consider modes of convergence, such as convergence in probability, almost sure convergence, and convergence in distribution. Use definitions and relevant theorems to prove convergence.
+8. **Symmetry.** If $X_1,\dots,X_n$ are i.i.d., consider using symmetry.
 
-10. \textbf{Familiarize yourself with standard distributions.} Understand the properties and key parameters of named distributions, such as the binomial, Poisson, exponential, normal, and gamma distributions.
+9. **Calculating probabilities of orderings.** Remember that all $n!$ ordering of i.i.d. continuous random variables $X_1,\dots,X_n$ are equally likely.
 
-11. \textbf{Simulation.} When analytical approaches are difficult, simulate the problem and calculate relevant statistics. Verify your simulation results with theoretical expectations.
+10. **Determining independence.** There are several equivalent definitions. Think about simple and extreme cases to see if you can find a counterexample.
 
-12. $$\textbf{Study old exam problems.}$$ Work on past exam problems to familiarize yourself with common problem-solving techniques and to identify areas where you need more practice.
+11. **Do a painful integral.** If your integral looks painful, see if you can write your integral in terms of a known PDF (like Gamma or Beta), and use the fact that PDFs integrate to $1$?
 
-\begin{center}
-\renewcommand{\arraystretch}{3.7}
-\begin{tabular}{cccccc}
-\textbf{Distribution} & \textbf{PMF/PDF and Support} & \textbf{Expected Value}  & \textbf{Variance} & \textbf{MGF}\\
-\hline 
-\shortstack{Bernoulli \\ \Bern($p$)} & \shortstack{$P(X=1) = p$ \\$ P(X=0) = q=1-p$} & $p$ & $pq$ & $q + pe^t$ \\
-\hline
-\shortstack{Binomial \\ \Bin($n, p$)} & \shortstack{$P(X=k) = {n \choose k}p^k q^{n-k}$  \\ $k \in \{0, 1, 2, \dots n\}$}& $np$ & $npq$ & $(q + pe^t)^n$ \\
-\hline
-\shortstack{Geometric \\ \Geom($p$)} & \shortstack{$P(X=k) = q^kp$  \\ $k \in \{$0, 1, 2, \dots $\}$}& $q/p$ & $q/p^2$ & $\frac{p}{1-qe^t}, \, qe^t < 1$\\
+12. **Before moving on.** Check some simple and extreme cases, check whether the answer seems plausible, check for biohazards.
 
-\end{tabular}
-\end{center}
+## Biohazards
+---
+Contributions from Jessy Hwang
+
+1. **Don't misuse the naive definition of probability.** When answering "What is the probability that in a group of 3 people, no two have the same birth month?", it is *not* correct to treat the people as indistinguishable balls being placed into 12 boxes, since that assumes the list of birth months {January, January, January} is just as likely as the list {January, April, June}, even though the latter is six times more likely.
+
+2. **Don't confuse unconditional, conditional, and joint probabilities.** In applying $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$, it is *not* correct to say "$P(B) = 1$ because we know $B$ happened"; $P(B)$ is the *prior* probability of $B$. Don't confuse $P(A|B)$ with $P(A,B)$.
+
+3. **Don't assume independence without justification.** In the matching problem, the probability that card 1 is a match and card 2 is a match is not $1/n^2$. Binomial and Hypergeometric are often confused; the trials are independent in the Binomial story and dependent in the Hypergeometric story.
+
+4. **Don't forget to do sanity checks.** Probabilities must be between $0$ and $1$. Variances must be $\geq 0$. Supports must make sense. PMFs must sum to $1$. PDFs must integrate to $1$.
+
+5. **Don't confuse random variables, numbers, and events.** Let $X$ be an r.v. Then $g(X)$ is an r.v. for any function $g$. In particular, $X^2$, $|X|$, $F(X)$, and $I_{X>3}$ are r.v.s. $P(X^2 < X | X \geq 0)$, $E(X)$, $\text{Var}(X)$, and $g(E(X))$ are numbers. $X = 2$ and $F(X) \geq -1$ are events. It does not make sense to write $\int_{-\infty}^\infty F(X) dx$, because $F(X)$ is a random variable. It does not make sense to write $P(X)$, because $X$ is not an event.
+
+6. **Don't confuse a random variable with its distribution.** To get the PDF of $X^2$, you can't just square the PDF of $X$. The right way is to use transformations. To get the PDF of $X + Y$, you can't just add the PDF of $X$ and the PDF of $Y$. The right way is to compute the [convolution](#convolutions).
+
+7. **Don't pull non-linear functions out of expectations.** $E(g(X))$ does not equal $g(E(X))$ in general. The St. Petersburg paradox is an extreme example. See also Jensen's inequality. The right way to find $E(g(X))$ is with [LOTUS](#lotus).
+
+## Distributions in R
+---
+<br>
+
+| Command                  | What it does                                    |
+|--------------------------|-------------------------------------------------|
+| `help(distributions)`    | shows documentation on distributions            |
+| `dbinom(k,n,p)`          | PMF $P(X=k)$ for $X \sim \text{Bin}(n,p)$       |
+| `pbinom(x,n,p)`          | CDF $P(X \leq x)$ for $X \sim \text{Bin}(n,p)$  |
+| `qbinom(a,n,p)`          | $a$th quantile for $X \sim \text{Bin}(n,p)$     |
+| `rbinom(r,n,p)`          | vector of $r$ i.i.d. $\text{Bin}(n,p)$ r.v.s     |
+| `dgeom(k,p)`             | PMF $P(X=k)$ for $X \sim \text{Geom}(p)$        |
+| `dhyper(k,w,b,n)`        | PMF $P(X=k)$ for $X \sim \text{HGeom}(w,b,n)$   |
+| `dnbinom(k,r,p)`         | PMF $P(X=k)$ for $X \sim \text{NBin}(r,p)$      |
+| `dpois(k,r)`             | PMF $P(X=k)$ for $X \sim \text{Pois}(r)$        |
+| `dbeta(x,a,b)`           | PDF $f(x)$ for $X \sim \text{Beta}(a,b)$        |
+| `dchisq(x,n)`            | PDF $f(x)$ for $X \sim \chi^2_n$                |
+| `dexp(x,b)`              | PDF $f(x)$ for $X \sim \text{Expo}(b)$          |
+| `dgamma(x,a,r)`          | PDF $f(x)$ for $X \sim \text{Gam}(a,r)$         |
+| `dlnorm(x,m,s)`          | PDF $f(x)$ for $X \sim \mathcal{LN}(m,s^2)$     |
+| `dnorm(x,m,s)`           | PDF $f(x)$ for $X \sim \mathcal{N}(m,s^2)$      |
+| `dt(x,n)`                | PDF $f(x)$ for $X \sim t_n$                      |
+| `dunif(x,a,b)`           | PDF $f(x)$ for $X \sim \text{Unif}(a,b)$        |
+
+The table above gives R commands for working with various named distributions. Commands analogous to `pbinom`, `qbinom`, and `rbinom` work for the other distributions in the table. For example, `pnorm`, `qnorm`, and `rnorm` can be used to get the CDF, quantiles, and random generation for the Normal. For the Multinomial, `dmultinom` can be used for calculating the joint PMF and `rmultinom` can be used for generating random vectors. For the Multivariate Normal, after installing and loading the `mvtnorm` package, `dmvnorm` can be used for calculating the joint PDF and `rmvnorm` can be used for generating random vectors.
+
+## Recommended Resources
+---
+<br>
+
+- [Introduction to Probability Book](http://bit.ly/introprobability)
+- [Stat 110 Online](http://stat110.net)
+- [Stat 110 Quora Blog](https://stat110.quora.com/)
+- [Quora Probability FAQ](http://bit.ly/probabilityfaq)
+- [R Studio](https://www.rstudio.com)
+- LaTeX File: [github.com/wzchen/probability_cheatsheet](https://github.com/wzchen/probability_cheatsheet)
+
+*Please share this cheatsheet with friends!* [wzchen.com/probability-cheatsheet](http://wzchen.com/probability-cheatsheet)
+
+## Table of Distributions
+---
+<br>
+
+| Distribution | PMF/PDF and Support                        | Expected Value                                   | Variance                                         | MGF                                |
+|--------------|--------------------------------------------|-------------------------------------------------|--------------------------------------------------|------------------------------------|
+| Bernoulli    | $P(X=1) = p$<br>$P(X=0) = q=1-p$            | $p$                                             | $pq$                                             | $q + pe^t$                         |
+| Binomial     | $P(X=k) = {n \choose k}p^k q^{n-k}$          | $np$                                            | $npq$                                            | $(q + pe^t)^n$                      |
+| Geometric    | $P(X=k) = q^kp$                             | $q/p$                                           | $q/p^2$                                          | $\frac{p}{1-qe^t}, \, qe^t < 1$    |
+| Negative Binomial | $P(X=n) = {r + n - 1 \choose r -1}p^rq^n$ | $rq/p$                                          | $rq/p^2$                                         | $(\frac{p}{1-qe^t})^r, \, qe^t < 1$ |
+| Hypergeometric | $P(X=k) = \sfrac{{w \choose k}{b \choose n-k}}{{w + b \choose n}}$ | $\mu = \frac{nw}{b+w}$               | $\left(\frac{w+b-n}{w+b-1} \right) n\frac{\mu}{n}(1 - \frac{\mu}{n})$ | messy  |
+| Poisson      | $P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}$  | $\lambda$                                       | $\lambda$                                        | $e^{\lambda(e^t-1)}$                |
+| Uniform      | $f(x) = \frac{1}{b-a}$                       | $\frac{a+b}{2}$                                 | $\frac{(b-a)^2}{12}$                            | $\frac{e^{tb}-e^{ta}}{t(b-a)}$      |
+| Normal       | $f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\sfrac{(x - \mu)^2}{(2 \sigma^2)}}$ | $\mu$                 | $\sigma^2$                                      | $e^{t\mu + \frac{\sigma^2t^2}{2}}$ |
+| Exponential  | $f(x) = \lambda e^{-\lambda x}$              | $\frac{1}{\lambda}$                             | $\frac{1}{\lambda^2}$                           | $\frac{\lambda}{\lambda - t}, \, t < \lambda$ |
+| Gamma        | $f(x) = \frac{1}{\Gamma(a)}(\lambda x)^ae^{-\lambda x}\frac{1}{x}$ | $\frac{a}{\lambda}$           | $\frac{a}{\lambda^2}$                           | $\left(\frac{\lambda}{\lambda - t}\right)^a, \, t < \lambda$ |
+| Beta         | $f(x) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}$ | $\mu = \frac{a}{a + b}$           | $\frac{\mu(1-\mu)}{(a + b + 1)}$                 | messy                              |
+| Log-Normal   | $\frac{1}{x\sigma \sqrt{2\pi}}e^{-(\log x - \mu)^2/(2\sigma^2)}$ | $\theta = e^{ \mu + \sigma^2/2}$ | $\theta^2 (e^{\sigma^2} - 1)$                    | doesn't exist                      |
+| Chi-Square   | $\frac{1}{2^{n/2}\Gamma(n/2)}x^{n/2 - 1}e^{-x/2}$ | $n$                                           | $2n$                                             | $(1 - 2t)^{-n/2}, \, t < 1/2$      |
+| Student-$t$  | $\frac{\Gamma((n+1)/2)}{\sqrt{n\pi} \Gamma(n/2)} (1+x^2/n)^{-(n+1)/2}$ | $0$ if $n>1$                         | $\frac{n}{n-2}$ if $n>2$                         | doesn't exist                      |
+
+
+
