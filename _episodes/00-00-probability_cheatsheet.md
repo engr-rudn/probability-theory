@@ -1047,7 +1047,7 @@ Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 
 12. $$\textbf{Study old exam problems.}$$ Work on past exam problems to familiarize yourself with common problem-solving techniques and to identify areas where you need more practice.
 
-\begin{center}
+$$\begin{center}
 \renewcommand{\arraystretch}{3.7}
 \begin{tabular}{cccccc}
 \textbf{Distribution} & \textbf{PMF/PDF and Support} & \textbf{Expected Value}  & \textbf{Variance} & \textbf{MGF}\\
@@ -1082,4 +1082,4 @@ Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 \shortstack{Student-$t$ \\ $t_n$} & \shortstack{$\frac{\Gamma((n+1)/2)}{\sqrt{n\pi} \Gamma(n/2)} (1+x^2/n)^{-(n+1)/2}$\\$x \in (-\infty, \infty)$} & $0$ if $n>1$ & $\frac{n}{n-2}$ if $n>2$ & doesn't exist\\
 \hline
 \end{tabular}
-\end{center}
+\end{center}$$
