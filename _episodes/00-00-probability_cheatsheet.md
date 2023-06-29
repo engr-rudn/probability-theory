@@ -36,9 +36,9 @@ $$P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $A$}}{\tex
 
 #### Independent Events:
 $$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
-- $$P(A \cap B) = P(A)P(B)$$
-- $$P(A|B) = P(A)$$
-- $$P(B|A) = P(B)$$
+֍  $$P(A \cap B) = P(A)P(B)$$
+֍  $$P(A|B) = P(A)$$
+֍  $$P(B|A) = P(B)$$
 
 #### Conditional Independence: 
 $$A$$ and $$B$$ are conditionally independent given $$C$$ if\
@@ -47,16 +47,16 @@ Conditional independence does not imply independence, and independence does not 
 
 ### Unions, Intersections, and Complements
 
-- De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.
-- $$(A \cup B)^c = A^c \cap B^c$$
-- $$(A \cap B)^c = A^c \cup B^c$$
-- 
+֍  De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.
+֍  $$(A \cup B)^c = A^c \cap B^c$$
+֍  $$(A \cap B)^c = A^c \cup B^c$$
+
 ### Joint, Marginal, and Conditional
 
-- Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.
-- Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.
-- Conditional Probability: $$P(A\|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.
-- Conditional Probability *is* Probability: $$P(A\|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
+֍  Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.
+֍  Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.
+֍  Conditional Probability: $$P(A\|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.
+֍  Conditional Probability *is* Probability: $$P(A\|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
 
 ### Probability of an Intersection or Union
 
@@ -150,7 +150,6 @@ Intuitively, two random variables are independent if knowing the value of one gi
 $$P(X=x, Y=y) = P(X = x)P(Y = y)$$
 
 ## Expected Value and Indicators
----
 
 ### Expected Value and Linearity
 
@@ -187,22 +186,19 @@ I_A =
 \end{cases}
 $$
 
-Note that:  
-  ֍ $$I_A^2 = I_A$$\
-  ֍ $$I_A I_B = I_{A \cap B}$$\
-  ֍ $$I_{A \cup B} = I_A + I_B - I_A I_B$$
+Note that: $$I_A^2 = I_A$$, $$I_A I_B = I_{A \cap B}$$, $$I_{A \cup B} = I_A + I_B - I_A I_B$$
  
 **Distribution**  
-$$I_A \sim \Bern(p) where p = P(A)$$.
+$$I_A \sim Bern(p) where p = P(A)$$.
 
 **Fundamental Bridge**  
 The expectation of the indicator for event *A* is the probability of event *A*: $$E(I_A) = P(A)$$.
 
 ### Variance and Standard Deviation
 
-$$\var(X) = E \left(X - E(X)\right)^2 = E(X^2) - (E(X))^2$$
+$$var(X) = E \left(X - E(X)\right)^2 = E(X^2) - (E(X))^2$$
 
-$$\textrm{SD}(X) = \sqrt{\var(X)}$$
+$$\textrm{SD}(X) = \sqrt{var(X)}$$
 
 # Continuous RVs, LOTUS, UoU
 ---
@@ -248,7 +244,6 @@ Analogous to the discrete case, where you sum x times the PMF, for CRVs you inte
 $$E(X) = \int_{-\infty}^\infty xf(x)dx$$
 
 ## LOTUS
-
 ### Expected value of a function of an r.v.
 
 The expected value of X is defined this way:
@@ -279,34 +274,34 @@ By UoU, if we plug X into this function then we get a uniformly distributed rand
 
 $$F(X) = 1 - e^{-X} \sim \textrm{Unif}(0,1)$$
 
-Similarly, if U ~ Unif(0,1) then F^{-1}(U) has CDF F. The key point is that for any continuous random variable X, we can transform it into a Uniform random variable and back by using its CDF.
-
----
+Similarly, if $$U ~ Unif(0,1)$$ then $$F^{-1}(U)$$ has CDF $$F$$. The key point is that for any continuous random variable $$X$$, we can transform it into a Uniform random variable and back by using its CDF.
 
 ### Moments
 
 Moments describe the shape of a distribution. Let X have mean μ and standard deviation σ, and Z=(X-μ)/σ be the *standardized* version of X. The kth moment of X is μₖ = E(Xᵏ), and the kth standardized moment of X is mₖ = E(Zᵏ). The mean, variance, skewness, and kurtosis are important summaries of the shape of a distribution.
 
-- Mean: E(X) = μ₁
-- Variance: var(X) = μ₂ - μ₁²
-- Skewness: skew(X) = m₃
-- Kurtosis: kurt(X) = m₄ - 3
+֍  Mean: E(X) = μ₁
+֍  Variance: var(X) = μ₂ - μ₁²
+֍  Skewness: skew(X) = m₃
+֍  Kurtosis: kurt(X) = m₄ - 3
 
 ### Moment Generating Functions
 
-- MGF (Moment Generating Function): For any random variable X, the function Mₓ(t) = E(e^(tX)) is the moment generating function (MGF) of X, if it exists for all t in some open interval containing 0. The variable t could just as well have been called u or v. It's a bookkeeping device that lets us work with the function Mₓ rather than the sequence of moments.
+֍  MGF (Moment Generating Function): For any random variable X, the function\
+ $$Mₓ(t) = E(e^(tX))$$\
+is the moment generating function (MGF) of X, if it exists for all t in some open interval containing 0. The variable t could just as well have been called u or v. It's a bookkeeping device that lets us work with the function Mₓ rather than the sequence of moments.
 
-- Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X. 
-   μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)
-   This is true by Taylor expansion of e^(tX) since
-   Mₓ(t) = E(e^(tX)) = ∑(k=0)^(∞) [E(Xᵏ)tᵏ/k!] = ∑(k=0)^(∞) [μₖtᵏ/k!]
+֍  Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X. 
+   $$μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)$$
+   This is true by Taylor expansion of $$e^(tX)$$ since\
+   $$Mₓ(t) = E(e^(tX)) = ∑(k=0)^(∞) [E(Xᵏ)tᵏ/k!] = ∑(k=0)^(∞) [μₖtᵏ/k!]$$
 
-- MGF of linear functions: If Y = aX + b, then Mₙ(t) = E(e^(t(aX + b))) = e^(bt)Mₓ(at)
+֍  MGF of linear functions: If $$Y = aX + b$$, then $$Mₙ(t) = E(e^(t(aX + b))) = e^(bt)Mₓ(at)$$
 
-- Uniqueness: If it exists, the MGF uniquely determines the distribution. This means that for any two random variables X and Y, they are distributed the same (their PMFs/PDFs are equal) if and only if their MGFs are equal.
+֍  Uniqueness: If it exists, the MGF uniquely determines the distribution. This means that for any two random variables X and Y, they are distributed the same (their PMFs/PDFs are equal) if and only if their MGFs are equal.
 
-- Summing Independent RVs by Multiplying MGFs: If X and Y are independent, then
-  Mₓ₊ᵧ(t) = E(e^(t(X + Y))) = E(e^(tX))E(e^(tY)) = Mₓ(t) ⋅ Mᵧ(t)
+֍  Summing Independent RVs by Multiplying MGFs: If X and Y are independent, then\
+  $$Mₓ₊ᵧ(t) = E(e^(t(X + Y))) = E(e^(tX))E(e^(tY)) = Mₓ(t) ⋅ Mᵧ(t)$$\
   The MGF of the sum of two random variables is the product of the MGFs of those two random variables.
 
 ### Joint PDFs and CDFs
