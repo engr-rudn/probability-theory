@@ -199,10 +199,7 @@ $$var(X) = E \left(X - E(X)\right)^2 = E(X^2) - (E(X))^2$$
 $$\textrm{SD}(X) = \sqrt{var(X)}$$
 
 # Continuous RVs, LOTUS, UoU
----
-
 ## Continuous Random Variables (CRVs)
-
 ### What is a Continuous Random Variable (CRV)?
 
 A continuous random variable can take on any possible value within a certain interval (for example, [0, 1]), whereas a discrete random variable can only take on variables in a list of countable values (for example, all the integers, or the values 1, 1/2, 1/4, 1/8, etc.)
@@ -278,10 +275,10 @@ Similarly, if $$U ~ Unif(0,1)$$ then $$F^{-1}(U)$$ has CDF $$F$$. The key point 
 
 Moments describe the shape of a distribution. Let X have mean μ and standard deviation σ, and Z=(X-μ)/σ be the *standardized* version of X. The kth moment of X is μₖ = E(Xᵏ), and the kth standardized moment of X is mₖ = E(Zᵏ). The mean, variance, skewness, and kurtosis are important summaries of the shape of a distribution.
 
-֍  Mean: E(X) = μ₁
-֍  Variance: var(X) = μ₂ - μ₁²
-֍  Skewness: skew(X) = m₃
-֍  Kurtosis: kurt(X) = m₄ - 3
+֍  Mean: $$E(X) = μ₁$$\
+֍  Variance: $$var(X) = μ₂ - μ₁²$$\
+֍  Skewness: $$skew(X) = m₃$$\
+֍  Kurtosis: $$kurt(X) = m₄ - 3$$
 
 ### Moment Generating Functions
 
@@ -289,8 +286,8 @@ Moments describe the shape of a distribution. Let X have mean μ and standard de
  $$Mₓ(t) = E(e^(tX))$$\
 is the moment generating function (MGF) of X, if it exists for all t in some open interval containing 0. The variable t could just as well have been called u or v. It's a bookkeeping device that lets us work with the function Mₓ rather than the sequence of moments.
 
-֍  Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X. 
-   $$μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)$$
+֍  Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X.\ 
+   $$μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)$$\
    This is true by Taylor expansion of $$e^(tX)$$ since\
    $$Mₓ(t) = E(e^(tX)) = ∑(k=0)^(∞) [E(Xᵏ)tᵏ/k!] = ∑(k=0)^(∞) [μₖtᵏ/k!]$$
 
