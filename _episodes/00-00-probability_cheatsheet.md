@@ -36,8 +36,8 @@ $$P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $A$}}{\tex
 
 #### Independent Events:
 $$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
-֍  $$P(A \cap B) = P(A)P(B)$$
-֍  $$P(A|B) = P(A)$$
+֍  $$P(A \cap B) = P(A)P(B)$$\
+֍  $$P(A|B) = P(A)$$\
 ֍  $$P(B|A) = P(B)$$
 
 #### Conditional Independence: 
@@ -47,15 +47,15 @@ Conditional independence does not imply independence, and independence does not 
 
 ### Unions, Intersections, and Complements
 
-֍  De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.
-֍  $$(A \cup B)^c = A^c \cap B^c$$
+֍  De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.\
+֍  $$(A \cup B)^c = A^c \cap B^c$$\
 ֍  $$(A \cap B)^c = A^c \cup B^c$$
 
 ### Joint, Marginal, and Conditional
 
-֍  Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.
-֍  Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.
-֍  Conditional Probability: $$P(A\|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.
+֍  Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.\
+֍  Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.\
+֍  Conditional Probability: $$P(A\|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.\
 ֍  Conditional Probability *is* Probability: $$P(A\|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
 
 ### Probability of an Intersection or Union
@@ -118,14 +118,12 @@ We can also write
 
 $$P(A|B,C) = \frac{P(A,B,C)}{P(B,C)} = \frac{P(B,C|A)P(A)}{P(B,C)}$$
 
-**Odds Form of Bayes' Rule**
+**Odds Form of Bayes' Rule**\
 $$\frac{P({ A}\| { B})}{P({ A^c}\| { B})} = \frac{P({ B}\|{ A})}{P({ B}| { A^c})}\frac{P({ A})}{P({ A^c})}$$
 
 The *posterior odds* of $$A$$ are the *likelihood ratio* times the *prior odds*.
 
 # Random Variables and their Distributions
----
-
 ## PMF, CDF, and Independence
 
 **Probability Mass Function (PMF)**  
@@ -150,11 +148,11 @@ Intuitively, two random variables are independent if knowing the value of one gi
 $$P(X=x, Y=y) = P(X = x)P(Y = y)$$
 
 ## Expected Value and Indicators
-
 ### Expected Value and Linearity
 
 **Expected Value**  
-(a.k.a. *mean*, *expectation*, or *average*) is a weighted average of the possible outcomes of our random variable. Mathematically, if *x<sub>1</sub>*, *x<sub>2</sub>*, *x<sub>3</sub>*, ... are all of the distinct possible values that *X* can take, the expected value of *X* is:
+(a.k.a. *mean*, *expectation*, or *average*) is a weighted average of the possible outcomes of our random variable.\
+Mathematically, if *x<sub>1</sub>*, *x<sub>2</sub>*, *x<sub>3</sub>*, ... are all of the distinct possible values that *X* can take, the expected value of *X* is:
 
 $$E(X) = \sum\limits_{i}x_iP(X=x_i)$$
 
@@ -186,7 +184,7 @@ I_A =
 \end{cases}
 $$
 
-Note that: $$I_A^2 = I_A$$, $$I_A I_B = I_{A \cap B}$$, $$I_{A \cup B} = I_A + I_B - I_A I_B$$
+Note that: $$I_A^2 = I_A$$, $$\tab I_A I_B = I_{A \cap B}$$, $$\tab I_{A \cup B} = I_A + I_B - I_A I_B$$
  
 **Distribution**  
 $$I_A \sim Bern(p) where p = P(A)$$.
