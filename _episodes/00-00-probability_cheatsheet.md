@@ -184,7 +184,7 @@ I_A =
 \end{cases}
 $$
 
-Note that: $$I_A^2 = I_A$$,&emsp $$I_A I_B = I_{A \cap B}$$, &emsp;$$I_{A \cup B} = I_A + I_B - I_A I_B$$
+Note that: $$I_A^2 = I_A$$,&emsp; $$I_A I_B = I_{A \cap B}$$, &emsp;$$I_{A \cup B} = I_A + I_B - I_A I_B$$
  
 **Distribution**  
 $$I_A \sim Bern(p) where p = P(A)$$.
