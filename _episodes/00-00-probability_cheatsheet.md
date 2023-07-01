@@ -355,12 +355,12 @@ $$E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy$$
 
 
 **Covariance and Variance** The variance of a sum can be found by
-    $$\var(X + Y) = \var(X) + \var(Y) + 2\text{cov}(X, Y)$$
-    $$\var(X_1 + X_2 + \dots + X_n ) = \sum_{i = 1}^{n}\var(X_i) + 2\sum_{i < j} \text{cov}(X_i, X_j)$$
+    $$var(X + Y) = var(X) + var(Y) + 2\text{cov}(X, Y)$$
+    $$var(X_1 + X_2 + \dots + X_n ) = \sum_{i = 1}^{n}var(X_i) + 2\sum_{i < j} \text{cov}(X_i, X_j)$$
     If $$X$$ and $$Y$$ are independent, then they have covariance $$0$$, so
-    $$X \independent Y \Longrightarrow \var(X + Y) = \var(X) + \var(Y)$$
+    $$X \perp Y \Longrightarrow var(X + Y) = var(X) + var(Y)$$
     If $$X_1, X_2, \dots, X_n$$ are identically distributed and have the same covariance relationships (often by symmetry), then 
-    $$\var(X_1 + X_2 + \dots + X_n ) = n\var(X_1) + 2{n \choose 2}\text{cov}(X_1, X_2)$$
+    $$var(X_1 + X_2 + \dots + X_n ) = nvar(X_1) + 2{n \choose 2}\text{cov}(X_1, X_2)$$
 
 **Covariance Properties** For random variables $$W, X, Y, Z$$ and constants $$a, b$$:
     $$\text{cov}(X, Y) = \text{cov}(Y, X)$$
@@ -454,7 +454,7 @@ For example:
 - Let $$T \sim \text{Expo}(1/10)$$ be how long you have to wait until the shuttle comes. Given that you have already waited $$t$$ minutes, the expected additional waiting time is $$10$$ more minutes, by the memoryless property. That is, $$E(T|T>t) = t + 10$$.
 
 ### Conditioning on a Random Variable
-We can also find $$E(Y|X)$$, the expected value of $$Y$$ given the random variable $$X$$. This is *a function of the random variable $$X$$*. It is *not* a number except in certain special cases such as if $$X \independent Y$$. To find $$E(Y|X)$$, find $$E(Y|X = x)$$ and then plug in $$X$$ for $$x$$.
+We can also find $$E(Y|X)$$, the expected value of $$Y$$ given the random variable $$X$$. This is *a function of the random variable $$X$$*. It is *not* a number except in certain special cases such as if $$X \perp Y$$. To find $$E(Y|X)$$, find $$E(Y|X = x)$$ and then plug in $$X$$ for $$x$$.
 
 For example:
 - If $$E(Y|X=x) = x^3+5x$$, then $$E(Y|X) = X^3 + 5X$$.
@@ -462,7 +462,7 @@ For example:
 - Let $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$. Then $$E(Y|X=x) = x^2$$ since if we know $$X=x$$ then we know $$Y=x^2$$. And $$E(X|Y=y) = 0$$ since if we know $$Y=y$$ then we know $$X = \pm \sqrt{y}$$, with equal probabilities (by symmetry). So $$E(Y|X)=X^2$$, $$E(X|Y)=0$$.
 
 ### Properties of Conditional Expectation
-1. $$E(Y|X) = E(Y)$$ if $$X \independent Y$$
+1. $$E(Y|X) = E(Y)$$ if $$X \perp Y$$
 2. $$E(h(X)W|X) = h(X)E(W|X)$$ (taking out what's known) \\
    In particular, $$E(h(X)|X) = h(X)$$.
 3. $$E(E(Y|X)) = E(Y)$$ (Adam's Law, a.k.a. Law of Total Expectation)
