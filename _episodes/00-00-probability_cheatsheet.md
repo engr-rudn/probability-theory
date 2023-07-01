@@ -302,41 +302,41 @@ is the moment generating function (MGF) of X, if it exists for all t in some ope
 ### Joint PDFs and CDFs
 
 #### Joint Distributions
-- Joint CDF: The joint cumulative distribution function (CDF) of X and Y is F(x,y) = P(X ≤ x, Y ≤ y).
-- Joint PMF: In the discrete case, X and Y have a joint probability mass function (PMF) pₓᵧ(x,y) = P(X=x, Y=y).
-- Joint PDF: In the continuous case, X and Y have a joint probability density function (PDF) fₓᵧ(x,y) = (∂²/∂x∂y)Fₓᵧ(x,y). The joint PMF/PDF must be nonnegative and sum/integrate to 1.
+֍  Joint CDF: The joint cumulative distribution function (CDF) of X and Y is $$F(x,y) = P(X ≤ x, Y ≤ y)$$.
+- Joint PMF: In the discrete case, X and Y have a joint probability mass function $$(PMF) pₓᵧ(x,y) = P(X=x, Y=y)$$.
+- Joint PDF: In the continuous case, X and Y have a joint probability density function $$(PDF) fₓᵧ(x,y) = (∂²/∂x∂y)Fₓᵧ(x,y)$$. The joint PMF/PDF must be nonnegative and sum/integrate to 1.
 
 #### Conditional Distributions
-- Conditioning and Bayes' rule for discrete random variables:
-  P(Y=y|X=x) = P(X=x,Y=y) / P(X=x)
-             = P(X=x|Y=y)P(Y=y) / ∑ᵧ P(X=x|Y=ᵧ)P(Y=ᵧ)
-- Conditioning and Bayes' rule for continuous random variables:
-  fᵧ|ₓ(y|x) = fₓᵧ(x, y) / fₓ(x)
-             = (fₓ|ᵧ(x|y)fᵧ(y)) / fₓ(x)
-- Hybrid Bayes' rule:
-  fₓ(x|A) = (P(A | X = x)fₓ(x)) / P(A)
+֍  Conditioning and Bayes' rule for discrete random variables:\
+ $$ P(Y=y|X=x) = P(X=x,Y=y) / P(X=x)$$\
+            $$ = P(X=x|Y=y)P(Y=y) / ∑ᵧ P(X=x|Y=ᵧ)P(Y=ᵧ)$$
+֍  Conditioning and Bayes' rule for continuous random variables:\
+  $$fᵧ|ₓ(y|x) = fₓᵧ(x, y) / fₓ(x)$$\
+             $$= (fₓ|ᵧ(x|y)fᵧ(y)) / fₓ(x)$$
+֍  Hybrid Bayes' rule:\
+  $$fₓ(x|A) = (P(A | X = x)fₓ(x)) / P(A)$$
 
 #### Marginal Distributions
-To find the distribution of one (or more) random variables from a joint PMF/PDF, sum/integrate over the unwanted random variables.
+To find the distribution of one (or more) random variables from a joint PMF/PDF, sum/integrate over the unwanted random variables.\
 
-- Marginal PMF from joint PMF:
-  P(X = x) = ∑ₓ P(X=x, Y=y)
-- Marginal PDF from joint PDF:
-  fₓ(x) = ∫[∞, -∞] fₓᵧ(x, y) dy
+֍  Marginal PMF from joint PMF:\
+  $$P(X = x) = ∑ₓ P(X=x, Y=y)$$
+֍  Marginal PDF from joint PDF:\
+  $$fₓ(x) = ∫[∞, -∞] fₓᵧ(x, y) dy$$
 
 #### Independence of Random Variables
-Random variables X and Y are independent if and only if any of the following conditions holds:
-- Joint CDF is the product of the marginal CDFs.
-- Joint PMF/PDF is the product of the marginal PMFs/PDFs.
-- Conditional distribution of Y given X is the marginal distribution of Y.
+Random variables X and Y are independent if and only if any of the following conditions holds:\
+֍  Joint CDF is the product of the marginal CDFs.\
+֍  Joint PMF/PDF is the product of the marginal PMFs/PDFs.\
+֍  Conditional distribution of Y given X is the marginal distribution of Y.
 Write X ⫫ Y to denote that X and Y are independent.
 
 #### Multivariate LOTUS
-Law of the unconscious statistician (LOTUS) in more than one dimension is analogous to the 1D LOTUS.
-For discrete random variables:
-E(g(X, Y)) = ∑ₓ∑y g(x, y)P(X=x, Y=y)
-For continuous random variables:
-E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy
+Law of the unconscious statistician (LOTUS) in more than one dimension is analogous to the 1D LOTUS.\
+For discrete random variables:\
+$$E(g(X, Y)) = ∑ₓ∑y g(x, y)P(X=x, Y=y)$$\
+For continuous random variables:\
+$$E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy$$
 
 ### Covariance and Transformations
 
@@ -350,7 +350,7 @@ E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy
 **Correlation** is a standardized version of covariance that is always between $$-1$$ and $$1$$.
     $$\text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sqrt{\text{var}(X)\text{var}(Y)}}$$
 
-**Covariance and Independence** If two random variables are independent, then they are uncorrelated. The converse is not necessarily true (e.g., consider $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$).
+**Covariance and Independence** If two random variables are independent, then they are uncorrelated. The converse is not necessarily true (e.g., consider $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$).\
     $$X \independent Y \longrightarrow \text{cov}(X, Y) = 0 \longrightarrow E(XY) = E(X)E(Y)$$
 
 **Covariance and Variance** The variance of a sum can be found by
