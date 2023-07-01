@@ -303,8 +303,12 @@ is the moment generating function (MGF) of X, if it exists for all t in some ope
 
 #### Joint Distributions
 ֍  Joint CDF: The joint cumulative distribution function (CDF) of X and Y is $$F(x,y) = P(X ≤ x, Y ≤ y)$$.
-- Joint PMF: In the discrete case, X and Y have a joint probability mass function $$(PMF) pₓᵧ(x,y) = P(X=x, Y=y)$$.
-- Joint PDF: In the continuous case, X and Y have a joint probability density function $$(PDF) fₓᵧ(x,y) = (∂²/∂x∂y)Fₓᵧ(x,y)$$. The joint PMF/PDF must be nonnegative and sum/integrate to 1.
+- Joint PMF: In the discrete case, X and Y have a joint probability mass function $$(PMF)$$\
+$$ pₓᵧ(x,y) = P(X=x, Y=y)$$.
+- Joint PDF: In the continuous case, X and Y have a joint probability density function $$(PDF)$$\
+ $$fₓᵧ(x,y) = (∂²/∂x∂y)Fₓᵧ(x,y)$$.\
+The joint PMF/PDF must be nonnegative and sum/integrate to 1.
+![PMF_PDF-image](../figure/pmf_pdf.png)
 
 #### Conditional Distributions
 ֍  Conditioning and Bayes' rule for discrete random variables:\
