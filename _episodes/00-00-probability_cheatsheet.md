@@ -157,7 +157,7 @@ $$P(X=x, Y=y) = P(X = x)P(Y = y)$$
 Mathematically, if *x<sub>1</sub>*, *x<sub>2</sub>*, *x<sub>3</sub>*, ... are all of the distinct possible values that *X* can take, the expected value of *X* is:
 
 $$E(X) = \sum\limits_{i}x_iP(X=x_i)$$
-
+![Expecte Value](../figure/expected_value.png)
 **Linearity**  
 For any random variables *X* and *Y*, and constants *a*, *b*, *c*:
 
