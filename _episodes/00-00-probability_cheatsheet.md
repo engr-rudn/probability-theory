@@ -282,20 +282,17 @@ Moments describe the shape of a distribution. Let X have mean μ and standard de
 
 ### Moment Generating Functions
 
-&emsp;֍  MGF (Moment Generating Function): For any random variable X, the function\
+- MGF (Moment Generating Function): For any random variable X, the function\
  $$Mₓ(t) = E(e^(tX))$$\
 is the moment generating function (MGF) of X, if it exists for all t in some open interval containing 0. The variable t could just as well have been called u or v. It's a bookkeeping device that lets us work with the function Mₓ rather than the sequence of moments.
 
-&emsp;֍  Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X.\ 
+- Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X.\ 
    $$μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)$$\
    This is true by Taylor expansion of $$e^(tX)$$ since\
    $$Mₓ(t) = E(e^(tX)) = ∑(k=0)^(∞) [E(Xᵏ)tᵏ/k!] = ∑(k=0)^(∞) [μₖtᵏ/k!]$$
-
-&emsp;֍  MGF of linear functions: If $$Y = aX + b$$, then $$Mₙ(t) = E(e^(t(aX + b))) = e^(bt)Mₓ(at)$$
-
-&emsp;֍  Uniqueness: If it exists, the MGF uniquely determines the distribution. This means that for any two random variables X and Y, they are distributed the same (their PMFs/PDFs are equal) if and only if their MGFs are equal.
-
-&emsp;֍  Summing Independent RVs by Multiplying MGFs: If X and Y are independent, then\
+- MGF of linear functions: If $$Y = aX + b$$, then $$Mₙ(t) = E(e^(t(aX + b))) = e^(bt)Mₓ(at)$$
+- Uniqueness: If it exists, the MGF uniquely determines the distribution. This means that for any two random variables X and Y, they are distributed the same (their PMFs/PDFs are equal) if and only if their MGFs are equal.
+- Summing Independent RVs by Multiplying MGFs: If X and Y are independent, then\
   $$Mₓ₊ᵧ(t) = E(e^(t(X + Y))) = E(e^(tX))E(e^(tY)) = Mₓ(t) ⋅ Mᵧ(t)$$\
   The MGF of the sum of two random variables is the product of the MGFs of those two random variables.
 
