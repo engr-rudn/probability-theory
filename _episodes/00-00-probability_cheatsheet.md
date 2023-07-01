@@ -229,6 +229,7 @@ $$F'(x) = f(x)$$
 A PDF is nonnegative and integrates to 1. By the fundamental theorem of calculus, to get from PDF back to CDF we can integrate:
 
 $$F(x) = \int_{-\infty}^x f(t)dt$$
+![PDF](../figure/pdf.png)
 
 To find the probability that a CRV takes on a value in an interval, integrate the PDF over that interval.
 
