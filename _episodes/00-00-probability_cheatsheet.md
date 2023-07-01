@@ -35,10 +35,10 @@ $$P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $A$}}{\tex
 ### Independence
 
 #### Independent Events:
-$$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
+$$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:\
 &emsp;֍  $$P(A \cap B) = P(A)P(B)$$\
 &emsp;֍  $$P(A|B) = P(A)$$\
-֍  $$P(B|A) = P(B)$$
+&emsp;֍  $$P(B|A) = P(B)$$
 
 #### Conditional Independence: 
 $$A$$ and $$B$$ are conditionally independent given $$C$$ if\
@@ -47,16 +47,16 @@ Conditional independence does not imply independence, and independence does not 
 
 ### Unions, Intersections, and Complements
 
-֍  De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.\
-֍  $$(A \cup B)^c = A^c \cap B^c$$\
-֍  $$(A \cap B)^c = A^c \cup B^c$$
+&emsp;֍  De Morgan's Laws: A useful identity that can make calculating probabilities of unions easier by relating them to intersections, and vice versa. Analogous results hold with more than two sets.\
+&emsp;֍  $$(A \cup B)^c = A^c \cap B^c$$\
+&emsp;֍  $$(A \cap B)^c = A^c \cup B^c$$
 
 ### Joint, Marginal, and Conditional
 
-֍  Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.\
-֍  Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.\
-֍  Conditional Probability: $$P(A\|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.\
-֍  Conditional Probability *is* Probability: $$P(A\|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
+&emsp;֍  Joint Probability: $$P(A \cap B)$$ or $$P(A, B)$$ -- Probability of $$A$$ and $$B$$.\
+&emsp;֍  Marginal (Unconditional) Probability: $$P(A)$$ -- Probability of $$A$$.\
+&emsp;֍  Conditional Probability: $$P(A\|B) = \frac{P(A, B)}{P(B)}$$ -- Probability of $$A$$, given that $$B$$ occurred.\
+&emsp;֍  Conditional Probability *is* Probability: $$P(A\|B)$$ is a probability function for any fixed $$B$$. Any theorem that holds for probability also holds for conditional probability.
 
 ### Probability of an Intersection or Union
 
@@ -275,34 +275,34 @@ Similarly, if $$U ~ Unif(0,1)$$ then $$F^{-1}(U)$$ has CDF $$F$$. The key point 
 
 Moments describe the shape of a distribution. Let X have mean μ and standard deviation σ, and Z=(X-μ)/σ be the *standardized* version of X. The kth moment of X is μₖ = E(Xᵏ), and the kth standardized moment of X is mₖ = E(Zᵏ). The mean, variance, skewness, and kurtosis are important summaries of the shape of a distribution.
 
-֍  Mean: $$E(X) = μ₁$$\
-֍  Variance: $$var(X) = μ₂ - μ₁²$$\
-֍  Skewness: $$skew(X) = m₃$$\
-֍  Kurtosis: $$kurt(X) = m₄ - 3$$
+&emsp;֍  Mean: $$E(X) = μ₁$$\
+&emsp;֍  Variance: $$var(X) = μ₂ - μ₁²$$\
+&emsp;֍  Skewness: $$skew(X) = m₃$$\
+&emsp;֍  Kurtosis: $$kurt(X) = m₄ - 3$$
 
 ### Moment Generating Functions
 
-֍  MGF (Moment Generating Function): For any random variable X, the function\
+&emsp;֍  MGF (Moment Generating Function): For any random variable X, the function\
  $$Mₓ(t) = E(e^(tX))$$\
 is the moment generating function (MGF) of X, if it exists for all t in some open interval containing 0. The variable t could just as well have been called u or v. It's a bookkeeping device that lets us work with the function Mₓ rather than the sequence of moments.
 
-֍  Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X.\ 
+&emsp;֍  Why is it called the Moment Generating Function? Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X.\ 
    $$μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)$$\
    This is true by Taylor expansion of $$e^(tX)$$ since\
    $$Mₓ(t) = E(e^(tX)) = ∑(k=0)^(∞) [E(Xᵏ)tᵏ/k!] = ∑(k=0)^(∞) [μₖtᵏ/k!]$$
 
-֍  MGF of linear functions: If $$Y = aX + b$$, then $$Mₙ(t) = E(e^(t(aX + b))) = e^(bt)Mₓ(at)$$
+&emsp;֍  MGF of linear functions: If $$Y = aX + b$$, then $$Mₙ(t) = E(e^(t(aX + b))) = e^(bt)Mₓ(at)$$
 
-֍  Uniqueness: If it exists, the MGF uniquely determines the distribution. This means that for any two random variables X and Y, they are distributed the same (their PMFs/PDFs are equal) if and only if their MGFs are equal.
+&emsp;֍  Uniqueness: If it exists, the MGF uniquely determines the distribution. This means that for any two random variables X and Y, they are distributed the same (their PMFs/PDFs are equal) if and only if their MGFs are equal.
 
-֍  Summing Independent RVs by Multiplying MGFs: If X and Y are independent, then\
+&emsp;֍  Summing Independent RVs by Multiplying MGFs: If X and Y are independent, then\
   $$Mₓ₊ᵧ(t) = E(e^(t(X + Y))) = E(e^(tX))E(e^(tY)) = Mₓ(t) ⋅ Mᵧ(t)$$\
   The MGF of the sum of two random variables is the product of the MGFs of those two random variables.
 
 ### Joint PDFs and CDFs
 
 #### Joint Distributions
-֍  Joint CDF: The joint cumulative distribution function (CDF) of X and Y is $$F(x,y) = P(X ≤ x, Y ≤ y)$$.
+&emsp;֍  Joint CDF: The joint cumulative distribution function (CDF) of X and Y is $$F(x,y) = P(X ≤ x, Y ≤ y)$$.
 - Joint PMF: In the discrete case, X and Y have a joint probability mass function $$(PMF)$$\
 $$ pₓᵧ(x,y) = P(X=x, Y=y)$$.
 - Joint PDF: In the continuous case, X and Y have a joint probability density function $$(PDF)$$\
@@ -311,28 +311,28 @@ The joint PMF/PDF must be nonnegative and sum/integrate to 1.
 ![PMF_PDF-image](../figure/pmf_pdf.png)
 
 #### Conditional Distributions
-֍  Conditioning and Bayes' rule for discrete random variables:\
+&emsp;֍  Conditioning and Bayes' rule for discrete random variables:\
  $$ P(Y=y|X=x) = P(X=x,Y=y) / P(X=x)$$\
             $$ = P(X=x|Y=y)P(Y=y) / ∑ᵧ P(X=x|Y=ᵧ)P(Y=ᵧ)$$
-֍  Conditioning and Bayes' rule for continuous random variables:\
+&emsp;֍  Conditioning and Bayes' rule for continuous random variables:\
   $$fᵧ|ₓ(y|x) = fₓᵧ(x, y) / fₓ(x)$$\
              $$= (fₓ|ᵧ(x|y)fᵧ(y)) / fₓ(x)$$
-֍  Hybrid Bayes' rule:\
+&emsp;֍  Hybrid Bayes' rule:\
   $$fₓ(x|A) = (P(A | X = x)fₓ(x)) / P(A)$$
 
 #### Marginal Distributions
 To find the distribution of one (or more) random variables from a joint PMF/PDF, sum/integrate over the unwanted random variables.\
 
-֍  Marginal PMF from joint PMF:\
+&emsp;֍  Marginal PMF from joint PMF:\
   $$P(X = x) = ∑ₓ P(X=x, Y=y)$$
-֍  Marginal PDF from joint PDF:\
+&emsp;֍  Marginal PDF from joint PDF:\
   $$fₓ(x) = ∫[∞, -∞] fₓᵧ(x, y) dy$$
 
 #### Independence of Random Variables
 Random variables X and Y are independent if and only if any of the following conditions holds:\
-֍  Joint CDF is the product of the marginal CDFs.\
-֍  Joint PMF/PDF is the product of the marginal PMFs/PDFs.\
-֍  Conditional distribution of Y given X is the marginal distribution of Y.
+&emsp;֍  Joint CDF is the product of the marginal CDFs.\
+&emsp;֍  Joint PMF/PDF is the product of the marginal PMFs/PDFs.\
+&emsp;֍  Conditional distribution of Y given X is the marginal distribution of Y.
 Write X ⫫ Y to denote that X and Y are independent.
 
 #### Multivariate LOTUS
