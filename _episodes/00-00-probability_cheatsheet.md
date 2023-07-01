@@ -351,7 +351,8 @@ $$E(g(X, Y)) = ∫[-∞, ∞]∫[-∞, ∞] g(x, y)fₓᵧ(x, y)dxdy$$
     $$\text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sqrt{\text{var}(X)\text{var}(Y)}}$$
 
 **Covariance and Independence** If two random variables are independent, then they are uncorrelated. The converse is not necessarily true (e.g., consider $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$).\
-    $$X \independent Y \longrightarrow \text{cov}(X, Y) = 0 \longrightarrow E(XY) = E(X)E(Y)$$
+ $$X \perp Y \longrightarrow \text{cov}(X, Y) = 0 \longrightarrow E(XY) = E(X)E(Y)$$
+
 
 **Covariance and Variance** The variance of a sum can be found by
     $$\var(X + Y) = \var(X) + \var(Y) + 2\text{cov}(X, Y)$$
