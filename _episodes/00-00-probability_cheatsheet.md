@@ -139,6 +139,8 @@ Gives the probability that a random variable is less than or equal to *x*.
 
 $$F_X(x) = P(X \leq x)$$
 
+![CDF](..\figure\CDF.png)
+
 The CDF is an increasing, right-continuous function with:  
 $$F_X(x) \to 0 \quad \textrm{as} \quad x \to -\infty \quad \textrm{and} \quad F_X(x) \to 1 \quad \textrm{as} \quad x \to \infty$$
 
