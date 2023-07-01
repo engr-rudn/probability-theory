@@ -36,8 +36,8 @@ $$P_{\textrm{naive}}(A) = \frac{\text{number of outcomes favorable to $A$}}{\tex
 
 #### Independent Events:
 $$A$$ and $$B$$ are independent if knowing whether $$A$$ occurred gives no information about whether $$B$$ occurred. More formally, $$A$$ and $$B$$ (which have nonzero probability) are independent if and only if one of the following equivalent statements holds:
-֍  $$P(A \cap B) = P(A)P(B)$$\
-֍  $$P(A|B) = P(A)$$\
+&emsp;֍  $$P(A \cap B) = P(A)P(B)$$\
+&emsp;֍  $$P(A|B) = P(A)$$\
 ֍  $$P(B|A) = P(B)$$
 
 #### Conditional Independence: 
