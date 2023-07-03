@@ -290,7 +290,7 @@ Moments describe the shape of a distribution. Let X have mean μ and standard de
 is the *moment generating function (MGF)* of X, if it exists for all t in some open interval containing 0. The variable t could just as well have been called u or v. It's a bookkeeping device that lets us work with the function Mₓ rather than the sequence of moments.
 
 - *Why is it called the Moment Generating Function?* Because the kth derivative of the moment generating function, evaluated at 0, is the kth moment of X.\ 
-   $$μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)$$\
+$$μₖ = E(Xᵏ) = Mₓ⁽ᵏ⁾(0)$$\
    This is true by Taylor expansion of $$e^{tX}$$ since\
    $$Mₓ(t) = E(e^{tX}) = ∑_(k=0)^(∞) [\frac{E(Xᵏ)tᵏ}{k!}] = ∑_(k=0)^(∞) [\frac{μₖtᵏ}{k!}]$$
 - *MGF of linear functions*: If $$Y = aX + b$$, then $$Mₙ(t) = E(e^(t(aX + b))) = e^(bt)Mₓ(at)$$
