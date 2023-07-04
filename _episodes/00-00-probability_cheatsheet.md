@@ -453,8 +453,8 @@ We can find $$E(Y|A)$$, the expected value of $$Y$$ given that event $$A$$ occur
 
 For example:
 - The expected value of a fair die roll, given that it is prime, is $$\frac{1}{3} \cdot 2 + \frac{1}{3} \cdot 3 + \frac{1}{3} \cdot 5 = \frac{10}{3}$$.
-- Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success. Let $$A$$ be the event that the first $$3$$ trials are all successes. Then $$E(Y\|A) = 3 + 7p$$ since the number of successes among the last $$7$$ trials is $$\text{Bin}(7,p)$$.
-- Let $$T \sim \text{Expo}(1/10)$$ be how long you have to wait until the shuttle comes. Given that you have already waited $$t$$ minutes, the expected additional waiting time is $$10$$ more minutes, by the memoryless property. That is, $$E(T|T>t) = t + 10$$.
+- Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success. Let $$A$$ be the event that the first $$3$$ trials are all successes. Then $$E(Y|A) = 3 + 7p$$ since the number of successes among the last $$7$$ trials is $$\text{Bin}(7,p)$$.\
+- Let $$T \sim \text{Expo}(1/10)$$ be how long you have to wait until the shuttle comes. Given that you have already waited $$t$$ minutes, the expected additional waiting time is $$10$$ more minutes, by the memoryless property. That is, $$E(T\|T>t) = t + 10$$.
 
 ### Conditioning on a Random Variable
 We can also find $$E(Y|X)$$, the expected value of $$Y$$ given the random variable $$X$$. This is *a function of the random variable $$X$$*. It is *not* a number except in certain special cases such as if $$X \perp Y$$. To find $$E(Y|X)$$, find $$E(Y|X = x)$$ and then plug in $$X$$ for $$x$$.
