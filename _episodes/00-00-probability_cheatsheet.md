@@ -462,7 +462,6 @@ We can also find $$E(Y|X)$$, the expected value of $$Y$$ given the random variab
 For example:
 - If $$E(Y\|X=x) = x^3+5x$$, then $$E(Y\|X) = X^3 + 5X$$.
 - Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success and $$X$$ be the number of successes among the first $$3$$ trials. Then $$E(Y\|X)=X+7p$$.
-- Let $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$. Then $$E(Y|X=x) = x^2$$ since if we know $$X=x$$ then we know $$Y=x^2$$. And $$E(X|Y=y) = 0$$ since if we know $$Y=y$$ then we know $$X = \pm \sqrt{y}$$, with equal probabilities (by symmetry). So $$E(Y|X)=X^2$$, $$E(X|Y)=0$$.
 - Let $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$. Then $$E(Y\|X=x) = x^2$$ since if we know $$X=x$$ then we know $$Y=x^2$$. And $$E(X\|Y=y) = 0$$ since if we know $$Y=y$$ then we know $$X = \pm \sqrt{y}$$, with equal probabilities (by symmetry). So $$E(Y\|X)=X^2$$, $$E(X\|Y)=0$$.
 
 ### Properties of Conditional Expectation
