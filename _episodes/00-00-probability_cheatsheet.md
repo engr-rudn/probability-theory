@@ -323,7 +323,7 @@ The joint PMF/PDF must be nonnegative and sum/integrate to 1.
 To find the distribution of one (or more) random variables from a joint PMF/PDF, sum/integrate over the unwanted random variables.\
 
 &emsp;֍  Marginal PMF from joint PMF:\
-  $$P(X = x) = ∑ₓ P(X=x, Y=y)$$
+  $$P(X = x) = ∑ₓ P(X=x, Y=y)$$\
 &emsp;֍  Marginal PDF from joint PDF:\
   $$fₓ(x) = ∫[∞, -∞] fₓᵧ(x, y) dy$$
 
@@ -453,7 +453,7 @@ We can find $$E(Y|A)$$, the expected value of $$Y$$ given that event $$A$$ occur
 
 For example:
 - The expected value of a fair die roll, given that it is prime, is $$\frac{1}{3} \cdot 2 + \frac{1}{3} \cdot 3 + \frac{1}{3} \cdot 5 = \frac{10}{3}$$.
-- Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success. Let $$A$$ be the event that the first $$3$$ trials are all successes. Then $$E(Y|A) = 3 + 7p$$ since the number of successes among the last $$7$$ trials is $$\text{Bin}(7,p)$$.
+- Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success. Let $$A$$ be the event that the first $$3$$ trials are all successes. Then $$E(Y\|A) = 3 + 7p$$ since the number of successes among the last $$7$$ trials is $$\text{Bin}(7,p)$$.
 - Let $$T \sim \text{Expo}(1/10)$$ be how long you have to wait until the shuttle comes. Given that you have already waited $$t$$ minutes, the expected additional waiting time is $$10$$ more minutes, by the memoryless property. That is, $$E(T|T>t) = t + 10$$.
 
 ### Conditioning on a Random Variable
