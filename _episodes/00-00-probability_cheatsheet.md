@@ -312,10 +312,10 @@ The joint PMF/PDF must be nonnegative and sum/integrate to 1.
 #### Conditional Distributions
 &emsp;֍  Conditioning and Bayes' rule for discrete random variables:\
  $$ P(Y=y|X=x) = P(X=x,Y=y) / P(X=x)$$\
-            $$ = P(X=x|Y=y)P(Y=y) / ∑ᵧ P(X=x|Y=ᵧ)P(Y=ᵧ)$$
+            $$ = P(X=x|Y=y)P(Y=y) / ∑ᵧ P(X=x|Y=ᵧ)P(Y=ᵧ)$$\
 &emsp;֍  Conditioning and Bayes' rule for continuous random variables:\
   $$fᵧ|ₓ(y|x) = fₓᵧ(x, y) / fₓ(x)$$\
-             $$= (fₓ|ᵧ(x|y)fᵧ(y)) / fₓ(x)$$
+             $$= (fₓ|ᵧ(x|y)fᵧ(y)) / fₓ(x)$$\
 &emsp;֍  Hybrid Bayes' rule:\
   $$fₓ(x|A) = (P(A | X = x)fₓ(x)) / P(A)$$
 
