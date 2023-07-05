@@ -465,10 +465,10 @@ For example:
 - Let $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$. Then $$E(Y\|X=x) = x^2$$ since if we know $$X=x$$ then we know $$Y=x^2$$. And $$E(X\|Y=y) = 0$$ since if we know $$Y=y$$ then we know $$X = \pm \sqrt{y}$$, with equal probabilities (by symmetry). So $$E(Y\|X)=X^2$$, $$E(X\|Y)=0$$.
 
 ### Properties of Conditional Expectation
-1. $$E(Y|X) = E(Y)$$ if $$X \perp Y$$
-2. $$E(h(X)W|X) = h(X)E(W|X)$$ (taking out what's known) \\
-   In particular, $$E(h(X)|X) = h(X)$$.
-3. $$E(E(Y|X)) = E(Y)$$ (Adam's Law, a.k.a. Law of Total Expectation)
+1. $$E(Y\|X) = E(Y)$$ if $$X \perp Y$$
+2. $$E(h(X)W\|X) = h(X)E(W\|X)$$ (taking out what's known) \\
+   In particular, $$E(h(X)\|X) = h(X)$$.
+3. $$E(E(Y\|X)) = E(Y)$$ (Adam's Law, a.k.a. Law of Total Expectation)
 
 ### Adam's Law (a.k.a. Law of Total Expectation)
 For any events $$A_1, A_2, \dots, A_n$$ that partition the sample space:
@@ -482,7 +482,6 @@ $$\text{Var}(Y) = E(\text{Var}(Y|X)) + \text{Var}(E(Y|X))$$
 
 # MVN, LLN, CLT
 ---
-
 ## Law of Large Numbers (LLN)
 Let $$X_1, X_2, X_3, \dots$$ be i.i.d. with mean $$\mu$$. The sample mean is $$\bar{X}_n = \frac{X_1 + X_2 + X_3 + \dots + X_n}{n}$$. The Law of Large Numbers states that as $$n \to \infty$$, $$\bar{X}_n \to \mu$$ with probability $$1$$. For example, in flips of a coin with probability $$p$$ of Heads, let $$X_j$$ be the indicator of the $$j$$th flip being Heads. Then LLN says the proportion of Heads converges to $$p$$ (with probability $$1$$).
 
@@ -672,8 +671,8 @@ Let us say that X is distributed chi2_n. We know the following:
 A Chi-Square(n) is the sum of the squares of n independent standard Normal r.v.s.
 
 **Properties and Representations**
-- X is distributed as Z1^2 + Z2^2 + ... + Zn^2 for i.i.d. Z_i ~ N(0,1)
-- X ~ Gam(n/2, 1/2)
+- $$X$$ is distributed as $$Z1^2 + Z2^2 + ... + Zn^2$$ for i.i.d. $$Z_i ~ N(0,1)$$
+- $$X ~ Gam(n/2, 1/2)$$
 
 ## Discrete Distributions
 ---
