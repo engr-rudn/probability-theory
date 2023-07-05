@@ -1064,17 +1064,23 @@ Contributions from Jessy Hwang
 1. **Don't misuse the naive definition of probability.** 
 When answering "What is the probability that in a group of 3 people, no two have the same birth month?", it is *not* correct to treat the people as indistinguishable balls being placed into 12 boxes, since that assumes the list of birth months {January, January, January} is just as likely as the list {January, April, June}, even though the latter is six times more likely.
 
-2. **Don't confuse unconditional, conditional, and joint probabilities.** In applying $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$, it is *not* correct to say "$$P(B) = 1$$ because we know $$B$$ happened"; $$P(B)$$ is the *prior* probability of $$B$$. Don't confuse $$P(A|B)$$ with $$P(A,B)$$.
+2. **Don't confuse unconditional, conditional, and joint probabilities.** 
+In applying $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$, it is *not* correct to say "$$P(B) = 1$$ because we know $$B$$ happened"; $$P(B)$$ is the *prior* probability of $$B$$. Don't confuse $$P(A|B)$$ with $$P(A,B)$$.
 
-3. **Don't assume independence without justification.** In the matching problem, the probability that card 1 is a match and card 2 is a match is not $$1/n^2$$. Binomial and Hypergeometric are often confused; the trials are independent in the Binomial story and dependent in the Hypergeometric story.
+3. **Don't assume independence without justification.** 
+In the matching problem, the probability that card 1 is a match and card 2 is a match is not $$1/n^2$$. Binomial and Hypergeometric are often confused; the trials are independent in the Binomial story and dependent in the Hypergeometric story.
 
-4. **Don't forget to do sanity checks.** Probabilities must be between $$0$$ and $$1$$. Variances must be $$\geq 0$$. Supports must make sense. PMFs must sum to $$1$$. PDFs must integrate to $$1$$.
+4. **Don't forget to do sanity checks.** 
+Probabilities must be between $$0$$ and $$1$$. Variances must be $$\geq 0$$. Supports must make sense. PMFs must sum to $$1$$. PDFs must integrate to $$1$$.
 
-5. **Don't confuse random variables, numbers, and events.** Let $$X$$ be an r.v. Then $$g(X)$$ is an r.v. for any function $$g$$. In particular, $$X^2$$, $$|X|$$, $$F(X)$$, and $$I_{X>3}$$ are r.v.s. $$P(X^2 < X | X \geq 0)$$, $$E(X)$$, $$\text{Var}(X)$$, and $$g(E(X))$$ are numbers. $$X = 2$$ and $$F(X) \geq -1$$ are events. It does not make sense to write $$\int_{-\infty}^\infty F(X) dx$$, because $$F(X)$$ is a random variable. It does not make sense to write $$P(X)$$, because $$X$$ is not an event.
+5. **Don't confuse random variables, numbers, and events.** 
+Let $$X$$ be an r.v. Then $$g(X)$$ is an r.v. for any function $$g$$. In particular, $$X^2$$, $$|X|$$, $$F(X)$$, and $$I_{X>3}$$ are r.v.s. $$P(X^2 < X | X \geq 0)$$, $$E(X)$$, $$\text{Var}(X)$$, and $$g(E(X))$$ are numbers. $$X = 2$$ and $$F(X) \geq -1$$ are events. It does not make sense to write $$\int_{-\infty}^\infty F(X) dx$$, because $$F(X)$$ is a random variable. It does not make sense to write $$P(X)$$, because $$X$$ is not an event.
 
-6. **Don't confuse a random variable with its distribution.** To get the PDF of $$X^2$$, you can't just square the PDF of $$X$$. The right way is to use transformations. To get the PDF of $$X + Y$$, you can't just add the PDF of $$X$$ and the PDF of $$Y$$. The right way is to compute the [convolution](#convolutions).
+6. **Don't confuse a random variable with its distribution.** 
+To get the PDF of $$X^2$$, you can't just square the PDF of $$X$$. The right way is to use transformations. To get the PDF of $$X + Y$$, you can't just add the PDF of $$X$$ and the PDF of $$Y$$. The right way is to compute the [convolution](#convolutions).
 
-7. **Don't pull non-linear functions out of expectations.** $$E(g(X))$$ does not equal $$g(E(X))$$ in general. The St. Petersburg paradox is an extreme example. See also Jensen's inequality. The right way to find $$E(g(X))$$ is with [LOTUS](#lotus).
+7. **Don't pull non-linear functions out of expectations.** 
+$$E(g(X))$$ does not equal $$g(E(X))$$ in general. The St. Petersburg paradox is an extreme example. See also Jensen's inequality. The right way to find $$E(g(X))$$ is with [LOTUS](#lotus).
 
 ## Distributions in R
 ---
