@@ -781,7 +781,7 @@ $$
 \textbf{Inequalities}
 $$
 
-<!--  -->$$\begin{enumerate}
+<!-- \begin{enumerate} -->
 $$\item \textbf{Cauchy-Schwarz}: |E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
 
 $$\item \textbf{Markov}: P(X \geq a) \leq \frac{E|X|}{a}$$ for $$a>0$$
@@ -789,7 +789,7 @@ $$\item \textbf{Markov}: P(X \geq a) \leq \frac{E|X|}{a}$$ for $$a>0$$
 $$\item \textbf{Chebyshev}: P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$$ for $$E(X)=\mu$$, $$\text{Var}(X) = \sigma^2$$
 
 $$\item \textbf{Jensen}: E(g(X)) \geq g(E(X))$$ for $$g$$ convex; reverse if $$g$$ is concave
-<!--  -->\end{enumerate}
+<!--  \end{enumerate}-->
 
 
 $$
