@@ -781,7 +781,8 @@ $$
 \textbf{Inequalities}
 $$
 
-1. **Cauchy-Schwarz**: $$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
+1. **Cauchy-Schwarz**: 
+$$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
 
 2. **Markov**: $$P(X \geq a) \leq \frac{E|X|}{a}$$ for $$a>0$$
 
