@@ -1020,37 +1020,49 @@ William and Sebastian play a modified game of Settlers of Catan, where every tur
 ---
 Contributions from Jessy Hwang, Yuan Jiang, Yuqi Hou
 
-1. **Getting started.** Start by *defining relevant events and random variables*. ("Let $$A$$ be the event that I pick the fair coin"; "Let $$X$$ be the number of successes.") Clear notion is important for clear thinking! Then decide what it is that you're supposed to be finding, in terms of your notation ("I want to find $$P(X=3|A)$$"). Think about what type of object your answer should be (a number? A random variable? A PMF? A PDF?) and what it should be in terms of.
-
+1. **Getting started.** 
+Start by *defining relevant events and random variables*. ("Let $$A$$ be the event that I pick the fair coin"; "Let $$X$$ be the number of successes.") Clear notion is important for clear thinking! Then decide what it is that you're supposed to be finding, in terms of your notation ("I want to find $$P(X=3|A)$$"). Think about what type of object your answer should be (a number? A random variable? A PMF? A PDF?) and what it should be in terms of.<br>
 Try simple and extreme cases. To make an abstract experiment more concrete, try *drawing a picture* or making up numbers that could have happened. Pattern recognition: does the structure of the problem resemble something we've seen before?
 
-2. **Calculating probability of an event.** Use counting principles if the naive definition of probability applies. Is the probability of the complement easier to find? Look for symmetries. Look for something to condition on, then apply Bayes' Rule or the Law of Total Probability.
+2. **Calculating probability of an event.** 
+Use counting principles if the naive definition of probability applies. Is the probability of the complement easier to find? Look for symmetries. Look for something to condition on, then apply Bayes' Rule or the Law of Total Probability.
 
-3. **Finding the distribution of a random variable.** First make sure you need the full distribution not just the mean (see next item). Check the *support* of the random variable: what values can it take on? Use this to rule out distributions that don't fit. Is there a *story* for one of the named distributions that fits the problem at hand? Can you write the random variable as a function of an r.v. with a known distribution, say $$Y = g(X)$$?
+3. **Finding the distribution of a random variable.** 
+First make sure you need the full distribution not just the mean (see next item). Check the *support* of the random variable: what values can it take on? Use this to rule out distributions that don't fit. Is there a *story* for one of the named distributions that fits the problem at hand? Can you write the random variable as a function of an r.v. with a known distribution, say $$Y = g(X)$$?
 
-4. **Calculating expectation.** If it has a named distribution, check out the table of distributions. If it's a function of an r.v. with a named distribution, try LOTUS. If it's a count of something, try breaking it up into indicator r.v.s. If you can condition on something natural, consider using Adam's law.
+4. **Calculating expectation.** 
+If it has a named distribution, check out the table of distributions. If it's a function of an r.v. with a named distribution, try LOTUS. If it's a count of something, try breaking it up into indicator r.v.s. If you can condition on something natural, consider using Adam's law.
 
-5. **Calculating variance.** Consider independence, named distributions, and LOTUS. If it's a count of something, break it up into a sum of indicator r.v.s. If it's a sum, use properties of covariance. If you can condition on something natural, consider using Eve's Law.
+5. **Calculating variance.** 
+Consider independence, named distributions, and LOTUS. If it's a count of something, break it up into a sum of indicator r.v.s. If it's a sum, use properties of covariance. If you can condition on something natural, consider using Eve's Law.
 
-6. **Calculating $$E(X^2)$$.** Do you already know $$E(X)$$ or $$\text{Var}(X)$$? Recall that $$\text{Var}(X) = E(X^2) - (E(X))^2$$. Otherwise try LOTUS.
+6. **Calculating $$E(X^2)$$.** 
+Do you already know $$E(X)$$ or $$\text{Var}(X)$$? Recall that $$\text{Var}(X) = E(X^2) - (E(X))^2$$. Otherwise try LOTUS.
 
-7. **Calculating covariance.** Use the properties of covariance. If you're trying to find the covariance between two components of a Multinomial distribution, $$X_i, X_j$$, then the covariance is $$-np_ip_j$$ for $$i \neq j$$.
+7. **Calculating covariance.** 
+Use the properties of covariance. If you're trying to find the covariance between two components of a Multinomial distribution, $$X_i, X_j$$, then the covariance is $$-np_ip_j$$ for $$i \neq j$$.
 
-8. **Symmetry.** If $$X_1,\dots,X_n$$ are i.i.d., consider using symmetry.
+8. **Symmetry.** 
+If $$X_1,\dots,X_n$$ are i.i.d., consider using symmetry.
 
-9. **Calculating probabilities of orderings.** Remember that all $$n!$$ ordering of i.i.d. continuous random variables $$X_1,\dots,X_n$$ are equally likely.
+9. **Calculating probabilities of orderings.** 
+Remember that all $$n!$$ ordering of i.i.d. continuous random variables $$X_1,\dots,X_n$$ are equally likely.
 
-10. **Determining independence.** There are several equivalent definitions. Think about simple and extreme cases to see if you can find a counterexample.
+10. **Determining independence.** 
+There are several equivalent definitions. Think about simple and extreme cases to see if you can find a counterexample.
 
-11. **Do a painful integral.** If your integral looks painful, see if you can write your integral in terms of a known PDF (like Gamma or Beta), and use the fact that PDFs integrate to $$1$$?
+11. **Do a painful integral.** 
+If your integral looks painful, see if you can write your integral in terms of a known PDF (like Gamma or Beta), and use the fact that PDFs integrate to $$1$$?
 
-12. **Before moving on.** Check some simple and extreme cases, check whether the answer seems plausible, check for biohazards.
+12. **Before moving on.** 
+Check some simple and extreme cases, check whether the answer seems plausible, check for biohazards.
 
 ## Biohazards
 ---
 Contributions from Jessy Hwang
 
-1. **Don't misuse the naive definition of probability.** When answering "What is the probability that in a group of 3 people, no two have the same birth month?", it is *not* correct to treat the people as indistinguishable balls being placed into 12 boxes, since that assumes the list of birth months {January, January, January} is just as likely as the list {January, April, June}, even though the latter is six times more likely.
+1. **Don't misuse the naive definition of probability.** 
+When answering "What is the probability that in a group of 3 people, no two have the same birth month?", it is *not* correct to treat the people as indistinguishable balls being placed into 12 boxes, since that assumes the list of birth months {January, January, January} is just as likely as the list {January, April, June}, even though the latter is six times more likely.
 
 2. **Don't confuse unconditional, conditional, and joint probabilities.** In applying $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$, it is *not* correct to say "$$P(B) = 1$$ because we know $$B$$ happened"; $$P(B)$$ is the *prior* probability of $$B$$. Don't confuse $$P(A|B)$$ with $$P(A,B)$$.
 
