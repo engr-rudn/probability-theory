@@ -1002,10 +1002,7 @@ $$
 
 William and Sebastian play a modified game of Settlers of Catan, where every turn they randomly move the robber (which starts on the center tile) to one of the adjacent hexagons.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{image_url}
-\end{figure}
+![Markov Chain](../figure/markov_chains.png)
 
 1. Is this Markov chain irreducible? Is it aperiodic?
    \textbf{Answer:} Yes to both. The Markov chain is irreducible because it can get from anywhere to anywhere else. The Markov chain is aperiodic because the robber can return back to a square in 2, 3, 4, 5, ... moves, and the greatest common divisor (GCD) of those numbers is 1.
