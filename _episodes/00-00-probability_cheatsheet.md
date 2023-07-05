@@ -771,25 +771,25 @@ A convolution of $$n$$ random variables is simply their sum. For the following r
 5. $$X \sim \mathcal{N}(\mu_1, \sigma_1^2)$$, $$Y \sim \mathcal{N}(\mu_2, \sigma_2^2)$$ $$\longrightarrow X + Y \sim \mathcal{N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$$
 
 ## Special Cases of Distributions
-1. $$\text{Bin}(1, p) \sim \text{Bern}(p)$$\
-2. $$\text{Beta}(1, 1) \sim \text{Unif}(0, 1)$$\
-3. $$\text{Gam}(1, \lambda) \sim \text{Expo}(\lambda)$$\
-4. $$\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$$\
-5. $$\text{NBin}(1, p) \sim \text{Geom}(p)$$
+1. $$\text{Bin}(1, p) \sim \text{Bern}(p)$$.
+2. $$\text{Beta}(1, 1) \sim \text{Unif}(0, 1)$$.
+3. $$\text{Gam}(1, \lambda) \sim \text{Expo}(\lambda)$$.
+4. $$\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$$.
+5. $$\text{NBin}(1, p) \sim \text{Geom}(p)$$.
 
 $$
 \textbf{Inequalities}
 $$
 
-\begin{enumerate}
-\item \textbf{Cauchy-Schwarz}: $$|E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
+<!--  -->$$\begin{enumerate}
+$$\item \textbf{Cauchy-Schwarz}: |E(XY)| \leq \sqrt{E(X^2)E(Y^2)}$$
 
-\item \textbf{Markov}: $$P(X \geq a) \leq \frac{E|X|}{a}$$ for $$a>0$$
+$$\item \textbf{Markov}: P(X \geq a) \leq \frac{E|X|}{a}$$ for $$a>0$$
 
-\item \textbf{Chebyshev}: $$P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$$ for $$E(X)=\mu$$, $$\text{Var}(X) = \sigma^2$$
+$$\item \textbf{Chebyshev}: P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}$$ for $$E(X)=\mu$$, $$\text{Var}(X) = \sigma^2$$
 
-\item \textbf{Jensen}: $$E(g(X)) \geq g(E(X))$$ for $$g$$ convex; reverse if $$g$$ is concave
-\end{enumerate}
+$$\item \textbf{Jensen}: E(g(X)) \geq g(E(X))$$ for $$g$$ convex; reverse if $$g$$ is concave
+<!--  -->\end{enumerate}
 
 
 $$
@@ -811,7 +811,7 @@ $$
 $$
 
 $$
-\textbf{Exponential Function ($$e^x$$)}
+\textbf{Exponential Function (e^x)}
 $$
 
 $$
