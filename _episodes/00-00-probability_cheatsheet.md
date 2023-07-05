@@ -460,7 +460,7 @@ For example:
 We can also find $$E(Y|X)$$, the expected value of $$Y$$ given the random variable $$X$$. This is *a function of the random variable $$X$$*. It is *not* a number except in certain special cases such as if $$X \perp Y$$. To find $$E(Y|X)$$, find $$E(Y|X = x)$$ and then plug in $$X$$ for $$x$$.
 
 For example:
-- If $$E(Y\|X=x) = x^3+5x$$, then $$E(Y\|X) = X^3 + 5X$$.
+- If $$E(Y|X=x) = x^3+5x$$, then $$E(Y|X) = X^3 + 5X$$.
 - Let $$Y$$ be the number of successes in $$10$$ independent Bernoulli trials with probability $$p$$ of success and $$X$$ be the number of successes among the first $$3$$ trials. Then $$E(Y\|X)=X+7p$$.
 - Let $$X \sim \mathcal{N}(0,1)$$ and $$Y=X^2$$. Then $$E(Y\|X=x) = x^2$$ since if we know $$X=x$$ then we know $$Y=x^2$$. And $$E(X\|Y=y) = 0$$ since if we know $$Y=y$$ then we know $$X = \pm \sqrt{y}$$, with equal probabilities (by symmetry). So $$E(Y\|X)=X^2$$, $$E(X\|Y)=0$$.
 
