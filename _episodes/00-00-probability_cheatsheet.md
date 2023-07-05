@@ -671,7 +671,7 @@ Let us say that X is distributed chi2_n. We know the following:
 A Chi-Square(n) is the sum of the squares of n independent standard Normal r.v.s.
 
 **Properties and Representations**
-- $$X$$ is distributed as $$Z1^2 + Z2^2 + ... + Zn^2$$ for i.i.d. $$Z_i ~ N(0,1)$$
+- $$X$$ is distributed as $$Z1^2 + Z2^2 + ... + Zn^2$$ for i.i.d. $$Z_i ~ N(0,1)$$\
 - $$X ~ Gam(n/2, 1/2)$$
 
 ## Discrete Distributions
@@ -771,10 +771,10 @@ A convolution of $$n$$ random variables is simply their sum. For the following r
 5. $$X \sim \mathcal{N}(\mu_1, \sigma_1^2)$$, $$Y \sim \mathcal{N}(\mu_2, \sigma_2^2)$$ $$\longrightarrow X + Y \sim \mathcal{N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$$
 
 ## Special Cases of Distributions
-1. $$\text{Bin}(1, p) \sim \text{Bern}(p)$$
-2. $$\text{Beta}(1, 1) \sim \text{Unif}(0, 1)$$
-3. $$\text{Gam}(1, \lambda) \sim \text{Expo}(\lambda)$$
-4. $$\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$$
+1. $$\text{Bin}(1, p) \sim \text{Bern}(p)$$\
+2. $$\text{Beta}(1, 1) \sim \text{Unif}(0, 1)$$\
+3. $$\text{Gam}(1, \lambda) \sim \text{Expo}(\lambda)$$\
+4. $$\chi^2_n \sim \text{Gam}\left(\frac{n}{2}, \frac{1}{2}\right)$$\
 5. $$\text{NBin}(1, p) \sim \text{Geom}(p)$$
 
 $$
