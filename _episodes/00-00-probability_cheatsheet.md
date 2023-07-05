@@ -810,7 +810,7 @@ $$
 $$
 
 $$
-\textbf{Exponential Function (e^x)}
+\textbf{Exponential Function ($e^x$)}
 $$
 
 $$
