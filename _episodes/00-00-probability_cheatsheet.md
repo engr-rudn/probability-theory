@@ -1123,6 +1123,7 @@ The table above gives R commands for working with various named distributions. C
 
 ## Table of Distributions
 ---
+
 | Distribution | PMF/PDF and Support                        | Expected Value                                   | Variance                                         | MGF                                |
 |--------------|--------------------------------------------|-------------------------------------------------|--------------------------------------------------|------------------------------------|
 | Bernoulli    | $$P(X=1) = p$$<br>$$P(X=0) = q=1-p$$            | $$p$$                                             | $$pq$$                                             | $$q + pe^t$$                         |
