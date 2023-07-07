@@ -955,7 +955,7 @@ $$
 $$
 > {: .solution}
 {: .challenge}
-> ### MGF -- Distribution Matching
+> ### MGF - Distribution Matching
 > (Continuing the Rubik's Cube question above) Find the MGF of $$T$$. What is the name of this distribution and its parameter(s)?
 > >
 > > ## Solution
