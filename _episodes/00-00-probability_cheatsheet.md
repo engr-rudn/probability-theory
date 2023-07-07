@@ -903,7 +903,7 @@ This is approximately $$n (\log(n) + 0.577)$$ by Euler's approximation.
 > >
 > > ## Solution
 > > 
-> > Since the arrival times of the five cars are i.i.d., all $$5!$$ orderings of the arrivals are equally likely. There are $$3!2!$$ orderings that involve the Lyfts arriving first, so the probability that the Lyfts arrive first is $$\boxed{\frac{3!2!}{5!} = \frac{1}{10}}$$. Alternatively, there are $$\binom{5}{3}$$ ways to choose 3 of the 5 slots for the Lyfts to occupy, where each of the choices is equally likely. One of these choices has all 3 of the Lyfts arriving first, so the probability is $$\boxed{\frac{1}{{5 \choose 3}} = \frac{1}{10}}$$.
+> > Since the arrival times of the five cars are i.i.d., all $$5!$$ orderings of the arrivals are equally likely. There are $$3!2!$$ orderings that involve the Lyfts arriving first, so the probability that the Lyfts arrive first is $$\boxed{\frac{3!2!}{5!} = \frac{1}{10}}$$. Alternatively, there are $$\binom{5}{3}$$ ways to choose 3 of the 5 slots for the Lyfts to occupy, where each of the choices is equally likely. One of these choices has all 3 of the Lyfts arriving first, so the probability is $$\boxed{\frac{1}{5 \choose 3} = \frac{1}{10}}$$.
 > {: .solution}
 {: .challenge}
 > ### Expectation of Negative Hypergeometric
@@ -1160,7 +1160,7 @@ The table above gives R commands for working with various named distributions. C
 | Binomial     | $$P(X=k) = {n \choose k}p^k q^{n-k}$$          | $$np$$                                            | $$npq$$                                            | $$(q + pe^t)^n$$                      |
 | Geometric    | $$P(X=k) = q^kp$$                             | $$q/p$$                                           | $$q/p^2$$                                          | $$\frac{p}{1-qe^t}, \, qe^t < 1$$    |
 | Negative Binomial | $$P(X=n) = {r + n - 1 \choose r -1}p^rq^n$$ | $$rq/p$$                                          | $$rq/p^2$$                                         | $$(\frac{p}{1-qe^t})^r, \, qe^t < 1$$ |
-| Hypergeometric | $$P(X=k) = \frac{w \choose k}{{b \choose n-k}}{w + b \choose n}$$ | $$\mu = \frac{nw}{b+w}$$               | $$\left(\frac{w+b-n}{w+b-1} \right) n\frac{\mu}{n}(1 - \frac{\mu}{n})$$ | messy  |
+| Hypergeometric | $$P(X=k) = \frac{w \choose k}{b \choose n-k}{w + b \choose n}$$ | $$\mu = \frac{nw}{b+w}$$               | $$\left(\frac{w+b-n}{w+b-1} \right) n\frac{\mu}{n}(1 - \frac{\mu}{n})$$ | messy  |
 | Poisson      | $$P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}$$  | $$\lambda$$                                       | $$\lambda$$                                        | $$e^{\lambda(e^t-1)}$$                |
 | Uniform      | $$f(x) = \frac{1}{b-a}$$                       | $$\frac{a+b}{2}$$                                 | $$\frac{(b-a)^2}{12}$$                            | $$\frac{e^{tb}-e^{ta}}{t(b-a)}$$      |
 | Normal       | $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{(2 \sigma^2)}}$$ | $$\mu$$                 | $$\sigma^2$$                                      | $$e^{t\mu + \frac{\sigma^2t^2}{2}}$$ |
