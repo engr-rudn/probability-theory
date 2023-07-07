@@ -956,21 +956,11 @@ $$
 > {: .solution}
 {: .challenge}
 > ### MGF -- Distribution Matching
-> test
+> (Continuing the Rubik's Cube question above) Find the MGF of $$T$$. What is the name of this distribution and its parameter(s)?
 > >
 > > ## Solution
 > >
-> > By Adam's Law, we have\
-$$
-E(e^{tT}) = E(E(e^{tT}|N)) = E((pe^t + q)^N) = s\sum_{n=0}^\infty(pe^t + 1-p)^n(1-s)^n =\frac{s}{1-(1-s)(pe^t+1-p)} =\frac{s}{s+(1-s)p-(1-s)pe^t}
-$$\
-Intuitively, we would expect that $$T$$ is distributed Geometrically since $$T$$ is just a filtered version of $$N$$, which itself is Geometrically distributed. The MGF of $$X\sim\text{Geom}(\theta)$$ is $$E(e^{tX}) = \frac{\theta}{1-(1-\theta) e^t}$$\
-So, we would want to try to get our MGF into this form to identify what $$\theta$$ is. Taking our original MGF, it would appear that dividing by $$s+(1-s)p$$ would allow us to do this. Therefore, we have that\
-$$
-E(e^{tT}) = \frac{s}{s+(1-s)p - (1-s)pe^t} = \frac{\frac{s}{s+(1-s)p}}{1-\frac{(1-s)p}{s+(1-s)p}e^t}
-$$\
-By pattern-matching, it thus follows that $$\boxed{T \sim \text{Geom}(\theta)}$$ where\
-$$\boxed{\theta = \frac{s}{s+(1-s)p}}$$\
+> > test
 >{: .solution}
 {: challenge}
 > ### MGF -- Finding Moments
