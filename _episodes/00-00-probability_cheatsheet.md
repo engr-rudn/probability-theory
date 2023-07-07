@@ -970,7 +970,7 @@ $$
 E(e^{tT}) = \frac{s}{s+(1-s)p - (1-s)pe^t} = \frac{\frac{s}{s+(1-s)p}}{1-\frac{(1-s)p}{s+(1-s)p}e^t}
 $$\
 By pattern-matching, it thus follows that $$\boxed{T \sim \text{Geom}(\theta)}$$ where\
-$$\boxed{\theta = \frac{s}{s+(1-s)p}}$$\
+$$\boxed{\theta = \frac{s}{s+(1-s)p}}$$
 >{: .solution}
 {: .challenge}
 > ### MGF -- Finding Moments
@@ -1017,7 +1017,7 @@ William and Sebastian play a modified game of Settlers of Catan, where every tur
 
 ![Markov Chain](../figure/markov_chains.png)
 
-> 1. Is this Markov chain irreducible? Is it aperiodic?
+> ### 1. Is this Markov chain irreducible? Is it aperiodic?
 > >
 > > ## Solution
 > >
