@@ -1024,21 +1024,21 @@ William and Sebastian play a modified game of Settlers of Catan, where every tur
 > >Yes to both. The Markov chain is irreducible because it can get from anywhere to anywhere else. The Markov chain is aperiodic because the robber can return back to a square in 2, 3, 4, 5, ... moves, and the greatest common divisor (GCD) of those numbers is 1.
 >{: .solution}
 {: .challenge}
-> 2. What is the stationary distribution of this Markov chain?
+> ### 2. What is the stationary distribution of this Markov chain?
 > >
 > >## Solution
 > >
 > >Since this is a random walk on an undirected graph, the stationary distribution is proportional to the degree sequence. The degree for the corner pieces is 3, the degree for the edge pieces is 4, and the degree for the center pieces is 6. To normalize this degree sequence, we divide by its sum. The sum of the degrees is 6(3) + 6(4) + 7(6) = 84. Thus, the stationary probability of being on a corner is 3/84 = 1/28, on an edge is 4/84 = 1/21, and in the center is 6/84 = 1/14.
 > {: .solution}
 {: .challenge}
-> 3. What fraction of the time will the robber be in the center tile in this game, in the long run?
+> ### 3. What fraction of the time will the robber be in the center tile in this game, in the long run?
 > >
 > > ## Solution
 > > 
 > > By the above, 1/14.
 >{: .solution}
 {: .challenge}
-> 4. What is the expected amount of moves it will take for the robber to return to the center tile?
+> ### 4. What is the expected amount of moves it will take for the robber to return to the center tile?
 > >
 > > ## Solution
 > >
